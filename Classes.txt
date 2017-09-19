@@ -1,0 +1,32 @@
+1. server software will display its IP address?
+	shouldnt that be client displaying from server data
+
+2. user input the IP address of the server?
+	to change the server IP address or choose its location? will it be like a pass or fail message?
+
+3. figure out what quitting means? closing connection, saving data 
+
+4. game logic 
+	should everything be on the backend and client just sends moves. or is there game logic validation on the client before the move is sent to the server. 
+
+
+Player.java
+Ai.java
+IPlayable.java
+	makeMove
+	
+GameInterface
+	updateGameBoard
+	validateMove
+	checkConnectThree
+GameController implements GameInterface
+	gameboard
+		
+	
+Gameboard.java implements Interface
+	array CellStates[11][11]
+	enum CellState { AVAILABLE, VACANT, BLACK, WHITE , WALL}	
+	bool 
+Score.java
+TCPClient.java
+TCPServer.java
