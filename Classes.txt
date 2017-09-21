@@ -30,3 +30,39 @@ Gameboard.java implements Interface
 Score.java
 TCPClient.java
 TCPServer.java
+
+public class CheckForWin{
+	
+	public CheckForWin(){}
+	
+	
+	
+	public static void main(String[] args){
+		
+		
+		
+	}
+	
+	public enum CellState {
+		WHITE, BLACK
+	}
+	
+	public boolean checkwin(int[][]array ){
+		
+		for (int i = 0; i < array[i].length; i++){
+			
+			for (int j = 0; i < array[i][j].length; i++){
+				
+				if ( array[i * 1][j]  == CellState.WHITE ){} // check for horizontal
+				
+				if (array[j * 1][x] == CellState.White) {} // check for vertical
+				
+				if (array[x][j] == CellState.White && x - j == 0){} // check right diagonal 
+					
+				if (array[x][j] == CellState.White && x + j == 2){} // check left diagonal 
+				
+			}	
+		}
+	}
+	
+}
