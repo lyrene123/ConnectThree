@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.threestone.server;
+package com.threestone.client;
 import java.net.*;  // for Socket
 import java.io.*;   // for IOException and Input/OutputStream
 
-public class TCPEchoClient
+public class ThreeStonesClientPacket
 {
 
   public static void main(String[] args) throws IOException
@@ -17,8 +17,17 @@ public class TCPEchoClient
       throw new IllegalArgumentException("Parameter(s): <Server> <Word> [<Port>]");
 
     String server = args[0];					// Server name or IP address
+    byte x = 1;
+    byte y = 7;
+    
     // Convert input String to bytes using the default character encoding
-    byte[] byteBuffer = args[1].getBytes();
+    //byte[] byteBuffer = args[1].getBytes();
+    byte[] byteBuffer = new byte[10];
+      for (byte i = 0; i < 10; i++) {
+        byteBuffer[i] = i;
+      }
+    
+    
 
     int servPort = (args.length == 3) ? Integer.parseInt(args[2]) : 7;
 
@@ -42,7 +51,9 @@ public class TCPEchoClient
       totalBytesRcvd += bytesRcvd;
     }
 
-    System.out.println("Received: " + new String(byteBuffer));
+      for (byte b : byteBuffer) {
+          System.out.println("received bytefuffer " + b);
+      }
 
     socket.close();								// Close the socket and its streams
   }

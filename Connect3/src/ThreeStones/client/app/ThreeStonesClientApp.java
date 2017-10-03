@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package connect3;
+package ThreeStones.client.app;
+
+import ThreeStones.server.app.*;
 
 /**
  *
  * @author 1537385
  */
-public class Connect3 {
+public class ThreeStonesClientApp {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       
     }
     
 }

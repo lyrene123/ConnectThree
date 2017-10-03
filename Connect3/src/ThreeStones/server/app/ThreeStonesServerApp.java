@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.threestone.server;
+package ThreeStones.server.app;
 
 /**
  *
  * @author 1537385
  */
-public class ThreeStoneServerApp {
+public class ThreeStonesServerApp {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       
     }
     
 }
