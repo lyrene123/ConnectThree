@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 public class ThreeStonesClientPacket {
       // Real programmers use logging
     private final Logger log = LoggerFactory.getLogger(getClass().getName());
-
+    private static final int BUFSIZE = 32;	// Size of receive buffer
     public void send(List<Byte> list) throws IOException {
         // Server name or IP address
         String server = "someIp";
@@ -55,4 +55,41 @@ public class ThreeStonesClientPacket {
 
         socket.close();								// Close the socket and its streams
     }
+    
+    public List<Byte> receive(String[] args) throws IOException
+  {
+
+    if (args.length != 1)					// Test for correct # of args
+      throw new IllegalArgumentException("Parameter(s): <Port>");
+
+    int servPort = Integer.parseInt(args[0]);
+
+    // Create a server socket to accept client connection requests
+    ServerSocket servSock = new ServerSocket(servPort);
+
+    int recvMsgSize;						// Size of received message
+    byte[] byteBuffer = new byte[BUFSIZE];	// Receive buffer
+
+	// Run forever, accepting and servicing connections
+    for (;;)
+    {
+      Socket clntSock = servSock.accept();	// Get client connection
+
+      System.out.println("Handling client at " +
+        clntSock.getInetAddress().getHostAddress() + " on port " +
+        clntSock.getPort());
+
+      InputStream in = clntSock.getInputStream();
+      OutputStream out = clntSock.getOutputStream();
+
+      // Receive until client closes connection, indicated by -1 return
+      while ((recvMsgSize = in.read(byteBuffer)) != -1)
+        out.write(byteBuffer, 0, recvMsgSize);
+      // Close the socket. This client is finished.
+      clntSock.close();
+      return null;
+    }
+    /* NOT REACHED */
+  }
 }
+
