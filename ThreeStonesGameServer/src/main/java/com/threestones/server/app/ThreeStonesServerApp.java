@@ -1,16 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.threestones.server.app;
+
+import com.threestones.server.ThreeStonesServer;
 
 /**
  *
- * @author ehugh
+ * @author 
  */
 public class ThreeStonesServerApp {
     public static void main(String[] args) {
+        ThreeStonesServer server = new ThreeStonesServer();
+        server.runServer();
         
     }
 }
