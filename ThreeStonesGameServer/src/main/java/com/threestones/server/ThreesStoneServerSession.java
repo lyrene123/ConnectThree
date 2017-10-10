@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.threestones.server.gamestate;
+package com.threestones.server;
 
 /**
  *
  * @author ehugh
  */
-public class ThreesStoneServer {
+class ThreesStoneServerSession {
     
 }
