@@ -10,5 +10,7 @@ package com.threestones.client.gamestate;
  * @author ehugh
  */
 public class ThreeStoneClientClass {
+    private ThreeStonesGameBoard board;
     
+ 
 }

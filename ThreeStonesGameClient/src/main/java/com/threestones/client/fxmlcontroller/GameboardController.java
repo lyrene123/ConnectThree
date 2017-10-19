@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.threestones.server.app;
+package com.threestones.client.fxmlcontroller;
 
-import com.threestones.server.gamestate.ThreeStonesGameBoard;
+
+import com.threestones.client.gamestate.ThreeStonesGameBoard;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -23,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author 1537385
  */
 public class GameboardController implements Initializable {
-
+   // private ThreStonesGameBoard;
     private final Logger log = LoggerFactory.getLogger(getClass().getName());
     @FXML
     private BorderPane gameBoardIViewId;
@@ -49,17 +50,22 @@ public class GameboardController implements Initializable {
                 rec.setHeight(50);
                 rec.getStyleClass().add("white-stone");
 
-                rec.setFill(Color.web("#00F"));
-                rec.setStroke(Color.GREEN);
-
-                rec.setOnMouseClicked(e -> {
+   
+                rec.setStroke(Color.BLACK);
+                switch (board.getBoard()[row][col]){
+                    case AVAILABLE:
+                    rec.setFill(Color.GREEN);
+                    rec.setOnMouseClicked(e -> {
                     Rectangle rec1 = (Rectangle) e.getSource();
-
                     int x = GridPane.getRowIndex(rec1);
                     int y = GridPane.getColumnIndex(rec1);
-                    System.out.println(x + " " + y);
+                    this.clickBoardCell(x,y);
                 });
-
+                    break;
+                    case VACANT:
+                    rec.setFill(Color.BLACK);
+                    break;
+            }
                 //rec.setFill(colors[n]);
                 gameBoardGridPane.setRowIndex(rec, row);
                 gameBoardGridPane.setColumnIndex(rec, col);
@@ -68,5 +74,9 @@ public class GameboardController implements Initializable {
             }
         }
         this.gameBoardIViewId.setCenter(gameBoardGridPane);
+    }
+
+    private void clickBoardCell(int x, int y) {
+       //if (board.)
     }
 }

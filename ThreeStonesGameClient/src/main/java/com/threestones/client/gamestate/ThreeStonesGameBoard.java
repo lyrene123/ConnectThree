@@ -1,5 +1,5 @@
 
-package com.threestones.server.gamestate;
+package com.threestones.client.gamestate;
 
 /**
  *
@@ -16,7 +16,22 @@ public class ThreeStonesGameBoard {
     private int whiteScore;
     private int blackScore;
     
-    public ThreeStonesGameBoard() {}
+    public ThreeStonesGameBoard(){
+          board = new CellState[][]{{CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT},
+                                 {CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT},
+          {CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT},
+          {CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT},
+{CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.VACANT,CellState.VACANT,CellState.VACANT},
+{CellState.VACANT,CellState.VACANT,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.VACANT,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.VACANT,CellState.VACANT},
+{CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.VACANT,CellState.VACANT,CellState.VACANT},
+{CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT},
+{CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.AVAILABLE,CellState.AVAILABLE,CellState.AVAILABLE,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT},
+{CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT},
+{CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT,CellState.VACANT}};
+          }
+  
+              
+    
 
     public CellState[][] getBoard() {
         return board;

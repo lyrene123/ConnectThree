@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.threestones.server.app;
+package com.threestones.client.app;
 
 import java.io.IOException;
 import java.util.logging.Level;
