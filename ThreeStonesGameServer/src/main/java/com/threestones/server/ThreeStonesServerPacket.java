@@ -15,7 +15,6 @@ public class ThreeStonesServerPacket {
 
     // Real programmers use logging
     private final Logger log = LoggerFactory.getLogger(getClass().getName());
-    private static final int BUFSIZE = 32;
 
     public void send(List<Byte> list) throws IOException {
         // Server name or IP address
