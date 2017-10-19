@@ -154,7 +154,7 @@ public class ThreeStonesGameBoard {
 	//I made it to return for now incase we want to 
 	//make the ai more sophisticated (to check for moves 2-3 turns ahead)
 	public CellState[][] changeBoard(int x, int y){
-		Cellstate[][] board = this.board;
+		CellState[][] board = this.board;
 		for (int i; i < board[0].size;i++){
 			for (int j; j < board[0].size;j++){
 				if (i == x || j == y && board[i][j] != CellState.VACANT){

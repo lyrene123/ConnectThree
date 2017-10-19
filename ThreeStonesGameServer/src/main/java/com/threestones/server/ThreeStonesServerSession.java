@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.threestones.server;
 
-import java.net.*;  // for Socket, ServerSocket, and InetAddress
 import java.io.*;   // for IOException and Input/OutputStream
-
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -21,6 +15,11 @@ public class ThreeStonesServerSession {
     private static final int BUFSIZE = 32;	// Size of receive buffer
     private boolean gameOver;
     private boolean playAgain;
+    
+    public ThreeStonesServerSession(){
+        this.gameOver = false;
+        this.playAgain = true;
+    }
 
     public void playSession(Socket clientSock) throws IOException {
         /*
@@ -30,29 +29,38 @@ public class ThreeStonesServerSession {
                     //ServerGame.playGame()
          */
 
+        int recvMsgSize = 0;
+        byte[] byteBuffer = new byte[BUFSIZE];	// Receive buffer
+        InputStream in = clientSock.getInputStream();
+        OutputStream out = clientSock.getOutputStream();
+        
         while (playAgain) {
             while (!gameOver) {
-                int recvMsgSize;						// Size of received message
-                byte[] byteBuffer = new byte[BUFSIZE];	// Receive buffer
-
-                // Run forever, accepting and servicing connections
-                System.out.println("Handling client at "
-                        + clientSock.getInetAddress().getHostAddress() + " on port "
-                        + clientSock.getPort());
-
-                InputStream in = clientSock.getInputStream();
-                OutputStream out = clientSock.getOutputStream();
 
                 // Receive until client closes connection, indicated by -1 return
                 while ((recvMsgSize = in.read(byteBuffer)) != -1) {
-                    out.write(byteBuffer, 0, recvMsgSize);
+                    //receive client's packet here and check content
+
+                    /*
+                        content :
+                        1) start game message -> startGame() which creates board and initializes everything
+                        2) move -> AI's game logic methods, use OutputStream to send back AI's move
+                     */
+                    //check for any game over. If game over, break this loop and assign gameOver to true
                 }
 
-                clientSock.close();
-
+                //if game over or connection is closed
+                if(gameOver){
+                    
+                }
+                    
+            }
+            if (gameOver && recvMsgSize != -1) {
+                //ask to play again
+            }else{
+                playAgain = false;
             }
         }
-
+        clientSock.close();
     }
 }
-
