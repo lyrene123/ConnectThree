@@ -59,8 +59,11 @@ public class ThreeStonesServerSession {
             //check for op code at beginning of packet
             byte opCode = byteBuffer[0];
             switch(opCode){
-                case 0 : serverGame.drawBoard(); break; //start game message
-                case 1 : serverGame.determineNextMove(); break; //player's move
+                case 0: serverGame.drawBoard(); break; //start game message
+                case 1: handlePlayerMove(byteBuffer); break;
+                case 2: handlePlayerMove(byteBuffer);
+                        gameOver = true;
+                        break;
             }
             
             
@@ -75,5 +78,14 @@ public class ThreeStonesServerSession {
             //check for any game over. If game over, break this loop and assign gameOver to true
         }
         return recvMsgSize;
+    }
+    
+    private void handlePlayerMove(byte[] byteBuffer){
+        int x = byteBuffer[1];
+        int y = byteBuffer[2];
+        serverGame.updateBoard(x, y);
+        serverGame.determineNextMove();
+        
+        //outstream to sent back move to client
     }
 }

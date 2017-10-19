@@ -20,6 +20,10 @@ public class ThreeStonesServerGame {
         //initialize board
     }
     
+    public void updateBoard(int x, int y){
+        board.changeBoard(x, y);
+    }
+    
     
     public void determineNextMove(){
         List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();
