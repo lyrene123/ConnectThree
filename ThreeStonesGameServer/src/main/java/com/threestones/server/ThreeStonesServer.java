@@ -25,12 +25,13 @@ public class ThreeStonesServer {
     public void runServer() throws IOException {
 
         int servPort = 50000;
-        
+
         // Create a server socket to accept client connection requests
         ServerSocket servSock = new ServerSocket(servPort);
         for (;;) {
-        Socket clientSocket = servSock.accept();
-        this.session.playSession(clientSocket);// Close the socket. This client is finished.
+            Socket clientSocket = servSock.accept();
+            ThreeStonesServerSession serverSession = new ThreeStonesServerSession();
+            serverSession.playSession(clientSocket);
         }
     }
     /* NOT REACHED */
@@ -43,7 +44,5 @@ public class ThreeStonesServer {
         server.playSession();
         all of this is in a loop    
      */
-
-}
 
 }
