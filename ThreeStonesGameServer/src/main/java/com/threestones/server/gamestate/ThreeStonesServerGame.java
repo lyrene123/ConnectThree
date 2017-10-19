@@ -32,10 +32,11 @@ public class ThreeStonesServerGame {
         board.changeBoard(x, y);
     }
 
-    public void determineNextMove() {
+    public byte[] determineNextMove() {
         List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();
         CellState[][] gameBoard = board.getBoard();
         int highestMoveValue = 0;
+        byte[] moves = null;
 
         //LOOPS THROUGH GAMEBOARD
         for (int i = 0; i < gameBoard[0].length; i++) {
@@ -71,7 +72,7 @@ public class ThreeStonesServerGame {
         } else {
             //IF ONLY ONE GOOD MOVE MAKE IT USING LIST.get(0)
         }
-
+        return moves;
     }
 
     private ThreeStonesMove createMove(int x, int y) {

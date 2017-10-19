@@ -1,4 +1,3 @@
-
 package com.threestones.server;
 
 import com.threestones.server.gamestate.ThreeStonesServerGame;
@@ -31,10 +30,12 @@ public class ThreeStonesServerSession {
         OutputStream out = clientSock.getOutputStream();
         while (playAgain) {
             while (!gameOver) {
-                recvMsgSize = receiveClientPackets(in, out, recvMsgSize, byteBuffer);          
+                recvMsgSize = receiveClientPackets(in, out, recvMsgSize, byteBuffer);
                 //if game over or connection is closed
                 if (gameOver || recvMsgSize == -1) {
-                    if (recvMsgSize == -1) playAgain = false;
+                    if (recvMsgSize == -1) {
+                        playAgain = false;
+                    }
                     break;
                 }
             }
@@ -50,23 +51,48 @@ public class ThreeStonesServerSession {
         while ((recvMsgSize = in.read(byteBuffer)) != -1) {
             //check for op code at beginning of packet
             byte opCode = byteBuffer[0];
-            switch(opCode){
-                case 0: serverGame.drawBoard(); break; //start game message
-                case 1: handlePlayerMove(byteBuffer); break; //player's move
-                case 2: handlePlayerMove(byteBuffer); //player's last move
-                        gameOver = true;
-                        return 0;
+            switch (opCode) {
+                case 0:
+                    serverGame.drawBoard();
+                    sendMovePacket(null, out);
+                    break; //start game message
+                case 1:
+                    handlePlayerMove(byteBuffer, out);
+                    break; //player's move
+                case 2:
+                    handlePlayerMove(byteBuffer, out); //player's last move
+                    gameOver = true;
+                    return 0;
             }
         }
         return recvMsgSize;
     }
-    
-    private void handlePlayerMove(byte[] byteBuffer){
+
+    private void handlePlayerMove(byte[] byteBuffer, OutputStream out) throws IOException {
         int x = byteBuffer[1];
         int y = byteBuffer[2];
         serverGame.updateBoard(x, y);
-        serverGame.determineNextMove();
-        
-        //outstream to sent back move to client
+
+        byte[] serverMovesPoint = serverGame.determineNextMove(); //[points,x,y]
+        byte[] packetValues = new byte[4];
+        int counter = 0;
+        for (int i = 0; i < packetValues.length; i++) {
+            if (i == 0) {
+                packetValues[i] = 1;//a move packet
+            } else {
+                packetValues[i] = serverMovesPoint[counter]; //[1,points,x,y]
+                counter++;
+            }
+        }
+        sendMovePacket(packetValues, out);
+    }
+
+    private void sendMovePacket(byte[] values, OutputStream out) throws IOException {
+        //outstream to sent back server move to client
+        if (values == null) {
+            values = new byte[1];
+            values[0] = 0;
+        } 
+        out.write(values, 0, values.length);
     }
 }
