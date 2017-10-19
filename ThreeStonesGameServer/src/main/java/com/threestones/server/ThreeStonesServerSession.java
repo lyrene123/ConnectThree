@@ -25,21 +25,13 @@ public class ThreeStonesServerSession {
     }
 
     public void playSession(Socket clientSock) throws IOException {
-        /*
-      loop 
-                playAgain is a boolean its a private field of session
-                loop on !gameOver
-                    //ServerGame.playGame()
-         */
-
         int recvMsgSize = 0;
         byte[] byteBuffer = new byte[BUFSIZE];	// Receive buffer
         InputStream in = clientSock.getInputStream();
         OutputStream out = clientSock.getOutputStream();
         while (playAgain) {
             while (!gameOver) {
-                recvMsgSize = receiveClientPackets(in, out, recvMsgSize, byteBuffer);
-                
+                recvMsgSize = receiveClientPackets(in, out, recvMsgSize, byteBuffer);          
                 //if game over or connection is closed
                 if (gameOver || recvMsgSize == -1) {
                     if (recvMsgSize == -1) playAgain = false;
@@ -60,22 +52,11 @@ public class ThreeStonesServerSession {
             byte opCode = byteBuffer[0];
             switch(opCode){
                 case 0: serverGame.drawBoard(); break; //start game message
-                case 1: handlePlayerMove(byteBuffer); break;
-                case 2: handlePlayerMove(byteBuffer);
+                case 1: handlePlayerMove(byteBuffer); break; //player's move
+                case 2: handlePlayerMove(byteBuffer); //player's last move
                         gameOver = true;
-                        break;
+                        return 0;
             }
-            
-            
-            
-            //receive client's packet here and check content
-
-            /*
-                        content :
-                        1) start game message -> startGame() which creates board and initializes everything
-                        2) move -> AI's game logic methods, use OutputStream to send back AI's move
-             */
-            //check for any game over. If game over, break this loop and assign gameOver to true
         }
         return recvMsgSize;
     }
