@@ -1,6 +1,7 @@
 
 package com.threestones.server.gamestate;
 
+import com.threestones.server.gamestate.ThreeStonesMove;
 import com.threestones.server.gamestate.ThreeStonesGameBoard.CellState;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +13,18 @@ import java.util.List;
 public class ThreeStonesServerGame {
     private ThreeStonesGameBoard board;
     
-    
-    public void determineNextMove(){
+    //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
+    //DEPENDING ON WHERE WE WANT TO TAKE THIS WE CAN ADD MORE MOVE COMPLEXITY SO THAT IT CHECKS THE AVAILALBE
+    //SQUARES THAT WILL BECOME AVAILABLE BASE ON A CERTAIN MOVE AND THE SCORES WHITE OR BLACK CAN SCORE IN THE FUTURE (reading ahead of time)
+    public int[] determineNextMove(){
         List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();
         CellState[][]gameBoard = board.getBoard();
-        int highestMoveValue = -0;
+        int highestMoveValue = 0;
+        
+        //LOOPS THROUGH GAMEBOARD
         for (int i = 0; i < gameBoard[0].length;i++){
             for (int j = 0; j <gameBoard[0].length;j++){
+                //IF CURRENT TILE IS AVAILABLE DETERMINE ITS VALUE
                 if (gameBoard[i][j] == CellState.AVAILABLE){
                     ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE),board.checkForThreeStones(i, j, CellState.BLACK),i,j);
                     //resets list and adds the current move
@@ -54,9 +60,11 @@ public class ThreeStonesServerGame {
         else{
             //IF ONLY ONE GOOD MOVE MAKE IT USING LIST.get(0)
         }
+        int[] a = {0};
+        return a;
+    }
+    private ThreeStonesMove createMove(int x , int y){
         
-        //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
-        //DEPENDING ON WHERE WE WANT TO TAKE THIS WE CAN ADD MORE MOVE COMPLEXITY SO THAT IT CHECKS THE AVAILALBE
-        //SQUARES THAT WILL BECOME AVAILABLE BASE ON A CERTAIN MOVE AND THE SCORES WHITE OR BLACK CAN SCORE IN THE FUTURE (reading ahead of time)
+        return new ThreeStonesMove();
     }
 }

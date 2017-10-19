@@ -64,88 +64,7 @@ public class ThreeStonesGameBoard {
      */
     public int checkForThreeStones (int x, int y, CellState color){
         int points = 0;
-        
-        //check horizontal left
-        if ((x - 2) >=0){
-            if(board[x-1][y] == color && board[x-2][y] == color){
-                points++;
-            }
-        }
-        
-        //check horizontal middle
-        if ((x - 1) >=0 && (x + 1) < board.length){
-            if(board[x-1][y] == color && board[x+1][y] == color){
-                points++;
-            }
-        }
-        
-        //check horizontal right
-        if ((x + 2) >=0){
-            if(board[x+1][y] == color && board[x+2][y] == color){
-                points++;
-            }
-        }
-        
-        //check vertical Up
-        if ((y - 2) >=0){
-            if(board[x][y-1] == color && board[x][y-2] == color){
-                points++;
-            }
-        }
-        
-        //check vertical Middle
-        if ((y - 1) >=0 && (y+1) < board.length){
-            if(board[x][y-1] == color && board[x][y+1] == color){
-                points++;
-            }
-        }
 
-        //check vertical Down
-        if ((y + 2) < board.length){
-            if(board[x][y+1] == color && board[x][y+2] == color){
-                points++;
-            }
-        }
-        
-        //check diagonal N-E /
-        if ((x+2) < board.length && (y-2) >= 0){
-            if(board[x+1][y-1] == color && board[x+2][y-2] == color){
-                points++;
-            }
-        }
-        
-        //check diagonal N-W \
-        if ((x-2) >= 0 && (y-2) >= 0){
-            if(board[x-1][y-1] == color && board[x-2][y+2] == color){
-                points++;
-            }
-        }        
-        
-        //check diagonal S-E \
-        if ((x+2) < board.length && (y+2) < board.length){
-            if(board[x+1][y+1] == color && board[x+2][y+2] == color){
-                points++;
-            }
-        }
-        
-        //check diagonal S-W /
-        if ((x-2) >= 0 && (y+2) < board.length){
-            if(board[x-1][y+1] == color && board[x-2][y+2] == color){
-                points++;
-            }
-        }
-        
-        //check diagonals Middle
-        if ((x-1) >=0 && (y-1) >= 0 && (x+1) < board.length && (y+1) < board.length){
-            //Diagnol Middle Right /
-            if(board[x-1][y-1] == color && board[x+1][y+1] == color){
-                points++;
-            }
-            //Diagonal Middle Left \
-            if(board[x-1][y+1] == color && board[x+1][y+1] == color){
-                points++;
-            }
-        }    
         
         return points;
     }
@@ -153,10 +72,14 @@ public class ThreeStonesGameBoard {
 	//returns an altered version of the board 
 	//I made it to return for now incase we want to 
 	//make the ai more sophisticated (to check for moves 2-3 turns ahead)
+    
+    
+        
 	public CellState[][] changeBoard(int x, int y){
-		Cellstate[][] board = this.board;
-		for (int i; i < board[0].size;i++){
-			for (int j; j < board[0].size;j++){
+		CellState[][] board = this.board;
+                if (!checkIfFull(x,y)) {
+		for (int i = 0; i < board[0].length;i++){
+			for (int j = 0; j < board[0].length;j++){
 				if (i == x || j == y && board[i][j] != CellState.VACANT){
 					board[i][j] = CellState.AVAILABLE;
 				}
@@ -164,8 +87,38 @@ public class ThreeStonesGameBoard {
 					board[i][j] = CellState.AVAILABLE;
 				}
 			}
+                       
 		}
+                }
+                else {
+                    for (int i = 0; i < board[0].length;i++){
+                        for (int j = 0;j <board[0].length;j++){
+                            if (board[i][j] == CellState.UNAVAILABLE){
+                            board[i][j] = CellState.AVAILABLE;
+                            }
+                        }
+                    }
+                }
 		return board;
 	}
+        
+        //checks if both row and column is full
+        private boolean checkIfFull(int x, int y){
+            //check row
+            boolean full = true;
+            for (int i = 0;i <board[0].length && full;i++){
+                if (board[i][x] == CellState.AVAILABLE || board[i][x] == CellState.UNAVAILABLE ){
+                    full = false;
+                }
+            }
+            //check col
+            for (int i = 0; i <board[0].length && full; i++){
+                if (board[x][y] == CellState.AVAILABLE || board[x][y] == CellState.UNAVAILABLE ){
+                    full = false;
+                }
+            }
+            return full;
+        }
+
     
 }
