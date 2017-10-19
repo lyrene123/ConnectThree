@@ -14,6 +14,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * FXML Controller class
@@ -22,6 +24,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class GameboardController implements Initializable {
 
+    private final Logger log = LoggerFactory.getLogger(getClass().getName());
     @FXML
     private BorderPane gameBoardIViewId;
 
@@ -44,12 +47,19 @@ public class GameboardController implements Initializable {
 
                 rec.setWidth(50);
                 rec.setHeight(50);
-                switch(board.getBoard()[row][col]){
-                    
-                }
+                rec.getStyleClass().add("white-stone");
+
                 rec.setFill(Color.web("#00F"));
                 rec.setStroke(Color.GREEN);
-                
+
+                rec.setOnMouseClicked(e -> {
+                    Rectangle rec1 = (Rectangle) e.getSource();
+
+                    int x = GridPane.getRowIndex(rec1);
+                    int y = GridPane.getColumnIndex(rec1);
+                    System.out.println(x + " " + y);
+                });
+
                 //rec.setFill(colors[n]);
                 gameBoardGridPane.setRowIndex(rec, row);
                 gameBoardGridPane.setColumnIndex(rec, col);

@@ -70,7 +70,7 @@ public class ThreeStonesServerPacket {
         ServerSocket servSock = new ServerSocket(servPort);
 
         int recvMsgSize;						// Size of received message
-        byte[] byteBuffer = new byte[BUFSIZE];	// Receive buffer
+        byte[] byteBuffer = new byte[0];	// Receive buffer
 
         // Run forever, accepting and servicing connections
         for (;;) {
