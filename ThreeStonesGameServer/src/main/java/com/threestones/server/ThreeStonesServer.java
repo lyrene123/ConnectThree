@@ -17,27 +17,14 @@ import org.slf4j.LoggerFactory;
  */
 public class ThreeStonesServer {
 
-<<<<<<< HEAD
+
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
-    public ThreeStonesServer() {
-    }
-
-//    public void runServer() throws IOException {
-//        int servPort = 50000;
-//        // Create a server socket to accept client connection requests
-//        ServerSocket servSock = new ServerSocket(servPort);
-//        for (;;) {
-//            Socket clientSocket = servSock.accept();
-//            ThreeStonesServerSession serverSession = new ThreeStonesServerSession();
-//            serverSession.playSession(clientSocket);
-//        }
-//    }
-=======
     /**
      * Default constructor.
      */
-    public ThreeStonesServer() { }
+    public ThreeStonesServer() { 
+    }
 
     /**
      * Starts the server and continuously accepts the connection of any client
@@ -45,8 +32,10 @@ public class ThreeStonesServer {
      * 
      * @throws IOException 
      */
->>>>>>> 1fb53ca81116ce3cd05dfaea91b8e2b6b7f40fe6
-    public void runServer() throws IOException {
+    public void runS(){
+    
+    }
+    public void runSession() throws IOException {
         int servPort = 50000;
         log.debug("Server Start");
         // Create a server socket to accept client connection requests
