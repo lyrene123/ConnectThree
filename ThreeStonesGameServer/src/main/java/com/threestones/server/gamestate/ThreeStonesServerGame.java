@@ -13,12 +13,11 @@ import java.util.List;
 public class ThreeStonesServerGame {
     private ThreeStonesGameBoard board;
     
-<<<<<<< HEAD
+
     //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
     //DEPENDING ON WHERE WE WANT TO TAKE THIS WE CAN ADD MORE MOVE COMPLEXITY SO THAT IT CHECKS THE AVAILALBE
     //SQUARES THAT WILL BECOME AVAILABLE BASE ON A CERTAIN MOVE AND THE SCORES WHITE OR BLACK CAN SCORE IN THE FUTURE (reading ahead of time)
-    public int[] determineNextMove(){
-=======
+
     public ThreeStonesServerGame(){
         this.board = new ThreeStonesGameBoard();
     }
@@ -33,7 +32,6 @@ public class ThreeStonesServerGame {
     
     
     public void determineNextMove(){
->>>>>>> 68079e2f43726e8e3cc8c0e7a5174156b92bac31
         List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();
         CellState[][]gameBoard = board.getBoard();
         int highestMoveValue = 0;
@@ -77,8 +75,7 @@ public class ThreeStonesServerGame {
         else{
             //IF ONLY ONE GOOD MOVE MAKE IT USING LIST.get(0)
         }
-        int[] a = {0};
-        return a;
+
     }
     private ThreeStonesMove createMove(int x , int y){
         

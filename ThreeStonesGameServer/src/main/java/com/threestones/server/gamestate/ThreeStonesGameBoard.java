@@ -77,14 +77,11 @@ public class ThreeStonesGameBoard {
         
 	public CellState[][] changeBoard(int x, int y){
 		CellState[][] board = this.board;
-<<<<<<< HEAD
+
                 if (!checkIfFull(x,y)) {
-		for (int i = 0; i < board[0].length;i++){
+		for (int i = 0 ; i < board[0].length;i++){
 			for (int j = 0; j < board[0].length;j++){
-=======
-		for (int i; i < board[0].size;i++){
-			for (int j; j < board[0].size;j++){
->>>>>>> 68079e2f43726e8e3cc8c0e7a5174156b92bac31
+
 				if (i == x || j == y && board[i][j] != CellState.VACANT){
 					board[i][j] = CellState.AVAILABLE;
 				}
