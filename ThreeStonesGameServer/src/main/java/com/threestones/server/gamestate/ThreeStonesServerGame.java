@@ -25,7 +25,7 @@ public class ThreeStonesServerGame {
     }
 
     public void drawBoard() {
-        //initialize board
+        readFile("gameboard.csv");
     }
 
     public void updateBoard(int x, int y) {
@@ -114,5 +114,15 @@ public class ThreeStonesServerGame {
 
     private void constructBoard(int[][] arr) {
         CellState[][] gameboard = new CellState[arr.length][arr.length];
+        for(int i = 0; i < arr.length; i++){
+            for(int j = 0; j < arr.length; j++){
+                switch(arr[i][j]){
+                    case -1: gameboard[i][j] = CellState.UNAVAILABLE;
+                    case 0: gameboard[i][j] = CellState.AVAILABLE;
+                    default: gameboard[i][j] = CellState.UNAVAILABLE;
+                }
+            }
+        }
+        board.setBoard(gameboard);
     }
 }
