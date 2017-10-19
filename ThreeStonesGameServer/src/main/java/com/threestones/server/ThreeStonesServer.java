@@ -23,9 +23,7 @@ public class ThreeStonesServer {
     }
 
     public void runServer() throws IOException {
-
         int servPort = 50000;
-
         // Create a server socket to accept client connection requests
         ServerSocket servSock = new ServerSocket(servPort);
         for (;;) {

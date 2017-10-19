@@ -12,6 +12,14 @@ import java.util.List;
 public class ThreeStonesServerGame {
     private ThreeStonesGameBoard board;
     
+    public ThreeStonesServerGame(){
+        this.board = new ThreeStonesGameBoard();
+    }
+    
+    public void drawBoard(){
+        //initialize board
+    }
+    
     
     public void determineNextMove(){
         List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();

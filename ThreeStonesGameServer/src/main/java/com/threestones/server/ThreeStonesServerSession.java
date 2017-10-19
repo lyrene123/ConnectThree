@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.threestones.server;
 
+import com.threestones.server.gamestate.ThreeStonesServerGame;
 import java.io.*;   // for IOException and Input/OutputStream
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,10 +16,12 @@ public class ThreeStonesServerSession {
     private static final int BUFSIZE = 32;	// Size of receive buffer
     private boolean gameOver;
     private boolean playAgain;
-    
-    public ThreeStonesServerSession(){
+    private ThreeStonesServerGame serverGame;
+
+    public ThreeStonesServerSession() {
         this.gameOver = false;
         this.playAgain = true;
+        this.serverGame = new ThreeStonesServerGame();
     }
 
     public void playSession(Socket clientSock) throws IOException {
@@ -37,25 +36,13 @@ public class ThreeStonesServerSession {
         byte[] byteBuffer = new byte[BUFSIZE];	// Receive buffer
         InputStream in = clientSock.getInputStream();
         OutputStream out = clientSock.getOutputStream();
-        
         while (playAgain) {
             while (!gameOver) {
-
-                // Receive until client closes connection, indicated by -1 return
-                while ((recvMsgSize = in.read(byteBuffer)) != -1) {
-                    //receive client's packet here and check content
-
-                    /*
-                        content :
-                        1) start game message -> startGame() which creates board and initializes everything
-                        2) move -> AI's game logic methods, use OutputStream to send back AI's move
-                     */
-                    //check for any game over. If game over, break this loop and assign gameOver to true
-                }
-
+                recvMsgSize = receiveClientPackets(in, out, recvMsgSize, byteBuffer);
+                
                 //if game over or connection is closed
                 if (gameOver || recvMsgSize == -1) {
-                    if(recvMsgSize == -1) playAgain = false;                 
+                    if (recvMsgSize == -1) playAgain = false;
                     break;
                 }
             }
@@ -64,5 +51,29 @@ public class ThreeStonesServerSession {
             }
         }
         clientSock.close();
+    }
+
+    private int receiveClientPackets(InputStream in, OutputStream out, int recvMsgSize, byte[] byteBuffer) throws IOException {
+        // Receive until client closes connection, indicated by -1 return
+        while ((recvMsgSize = in.read(byteBuffer)) != -1) {
+            //check for op code at beginning of packet
+            byte opCode = byteBuffer[0];
+            switch(opCode){
+                case 0 : serverGame.drawBoard(); break; //start game message
+                case 1 : serverGame.determineNextMove(); break; //player's move
+            }
+            
+            
+            
+            //receive client's packet here and check content
+
+            /*
+                        content :
+                        1) start game message -> startGame() which creates board and initializes everything
+                        2) move -> AI's game logic methods, use OutputStream to send back AI's move
+             */
+            //check for any game over. If game over, break this loop and assign gameOver to true
+        }
+        return recvMsgSize;
     }
 }

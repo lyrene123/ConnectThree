@@ -16,7 +16,7 @@ public class ThreeStonesGameBoard {
     private int whiteScore;
     private int blackScore;
     
-    
+    public ThreeStonesGameBoard() {}
 
     public CellState[][] getBoard() {
         return board;
