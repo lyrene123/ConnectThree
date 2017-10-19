@@ -6,6 +6,7 @@
 package com.threestones.client.fxmlcontroller;
 
 
+import com.threestones.client.gamestate.ThreeStonesClient;
 import com.threestones.client.gamestate.ThreeStonesGameBoard;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,16 +32,17 @@ public class GameboardController implements Initializable {
 
     @FXML
     private GridPane gameBoardGridPane;
-
+    
+    private ThreeStonesClient clientGame;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ThreeStonesGameBoard board = new ThreeStonesGameBoard();
+        clientGame = new ThreeStonesClient();
+       
         this.gameBoardGridPane = new GridPane();
-        //this.gameBoardGridPane.setPrefHeight(1000);
-        //this.gameBoardGridPane.setPrefWidth(1000);
+
         for (int row = 0; row < 11; row++) {
             for (int col = 0; col < 11; col++) {
 
@@ -52,14 +54,14 @@ public class GameboardController implements Initializable {
 
    
                 rec.setStroke(Color.BLACK);
-                switch (board.getBoard()[row][col]){
+                switch (clientGame.getBoard().getBoard()[row][col]){
                     case AVAILABLE:
                     rec.setFill(Color.GREEN);
                     rec.setOnMouseClicked(e -> {
                     Rectangle rec1 = (Rectangle) e.getSource();
                     int x = GridPane.getRowIndex(rec1);
                     int y = GridPane.getColumnIndex(rec1);
-                    this.clickBoardCell(x,y);
+                    clientGame.clickBoardCell(x,y);
                 });
                     break;
                     case VACANT:
@@ -76,7 +78,4 @@ public class GameboardController implements Initializable {
         this.gameBoardIViewId.setCenter(gameBoardGridPane);
     }
 
-    private void clickBoardCell(int x, int y) {
-       //if (board.)
-    }
 }
