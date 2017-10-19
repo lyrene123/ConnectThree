@@ -12,10 +12,12 @@ import java.net.Socket;
  */
 public class ThreeStonesServerSession {
 
-    private static final int BUFSIZE = 32;	// Size of receive buffer
+    private static final int BUFSIZE = 4;	
     private boolean gameOver;
     private boolean playAgain;
     private ThreeStonesServerGame serverGame;
+    private InputStream in;
+    private OutputStream out;
 
     public ThreeStonesServerSession() {
         this.gameOver = false;
@@ -25,12 +27,13 @@ public class ThreeStonesServerSession {
 
     public void playSession(Socket clientSock) throws IOException {
         int recvMsgSize = 0;
-        byte[] byteBuffer = new byte[BUFSIZE];	// Receive buffer
-        InputStream in = clientSock.getInputStream();
-        OutputStream out = clientSock.getOutputStream();
+        byte[] receivedPacket = new byte[BUFSIZE];	
+        in = clientSock.getInputStream();
+        out = clientSock.getOutputStream();
+        
         while (playAgain) {
             while (!gameOver) {
-                recvMsgSize = receiveClientPackets(in, out, recvMsgSize, byteBuffer);
+                recvMsgSize = receiveClientPackets(recvMsgSize, receivedPacket);
                 //if game over or connection is closed
                 if (gameOver || recvMsgSize == -1) {
                     if (recvMsgSize == -1) {
@@ -41,39 +44,47 @@ public class ThreeStonesServerSession {
             }
             if (gameOver && recvMsgSize != -1) {
                 //ask to play again with OutputStream
+                byte[] outPacket = new byte[1];
+                outPacket[0] = 3; //play again message
+                out.write(outPacket);
             }
         }
         clientSock.close();
     }
 
-    private int receiveClientPackets(InputStream in, OutputStream out, int recvMsgSize, byte[] byteBuffer) throws IOException {
+    private int receiveClientPackets(int recvMsgSize, byte[] receivedPacket) throws IOException {
         // Receive until client closes connection, indicated by -1 return
-        while ((recvMsgSize = in.read(byteBuffer)) != -1) {
+        while ((recvMsgSize = in.read(receivedPacket)) != -1) {
             //check for op code at beginning of packet
-            byte opCode = byteBuffer[0];
+            byte opCode = receivedPacket[0];
             switch (opCode) {
                 case 0:
                     serverGame.drawBoard();
-                    sendMovePacket(null, out);
+                    sendServerMovePacketToClient(null, out);
                     break; //start game message
                 case 1:
-                    handlePlayerMove(byteBuffer, out);
+                    handlePlayerMove(receivedPacket, out);
                     break; //player's move
                 case 2:
-                    handlePlayerMove(byteBuffer, out); //player's last move
+                    handlePlayerMove(receivedPacket, out); //player's last move
                     gameOver = true;
                     return 0;
+                case 3:
+                    playAgain = true;
+                    gameOver = false;
+                    break;
             }
         }
         return recvMsgSize;
     }
 
-    private void handlePlayerMove(byte[] byteBuffer, OutputStream out) throws IOException {
-        int x = byteBuffer[1];
-        int y = byteBuffer[2];
+    private void handlePlayerMove(byte[] receivedPacket, OutputStream out) throws IOException {
+        int x = receivedPacket[1];
+        int y = receivedPacket[2];
         serverGame.updateBoard(x, y);
 
         byte[] serverMovesPoint = serverGame.determineNextMove(); //[points,x,y]
+        
         byte[] packetValues = new byte[4];
         int counter = 0;
         for (int i = 0; i < packetValues.length; i++) {
@@ -84,14 +95,14 @@ public class ThreeStonesServerSession {
                 counter++;
             }
         }
-        sendMovePacket(packetValues, out);
+        sendServerMovePacketToClient(packetValues, out);
     }
 
-    private void sendMovePacket(byte[] values, OutputStream out) throws IOException {
+    private void sendServerMovePacketToClient(byte[] values, OutputStream out) throws IOException {
         //outstream to sent back server move to client
         if (values == null) {
             values = new byte[1];
-            values[0] = 0;
+            values[0] = 0; //game has started message
         } 
         out.write(values, 0, values.length);
     }

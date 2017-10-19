@@ -4,3 +4,37 @@
 [DEBUG] 2017-10-19 18:45:05.030 [main] ThreeStonesServer - Server Created Socket
 [DEBUG] 2017-10-19 18:45:05.031 [main] ThreeStonesServer - Server Start Listening
 [DEBUG] 2017-10-19 18:45:05.032 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 18:58:09.263 [main] ThreeStonesServer - Server Start
+[DEBUG] 2017-10-19 18:58:09.271 [main] ThreeStonesServer - Server Created Socket
+[DEBUG] 2017-10-19 18:58:09.272 [main] ThreeStonesServer - Server Start Listening
+[DEBUG] 2017-10-19 18:58:09.273 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 18:59:57.461 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62706
+[DEBUG] 2017-10-19 18:59:57.465 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:00:08.381 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62707
+[DEBUG] 2017-10-19 19:00:08.383 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:27.243 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62708
+[DEBUG] 2017-10-19 19:01:27.244 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:27.410 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62709
+[DEBUG] 2017-10-19 19:01:27.411 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:27.530 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62710
+[DEBUG] 2017-10-19 19:01:27.532 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:28.355 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62711
+[DEBUG] 2017-10-19 19:01:28.356 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:30.962 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62712
+[DEBUG] 2017-10-19 19:01:30.964 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:31.163 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62713
+[DEBUG] 2017-10-19 19:01:31.164 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:31.338 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62715
+[DEBUG] 2017-10-19 19:01:31.339 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:31.506 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62716
+[DEBUG] 2017-10-19 19:01:31.507 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:31.891 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62717
+[DEBUG] 2017-10-19 19:01:31.892 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:33.339 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62718
+[DEBUG] 2017-10-19 19:01:33.340 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:33.675 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62719
+[DEBUG] 2017-10-19 19:01:33.676 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:33.835 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62720
+[DEBUG] 2017-10-19 19:01:33.836 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-19 19:01:33.995 [main] ThreeStonesServer - Handling client at 10.172.11.194 on port 62721
+[DEBUG] 2017-10-19 19:01:33.996 [main] ThreeStonesServer - Loop
