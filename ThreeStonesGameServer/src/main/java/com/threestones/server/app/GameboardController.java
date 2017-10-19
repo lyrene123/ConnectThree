@@ -1,0 +1,72 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.threestones.server.app;
+
+import com.threestones.server.gamestate.ThreeStonesGameBoard;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * FXML Controller class
+ *
+ * @author 1537385
+ */
+public class GameboardController implements Initializable {
+
+    private final Logger log = LoggerFactory.getLogger(getClass().getName());
+    @FXML
+    private BorderPane gameBoardIViewId;
+
+    @FXML
+    private GridPane gameBoardGridPane;
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        ThreeStonesGameBoard board = new ThreeStonesGameBoard();
+        this.gameBoardGridPane = new GridPane();
+        //this.gameBoardGridPane.setPrefHeight(1000);
+        //this.gameBoardGridPane.setPrefWidth(1000);
+        for (int row = 0; row < 11; row++) {
+            for (int col = 0; col < 11; col++) {
+
+                Rectangle rec = new Rectangle();
+
+                rec.setWidth(50);
+                rec.setHeight(50);
+                rec.getStyleClass().add("white-stone");
+
+                rec.setFill(Color.web("#00F"));
+                rec.setStroke(Color.GREEN);
+
+                rec.setOnMouseClicked(e -> {
+                    Rectangle rec1 = (Rectangle) e.getSource();
+
+                    int x = GridPane.getRowIndex(rec1);
+                    int y = GridPane.getColumnIndex(rec1);
+                    System.out.println(x + " " + y);
+                });
+
+                //rec.setFill(colors[n]);
+                gameBoardGridPane.setRowIndex(rec, row);
+                gameBoardGridPane.setColumnIndex(rec, col);
+                gameBoardGridPane.getChildren().add(rec);
+
+            }
+        }
+        this.gameBoardIViewId.setCenter(gameBoardGridPane);
+    }
+}

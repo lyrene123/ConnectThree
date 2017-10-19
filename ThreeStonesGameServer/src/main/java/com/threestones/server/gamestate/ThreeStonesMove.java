@@ -21,6 +21,9 @@ public class ThreeStonesMove {
         this.x = x;
         this.y = y;
     }
+    
+    public ThreeStonesMove(){
+    }
 
     public int getWhitePoints() {
         return whitePoints;
