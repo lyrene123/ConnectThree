@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.threestones.server;
 
 import java.io.*;   // for IOException and Input/OutputStream
@@ -50,15 +54,13 @@ public class ThreeStonesServerSession {
                 }
 
                 //if game over or connection is closed
-                if(gameOver){
-                    
+                if (gameOver || recvMsgSize == -1) {
+                    if(recvMsgSize == -1) playAgain = false;                 
+                    break;
                 }
-                    
             }
             if (gameOver && recvMsgSize != -1) {
-                //ask to play again
-            }else{
-                playAgain = false;
+                //ask to play again with OutputStream
             }
         }
         clientSock.close();
