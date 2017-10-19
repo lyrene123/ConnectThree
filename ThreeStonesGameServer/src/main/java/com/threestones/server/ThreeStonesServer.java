@@ -5,14 +5,24 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- *
+ * Encapsulates the behavior of a server in a Three Stones game and accepts
+ * any client who wants to play the game.
+ * 
  * @author ehugh
  */
-// TODO merge packet class into server to be able to receive and send requests
 public class ThreeStonesServer {
 
+    /**
+     * Default constructor.
+     */
     public ThreeStonesServer() { }
 
+    /**
+     * Starts the server and continuously accepts the connection of any client
+     * and creates a ThreeStonesServerSession instance when a connection is made
+     * 
+     * @throws IOException 
+     */
     public void runServer() throws IOException {
         int servPort = 50000;
         // Create a server socket to accept client connection requests

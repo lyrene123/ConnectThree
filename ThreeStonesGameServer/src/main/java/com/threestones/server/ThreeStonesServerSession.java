@@ -60,7 +60,7 @@ public class ThreeStonesServerSession {
             switch (opCode) {
                 case 0:
                     serverGame.drawBoard();
-                    sendMovePacket(null, out);
+                    sendServerMovePacketToClient(null, out);
                     break; //start game message
                 case 1:
                     handlePlayerMove(receivedPacket, out);
@@ -84,6 +84,7 @@ public class ThreeStonesServerSession {
         serverGame.updateBoard(x, y);
 
         byte[] serverMovesPoint = serverGame.determineNextMove(); //[points,x,y]
+        
         byte[] packetValues = new byte[4];
         int counter = 0;
         for (int i = 0; i < packetValues.length; i++) {
@@ -94,10 +95,10 @@ public class ThreeStonesServerSession {
                 counter++;
             }
         }
-        sendMovePacket(packetValues, out);
+        sendServerMovePacketToClient(packetValues, out);
     }
 
-    private void sendMovePacket(byte[] values, OutputStream out) throws IOException {
+    private void sendServerMovePacketToClient(byte[] values, OutputStream out) throws IOException {
         //outstream to sent back server move to client
         if (values == null) {
             values = new byte[1];
