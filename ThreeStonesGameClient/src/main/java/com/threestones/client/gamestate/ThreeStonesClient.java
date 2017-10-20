@@ -31,8 +31,9 @@ public class ThreeStonesClient {
         //send server validation
 
         if (board.getBoard()[y][x] == CellState.AVAILABLE) {
-            log.debug("Good Move");
-            clientPacket.sendMove();
+            log.debug("sent: " + x + " " + y);
+            
+            clientPacket.sendMove(x,y);
             //ThreeStonesClientPacket.sendMove(x,y);
             //must make sure that server checks that if row col are full all cells become available
 

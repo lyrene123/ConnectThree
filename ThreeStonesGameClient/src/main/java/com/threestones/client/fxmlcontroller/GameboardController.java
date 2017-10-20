@@ -61,7 +61,8 @@ public class GameboardController implements Initializable {
                     Rectangle rec1 = (Rectangle) e.getSource();
                     int x = GridPane.getRowIndex(rec1);
                     int y = GridPane.getColumnIndex(rec1);
-                    clientGame.clickBoardCell(x,y);
+                    //clientGame.clickBoardCell(x,y);
+                    this.clickBoardCell(x,y);
                 });
                     break;
                     case VACANT:
@@ -76,6 +77,10 @@ public class GameboardController implements Initializable {
             }
         }
         this.gameBoardIViewId.setCenter(gameBoardGridPane);
+    }
+
+    private void clickButton() {
+
     }
 
 }

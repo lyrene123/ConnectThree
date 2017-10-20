@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 public class ThreeStonesServerApp {
     public static void main(String[] args) {
         ThreeStonesServer server = new ThreeStonesServer();
+        
         try {
             server.runServer();
         } catch (IOException ex) {

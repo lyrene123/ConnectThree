@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.util.List;
 public class ThreeStonesServerGame {
 
     private ThreeStonesGameBoard board;
-
+    private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
     //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
     //DEPENDING ON WHERE WE WANT TO TAKE THIS WE CAN ADD MORE MOVE COMPLEXITY SO THAT IT CHECKS THE AVAILALBE
     //SQUARES THAT WILL BECOME AVAILABLE BASE ON A CERTAIN MOVE AND THE SCORES WHITE OR BLACK CAN SCORE IN THE FUTURE (reading ahead of time)
@@ -25,6 +26,7 @@ public class ThreeStonesServerGame {
     }
 
     public void drawBoard() {
+        log.debug("draw board");
         readFile("gameboard.csv");
     }
 
@@ -100,10 +102,8 @@ public class ThreeStonesServerGame {
 
         while ((line = buffer.readLine()) != null) {
             String[] vals = line.trim().split(token);
-            if (board.getBoard() == null) {
-                size = vals.length;
-                arr = new int[size][size];
-            }
+            size = vals.length;
+            arr = new int[size][size];
 
             for (int col = 0; col < size; col++) {
                 arr[row][col] = Integer.parseInt(vals[col]);
@@ -115,12 +115,17 @@ public class ThreeStonesServerGame {
 
     private void constructBoard(int[][] arr) {
         CellState[][] gameboard = new CellState[arr.length][arr.length];
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 0; j < arr.length; j++){
-                switch(arr[i][j]){
-                    case -1: gameboard[i][j] = CellState.UNAVAILABLE;
-                    case 0: gameboard[i][j] = CellState.AVAILABLE;
-                    default: gameboard[i][j] = CellState.UNAVAILABLE;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                switch (arr[i][j]) {
+                    case -1:
+                        gameboard[i][j] = CellState.VACANT;
+                        break;
+                    case 0:
+                        gameboard[i][j] = CellState.AVAILABLE;
+                        break;
+                    default:
+                        gameboard[i][j] = CellState.AVAILABLE;
                 }
             }
         }
