@@ -18,6 +18,7 @@ public class ThreeStonesClient {
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
     private ThreeStonesGameBoard board;
     private ThreeStonesClientPacket clientPacket;
+
     public ThreeStonesClient() {
         board = new ThreeStonesGameBoard();
         clientPacket = new ThreeStonesClientPacket();
@@ -32,17 +33,18 @@ public class ThreeStonesClient {
 
         if (board.getBoard()[y][x] == CellState.AVAILABLE) {
             log.debug("sent: " + x + " " + y);
-            
-            clientPacket.sendMove(x,y);
+
+            clientPacket.sendMove(x, y);
             //ThreeStonesClientPacket.sendMove(x,y);
             //must make sure that server checks that if row col are full all cells become available
 
         } else if (board.getBoard()[y][x] == CellState.UNAVAILABLE) {
             //display wrong move message
+
+        } else if (board.getBoard()[y][x] == CellState.VACANT) {
+            clientPacket.sendMove(x, y);
         }
 
     }
 
 }
-
-

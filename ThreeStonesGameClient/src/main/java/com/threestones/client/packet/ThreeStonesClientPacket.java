@@ -16,7 +16,7 @@ public class ThreeStonesClientPacket {
     // Real programmers use logging
 
     private final Logger log = LoggerFactory.getLogger(getClass().getName());
-    private final String server = "10.172.11.194";
+    private final String server = "10.172.16.25";
     private final int port = 50000;
     private boolean isConnected = false;
 
@@ -56,13 +56,16 @@ public class ThreeStonesClientPacket {
             try {
                 log.debug("send start message");
                 isConnected = true;
-                Socket socket = new Socket(server, port);
+                Socket socket = new Socket("localhost", port);
                 InputStream in = socket.getInputStream();
                 OutputStream out = socket.getOutputStream();
                 byte[] a = {0};
-                byte[] byteBuffer = new byte[4];
+                out.write(a);
+                byte[] byteBuffer = new byte[1];
+                //byteBuffer[0] = 0;
                 int totalBytesRcvd = 0;						// Total bytes received so far
-                int bytesRcvd;								// Bytes received in last read
+                int bytesRcvd;
+                // Bytes received in last read
                 while (totalBytesRcvd < byteBuffer.length) {
                     if ((bytesRcvd = in.read(byteBuffer, totalBytesRcvd,
                             byteBuffer.length - totalBytesRcvd)) == -1) {
@@ -72,7 +75,7 @@ public class ThreeStonesClientPacket {
                 }
                 log.debug("Received: " + new String(byteBuffer));
                 //sends byte to server
-                out.write(a);
+
             } catch (IOException ex) {
                 log.debug(ex.getMessage());
             }

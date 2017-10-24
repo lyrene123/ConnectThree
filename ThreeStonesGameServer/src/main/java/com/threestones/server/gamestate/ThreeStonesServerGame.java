@@ -18,6 +18,7 @@ public class ThreeStonesServerGame {
 
     private ThreeStonesGameBoard board;
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
+
     //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
     //DEPENDING ON WHERE WE WANT TO TAKE THIS WE CAN ADD MORE MOVE COMPLEXITY SO THAT IT CHECKS THE AVAILALBE
     //SQUARES THAT WILL BECOME AVAILABLE BASE ON A CERTAIN MOVE AND THE SCORES WHITE OR BLACK CAN SCORE IN THE FUTURE (reading ahead of time)
@@ -25,13 +26,8 @@ public class ThreeStonesServerGame {
         this.board = new ThreeStonesGameBoard();
     }
 
-    public void drawBoard() {
-        log.debug("draw board");
-        readFile("gameboard.csv");
-    }
-
     public void updateBoard(int x, int y) {
-        board.changeBoard(x, y);
+        board.getBoardChange(x, y);
     }
 
     public byte[] determineNextMove() {
@@ -44,7 +40,7 @@ public class ThreeStonesServerGame {
         for (int i = 0; i < gameBoard[0].length; i++) {
             for (int j = 0; j < gameBoard[0].length; j++) {
                 //IF CURRENT TILE IS AVAILABLE DETERMINE ITS VALUE
-                if (gameBoard[i][j] == CellState.AVAILABLE) {
+                if (gameBoard[j][i] == CellState.AVAILABLE) {
                     ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE), board.checkForThreeStones(i, j, CellState.BLACK), i, j);
                     //resets list and adds the current move
 
@@ -77,58 +73,13 @@ public class ThreeStonesServerGame {
         return moves;
     }
 
+    public void startGame() {
+        board.startNewGame();
+    }
+
     private ThreeStonesMove createMove(int x, int y) {
 
         return new ThreeStonesMove();
     }
 
-    private void readFile(String filename) {
-        try {
-            constructArray(filename);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private void constructArray(String filename) throws IOException {
-        InputStream stream = ClassLoader.getSystemResourceAsStream(filename);
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(stream));
-
-        String line;
-        int row = 0;
-        int size = 0;
-        String token = ",";
-        int[][] arr = null;
-
-        while ((line = buffer.readLine()) != null) {
-            String[] vals = line.trim().split(token);
-            size = vals.length;
-            arr = new int[size][size];
-
-            for (int col = 0; col < size; col++) {
-                arr[row][col] = Integer.parseInt(vals[col]);
-            }
-            row++;
-        }
-        constructBoard(arr);
-    }
-
-    private void constructBoard(int[][] arr) {
-        CellState[][] gameboard = new CellState[arr.length][arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                switch (arr[i][j]) {
-                    case -1:
-                        gameboard[i][j] = CellState.VACANT;
-                        break;
-                    case 0:
-                        gameboard[i][j] = CellState.AVAILABLE;
-                        break;
-                    default:
-                        gameboard[i][j] = CellState.AVAILABLE;
-                }
-            }
-        }
-        board.setBoard(gameboard);
-    }
 }

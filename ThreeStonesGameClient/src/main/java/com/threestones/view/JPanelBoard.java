@@ -5,6 +5,7 @@
  */
 package com.threestones.view;
 
+import com.threestones.client.gamestate.ThreeStonesClient;
 import com.threestones.client.gamestate.ThreeStonesGameBoard;
 import com.threestones.client.gamestate.ThreeStonesGameBoard.CellState;
 import java.awt.BorderLayout;
@@ -43,27 +44,23 @@ public class JPanelBoard {
     //the string map array will hold the state of all tiles generated from a CSV file.
     //A tile represents all available squares for the user to play
     //private CellState[][] map = null;
-
     //reference from the ThreeStonesGame Class to access its pusblic methods
     private ThreeStonesGameBoard map = new ThreeStonesGameBoard();
-    
 
     //gui is the root Pane that supports the entire UI
-    private final JPanel gui = new JPanel(new BorderLayout(0, 0));
+    private final JPanel mainView = new JPanel(new BorderLayout(0, 0));
 
     //boardSquares array holds all tiles with its current state. 
-    private JButton[][] boardSquares = new JButton[11][11];
+    private JButton[][] cells = new JButton[11][11];
 
     //the boardGame Pane supports the tiles 
     private JPanel boardGame;
 
     //the portnumber fields holds the Port Number to connect to the server
-    private final JTextField portNumber = new JTextField(
-            "50000", 10);
+    private final JTextField portNumber = new JTextField("50000", 10);
 
     //the hostNumber holds the IP address to connect to the server
-    private final JTextField hostNumber = new JTextField(
-            "localhost", 10);
+    private final JTextField hostNumber = new JTextField("localhost", 10);
 
     //Labes
     private final JLabel portLabel = new JLabel(
@@ -71,14 +68,10 @@ public class JPanelBoard {
     private final JLabel hostLabel = new JLabel(
             "Host");
 
-    private JLabel clientScorePoints = new JLabel(
-            "0");
-    private JLabel serverScoreValue = new JLabel(
-            "0");
-    private final JLabel clientScoreTV = new JLabel(
-            "Your Score");
-    private final JLabel serverScoreTV = new JLabel(
-            "Opponent Score");
+    private JLabel clientScorePoints = new JLabel("0");
+    private JLabel serverScoreValue = new JLabel("0");
+    private final JLabel clientScoreTV = new JLabel("Your Score");
+    private final JLabel serverScoreTV = new JLabel("Opponent Score");
 
     ////the connectedLabel displays the actual state of the connection as text. 
     //private JLabel connectedLabel = new JLabel("DISCONNECTED");
@@ -87,37 +80,28 @@ public class JPanelBoard {
     private JButton connectBtn = new JButton("Connect");
 
     JTextArea textArea = new JTextArea(5, 5);
+    private ThreeStonesClient clientGame;
 
-    /**
-     * The non-parameter Constructor retrieves the state of the game from a CSV
-     * file which contains the position of all tiles and stores it in an array
-     * called map.
-     */
     public JPanelBoard() {
-        
-            ThreeStonesGameBoard board = new ThreeStonesGameBoard();
-            //this.map = parseCSV("");
-        
+        this.clientGame = new ThreeStonesClient();
+        ThreeStonesGameBoard board = new ThreeStonesGameBoard();
+        //this.map = parseCSV("");
+
     }
 
-    /**
-     * The initializeGui method set up the interface of the ThreeStones Game.
-     */
-    public void initializeGui() {
+    public void buildView() {
 
         // set up the main GUI
-        gui.setBorder(new EmptyBorder(5, 10, 5, 10));
-        JPanel panel = new JPanel();
-        JPanel topPanel = new JPanel();
-        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
-        topPanel.setBackground(Color.decode("#e67e22"));
-        panel.setBackground(Color.decode("#e67e22"));
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        gui.setBackground(Color.decode("#e67e22"));
+        mainView.setBorder(new EmptyBorder(5, 10, 5, 10));
+        JPanel settingsPanel = new JPanel();
+
+        settingsPanel.setBackground(Color.decode("#e67e22"));
+        settingsPanel.setLayout(new BoxLayout(settingsPanel, BoxLayout.Y_AXIS));
+        mainView.setBackground(Color.decode("#e67e22"));
         //A pane for the main menu bar 
-        JToolBar toolbar1 = new JToolBar();
-        
-        toolbar1.setFloatable(false);
+        JToolBar settingsToolbar = new JToolBar();
+
+        settingsToolbar.setFloatable(false);
         //connect is a button that handles the connection
         connectBtn.setFont(new Font("Monospace", Font.BOLD, 15));
         connectBtn.setPreferredSize(new Dimension(100, 30));
@@ -129,153 +113,164 @@ public class JPanelBoard {
 //            }
 //        });
 
-            //game.connectButton = connect;
-            toolbar1.add(connectBtn);
-            toolbar1.addSeparator();
-            quitBtn.setFont(new Font("Monospace", Font.BOLD, 15));
-            quitBtn.setPreferredSize(new Dimension(100, 30));
+        //game.connectButton = connect;
+        settingsToolbar.add(connectBtn);
+        quitBtn.setFont(new Font("Monospace", Font.BOLD, 15));
+        quitBtn.setPreferredSize(new Dimension(100, 30));
 //        quitButton.addActionListener(e -> {
 //            handleCloseConnection();
 //        });
-            quitBtn.setEnabled(false);
-            //game.quitButton = quitButton;
-            toolbar1.add(quitBtn);
-            toolbar1.addSeparator();
-            JButton play = new JButton("PLAY");
-            play.setPreferredSize(new Dimension(100, 30));
-            play.setFont(new Font("Monospace", Font.BOLD, 15));
-            toolbar1.add(play);
-            JButton resetButton = new JButton("RESET");
-            resetButton.setPreferredSize(new Dimension(100, 30));
-            resetButton.setFont(new Font("Monospace", Font.BOLD, 15));
-            resetButton.setEnabled(false);
+        quitBtn.setEnabled(false);
+        //game.quitButton = quitButton;
+        settingsToolbar.add(quitBtn);
+        JButton play = new JButton("PLAY");
+        play.setPreferredSize(new Dimension(100, 30));
+        play.setFont(new Font("Monospace", Font.BOLD, 15));
+        settingsToolbar.add(play);
+        JButton resetButton = new JButton("RESET");
+        resetButton.setPreferredSize(new Dimension(100, 30));
+        resetButton.setFont(new Font("Monospace", Font.BOLD, 15));
+        resetButton.setEnabled(false);
 //        resetButton.addActionListener(e -> {
 //            handleResetButton();
 //        });
-            //game.resetButton = resetButton;
-            toolbar1.add(resetButton);
-            toolbar1.addSeparator();
-            portLabel.setFont(new Font("Monospace", Font.BOLD, 15));
-            toolbar1.add(portLabel);
-            toolbar1.addSeparator();
-            portNumber.setHorizontalAlignment(JTextField.CENTER);
+        //game.resetButton = resetButton;
+        settingsToolbar.add(resetButton);
+        //toolbar1.addSeparator();
+        portLabel.setFont(new Font("Monospace", Font.BOLD, 15));
+        settingsToolbar.add(portLabel);
+        //toolbar1.addSeparator();
+        portNumber.setHorizontalAlignment(JTextField.CENTER);
+        portNumber.setBorder(new LineBorder(Color.decode("#e67e22"), 1));
+        portNumber.setMaximumSize(new Dimension(10, 80));
+        portNumber.setFont(new Font("Monospace", Font.BOLD, 15));
 
-            portNumber.setBorder(new LineBorder(Color.decode("#e67e22"), 2));
-            portNumber.setMaximumSize(new Dimension(10, 80));
-            portNumber.setFont(new Font("Monospace", Font.BOLD, 15));
+        settingsToolbar.add(portNumber);
+        //toolbar1.addSeparator();
+        hostLabel.setFont(new Font("Monospace", Font.BOLD, 15));
+        settingsToolbar.add(hostLabel);
+        //toolbar1.addSeparator();
+        hostNumber.setHorizontalAlignment(JTextField.CENTER);
+        hostNumber.setBorder(new LineBorder(Color.decode("#e67e22"), 1));
+        hostNumber.setFont(new Font("Monospace", Font.BOLD, 15));
+        settingsToolbar.add(hostNumber);
+        settingsToolbar.setAlignmentX(0);
 
-            toolbar1.add(portNumber);
-            toolbar1.addSeparator();
-            hostLabel.setFont(new Font("Monospace", Font.BOLD, 15));
-            toolbar1.add(hostLabel);
-            toolbar1.addSeparator();
-            hostNumber.setHorizontalAlignment(JTextField.CENTER);
-            hostNumber.setBorder(new LineBorder(Color.decode("#e67e22"), 2));
-            hostNumber.setFont(new Font("Monospace", Font.BOLD, 15));
-            toolbar1.add(hostNumber);
-            toolbar1.setAlignmentX(0);
+//            connectedLabel.setMaximumSize(new Dimension(150, 150));
+//            connectedLabel.setHorizontalAlignment(JLabel.CENTER);
+//            connectedLabel.setFont(new Font("Monospace", Font.BOLD, 15));
+//            connectedLabel.setOpaque(true);
+//            connectedLabel.setBackground(Color.decode("#e67e22"));
+//            connectedLabel.setForeground(Color.red);
+        //game.connectedLabel = connectedLabel;
+        //toolbar2.add(connectedLabel);
+        clientScoreTV.setFont(new Font("Monospace", Font.BOLD, 15));
+        clientScoreTV.setForeground(Color.WHITE);
 
-            JToolBar toolbar2 = new JToolBar();
-            toolbar2.setFloatable(false);
-            //connectedLabel.setMaximumSize(new Dimension(150, 150));
-            //connectedLabel.setHorizontalAlignment(JLabel.CENTER);
-            //connectedLabel.setFont(new Font("Monospace", Font.BOLD, 15));
-            //connectedLabel.setOpaque(true);
-            //connectedLabel.setBackground(Color.decode("#e67e22"));
-            //connectedLabel.setForeground(Color.red);
-            //game.connectedLabel = connectedLabel;
-            //toolbar2.add(connectedLabel);
-            clientScoreTV.setFont(new Font("Monospace", Font.BOLD, 15));
-            toolbar2.add(clientScoreTV);
-            toolbar2.addSeparator();
-            clientScorePoints.setHorizontalAlignment(JTextField.CENTER);
-            clientScorePoints.setPreferredSize(new Dimension(150, 40));
-            clientScorePoints.setMaximumSize(new Dimension(100, 150));
-            clientScorePoints.setFont(new Font("Monospace", Font.BOLD, 15));
-            //game.whiteScoreLabel = clientScorePoints;
-            toolbar2.add(clientScorePoints);
-            toolbar2.addSeparator();
-            serverScoreTV.setFont(new Font("Monospace", Font.BOLD, 15));
-            toolbar2.add(serverScoreTV);
-            toolbar2.addSeparator();
-            serverScoreValue.setHorizontalAlignment(JTextField.CENTER);
-            serverScoreValue.setMaximumSize(new Dimension(100, 150));
-            serverScoreValue.setFont(new Font("Monospace", Font.BOLD, 15));
-            //game.blackScoreLabel = serverScorePoints;
-            toolbar2.add(serverScoreValue);
-            toolbar2.setAlignmentX(0);
-            //gui.add(toolsBottom, BorderLayout.AFTER_LINE_ENDS);
+        clientScorePoints.setHorizontalAlignment(JTextField.CENTER);
+        clientScorePoints.setPreferredSize(new Dimension(150, 40));
+        clientScorePoints.setMaximumSize(new Dimension(100, 150));
 
-            
-            textArea.setBorder(new LineBorder(Color.decode("#e67e22"), 3));
-            textArea.setFont(new Font("Monospace", Font.BOLD, 15));
-            //game.textArea = textArea;
-            JScrollPane scrollPane = new JScrollPane(textArea);
-            gui.add(scrollPane, BorderLayout.PAGE_END);
+        clientScorePoints.setFont(new Font("Monospace", Font.BOLD, 15));
+        clientScorePoints.setForeground(Color.WHITE);
+        //game.whiteScoreLabel = clientScorePoints;
 
-            boardGame = new JPanel(new GridLayout(0, 11));
-            boardGame.setBorder(new LineBorder(Color.decode("#e67e22"), 3));
-            //game.board = boardGame;
-            topPanel.add(toolbar2);
-            topPanel.setAlignmentX(0);
-            gui.add(topPanel,BorderLayout.PAGE_START);
-            gui.add(boardGame,BorderLayout.CENTER );
-            panel.add(toolbar1);
-            gui.add(panel,BorderLayout.PAGE_END);
+        serverScoreTV.setFont(new Font("Monospace", Font.BOLD, 15));
+        serverScoreTV.setForeground(Color.BLACK);
 
+        serverScoreValue.setHorizontalAlignment(JTextField.CENTER);
+        serverScoreValue.setMaximumSize(new Dimension(100, 150));
+        serverScoreValue.setFont(new Font("Monospace", Font.BOLD, 15));
+        serverScoreValue.setForeground(Color.BLACK);
+        //game.blackScoreLabel = serverScorePoints;
+        JPanel scoresPanel = new JPanel();
+        scoresPanel.setLayout(new BoxLayout(scoresPanel, BoxLayout.X_AXIS));
+        scoresPanel.setBackground(Color.decode("#e67e22"));
+        JToolBar scoresToolbar = new JToolBar();
+        scoresToolbar.setFloatable(false);
+        scoresToolbar.setBackground(Color.decode("#e67e22"));
+        scoresToolbar.add(clientScoreTV);
+        scoresToolbar.add(clientScorePoints);
+        scoresToolbar.add(serverScoreTV);
+        scoresToolbar.add(serverScoreValue);
+        scoresToolbar.setAlignmentX(0);
+        scoresPanel.add(scoresToolbar);
+        scoresPanel.setAlignmentX(0);
+        mainView.add(scoresPanel, BorderLayout.PAGE_START);
+        //gui.add(toolsBottom, BorderLayout.AFTER_LINE_ENDS);
+        textArea.setBorder(new LineBorder(Color.decode("#e67e22"), 3));
+        textArea.setFont(new Font("Monospace", Font.BOLD, 15));
+        //game.textArea = textArea;
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        mainView.add(scrollPane, BorderLayout.PAGE_END);
 
-            // create the board squares
-            Insets buttonMargin = new Insets(0, 0, 0, 0);
-            for (int x = 0; x < boardSquares.length; x++) {
-                for (int y = 0; y < boardSquares.length; y++) {
+        boardGame = new JPanel(new GridLayout(0, 11));
+        boardGame.setBorder(new LineBorder(Color.decode("#e67e22"), 3));
+        //game.board = boardGame;
 
-                    boardSquares[x][y] = new JButton();
-                    boardSquares[x][y].setPreferredSize(new Dimension(60,60));
-                    boardSquares[x][y].setBackground(Color.WHITE);
-                    //boardSquares[x][y].set
-                }
+        mainView.add(boardGame, BorderLayout.CENTER);
+        settingsPanel.add(settingsToolbar);
+        mainView.add(settingsPanel, BorderLayout.PAGE_END);
+        ThreeStonesGameBoard threeStonesGameBoard = new ThreeStonesGameBoard();
+        CellState[][] board = threeStonesGameBoard.getBoard();
+        // create the board squares
+        Insets buttonMargin = new Insets(0, 0, 0, 0);
+        for (int x = 0; x < cells.length; x++) {
+            for (int y = 0; y < cells.length; y++) {
+
+//                switch (board[x][y]) {
+//                    case : {
+//
+//                    }
+//                }
+
+                cells[x][y] = new JButton();
+                cells[x][y].setPreferredSize(new Dimension(60, 60));
+                cells[x][y].setBackground(Color.WHITE);
+                cells[x][y].addActionListener(e -> {
+                    clientGame.clickBoardCell(0, 0);
+                });
+                //boardSquares[x][y].set
             }
-            for (int i = 0; i < 11; i++) {
-                for (int j = 0; j < 11; j++) {
-                    boardGame.add(boardSquares[j][i]);
-                }
-            }
-            //boardGame.setBackground(Color.decode("#e67e22"));
-            
-            
-        
-            //}
-
-            /*public void handleResetButton() {
-        Tile[][] tileList = game.getTileList();
-        if (game.resetGame()) {
-            for (int x = 0; x < boardSquares.length; x++) {
-                for (int y = 0; y < boardSquares.length; y++) {
-
-                    switch (map[y][x]) {
-                        case "w":
-                            break;
-                        case "e":
-                            tileList[x][y].getButton().setEnabled(true);
-                            tileList[x][y].getButton().setIcon(null);
-                            tileList[x][y].setType("space");
-                            tileList[x][y].setAvailable(true);
-                            tileList[x][y].getButton().setBackground(Color.lightGray);
-                            break;
-                    }
-                }
-            }
-            clientScorePoints.setText("0");
-            serverScorePoints.setText("0");
         }
-        textArea.setText("GAME RESET! PLAY!");
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 11; j++) {
+                boardGame.add(cells[j][i]);
+            }
+        }
+        //boardGame.setBackground(Color.decode("#e67e22"));
+
+        //}
+    }
+        public void handleResetButton() {
+        //Tile[][] tileList = game.getTileList();
+//        if (game.resetGame()) {
+//            for (int x = 0; x < boardSquares.length; x++) {
+//                for (int y = 0; y < boardSquares.length; y++) {
+//
+//                    switch (map[y][x]) {
+//                        case "w":
+//                            break;
+//                        case "e":
+//                            tileList[x][y].getButton().setEnabled(true);
+//                            tileList[x][y].getButton().setIcon(null);
+//                            tileList[x][y].setType("space");
+//                            tileList[x][y].setAvailable(true);
+//                            tileList[x][y].getButton().setBackground(Color.lightGray);
+//                            break;
+//                    }
+//                }
+//            }
+//            clientScorePoints.setText("0");
+//            //serverScorePoints.setText("0");
+//        }
+//        textArea.setText("GAME RESET! PLAY!");
 
     }
-             */
-        
-        }
+         
+
     public final JComponent getGui() {
-        return gui;
+        return mainView;
     }
 
     public JComponent getTextArea() {
@@ -298,8 +293,6 @@ public class JPanelBoard {
      * @return
      * @throws IOException
      */
-   
-
     public static void main(String[] args) throws IOException {
         Runnable r;
         r = new Runnable() {
@@ -307,7 +300,7 @@ public class JPanelBoard {
 
             @Override
             public void run() {
-                ts.initializeGui();
+                ts.buildView();
                 JFrame gameBoard = new JFrame("3 Stones");
                 gameBoard.add(ts.getGui());
                 gameBoard.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

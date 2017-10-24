@@ -18,7 +18,7 @@ public class ThreeStonesServerPacket {
 
     public void send(List<Byte> list) throws IOException {
         // Server name or IP address
-        String server = "someIp";
+        String server = "10.172.16.25";
 
         //build byte buffer for packet
         byte[] byteBuffer = new byte[list.size()];
