@@ -86,7 +86,6 @@ public class JPanelBoard {
         this.clientGame = new ThreeStonesClient();
         ThreeStonesGameBoard board = new ThreeStonesGameBoard();
         //this.map = parseCSV("");
-
     }
 
     public void buildView() {
@@ -218,18 +217,32 @@ public class JPanelBoard {
         for (int x = 0; x < cells.length; x++) {
             for (int y = 0; y < cells.length; y++) {
 
-//                switch (board[x][y]) {
-//                    case : {
-//
-//                    }
-//                }
+                switch (board[x][y]) {
+                    case VACANT:
+                        cells[x][y] = new JButton();
+                        cells[x][y].setPreferredSize(new Dimension(60, 60));
+                        cells[x][y].setBackground(Color.ORANGE);
+                        cells[x][y].setEnabled(false);
+                        break;
+                    case AVAILABLE:
+                        cells[x][y] = new JButton();
+                        cells[x][y].setPreferredSize(new Dimension(60, 60));
+                        cells[x][y].setBackground(Color.WHITE);
+                        final int xx = x;
+                        final int yy = y;
+                        cells[x][y].addActionListener(e -> {
+                            clientGame.clickBoardCell(xx, yy);
+                        });
 
-                cells[x][y] = new JButton();
-                cells[x][y].setPreferredSize(new Dimension(60, 60));
-                cells[x][y].setBackground(Color.WHITE);
-                cells[x][y].addActionListener(e -> {
-                    clientGame.clickBoardCell(0, 0);
-                });
+                }
+//                cells[x][y] = new JButton();
+//                cells[x][y].setPreferredSize(new Dimension(60, 60));
+//                cells[x][y].setBackground(Color.WHITE);
+//                final int xx = x;
+//                final int yy = y;
+//                cells[x][y].addActionListener(e -> {
+//                    clientGame.clickBoardCell(xx, yy);
+//                });
                 //boardSquares[x][y].set
             }
         }
@@ -242,7 +255,8 @@ public class JPanelBoard {
 
         //}
     }
-        public void handleResetButton() {
+
+    public void handleResetButton() {
         //Tile[][] tileList = game.getTileList();
 //        if (game.resetGame()) {
 //            for (int x = 0; x < boardSquares.length; x++) {
@@ -267,7 +281,6 @@ public class JPanelBoard {
 //        textArea.setText("GAME RESET! PLAY!");
 
     }
-         
 
     public final JComponent getGui() {
         return mainView;

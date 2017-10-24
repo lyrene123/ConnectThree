@@ -81,6 +81,10 @@ public class ThreeStonesClientPacket {
             }
         }
     }
+
+    public void connectToServer() {
+
+    }
 //    private static final int BUFSIZE = 32;	// Size of receive buffer
 //    public void send(List<Byte> list) throws IOException {
 //        // Server name or IP address
