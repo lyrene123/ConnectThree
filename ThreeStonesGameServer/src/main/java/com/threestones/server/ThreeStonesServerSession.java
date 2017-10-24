@@ -143,25 +143,33 @@ public class ThreeStonesServerSession {
     private void createPacketServerMove(byte[] receivedPacket) throws IOException {
         byte[] serverMovesPoint = serverGame.determineNextMove(); //[points,x,y]
 
-        byte[] packetValues = new byte[BUFSIZE];
+        //build the server's packet to send the client containing [opcode,points,x,y]
+        byte[] serverMovePacket = new byte[BUFSIZE];
         int counter = 0;
-        for (int i = 0; i < packetValues.length; i++) {
+        for (int i = 0; i < serverMovePacket.length; i++) {
             if (i == 0) {
-                packetValues[i] = 1;//a move packet
+                serverMovePacket[i] = 1;//opcode for move packet
             } else {
-                packetValues[i] = serverMovesPoint[counter]; //[1,points,x,y]
+                serverMovePacket[i] = serverMovesPoint[counter]; 
                 counter++;
             }
         }
-        sendServerMovePacketToClient(packetValues);
+        sendServerMovePacketToClient(serverMovePacket); //send the packet to client
     }
 
-    private void sendServerMovePacketToClient(byte[] values) throws IOException {
-        //outstream to sent back server move to client
-        if (values == null) {
-            values = new byte[1];
-            values[0] = 0; //game has started message
+    /**
+     * Sends packet from server to client with the input byte array. If input
+     * is null, create a game started message to client with 0 opcode
+     * 
+     * @param values byte array to send in a packet to client
+     * @throws IOException 
+     */
+    private void sendServerMovePacketToClient(byte[] serverMovePacket) throws IOException {
+        //if byte array is null, then create game started message to client with 0 opcode
+        if (serverMovePacket == null) {
+            serverMovePacket = new byte[BUFSIZE];
+            serverMovePacket[0] = 0; //game has started message
         }
-        outStream.write(values, 0, values.length);
+        outStream.write(serverMovePacket, 0, serverMovePacket.length); //send packet through outputstream
     }
 }

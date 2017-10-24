@@ -5,8 +5,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * Encapsulates the behavior and properties of a game board in a game of Three
+ * Stones such as the state of each slot in the game board, the calculation of
+ * points made by black and white stones, and the necessary updates made to the
+ * game board when moves are done.
+ *
+ * @author Eric
+ * @author Lyrene
+ * @author Jacob
+ */
 public class ThreeStonesGameBoard {
 
+    /**
+     * Enums holding the different states of a slot in a Three Stones game board
+     */
     public enum CellState {
         BLACK, WHITE, AVAILABLE, VACANT, UNAVAILABLE
     }
@@ -17,15 +30,16 @@ public class ThreeStonesGameBoard {
     private int whiteScore;
     private int blackScore;
 
-    public ThreeStonesGameBoard() {
-        startNewGame();
-    }
+    /**
+     * Default constructor 
+     */
+    public ThreeStonesGameBoard() {}
 
     public void startNewGame() {
-        int blackStoneCount = 15;
-        int whiteStoneCount = 15;
-        int whiteScore = 0;
-        int blackScore = 0;
+        blackStoneCount = 15;
+        whiteStoneCount = 15;
+        whiteScore = 0;
+        blackScore = 0;
         constructBoard();
     }
 
@@ -139,7 +153,7 @@ public class ThreeStonesGameBoard {
 
         return points;
     }
-    
+
     //returns an altered version of the board
     //I made it to return for now incase we want to
     //make the ai more sophisticated (to check for moves 2-3 turns ahead)
