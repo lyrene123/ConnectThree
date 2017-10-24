@@ -1,0 +1,3 @@
+[DEBUG] 2017-10-24 19:19:56.449 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick
+[DEBUG] 2017-10-24 19:19:56.465 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick before getClientPacket.connectToServer()
+[DEBUG] 2017-10-24 19:19:56.465 [AWT-EventQueue-0] ThreeStonesClientPacket - inside connectToServer begin creation of socket

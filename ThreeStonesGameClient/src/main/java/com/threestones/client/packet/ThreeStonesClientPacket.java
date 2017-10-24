@@ -27,7 +27,7 @@ public class ThreeStonesClientPacket {
 
     public void sendMove(int x, int y) {
         log.debug("position x " + x + "position y " + y);
-        
+
         // byteFueer has to be assigned
         // only make socket connection once
         if (!isConnected) {
@@ -67,15 +67,16 @@ public class ThreeStonesClientPacket {
         }
     }
 
-
-    private void connectToServer() throws IOException {
+    public void connectToServer() throws IOException {
+        log.debug("inside connectToServer begin creation of socket");
         socket = new Socket("localhost", port);
         inStream = socket.getInputStream();
         outStream = socket.getOutputStream();
         byte[] byteBuffer = new byte[BUFF_SIZE];
         byteBuffer[0] = 0;
+        outStream.write(byteBuffer);
         receivePacket(byteBuffer);
-
+        
         log.debug("buildConnection and bytebuffer for each " + Arrays.toString(byteBuffer));
 
     }
@@ -90,6 +91,7 @@ public class ThreeStonesClientPacket {
             }
             totalBytesRcvd += bytesRcvd;
         }
+        
     }
 //    private static final int BUFSIZE = 32;	// Size of receive buffer
 //    public void send(List<Byte> list) throws IOException {

@@ -37,13 +37,14 @@ import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author 1411544
  */
 public class JPanelBoard {
-
+    private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
     //the string map array will hold the state of all tiles generated from a CSV file.
     //A tile represents all available squares for the user to play
     //private CellState[][] map = null;
@@ -83,10 +84,10 @@ public class JPanelBoard {
     private JButton connectBtn = new JButton("Connect");
 
     JTextArea textArea = new JTextArea(5, 5);
-    private ThreeStonesClient clientGame;
+    private ThreeStonesClient client;
 
     public JPanelBoard() {
-        this.clientGame = new ThreeStonesClient();
+        this.client = new ThreeStonesClient();
         ThreeStonesGameBoard board = new ThreeStonesGameBoard();
         //this.map = parseCSV("");
     }
@@ -107,13 +108,9 @@ public class JPanelBoard {
         //connect is a button that handles the connection
         connectBtn.setFont(new Font("Monospace", Font.BOLD, 15));
         connectBtn.setPreferredSize(new Dimension(100, 30));
-        //connect.addActionListener(e -> {
-//            try {
-//                handleConnectButton();
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-//        });
+        connectBtn.addActionListener(e -> {
+            onConnectClick();
+        });
 
         //game.connectButton = connect;
         settingsToolbar.add(connectBtn);
@@ -238,7 +235,7 @@ public class JPanelBoard {
                         final int xx = x;
                         final int yy = y;
                         cells[x][y].addActionListener(e -> {
-                            clientGame.clickBoardCell(xx, yy);
+                            client.clickBoardCell(xx, yy);
                         });
 
                 }
@@ -358,5 +355,21 @@ public class JPanelBoard {
             }
         };
         SwingUtilities.invokeLater(r);
+    }
+
+    private void onConnectClick() {
+        log.debug("inside onConnectClick");
+        try {
+            log.debug("inside onConnectClick before getClientPacket.connectToServer()");
+            this.client.getClientPacket().connectToServer();
+            log.debug("inside onConnectClick after getClientPacket.connectToServer()");
+            this.connectBtn.setEnabled(false);
+            this.connectBtn.setBackground(Color.GREEN);
+            log.debug("inside onConnectClick end of try catch");
+        } catch (IOException ex) {
+            Logger.getLogger(JPanelBoard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 }

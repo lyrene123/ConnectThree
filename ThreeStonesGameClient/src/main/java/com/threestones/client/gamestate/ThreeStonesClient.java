@@ -28,6 +28,12 @@ public class ThreeStonesClient {
         return board;
     }
 
+    public ThreeStonesClientPacket getClientPacket() {
+        return clientPacket;
+    }
+    
+    
+
     public void clickBoardCell(int x, int y) {
         //send server validation
 
