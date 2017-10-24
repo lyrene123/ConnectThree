@@ -245,7 +245,6 @@ public class ThreeStonesGameBoard {
         return board;
     }
 
-    //checks if both row and column is full
     /**
      * Checks if a row x and column y is full with stones on the game board and 
      * returns a boolean true or false
@@ -272,10 +271,11 @@ public class ThreeStonesGameBoard {
     }
 
     /**
+     * Reads the gameboard layout from a file and put data from the file into
+     * a 2D array
      * 
-     * 
-     * @param filename
-     * @return
+     * @param filename filename String
+     * @return 2D array
      * @throws IOException 
      */
     private int[][] constructArrayFromFile(String filename) throws IOException {
