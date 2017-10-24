@@ -62,7 +62,7 @@ public class ThreeStonesServerSession {
             switch (opCode) {
                 case 0:
                     log.debug("code 0");
-                    
+                    serverGame.startGame();
                     sendServerMovePacketToClient(null, out);
                     break; //start game message
                 case 1:
