@@ -257,16 +257,16 @@ public class JPanelBoard {
 //                    }
 //                }
                 //cells[x][y].setText("");
-                cells[x][y] = new JButton();
-
-                cells[x][y].setPreferredSize(new Dimension(60, 60));
-                cells[x][y].setBackground(Color.WHITE);
-//                final int xx = x;
-//                final int yy = y;
-                cells[x][y].addActionListener(e -> {
-                    clientGame.clickBoardCell(0, 0);
-                });
-//                table.setValueAt(cells[x][y], x, y);
+//                cells[x][y] = new JButton();
+//
+//                cells[x][y].setPreferredSize(new Dimension(60, 60));
+//                cells[x][y].setBackground(Color.WHITE);
+////                final int xx = x;
+////                final int yy = y;
+//                cells[x][y].addActionListener(e -> {
+//                    clientGame.clickBoardCell(0, 0);
+//                });
+////                table.setValueAt(cells[x][y], x, y);
 //                table.addMouseListener(new MouseAdapter);
 
 
