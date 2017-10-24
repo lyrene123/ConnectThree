@@ -7,8 +7,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author 
+ * Main Application of the server side in a game of Three Stones. Creates a 
+ * Three Stones server instance and runs the server to start servicing clients.
+ * 
+ * @author Eric
+ * @author Lyrene
+ * @author Jacob
  */
 public class ThreeStonesServerApp {
     public static void main(String[] args) {
