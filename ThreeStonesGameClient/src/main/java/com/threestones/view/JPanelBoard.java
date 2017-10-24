@@ -10,11 +10,13 @@ import com.threestones.client.gamestate.ThreeStonesGameBoard;
 import com.threestones.client.gamestate.ThreeStonesGameBoard.CellState;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 //import javafx.scene.paint.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -28,6 +30,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
@@ -215,6 +218,9 @@ public class JPanelBoard {
         CellState[][] board = threeStonesGameBoard.getBoard();
         // create the board squares
         Insets buttonMargin = new Insets(0, 0, 0, 0);
+        JPanel pane = new JPanel();
+        JTable table = new JTable(11, 11);
+        //pane.setLayout(new GridLayout(11, 11));
         for (int x = 0; x < cells.length; x++) {
             for (int y = 0; y < cells.length; y++) {
 
@@ -223,16 +229,24 @@ public class JPanelBoard {
 //
 //                    }
 //                }
-
+                //cells[x][y].setText("");
                 cells[x][y] = new JButton();
+
                 cells[x][y].setPreferredSize(new Dimension(60, 60));
                 cells[x][y].setBackground(Color.WHITE);
+//                final int xx = x;
+//                final int yy = y;
                 cells[x][y].addActionListener(e -> {
                     clientGame.clickBoardCell(0, 0);
                 });
+//                table.setValueAt(cells[x][y], x, y);
+//                table.addMouseListener(new MouseAdapter);
+
+
                 //boardSquares[x][y].set
             }
         }
+
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
                 boardGame.add(cells[j][i]);
@@ -242,7 +256,8 @@ public class JPanelBoard {
 
         //}
     }
-        public void handleResetButton() {
+
+    public void handleResetButton() {
         //Tile[][] tileList = game.getTileList();
 //        if (game.resetGame()) {
 //            for (int x = 0; x < boardSquares.length; x++) {
@@ -267,7 +282,6 @@ public class JPanelBoard {
 //        textArea.setText("GAME RESET! PLAY!");
 
     }
-         
 
     public final JComponent getGui() {
         return mainView;

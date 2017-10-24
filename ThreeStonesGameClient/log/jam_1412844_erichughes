@@ -134,3 +134,28 @@
 [DEBUG] 2017-10-24 15:48:04.546 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
 [DEBUG] 2017-10-24 15:49:05.450 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
 [DEBUG] 2017-10-24 15:50:20.346 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:51:56.041 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:52:52.454 [AWT-EventQueue-0] ThreeStonesClientPacket - Received:  
+[DEBUG] 2017-10-24 16:56:00.597 [AWT-EventQueue-0] ThreeStonesClientPacket - position x 9position y 4
+[DEBUG] 2017-10-24 16:56:00.617 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 16:56:00.647 [AWT-EventQueue-0] ThreeStonesClientPacket - Received:  
+[DEBUG] 2017-10-24 16:56:05.911 [AWT-EventQueue-0] ThreeStonesClientPacket - position x 9position y 4
+[DEBUG] 2017-10-24 16:57:27.841 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 5
+[DEBUG] 2017-10-24 16:57:27.841 [AWT-EventQueue-0] ThreeStonesClientPacket - position x 7position y 5
+[DEBUG] 2017-10-24 16:57:27.841 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 16:57:56.582 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 5
+[DEBUG] 2017-10-24 16:57:56.592 [AWT-EventQueue-0] ThreeStonesClientPacket - position x 7position y 5
+[DEBUG] 2017-10-24 16:57:56.592 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 16:58:06.555 [AWT-EventQueue-0] ThreeStonesClientPacket - Received:  
+[DEBUG] 2017-10-24 16:59:30.976 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 6
+[DEBUG] 2017-10-24 16:59:30.976 [AWT-EventQueue-0] ThreeStonesClientPacket - position x 7position y 6
+[DEBUG] 2017-10-24 16:59:30.976 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 16:59:31.007 [AWT-EventQueue-0] ThreeStonesClientPacket - Received:  
+[DEBUG] 2017-10-24 16:59:54.010 [AWT-EventQueue-0] ThreeStonesClientPacket - position x 7position y 1
+[DEBUG] 2017-10-24 16:59:54.020 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 17:00:17.427 [AWT-EventQueue-0] ThreeStonesClient - sent: 6 2
+[DEBUG] 2017-10-24 17:00:17.437 [AWT-EventQueue-0] ThreeStonesClientPacket - position x 6position y 2
+[DEBUG] 2017-10-24 17:00:17.437 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 17:00:24.456 [AWT-EventQueue-0] ThreeStonesClientPacket - Received:  
+[DEBUG] 2017-10-24 17:01:42.699 [AWT-EventQueue-0] ThreeStonesClientPacket - position x 10position y 2
+[DEBUG] 2017-10-24 17:01:42.709 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message

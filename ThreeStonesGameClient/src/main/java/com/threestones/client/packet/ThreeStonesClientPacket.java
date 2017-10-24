@@ -21,11 +21,17 @@ public class ThreeStonesClientPacket {
     private boolean isConnected = false;
 
     public void sendMove(int x, int y) {
-        if (isConnected) {
-            byte[] byteBuffer = {(byte)1, (byte) x, (byte) y};
+        log.debug("position x " + x + "position y " + y);
+        Socket socket;
+        if (!isConnected) {
+            isConnected = true;
+            //  1 is move
+            // 0 is want to start game
+            //2 players last move makes gameOver = true
+            byte[] byteBuffer = {(byte) 1, (byte) x, (byte) y,};
             // Create socket that is connected to server on specified port
             try {
-                Socket socket = new Socket(server, port);
+                //Socket socket = new Socket(server, port);
                 InputStream in = socket.getInputStream();
                 OutputStream out = socket.getOutputStream();
 
@@ -56,7 +62,7 @@ public class ThreeStonesClientPacket {
             try {
                 log.debug("send start message");
                 isConnected = true;
-                Socket socket = new Socket("localhost", port);
+                socket = new Socket("localhost", port);
                 InputStream in = socket.getInputStream();
                 OutputStream out = socket.getOutputStream();
                 byte[] a = {0};
