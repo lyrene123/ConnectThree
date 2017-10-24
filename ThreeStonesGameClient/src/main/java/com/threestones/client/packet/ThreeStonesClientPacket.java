@@ -18,14 +18,26 @@ public class ThreeStonesClientPacket {
     private final Logger log = LoggerFactory.getLogger(getClass().getName());
     private final String server = "10.172.16.25";
     private final int port = 50000;
+    private Socket socket;
+    private InputStream inStream;
+    private OutputStream outStream;
     private boolean isConnected = false;
 
     public void sendMove(int x, int y) {
-        if (isConnected) {
-            byte[] byteBuffer = {(byte)1, (byte) x, (byte) y};
+        log.debug("position x " + x + "position y " + y);
+
+        // byteFueer has to be assigned
+        // only make socket connection once
+        if (!isConnected) {
+            isConnected = true;
+            //  1 is move
+            // 0 is want to start game
+            //2 players last move makes gameOver = true
+            //
+            byte[] byteBuffer = {(byte) 1, (byte) x, (byte) y,};
             // Create socket that is connected to server on specified port
             try {
-                Socket socket = new Socket(server, port);
+                //Socket socket = new Socket(server, port);
                 InputStream in = socket.getInputStream();
                 OutputStream out = socket.getOutputStream();
 
@@ -56,7 +68,7 @@ public class ThreeStonesClientPacket {
             try {
                 log.debug("send start message");
                 isConnected = true;
-                Socket socket = new Socket("localhost", port);
+                socket = new Socket("localhost", port);
                 InputStream in = socket.getInputStream();
                 OutputStream out = socket.getOutputStream();
                 byte[] a = {0};
@@ -82,8 +94,13 @@ public class ThreeStonesClientPacket {
         }
     }
 
+<<<<<<< HEAD
     public void connectToServer() {
 
+=======
+    private void buildConnection() throws IOException {
+        socket = new Socket("localhost", port);
+>>>>>>> 5266be9cb98cc704497bd4a4a7e367565d9c5132
     }
 //    private static final int BUFSIZE = 32;	// Size of receive buffer
 //    public void send(List<Byte> list) throws IOException {

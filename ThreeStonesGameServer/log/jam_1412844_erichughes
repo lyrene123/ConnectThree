@@ -256,6 +256,7 @@
 [DEBUG] 2017-10-24 15:51:42.992 [main] ThreeStonesServer - Server Start
 [DEBUG] 2017-10-24 15:51:43.002 [main] ThreeStonesServer - Server Start Listening
 [DEBUG] 2017-10-24 15:51:43.002 [main] ThreeStonesServer - Loop
+<<<<<<< HEAD
 [DEBUG] 2017-10-24 16:52:55.522 [main] ThreeStonesServer - Server Start
 [DEBUG] 2017-10-24 16:52:55.532 [main] ThreeStonesServer - Server Start Listening
 [DEBUG] 2017-10-24 16:52:55.532 [main] ThreeStonesServer - Loop
@@ -268,3 +269,36 @@
 [DEBUG] 2017-10-24 17:33:55.396 [main] ThreeStonesServer - Server Start Listening
 [DEBUG] 2017-10-24 17:33:55.396 [main] ThreeStonesServer - Loop
 [DEBUG] 2017-10-24 17:34:11.545 [main] ThreeStonesServer - Server Start
+=======
+[DEBUG] 2017-10-24 15:51:59.802 [main] ThreeStonesServerSession - code 0
+[DEBUG] 2017-10-24 16:54:57.277 [main] ThreeStonesServer - Server Start
+[DEBUG] 2017-10-24 16:54:57.287 [main] ThreeStonesServer - Server Start Listening
+[DEBUG] 2017-10-24 16:54:57.287 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-24 16:55:47.785 [main] ThreeStonesServer - Server Start
+[DEBUG] 2017-10-24 16:55:47.795 [main] ThreeStonesServer - Server Start Listening
+[DEBUG] 2017-10-24 16:55:47.795 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-24 16:56:00.647 [main] ThreeStonesServerSession - code 0
+[DEBUG] 2017-10-24 16:57:04.803 [main] ThreeStonesServer - Server Start
+[DEBUG] 2017-10-24 16:57:04.813 [main] ThreeStonesServer - Server Start Listening
+[DEBUG] 2017-10-24 16:57:04.813 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-24 16:57:47.145 [main] ThreeStonesServer - Server Start
+[DEBUG] 2017-10-24 16:57:47.155 [main] ThreeStonesServer - Server Start Listening
+[DEBUG] 2017-10-24 16:57:47.155 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-24 16:58:00.112 [main] ThreeStonesServerSession - code 0
+[DEBUG] 2017-10-24 16:59:22.461 [main] ThreeStonesServer - Server Start
+[DEBUG] 2017-10-24 16:59:22.471 [main] ThreeStonesServer - Server Start Listening
+[DEBUG] 2017-10-24 16:59:22.471 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-24 16:59:31.007 [main] ThreeStonesServerSession - code 0
+[DEBUG] 2017-10-24 17:00:09.523 [main] ThreeStonesServer - Server Start
+[DEBUG] 2017-10-24 17:00:09.523 [main] ThreeStonesServer - Server Start Listening
+[DEBUG] 2017-10-24 17:00:09.523 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-24 17:00:20.318 [main] ThreeStonesServerSession - code 0
+[DEBUG] 2017-10-24 17:01:26.813 [main] ThreeStonesServer - Server Start
+[DEBUG] 2017-10-24 17:01:26.823 [main] ThreeStonesServer - Server Start Listening
+[DEBUG] 2017-10-24 17:01:26.823 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-24 17:03:13.911 [main] ThreeStonesServerSession - code 0
+[DEBUG] 2017-10-24 17:09:27.171 [main] ThreeStonesServer - Server Start
+[DEBUG] 2017-10-24 17:09:27.181 [main] ThreeStonesServer - Server Start Listening
+[DEBUG] 2017-10-24 17:09:27.181 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-24 17:09:38.202 [main] ThreeStonesServerSession - code 0
+>>>>>>> 5266be9cb98cc704497bd4a4a7e367565d9c5132
