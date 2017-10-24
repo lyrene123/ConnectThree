@@ -1,11 +1,6 @@
 package com.threestones.server.gamestate;
 
-import com.threestones.server.gamestate.ThreeStonesMove;
 import com.threestones.server.gamestate.ThreeStonesGameBoard.CellState;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.LoggerFactory;
