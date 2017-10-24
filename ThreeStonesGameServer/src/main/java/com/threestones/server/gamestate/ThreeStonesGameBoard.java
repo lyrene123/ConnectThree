@@ -33,8 +33,7 @@ public class ThreeStonesGameBoard {
     /**
      * Default constructor
      */
-    public ThreeStonesGameBoard() {
-    }
+    public ThreeStonesGameBoard() {}
 
     /**
      * Initializes the game board by setting the black stones and white stones

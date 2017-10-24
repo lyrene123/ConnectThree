@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class ThreeStonesServerSession {
-
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
     private static final int BUFSIZE = 4;
     private boolean isGameOver;

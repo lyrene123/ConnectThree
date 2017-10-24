@@ -34,15 +34,12 @@ public class ThreeStonesClient {
         if (board.getBoard()[y][x] == CellState.AVAILABLE) {
             log.debug("sent: " + x + " " + y);
 
-            clientPacket.sendMove(x, y);
+            //clientPacket.sendMove(x, y);
             //ThreeStonesClientPacket.sendMove(x,y);
             //must make sure that server checks that if row col are full all cells become available
-
         } else if (board.getBoard()[y][x] == CellState.UNAVAILABLE) {
             //display wrong move message
 
-        } else if (board.getBoard()[y][x] == CellState.VACANT) {
-            clientPacket.sendMove(x, y);
         }
 
     }
