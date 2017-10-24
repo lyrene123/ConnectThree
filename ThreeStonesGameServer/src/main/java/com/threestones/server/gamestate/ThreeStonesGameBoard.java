@@ -213,7 +213,7 @@ public class ThreeStonesGameBoard {
 
     private void constructBoard() {
 
-        String file = "";
+        String file = "gameboard.csv";
         try {
             int[][] arr = constructArrayFromFile(file);
             board = new CellState[arr.length][arr.length];

@@ -5,6 +5,7 @@
  */
 package com.threestones.view;
 
+import com.threestones.client.gamestate.ThreeStonesClient;
 import com.threestones.client.gamestate.ThreeStonesGameBoard;
 import com.threestones.client.gamestate.ThreeStonesGameBoard.CellState;
 import java.awt.BorderLayout;
@@ -79,9 +80,10 @@ public class JPanelBoard {
     private JButton connectBtn = new JButton("Connect");
 
     JTextArea textArea = new JTextArea(5, 5);
+    private ThreeStonesClient clientGame;
 
     public JPanelBoard() {
-
+        this.clientGame = new ThreeStonesClient();
         ThreeStonesGameBoard board = new ThreeStonesGameBoard();
         //this.map = parseCSV("");
 
@@ -209,15 +211,25 @@ public class JPanelBoard {
         mainView.add(boardGame, BorderLayout.CENTER);
         settingsPanel.add(settingsToolbar);
         mainView.add(settingsPanel, BorderLayout.PAGE_END);
-
+        ThreeStonesGameBoard threeStonesGameBoard = new ThreeStonesGameBoard();
+        CellState[][] board = threeStonesGameBoard.getBoard();
         // create the board squares
         Insets buttonMargin = new Insets(0, 0, 0, 0);
         for (int x = 0; x < cells.length; x++) {
             for (int y = 0; y < cells.length; y++) {
 
+//                switch (board[x][y]) {
+//                    case : {
+//
+//                    }
+//                }
+
                 cells[x][y] = new JButton();
                 cells[x][y].setPreferredSize(new Dimension(60, 60));
                 cells[x][y].setBackground(Color.WHITE);
+                cells[x][y].addActionListener(e -> {
+                    clientGame.clickBoardCell(0, 0);
+                });
                 //boardSquares[x][y].set
             }
         }

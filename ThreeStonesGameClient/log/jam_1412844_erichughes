@@ -116,3 +116,21 @@
 [DEBUG] 2017-10-19 19:51:38.029 [JavaFX Application Thread] ThreeStonesClient - Good Move
 [DEBUG] 2017-10-19 19:59:02.684 [JavaFX Application Thread] ThreeStonesClient - sent: 4 4
 [DEBUG] 2017-10-19 19:59:02.691 [JavaFX Application Thread] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:17:11.718 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:17:50.212 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:19:01.094 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:19:02.114 [AWT-EventQueue-0] ThreeStonesClientPacket - Connection refused: connect
+[DEBUG] 2017-10-24 15:19:40.780 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:20:22.133 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:22:16.378 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:24:52.722 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:25:54.274 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:26:09.984 [AWT-EventQueue-0] ThreeStonesClientPacket - Connection refused: connect
+[DEBUG] 2017-10-24 15:26:31.103 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:28:38.622 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:29:18.992 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:32:12.963 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:43:06.556 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:48:04.546 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:49:05.450 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
+[DEBUG] 2017-10-24 15:50:20.346 [AWT-EventQueue-0] ThreeStonesClientPacket - send start message
