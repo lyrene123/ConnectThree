@@ -7,6 +7,7 @@ package com.threestones.client.packet;
 
 import java.net.*;  // for Socket
 import java.io.*;   // for IOException and Input/OutputStream
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import org.slf4j.Logger;
@@ -22,10 +23,11 @@ public class ThreeStonesClientPacket {
     private InputStream inStream;
     private OutputStream outStream;
     private boolean isConnected = false;
+    private final int BUFF_SIZE = 4;
 
     public void sendMove(int x, int y) {
         log.debug("position x " + x + "position y " + y);
-
+        
         // byteFueer has to be assigned
         // only make socket connection once
         if (!isConnected) {
@@ -38,17 +40,15 @@ public class ThreeStonesClientPacket {
             // Create socket that is connected to server on specified port
             try {
                 //Socket socket = new Socket(server, port);
-                InputStream in = socket.getInputStream();
-                OutputStream out = socket.getOutputStream();
 
                 //sends byte to server
-                out.write(byteBuffer);						// Send the encoded string to the server
+                this.outStream.write(byteBuffer);						// Send the encoded string to the server
 
                 //receives server response
                 int totalBytesRcvd = 0;						// Total bytes received so far
                 int bytesRcvd;								// Bytes received in last read
                 while (totalBytesRcvd < byteBuffer.length) {
-                    if ((bytesRcvd = in.read(byteBuffer, totalBytesRcvd,
+                    if ((bytesRcvd = inStream.read(byteBuffer, totalBytesRcvd,
                             byteBuffer.length - totalBytesRcvd)) == -1) {
                         throw new SocketException("Connection close prematurely");
                     }
@@ -64,42 +64,32 @@ public class ThreeStonesClientPacket {
             }
             System.out.println("Connected to server...sending echo string");
             // Close the socket and its streams
-        } else {
-            try {
-                log.debug("send start message");
-                isConnected = true;
-                socket = new Socket("localhost", port);
-                InputStream in = socket.getInputStream();
-                OutputStream out = socket.getOutputStream();
-                byte[] a = {0};
-                out.write(a);
-                byte[] byteBuffer = new byte[1];
-                //byteBuffer[0] = 0;
-                int totalBytesRcvd = 0;						// Total bytes received so far
-                int bytesRcvd;
-                // Bytes received in last read
-                while (totalBytesRcvd < byteBuffer.length) {
-                    if ((bytesRcvd = in.read(byteBuffer, totalBytesRcvd,
-                            byteBuffer.length - totalBytesRcvd)) == -1) {
-                        throw new SocketException("Connection close prematurely");
-                    }
-                    totalBytesRcvd += bytesRcvd;
-                }
-                log.debug("Received: " + new String(byteBuffer));
-                //sends byte to server
-
-            } catch (IOException ex) {
-                log.debug(ex.getMessage());
-            }
         }
     }
 
-    public void connectToServer() {
+
+    private void connectToServer() throws IOException {
+        socket = new Socket("localhost", port);
+        inStream = socket.getInputStream();
+        outStream = socket.getOutputStream();
+        byte[] byteBuffer = new byte[BUFF_SIZE];
+        byteBuffer[0] = 0;
+        receivePacket(byteBuffer);
+
+        log.debug("buildConnection and bytebuffer for each " + Arrays.toString(byteBuffer));
+
     }
 
-    private void buildConnection() throws IOException {
-        socket = new Socket("localhost", port);
-
+    private void receivePacket(byte[] byteBuffer) throws SocketException, IOException {
+        int totalBytesRcvd = 0;						// Total bytes received so far
+        int bytesRcvd;
+        while (totalBytesRcvd < byteBuffer.length) {
+            if ((bytesRcvd = inStream.read(byteBuffer, totalBytesRcvd,
+                    byteBuffer.length - totalBytesRcvd)) == -1) {
+                throw new SocketException("Connection close prematurely");
+            }
+            totalBytesRcvd += bytesRcvd;
+        }
     }
 //    private static final int BUFSIZE = 32;	// Size of receive buffer
 //    public void send(List<Byte> list) throws IOException {

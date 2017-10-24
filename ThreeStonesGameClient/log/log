@@ -1,0 +1,13 @@
+[DEBUG] 2017-10-24 18:39:24.267 [AWT-EventQueue-0] ThreeStonesClient - sent: 5 6
+[DEBUG] 2017-10-24 18:39:25.939 [AWT-EventQueue-0] ThreeStonesClient - sent: 6 6
+[DEBUG] 2017-10-24 18:39:26.360 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 6
+[DEBUG] 2017-10-24 18:39:26.689 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 6
+[DEBUG] 2017-10-24 18:39:27.704 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 5
+[DEBUG] 2017-10-24 18:39:28.017 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 4
+[DEBUG] 2017-10-24 18:39:28.314 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 4
+[DEBUG] 2017-10-24 18:39:28.564 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 5
+[DEBUG] 2017-10-24 18:39:28.845 [AWT-EventQueue-0] ThreeStonesClient - sent: 6 5
+[DEBUG] 2017-10-24 18:39:29.118 [AWT-EventQueue-0] ThreeStonesClient - sent: 6 4
+[DEBUG] 2017-10-24 18:39:29.446 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 3
+[DEBUG] 2017-10-24 18:39:29.696 [AWT-EventQueue-0] ThreeStonesClient - sent: 6 3
+[DEBUG] 2017-10-24 18:39:29.962 [AWT-EventQueue-0] ThreeStonesClient - sent: 6 2
