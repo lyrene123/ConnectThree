@@ -283,3 +283,7 @@
 [DEBUG] 2017-10-24 17:01:26.823 [main] ThreeStonesServer - Server Start Listening
 [DEBUG] 2017-10-24 17:01:26.823 [main] ThreeStonesServer - Loop
 [DEBUG] 2017-10-24 17:03:13.911 [main] ThreeStonesServerSession - code 0
+[DEBUG] 2017-10-24 17:09:27.171 [main] ThreeStonesServer - Server Start
+[DEBUG] 2017-10-24 17:09:27.181 [main] ThreeStonesServer - Server Start Listening
+[DEBUG] 2017-10-24 17:09:27.181 [main] ThreeStonesServer - Loop
+[DEBUG] 2017-10-24 17:09:38.202 [main] ThreeStonesServerSession - code 0
