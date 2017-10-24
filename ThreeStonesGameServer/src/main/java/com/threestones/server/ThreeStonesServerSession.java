@@ -13,8 +13,9 @@ import org.slf4j.LoggerFactory;
  * @author ehugh
  */
 public class ThreeStonesServerSession {
+
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
-    private static final int BUFSIZE = 4;	
+    private static final int BUFSIZE = 4;
     private boolean gameOver;
     private boolean playAgain;
     private ThreeStonesServerGame serverGame;
@@ -29,10 +30,10 @@ public class ThreeStonesServerSession {
 
     public void playSession(Socket clientSock) throws IOException {
         int recvMsgSize = 0;
-        byte[] receivedPacket = new byte[BUFSIZE];	
+        byte[] receivedPacket = new byte[BUFSIZE];
         in = clientSock.getInputStream();
         out = clientSock.getOutputStream();
-        
+
         while (playAgain) {
             while (!gameOver) {
                 recvMsgSize = receiveClientPackets(recvMsgSize, receivedPacket);
@@ -63,18 +64,19 @@ public class ThreeStonesServerSession {
                 case 0:
                     log.debug("code 0");
                     serverGame.drawBoard();
-                    sendServerMovePacketToClient(null, out);
+                    sendServerMovePacketToClient(null);
                     break; //start game message
                 case 1:
+                    log.debug("code 1");
                     //handlePlayerMove(receivedPacket, out);
                     break; //player's move
                 case 2:
-                    log.debug("code 1");
+                    log.debug("code 2");
                     //handlePlayerMove(receivedPacket, out); //player's last move
                     gameOver = true;
                     return 0;
                 case 3:
-                    log.debug("code 2");
+                    log.debug("code 3");
                     playAgain = true;
                     gameOver = false;
                     break;
@@ -83,13 +85,13 @@ public class ThreeStonesServerSession {
         return recvMsgSize;
     }
 
-    private void handlePlayerMove(byte[] receivedPacket, OutputStream out) throws IOException {
+    private void handlePlayerMove(byte[] receivedPacket) throws IOException {
         int x = receivedPacket[1];
         int y = receivedPacket[2];
         serverGame.updateBoard(x, y);
 
-       byte[] serverMovesPoint = serverGame.determineNextMove(); //[points,x,y]
-        
+        byte[] serverMovesPoint = serverGame.determineNextMove(); //[points,x,y]
+
         byte[] packetValues = new byte[4];
         int counter = 0;
         for (int i = 0; i < packetValues.length; i++) {
@@ -100,15 +102,15 @@ public class ThreeStonesServerSession {
                 counter++;
             }
         }
-        sendServerMovePacketToClient(packetValues, out);
+        sendServerMovePacketToClient(packetValues);
     }
 
-    private void sendServerMovePacketToClient(byte[] values, OutputStream out) throws IOException {
+    private void sendServerMovePacketToClient(byte[] values) throws IOException {
         //outstream to sent back server move to client
         if (values == null) {
             values = new byte[1];
             values[0] = 0; //game has started message
-        } 
+        }
         out.write(values, 0, values.length);
     }
 }
