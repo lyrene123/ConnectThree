@@ -22,7 +22,7 @@ about itself-->
 
         <!-- Output to a file. append=true each run appends its
         output to the same file while false overwites the file -->
-        <File name="file-log" fileName="${log-path}/jam_1412844_erichughes" append="true" >
+        <File name="file-log" fileName="${log-path}/log" append="true" >
             <PatternLayout>
                 <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
             </PatternLayout>
