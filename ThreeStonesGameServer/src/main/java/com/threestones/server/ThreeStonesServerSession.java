@@ -4,93 +4,146 @@ import com.threestones.server.gamestate.ThreeStonesServerGame;
 import java.io.*;   // for IOException and Input/OutputStream
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Encapsulates the behavior and the characteristics of a game session in the
+ * server side in a game of Three Stones such as handling the receiving and the
+ * sending of packets between server and client.
  *
- * @author ehugh
+ * @author Eric
+ * @author Lyrene
+ * @author Jacob
+ *
  */
 public class ThreeStonesServerSession {
-    private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
-    private static final int BUFSIZE = 4;	
-    private boolean gameOver;
-    private boolean playAgain;
-    private ThreeStonesServerGame serverGame;
-    private InputStream in;
-    private OutputStream out;
 
+    private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private static final int BUFSIZE = 4;
+    private boolean isGameOver;
+    private boolean isPlayAgain;
+    private ThreeStonesServerGame serverGame;
+    private InputStream inStream;
+    private OutputStream outStream;
+
+    /**
+     * Default constructor that initializes the game over and play again boolean
+     * properties and the ThreeStonesServerGame object
+     */
     public ThreeStonesServerSession() {
-        this.gameOver = false;
-        this.playAgain = true;
+        this.isGameOver = false;
+        this.isPlayAgain = true;
         this.serverGame = new ThreeStonesServerGame();
     }
 
-    public void playSession(Socket clientSock) throws IOException {
+    /**
+     * Starts game session by accepting the Socket object created by the
+     * client's connection and retrieving the input and output stream. Session
+     * will then continue to manage the game and the packet send and receive
+     * between server/client while user still wants to play and game is not over
+     * yet.
+     *
+     * @param clientSock Socket object
+     * @throws IOException
+     */
+    public void playGameSession(Socket clientSock) throws IOException {
+        //retrieve the input and output stream from the Socket
+        inStream = clientSock.getInputStream();
+        outStream = clientSock.getOutputStream();
+
+        //continue the session while user still playing and game not over
         int recvMsgSize = 0;
-        byte[] receivedPacket = new byte[BUFSIZE];	
-        in = clientSock.getInputStream();
-        out = clientSock.getOutputStream();
-        
-        while (playAgain) {
-            while (!gameOver) {
+        byte[] receivedPacket = new byte[BUFSIZE];
+        while (isPlayAgain) {
+            while (!isGameOver) {
+                //receive and process client packets
                 recvMsgSize = receiveClientPackets(recvMsgSize, receivedPacket);
+
                 //if game over or connection is closed
-                if (gameOver || recvMsgSize == -1) {
+                if (isGameOver || recvMsgSize == -1) {
                     if (recvMsgSize == -1) {
-                        playAgain = false;
+                        isPlayAgain = false; //connection is closed, so don't play again
                     }
-                    break;
+                    break; //break from inner loop since game is done
                 }
             }
-            if (gameOver && recvMsgSize != -1) {
-                //ask to play again with OutputStream
-                byte[] outPacket = new byte[1];
-                outPacket[0] = 3; //play again message
-                out.write(outPacket);
+            //ask to play again with OutputStream if connection is not closed
+            if (isGameOver && recvMsgSize != -1) {
+                byte[] outPacket = new byte[BUFSIZE];
+                outPacket[0] = 3; //build play again request message to client
+                outStream.write(outPacket);
+                receiveClientPackets(recvMsgSize, receivedPacket); //receive client's response
             }
         }
-        clientSock.close();
+        clientSock.close(); //close client socket
     }
 
+    /**
+     * Helper method that manages the packets received from the client and
+     * deciding the right actions to perform based on the operation code or
+     * first byte of the packet received. These are done as long as the
+     * connection with the client is maintained or the game is over or the play
+     * again request is declined by player.
+     *
+     * @param recvMsgSize int size of bytes read from packet
+     * @param receivedPacket byte array containing data of packet
+     * @return int size of bytes read from packet or -1 if connection is closed
+     * @throws IOException
+     */
     private int receiveClientPackets(int recvMsgSize, byte[] receivedPacket) throws IOException {
         // Receive until client closes connection, indicated by -1 return
-        while ((recvMsgSize = in.read(receivedPacket)) != -1) {
+        while ((recvMsgSize = inStream.read(receivedPacket)) != -1) {
             //check for op code at beginning of packet
             byte opCode = receivedPacket[0];
+            int x, y;
             switch (opCode) {
-                case 0:
+                case 0: //start game request from client
                     log.debug("code 0");
                     serverGame.startGame();
-                    sendServerMovePacketToClient(null, out);
-                    break; //start game message
-                case 1:
-                    //handlePlayerMove(receivedPacket, out);
-                    break; //player's move
-                case 2:
-                    log.debug("code 1");
-                    //handlePlayerMove(receivedPacket, out); //player's last move
-                    gameOver = true;
-                    return 0;
-                case 3:
-                    log.debug("code 2");
-                    playAgain = true;
-                    gameOver = false;
+                    sendServerMovePacketToClient(null);
                     break;
+                case 1: //player's move
+                    log.debug("code 1");
+                    x = receivedPacket[2];
+                    y = receivedPacket[3];
+                    serverGame.updateBoard(x, y);
+                    //handlePlayerMove(receivedPacket, out);
+                    break;
+                case 2: //player's last move
+                    log.debug("code 2");
+                    x = receivedPacket[2];
+                    y = receivedPacket[3];
+                    serverGame.updateBoard(x, y);
+                    //handlePlayerMove(receivedPacket, out); 
+                    isGameOver = true;
+                    return 0;
+                case 3: //player's request to play again
+                    log.debug("code 3"); //player wants to play again
+                    isPlayAgain = true;
+                    isGameOver = false;
+                    break;
+                case 4: //player's request not to play again
+                    log.debug("code 4");
+                    isPlayAgain = false;
+                    return -1;
             }
         }
         return recvMsgSize;
     }
 
-    private void handlePlayerMove(byte[] receivedPacket, OutputStream out) throws IOException {
-        int x = receivedPacket[1];
-        int y = receivedPacket[2];
-        serverGame.updateBoard(x, y);
+    /**
+     * Creates the packet containing the server's move coordinates and the
+     * appropriate operation code for move packet and the server's points made
+     * with its new move.
+     *
+     * @param receivedPacket byte array packet containing
+     * @throws IOException
+     */
+    private void createPacketServerMove(byte[] receivedPacket) throws IOException {
+        byte[] serverMovesPoint = serverGame.determineNextMove(); //[points,x,y]
 
-       byte[] serverMovesPoint = serverGame.determineNextMove(); //[points,x,y]
-        
-        byte[] packetValues = new byte[4];
+        byte[] packetValues = new byte[BUFSIZE];
         int counter = 0;
         for (int i = 0; i < packetValues.length; i++) {
             if (i == 0) {
@@ -100,15 +153,15 @@ public class ThreeStonesServerSession {
                 counter++;
             }
         }
-        sendServerMovePacketToClient(packetValues, out);
+        sendServerMovePacketToClient(packetValues);
     }
 
-    private void sendServerMovePacketToClient(byte[] values, OutputStream out) throws IOException {
+    private void sendServerMovePacketToClient(byte[] values) throws IOException {
         //outstream to sent back server move to client
         if (values == null) {
             values = new byte[1];
             values[0] = 0; //game has started message
-        } 
-        out.write(values, 0, values.length);
+        }
+        outStream.write(values, 0, values.length);
     }
 }
