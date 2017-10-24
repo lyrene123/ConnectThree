@@ -223,7 +223,7 @@ public class JPanelBoard {
         for (int x = 0; x < cells.length; x++) {
             for (int y = 0; y < cells.length; y++) {
 
-<<<<<<< HEAD
+
                 switch (board[x][y]) {
                     case VACANT:
                         cells[x][y] = new JButton();
@@ -250,7 +250,7 @@ public class JPanelBoard {
 //                cells[x][y].addActionListener(e -> {
 //                    clientGame.clickBoardCell(xx, yy);
 //                });
-=======
+
 //                switch (board[x][y]) {
 //                    case : {
 //
@@ -270,7 +270,7 @@ public class JPanelBoard {
 //                table.addMouseListener(new MouseAdapter);
 
 
->>>>>>> 5266be9cb98cc704497bd4a4a7e367565d9c5132
+
                 //boardSquares[x][y].set
             }
         }

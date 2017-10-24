@@ -33,7 +33,9 @@ public class ThreeStonesGameBoard {
     /**
      * Default constructor 
      */
-    public ThreeStonesGameBoard() {}
+    public ThreeStonesGameBoard() {
+    startNewGame();
+    }
 
     public void startNewGame() {
         blackStoneCount = 15;

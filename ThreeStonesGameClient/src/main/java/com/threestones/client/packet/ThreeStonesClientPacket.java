@@ -94,13 +94,12 @@ public class ThreeStonesClientPacket {
         }
     }
 
-<<<<<<< HEAD
     public void connectToServer() {
+    }
 
-=======
     private void buildConnection() throws IOException {
         socket = new Socket("localhost", port);
->>>>>>> 5266be9cb98cc704497bd4a4a7e367565d9c5132
+
     }
 //    private static final int BUFSIZE = 32;	// Size of receive buffer
 //    public void send(List<Byte> list) throws IOException {
