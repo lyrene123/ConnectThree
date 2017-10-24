@@ -18,6 +18,7 @@ public class ThreeStonesServerGame {
 
     private ThreeStonesGameBoard board;
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
+
     //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
     //DEPENDING ON WHERE WE WANT TO TAKE THIS WE CAN ADD MORE MOVE COMPLEXITY SO THAT IT CHECKS THE AVAILALBE
     //SQUARES THAT WILL BECOME AVAILABLE BASE ON A CERTAIN MOVE AND THE SCORES WHITE OR BLACK CAN SCORE IN THE FUTURE (reading ahead of time)
@@ -72,10 +73,13 @@ public class ThreeStonesServerGame {
         return moves;
     }
 
+    public void startGame() {
+        board.startNewGame();
+    }
+
     private ThreeStonesMove createMove(int x, int y) {
 
         return new ThreeStonesMove();
     }
-
 
 }
