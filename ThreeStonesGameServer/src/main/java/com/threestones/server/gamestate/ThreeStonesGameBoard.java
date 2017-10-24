@@ -31,10 +31,15 @@ public class ThreeStonesGameBoard {
     private int blackScore;
 
     /**
-     * Default constructor 
+     * Default constructor
      */
-    public ThreeStonesGameBoard() {}
+    public ThreeStonesGameBoard() {
+    }
 
+    /**
+     * Initializes the game board by setting the black stones and white stones
+     * total left, the points as well as the construction of the board.
+     */
     public void startNewGame() {
         blackStoneCount = 15;
         whiteStoneCount = 15;
@@ -43,47 +48,101 @@ public class ThreeStonesGameBoard {
         constructBoard();
     }
 
+    /**
+     * Returns the CellState a2D array
+     *
+     * @return CellState 2D array
+     */
     public CellState[][] getBoard() {
         return board;
     }
 
+    /**
+     * Sets the board with a CellState 2D array as input
+     *
+     * @param board CellState 2D array
+     */
     public void setBoard(CellState[][] board) {
         this.board = board;
     }
 
+    /**
+     * Returns the number of black stones left to be played
+     *
+     * @return int
+     */
     public int getBlackStoneCount() {
         return blackStoneCount;
     }
 
+    /**
+     * Sets the number of black stones left to be played
+     *
+     * @param blackStoneCount int
+     */
     public void setBlackStoneCount(int blackStoneCount) {
         this.blackStoneCount = blackStoneCount;
     }
 
+    /**
+     * Sets the number of white stones left to be played
+     *
+     * @return int
+     */
     public int getWhiteStoneCount() {
         return whiteStoneCount;
     }
 
+    /**
+     * Sets the number of white stones left to be played
+     *
+     * @param whiteStoneCount int
+     */
     public void setWhiteStoneCount(int whiteStoneCount) {
         this.whiteStoneCount = whiteStoneCount;
     }
 
+    /**
+     * Returns the total white score
+     *
+     * @return int
+     */
     public int getWhiteScore() {
         return whiteScore;
     }
 
+    /**
+     * Sets the total white score
+     *
+     * @param whiteScore int
+     */
     public void setWhiteScore(int whiteScore) {
         this.whiteScore = whiteScore;
     }
 
+    /**
+     * Returns the total black score
+     *
+     * @return int
+     */
     public int getBlackScore() {
         return blackScore;
     }
 
+    /**
+     * Sets the total black score
+     *
+     * @param blackScore int
+     */
     public void setBlackScore(int blackScore) {
         this.blackScore = blackScore;
     }
 
     /**
+     * Calculates and returns the number of points scored by all possible
+     * combinations of black or white stones on the game board based on the
+     * coordinate x and y
+     *
      * @returns number of points scored from the coordinate
      * @param x x coordinate on game board
      * @param y y coordinate on game board
@@ -153,24 +212,27 @@ public class ThreeStonesGameBoard {
 
         return points;
     }
-
-    //returns an altered version of the board
-    //I made it to return for now incase we want to
-    //make the ai more sophisticated (to check for moves 2-3 turns ahead)
+    
+    /**
+     * Updates the board with the new coordinate x and y and returns the altered
+     * version of the board by returning the CellState 2D array
+     *
+     * @param x int x row
+     * @param y int y column
+     * @return CellState 2D array
+     */
     public CellState[][] getBoardChange(int x, int y) {
         CellState[][] board = this.board;
 
         if (!checkIfFull(x, y)) {
             for (int i = 0; i < board[0].length; i++) {
                 for (int j = 0; j < board[0].length; j++) {
-
                     if (i == x || j == y && board[i][j] != CellState.VACANT) {
                         board[i][j] = CellState.AVAILABLE;
                     } else if (board[i][j] != CellState.VACANT) {
                         board[i][j] = CellState.AVAILABLE;
                     }
                 }
-
             }
         } else {
             for (int i = 0; i < board[0].length; i++) {
@@ -185,6 +247,14 @@ public class ThreeStonesGameBoard {
     }
 
     //checks if both row and column is full
+    /**
+     * Checks if a row x and column y is full with stones on the game board and 
+     * returns a boolean true or false
+     * 
+     * @param x int x row
+     * @param y int y column
+     * @return boolean
+     */
     private boolean checkIfFull(int x, int y) {
         //check row
         boolean full = true;
@@ -202,6 +272,13 @@ public class ThreeStonesGameBoard {
         return full;
     }
 
+    /**
+     * 
+     * 
+     * @param filename
+     * @return
+     * @throws IOException 
+     */
     private int[][] constructArrayFromFile(String filename) throws IOException {
         InputStream stream = ClassLoader.getSystemResourceAsStream(filename);
         BufferedReader buffer = new BufferedReader(new InputStreamReader(stream));
