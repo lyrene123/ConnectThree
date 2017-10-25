@@ -49,5 +49,9 @@ public class ThreeStonesClient {
         }
 
     }
+    
+    public void serverResponse(){
+        
+    }
 
 }

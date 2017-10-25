@@ -1,3 +1,30 @@
 [DEBUG] 2017-10-24 19:19:56.449 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick
 [DEBUG] 2017-10-24 19:19:56.465 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick before getClientPacket.connectToServer()
 [DEBUG] 2017-10-24 19:19:56.465 [AWT-EventQueue-0] ThreeStonesClientPacket - inside connectToServer begin creation of socket
+[DEBUG] 2017-10-24 19:21:29.730 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick
+[DEBUG] 2017-10-24 19:21:29.730 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick before getClientPacket.connectToServer()
+[DEBUG] 2017-10-24 19:21:29.730 [AWT-EventQueue-0] ThreeStonesClientPacket - inside connectToServer begin creation of socket
+[DEBUG] 2017-10-24 19:21:29.762 [AWT-EventQueue-0] ThreeStonesClientPacket - buildConnection and bytebuffer for each [0, 0, 0, 0]
+[DEBUG] 2017-10-24 19:21:29.777 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick after getClientPacket.connectToServer()
+[DEBUG] 2017-10-24 19:21:29.777 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick end of try catch
+[DEBUG] 2017-10-24 19:59:40.997 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick
+[DEBUG] 2017-10-24 19:59:41.012 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick before getClientPacket.connectToServer()
+[DEBUG] 2017-10-24 19:59:41.012 [AWT-EventQueue-0] ThreeStonesClientPacket - inside connectToServer begin creation of socket
+[DEBUG] 2017-10-24 19:59:41.044 [AWT-EventQueue-0] ThreeStonesClientPacket - buildConnection and bytebuffer for each [0, 0, 0, 0]
+[DEBUG] 2017-10-24 19:59:41.059 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick after getClientPacket.connectToServer()
+[DEBUG] 2017-10-24 19:59:41.059 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick end of try catch
+[DEBUG] 2017-10-24 20:03:23.171 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick
+[DEBUG] 2017-10-24 20:03:23.171 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick before getClientPacket.connectToServer()
+[DEBUG] 2017-10-24 20:03:23.171 [AWT-EventQueue-0] ThreeStonesClientPacket - inside connectToServer begin creation of socket
+[DEBUG] 2017-10-24 20:03:23.203 [AWT-EventQueue-0] ThreeStonesClientPacket - buildConnection and bytebuffer for each [0, 0, 0, 0]
+[DEBUG] 2017-10-24 20:03:23.203 [AWT-EventQueue-0] JPanelBoard - start enableBoard 
+[DEBUG] 2017-10-24 20:03:23.203 [AWT-EventQueue-0] JPanelBoard - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@5bd73f28, [Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@7995fdf4, [Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@6d14072b, [Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@69854119, [Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@bc90d7e, [Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@5de53bae, [Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@10055266, [Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@534b54f6, [Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@102a111c, [Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@64e660fc, [Lcom.threestones.client.gamestate.ThreeStonesGameBoard$CellState;@5e4a8864]
+[DEBUG] 2017-10-24 20:03:23.218 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick after getClientPacket.connectToServer()
+[DEBUG] 2017-10-24 20:03:23.218 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick end of try catch
+[DEBUG] 2017-10-24 20:03:26.151 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 5
+[DEBUG] 2017-10-24 20:03:27.510 [AWT-EventQueue-0] ThreeStonesClient - sent: 5 6
+[DEBUG] 2017-10-24 20:03:28.120 [AWT-EventQueue-0] ThreeStonesClient - sent: 6 6
+[DEBUG] 2017-10-24 20:03:28.902 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 6
+[DEBUG] 2017-10-24 20:03:29.309 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 5
+[DEBUG] 2017-10-24 20:03:29.684 [AWT-EventQueue-0] ThreeStonesClient - sent: 6 4
+[DEBUG] 2017-10-24 20:03:30.184 [AWT-EventQueue-0] ThreeStonesClient - sent: 5 3

@@ -21,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
@@ -49,7 +50,7 @@ public class JPanelBoard {
     //A tile represents all available squares for the user to play
     //private CellState[][] map = null;
     //reference from the ThreeStonesGame Class to access its pusblic methods
-    private ThreeStonesGameBoard map = new ThreeStonesGameBoard();
+    //private ThreeStonesClient threeStonesClient = new ThreeStonesClient();
 
     //gui is the root Pane that supports the entire UI
     private final JPanel mainView = new JPanel(new BorderLayout(0, 0));
@@ -88,7 +89,7 @@ public class JPanelBoard {
 
     public JPanelBoard() {
         this.client = new ThreeStonesClient();
-        ThreeStonesGameBoard board = new ThreeStonesGameBoard();
+        
         //this.map = parseCSV("");
     }
 
@@ -210,8 +211,8 @@ public class JPanelBoard {
         mainView.add(boardGame, BorderLayout.CENTER);
         settingsPanel.add(settingsToolbar);
         mainView.add(settingsPanel, BorderLayout.PAGE_END);
-        ThreeStonesGameBoard threeStonesGameBoard = new ThreeStonesGameBoard();
-        CellState[][] board = threeStonesGameBoard.getBoard();
+        
+        
         // create the board squares
         Insets buttonMargin = new Insets(0, 0, 0, 0);
         JPanel pane = new JPanel();
@@ -220,13 +221,13 @@ public class JPanelBoard {
         for (int x = 0; x < cells.length; x++) {
             for (int y = 0; y < cells.length; y++) {
 
-
-                switch (board[x][y]) {
+                
+                switch (client.getBoard().getBoard()[x][y]) {
                     case VACANT:
                         cells[x][y] = new JButton();
                         cells[x][y].setPreferredSize(new Dimension(60, 60));
                         cells[x][y].setBackground(Color.ORANGE);
-                        cells[x][y].setEnabled(false);
+                        
                         break;
                     case AVAILABLE:
                         cells[x][y] = new JButton();
@@ -239,36 +240,8 @@ public class JPanelBoard {
                         });
 
                 }
-//                cells[x][y] = new JButton();
-//                cells[x][y].setPreferredSize(new Dimension(60, 60));
-//                cells[x][y].setBackground(Color.WHITE);
-//                final int xx = x;
-//                final int yy = y;
-//                cells[x][y].addActionListener(e -> {
-//                    clientGame.clickBoardCell(xx, yy);
-//                });
+                cells[x][y].setEnabled(false);
 
-//                switch (board[x][y]) {
-//                    case : {
-//
-//                    }
-//                }
-                //cells[x][y].setText("");
-//                cells[x][y] = new JButton();
-//
-//                cells[x][y].setPreferredSize(new Dimension(60, 60));
-//                cells[x][y].setBackground(Color.WHITE);
-////                final int xx = x;
-////                final int yy = y;
-//                cells[x][y].addActionListener(e -> {
-//                    clientGame.clickBoardCell(0, 0);
-//                });
-////                table.setValueAt(cells[x][y], x, y);
-//                table.addMouseListener(new MouseAdapter);
-
-
-
-                //boardSquares[x][y].set
             }
         }
 
@@ -361,7 +334,10 @@ public class JPanelBoard {
         log.debug("inside onConnectClick");
         try {
             log.debug("inside onConnectClick before getClientPacket.connectToServer()");
-            this.client.getClientPacket().connectToServer();
+             if (this.client.getClientPacket().connectToServer()){
+                 this.textArea.setText("connection successful");
+                 enableBoard();
+             }
             log.debug("inside onConnectClick after getClientPacket.connectToServer()");
             this.connectBtn.setEnabled(false);
             this.connectBtn.setBackground(Color.GREEN);
@@ -371,5 +347,18 @@ public class JPanelBoard {
         }
         
         
+    }
+
+    private void enableBoard() {
+        log.debug("start enableBoard ");
+        CellState[][] board = client.getBoard().getBoard(); 
+        log.debug("board to string  " +  Arrays.toString(board));
+        for (int i = 0; i < board[0].length; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (board[i][j] != CellState.VACANT){
+                    cells[i][j].setEnabled(true);
+                }
+            }
+        }
     }
 }
