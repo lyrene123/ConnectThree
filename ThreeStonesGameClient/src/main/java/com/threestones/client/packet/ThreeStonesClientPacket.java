@@ -28,43 +28,18 @@ public class ThreeStonesClientPacket {
     public void sendMove(int x, int y) {
         log.debug("position x " + x + "position y " + y);
 
-        // byteFueer has to be assigned
-        // only make socket connection once
-        if (!isConnected) {
-            isConnected = true;
-            //  1 is move
-            // 0 is want to start game
-            //2 players last move makes gameOver = true
-            //
-            byte[] byteBuffer = {(byte) 1, (byte) x, (byte) y,};
-            // Create socket that is connected to server on specified port
-            try {
-                //Socket socket = new Socket(server, port);
-
-                //sends byte to server
-                this.outStream.write(byteBuffer);						// Send the encoded string to the server
-
-                //receives server response
-                int totalBytesRcvd = 0;						// Total bytes received so far
-                int bytesRcvd;								// Bytes received in last read
-                while (totalBytesRcvd < byteBuffer.length) {
-                    if ((bytesRcvd = inStream.read(byteBuffer, totalBytesRcvd,
-                            byteBuffer.length - totalBytesRcvd)) == -1) {
-                        throw new SocketException("Connection close prematurely");
-                    }
-                    totalBytesRcvd += bytesRcvd;
-                }
-
-                log.debug("Received: " + new String(byteBuffer));
-
-                socket.close();
-
-            } catch (IOException ex) {
-                log.debug(ex.getMessage());
-            }
-            System.out.println("Connected to server...sending echo string");
+        byte[] byteBuffer = {(byte) 1, (byte) x, (byte) y,};
+        // Create socket that is connected to server on specified port
+        try {
+            //sends byte to server
+            this.outStream.write(byteBuffer);						// Send the encoded string to the server
+            
+            
             // Close the socket and its streams
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     public boolean connectToServer() throws IOException {
@@ -76,12 +51,13 @@ public class ThreeStonesClientPacket {
         byteBuffer[0] = 0;
         outStream.write(byteBuffer);
 
-        byte[] b = receivePacket(byteBuffer);
+        byte[] b = receivePacket();
         log.debug("buildConnection and bytebuffer for each " + Arrays.toString(byteBuffer));
         return b[0] == 0;
     }
 
-    public byte[] receivePacket(byte[] byteBuffer) throws SocketException, IOException {
+    public byte[] receivePacket() throws SocketException, IOException {
+        byte[] byteBuffer = new byte[4];
         int totalBytesRcvd = 0;						// Total bytes received so far
         int bytesRcvd;
         while (totalBytesRcvd < byteBuffer.length) {

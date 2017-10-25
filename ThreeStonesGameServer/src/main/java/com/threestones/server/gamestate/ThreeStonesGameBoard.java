@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 /**
  * Encapsulates the behavior and properties of a game board in a game of Three
@@ -33,7 +34,8 @@ public class ThreeStonesGameBoard {
     /**
      * Default constructor
      */
-    public ThreeStonesGameBoard() {}
+    public ThreeStonesGameBoard() {
+    }
 
     /**
      * Initializes the game board by setting the black stones and white stones
@@ -211,7 +213,7 @@ public class ThreeStonesGameBoard {
 
         return points;
     }
-    
+
     /**
      * Updates the board with the new coordinate x and y and returns the altered
      * version of the board by returning the CellState 2D array
@@ -221,7 +223,7 @@ public class ThreeStonesGameBoard {
      * @return CellState 2D array
      */
     public CellState[][] getBoardChange(int x, int y) {
-        CellState[][] board = this.board;
+        CellState[][] board = this.board.clone();
 
         if (!checkIfFull(x, y)) {
             for (int i = 0; i < board[0].length; i++) {
@@ -245,10 +247,22 @@ public class ThreeStonesGameBoard {
         return board;
     }
 
+    public void makeMove(int x, int y,CellState color) {
+        
+        int points = checkForThreeStones(x,y,color);
+        if (color == CellState.WHITE){
+            whiteScore += points;
+        } else {
+            blackScore += points;
+        }
+        this.board = getBoardChange(x, y);
+
+    }
+
     /**
-     * Checks if a row x and column y is full with stones on the game board and 
+     * Checks if a row x and column y is full with stones on the game board and
      * returns a boolean true or false
-     * 
+     *
      * @param x int x row
      * @param y int y column
      * @return boolean
@@ -271,12 +285,12 @@ public class ThreeStonesGameBoard {
     }
 
     /**
-     * Reads the gameboard layout from a file and put data from the file into
-     * a 2D array
-     * 
+     * Reads the gameboard layout from a file and put data from the file into a
+     * 2D array
+     *
      * @param filename filename String
      * @return 2D array
-     * @throws IOException 
+     * @throws IOException
      */
     private int[][] constructArrayFromFile(String filename) throws IOException {
         InputStream stream = ClassLoader.getSystemResourceAsStream(filename);
