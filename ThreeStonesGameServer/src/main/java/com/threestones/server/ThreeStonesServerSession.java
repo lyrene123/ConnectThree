@@ -107,14 +107,14 @@ public class ThreeStonesServerSession {
                     x = receivedPacket[2];
                     y = receivedPacket[3];
                     serverGame.updateBoard(x, y);
-                    //handlePlayerMove(receivedPacket, out);
+                    //handlePlayerMove(receivedPacket);
                     break;
                 case 2: //player's last move
                     log.debug("code 2");
                     x = receivedPacket[2];
                     y = receivedPacket[3];
                     serverGame.updateBoard(x, y);
-                    //handlePlayerMove(receivedPacket, out); 
+                    //handlePlayerMove(receivedPacket); 
                     isGameOver = true;
                     return 0;
                 case 3: //player's request to play again

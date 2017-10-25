@@ -117,3 +117,23 @@
 [DEBUG] 2017-10-24 20:34:48.604 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick
 [DEBUG] 2017-10-24 20:34:48.604 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick before getClientPacket.connectToServer()
 [DEBUG] 2017-10-24 20:34:48.604 [AWT-EventQueue-0] ThreeStonesClientPacket - inside connectToServer begin creation of socket
+[DEBUG] 2017-10-25 11:05:22.342 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick
+[DEBUG] 2017-10-25 11:05:22.342 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick before getClientPacket.connectToServer()
+[DEBUG] 2017-10-25 11:05:22.342 [AWT-EventQueue-0] ThreeStonesClientPacket - inside connectToServer begin creation of socket
+[DEBUG] 2017-10-25 11:05:22.358 [AWT-EventQueue-0] ThreeStonesClientPacket - buildConnection and bytebuffer for each [0, 0, 0, 0]
+[DEBUG] 2017-10-25 11:05:22.358 [AWT-EventQueue-0] JPanelBoard - start enableBoard 
+[DEBUG] 2017-10-25 11:05:22.358 [AWT-EventQueue-0] JPanelBoard - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7ae3e716, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2be28429, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3a7434b3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ec4e91c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5b7a6285, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6406660f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7fcc0790, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@66599d7c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6ebfa578, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@395e80be, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2631e082]
+[DEBUG] 2017-10-25 11:05:22.358 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick after getClientPacket.connectToServer()
+[DEBUG] 2017-10-25 11:05:22.358 [AWT-EventQueue-0] JPanelBoard - inside onConnectClick end of try catch
+[DEBUG] 2017-10-25 11:05:23.483 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 5
+[DEBUG] 2017-10-25 11:05:23.483 [AWT-EventQueue-0] ThreeStonesClientPacket - position x 5position y 7
+[DEBUG] 2017-10-25 11:17:58.210 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-25 11:17:58.210 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick before getClientPacket.connectToServer()
+[DEBUG] 2017-10-25 11:17:58.210 [AWT-EventQueue-0] ThreeStonesClientPacket - inside connectToServer begin creation of socket
+[DEBUG] 2017-10-25 11:17:58.225 [AWT-EventQueue-0] ThreeStonesClientPacket - buildConnection and bytebuffer for each [0, 0, 0, 0]
+[DEBUG] 2017-10-25 11:17:58.225 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-25 11:17:58.225 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@275dc39d, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@358cad2e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@66f855d4, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@53fb06f8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1af37631, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4ac65d9c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6eb4f7e5, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6573f00d, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6430406c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1c62dbcb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@55a00c7d]
+[DEBUG] 2017-10-25 11:17:58.225 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick after getClientPacket.connectToServer()
+[DEBUG] 2017-10-25 11:17:58.241 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick end of try catch
+[DEBUG] 2017-10-25 11:18:01.256 [AWT-EventQueue-0] ThreeStonesClient - sent: 2 4
+[DEBUG] 2017-10-25 11:18:01.256 [AWT-EventQueue-0] ThreeStonesClientPacket - position x 4position y 2

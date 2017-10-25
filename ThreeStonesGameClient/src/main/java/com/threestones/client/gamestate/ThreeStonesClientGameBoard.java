@@ -36,6 +36,7 @@ public class ThreeStonesClientGameBoard {
      * Default constructor
      */
     public ThreeStonesClientGameBoard() {
+        this.startNewGame();
     }
 
     /**
@@ -300,15 +301,12 @@ public class ThreeStonesClientGameBoard {
 
         String line;
         int row = 0;
-        int size = 0;
+        int size = 11;
         String token = ",";
-        int[][] arr = null;
+        int[][] arr = new int[size][size];
 
         while ((line = buffer.readLine()) != null) {
             String[] vals = line.trim().split(token);
-            size = vals.length;
-            arr = new int[size][size];
-
             for (int col = 0; col < size; col++) {
                 arr[row][col] = Integer.parseInt(vals[col]);
             }

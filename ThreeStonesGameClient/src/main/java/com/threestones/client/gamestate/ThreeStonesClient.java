@@ -7,7 +7,7 @@ package com.threestones.client.gamestate;
 
 import com.threestones.client.gamestate.ThreeStonesClientGameBoard.CellState;
 import com.threestones.client.packet.ThreeStonesClientPacket;
-import com.threestones.view.JPanelBoard;
+import com.threestones.view.ThreeStonesGUI;
 import java.io.IOException;
 import org.slf4j.LoggerFactory;
 
@@ -18,19 +18,15 @@ import org.slf4j.LoggerFactory;
 public class ThreeStonesClient {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
-    private static ThreeStonesClientGameBoard board;
-    private static ThreeStonesClientPacket clientPacket;
-    private static JPanelBoard ui;
+    private  ThreeStonesClientGameBoard board;
+    private  ThreeStonesClientPacket clientPacket;
+
     
-    public ThreeStonesClient(){
+    
+    public ThreeStonesClient() {
+        board = new ThreeStonesClientGameBoard();
+        clientPacket = new ThreeStonesClientPacket();
     }
-    public static void main(String args[]){
-        ui = new JPanelBoard();     
-   }
-//    public ThreeStonesClient() {
-//        board = new ThreeStonesClientGameBoard();
-//        clientPacket = new ThreeStonesClientPacket();
-//    }
 
     public ThreeStonesClientGameBoard getBoard() {
         return board;
