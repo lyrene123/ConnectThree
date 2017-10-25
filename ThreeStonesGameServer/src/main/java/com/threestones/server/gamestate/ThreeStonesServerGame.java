@@ -1,6 +1,6 @@
 package com.threestones.server.gamestate;
 
-import com.threestones.server.gamestate.ThreeStonesGameBoard.CellState;
+import com.threestones.server.gamestate.ThreeStonesServerGameBoard.CellState;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.LoggerFactory;
@@ -11,14 +11,14 @@ import org.slf4j.LoggerFactory;
  */
 public class ThreeStonesServerGame {
 
-    private ThreeStonesGameBoard board;
+    private ThreeStonesServerGameBoard board;
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
     //DEPENDING ON WHERE WE WANT TO TAKE THIS WE CAN ADD MORE MOVE COMPLEXITY SO THAT IT CHECKS THE AVAILALBE
     //SQUARES THAT WILL BECOME AVAILABLE BASE ON A CERTAIN MOVE AND THE SCORES WHITE OR BLACK CAN SCORE IN THE FUTURE (reading ahead of time)
     public ThreeStonesServerGame() {
-        this.board = new ThreeStonesGameBoard();
+        this.board = new ThreeStonesServerGameBoard();
     }
 
     public void updateBoard(int x, int y) {

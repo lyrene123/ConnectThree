@@ -1,4 +1,4 @@
-package com.threestones.server.gamestate;
+package com.threestones.client.gamestate;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.util.Arrays;
  * @author Lyrene
  * @author Jacob
  */
-public class ThreeStonesGameBoard {
+public class ThreeStonesClientGameBoard {
 
     /**
      * Enums holding the different states of a slot in a Three Stones game board
@@ -30,11 +30,12 @@ public class ThreeStonesGameBoard {
     private int whiteStoneCount;
     private int whiteScore;
     private int blackScore;
-
+    
+    
     /**
      * Default constructor
      */
-    public ThreeStonesGameBoard() {
+    public ThreeStonesClientGameBoard() {
     }
 
     /**
@@ -247,7 +248,7 @@ public class ThreeStonesGameBoard {
         return board;
     }
 
-    public void makeMove(int x, int y,CellState color) {
+    public void updateBoard(int x, int y,CellState color) {
         
         int points = checkForThreeStones(x,y,color);
         if (color == CellState.WHITE){
@@ -256,6 +257,7 @@ public class ThreeStonesGameBoard {
             blackScore += points;
         }
         this.board = getBoardChange(x, y);
+        //JPnaelBoard.reDraw();
 
     }
 

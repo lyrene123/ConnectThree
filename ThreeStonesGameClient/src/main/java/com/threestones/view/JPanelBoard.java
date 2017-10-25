@@ -6,8 +6,8 @@
 package com.threestones.view;
 
 import com.threestones.client.gamestate.ThreeStonesClient;
-import com.threestones.client.gamestate.ThreeStonesGameBoard;
-import com.threestones.client.gamestate.ThreeStonesGameBoard.CellState;
+import com.threestones.client.gamestate.ThreeStonesClientGameBoard;
+import com.threestones.client.gamestate.ThreeStonesClientGameBoard.CellState;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -45,6 +45,7 @@ import org.slf4j.LoggerFactory;
  * @author 1411544
  */
 public class JPanelBoard {
+
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
     //the string map array will hold the state of all tiles generated from a CSV file.
     //A tile represents all available squares for the user to play
@@ -88,8 +89,29 @@ public class JPanelBoard {
     private ThreeStonesClient client;
 
     public JPanelBoard() {
-        this.client = new ThreeStonesClient();
-        
+        // this.client = new ThreeStonesClient();
+        Runnable r;
+        r = new Runnable() {
+            JPanelBoard ts = new JPanelBoard();
+
+            @Override
+            public void run() {
+                ts.buildView();
+                JFrame gameBoard = new JFrame("3 Stones");
+                gameBoard.add(ts.getGui());
+                gameBoard.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                gameBoard.setLocationByPlatform(true);
+
+                // ensures the frame is the minimum size it needs to be
+                // in order display the components within it
+                gameBoard.pack();
+                // ensures the minimum size is enforced.
+                gameBoard.setMinimumSize(gameBoard.getSize());
+                gameBoard.setVisible(true);
+
+            }
+        };
+        SwingUtilities.invokeLater(r);
         //this.map = parseCSV("");
     }
 
@@ -211,8 +233,7 @@ public class JPanelBoard {
         mainView.add(boardGame, BorderLayout.CENTER);
         settingsPanel.add(settingsToolbar);
         mainView.add(settingsPanel, BorderLayout.PAGE_END);
-        
-        
+
         // create the board squares
         Insets buttonMargin = new Insets(0, 0, 0, 0);
         JPanel pane = new JPanel();
@@ -221,13 +242,12 @@ public class JPanelBoard {
         for (int x = 0; x < cells.length; x++) {
             for (int y = 0; y < cells.length; y++) {
 
-                
                 switch (client.getBoard().getBoard()[x][y]) {
                     case VACANT:
                         cells[x][y] = new JButton();
                         cells[x][y].setPreferredSize(new Dimension(60, 60));
                         cells[x][y].setBackground(Color.ORANGE);
-                        
+
                         break;
                     case AVAILABLE:
                         cells[x][y] = new JButton();
@@ -236,7 +256,11 @@ public class JPanelBoard {
                         final int xx = x;
                         final int yy = y;
                         cells[x][y].addActionListener(e -> {
-                            client.clickBoardCell(xx, yy);
+                    try {
+                        client.clickBoardCell(xx, yy);
+                    } catch (IOException ex) {
+                        Logger.getLogger(JPanelBoard.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                         });
 
                 }
@@ -305,39 +329,38 @@ public class JPanelBoard {
      * @return
      * @throws IOException
      */
-    public static void main(String[] args) throws IOException {
-        Runnable r;
-        r = new Runnable() {
-            JPanelBoard ts = new JPanelBoard();
-
-            @Override
-            public void run() {
-                ts.buildView();
-                JFrame gameBoard = new JFrame("3 Stones");
-                gameBoard.add(ts.getGui());
-                gameBoard.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                gameBoard.setLocationByPlatform(true);
-
-                // ensures the frame is the minimum size it needs to be
-                // in order display the components within it
-                gameBoard.pack();
-                // ensures the minimum size is enforced.
-                gameBoard.setMinimumSize(gameBoard.getSize());
-                gameBoard.setVisible(true);
-
-            }
-        };
-        SwingUtilities.invokeLater(r);
-    }
-
+//    public static void main(String[] args) throws IOException {
+//        Runnable r;
+//        r = new Runnable() {
+//            JPanelBoard ts = new JPanelBoard();
+//
+//            @Override
+//            public void run() {
+//                ts.buildView();
+//                JFrame gameBoard = new JFrame("3 Stones");
+//                gameBoard.add(ts.getGui());
+//                gameBoard.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//                gameBoard.setLocationByPlatform(true);
+//
+//                // ensures the frame is the minimum size it needs to be
+//                // in order display the components within it
+//                gameBoard.pack();
+//                // ensures the minimum size is enforced.
+//                gameBoard.setMinimumSize(gameBoard.getSize());
+//                gameBoard.setVisible(true);
+//
+//            }
+//        };
+//        SwingUtilities.invokeLater(r);
+//    }
     private void onConnectClick() {
         log.debug("inside onConnectClick");
         try {
             log.debug("inside onConnectClick before getClientPacket.connectToServer()");
-             if (this.client.getClientPacket().connectToServer()){
-                 this.textArea.setText("connection successful");
-                 enableBoard();
-             }
+            if (this.client.getClientPacket().connectToServer()) {
+                this.textArea.setText("connection successful");
+                enableBoard();
+            }
             log.debug("inside onConnectClick after getClientPacket.connectToServer()");
             this.connectBtn.setEnabled(false);
             this.connectBtn.setBackground(Color.GREEN);
@@ -345,17 +368,16 @@ public class JPanelBoard {
         } catch (IOException ex) {
             Logger.getLogger(JPanelBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
 
     private void enableBoard() {
         log.debug("start enableBoard ");
-        CellState[][] board = client.getBoard().getBoard(); 
-        log.debug("board to string  " +  Arrays.toString(board));
+        CellState[][] board = client.getBoard().getBoard();
+        log.debug("board to string  " + Arrays.toString(board));
         for (int i = 0; i < board[0].length; i++) {
             for (int j = 0; j < 10; j++) {
-                if (board[i][j] != CellState.VACANT){
+                if (board[i][j] != CellState.VACANT) {
                     cells[i][j].setEnabled(true);
                 }
             }

@@ -5,8 +5,9 @@
  */
 package com.threestones.client.gamestate;
 
-import com.threestones.client.gamestate.ThreeStonesGameBoard.CellState;
+import com.threestones.client.gamestate.ThreeStonesClientGameBoard.CellState;
 import com.threestones.client.packet.ThreeStonesClientPacket;
+import com.threestones.view.JPanelBoard;
 import java.io.IOException;
 import org.slf4j.LoggerFactory;
 
@@ -17,15 +18,21 @@ import org.slf4j.LoggerFactory;
 public class ThreeStonesClient {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
-    private ThreeStonesGameBoard board;
-    private ThreeStonesClientPacket clientPacket;
-
-    public ThreeStonesClient() {
-        board = new ThreeStonesGameBoard();
-        clientPacket = new ThreeStonesClientPacket();
+    private static ThreeStonesClientGameBoard board;
+    private static ThreeStonesClientPacket clientPacket;
+    private static JPanelBoard ui;
+    
+    public ThreeStonesClient(){
     }
+    public static void main(String args[]){
+        ui = new JPanelBoard();     
+   }
+//    public ThreeStonesClient() {
+//        board = new ThreeStonesClientGameBoard();
+//        clientPacket = new ThreeStonesClientPacket();
+//    }
 
-    public ThreeStonesGameBoard getBoard() {
+    public ThreeStonesClientGameBoard getBoard() {
         return board;
     }
 
@@ -55,31 +62,33 @@ public class ThreeStonesClient {
         byte[] byteBuffer = clientPacket.receivePacket();
         int x, y;
         switch (byteBuffer[0]) {
-            case 1: //player's move
-                log.debug("code 1");
+            case 1: //servers's move
+                log.debug("code 1 receive servers's move");
                 x = byteBuffer[2];
                 y = byteBuffer[3];
-                board.updateBoard(x, y);
+                board.updateBoard(x, y, CellState.BLACK);
                 //handlePlayerMove(receivedPacket, out);
                 break;
-            case 2: //player's last move
-                log.debug("code 2");
-                x = receivedPacket[2];
-                y = receivedPacket[3];
-                serverGame.updateBoard(x, y);
+            case 2: //the response if our move is valid
+                log.debug("code 2 the response if our move is valid");
+                x = byteBuffer[2];
+                y = byteBuffer[3];
+                board.updateBoard(x, y, CellState.WHITE);
                 //handlePlayerMove(receivedPacket, out); 
-                isGameOver = true;
-                return 0;
+                //isGameOver = true;
+                //return 0;
             case 3: //player's request to play again
                 log.debug("code 3"); //player wants to play again
-                isPlayAgain = true;
-                isGameOver = false;
+                //isPlayAgain = true;
+                //isGameOver = false;
                 break;
             case 4: //player's request not to play again
                 log.debug("code 4");
-                isPlayAgain = false;
-                return -1;
+               // isPlayAgain = false;
+                //return -1;
         }
+        
+        
 
     }
 
