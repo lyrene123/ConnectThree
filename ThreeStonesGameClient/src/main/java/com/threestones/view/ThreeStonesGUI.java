@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -19,12 +18,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import org.slf4j.LoggerFactory;
 
@@ -81,10 +77,11 @@ public class ThreeStonesGUI {
     }
 
     /**
-     *
+     * Builds the User Interface of the Three Stones game to display to the user
+     * containing the board game, the points, the number of stones and other
+     * info such as the ip address of the server
      */
     public void buildThreeStonesUI() {
-
         //Create and set up the window.
         frame = new JFrame("ThreeStones");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,39 +135,44 @@ public class ThreeStonesGUI {
         settingsPanel.add(settingsToolbar);
 
         frame.getContentPane().add(settingsPanel, BorderLayout.SOUTH);
-        //frame.setJMenuBar(greenMenuBar);
-        // frame.getContentPane().add(yellowLabel, BorderLayout.CENTER);
         frame.add(mainRootPane);
 
         //Display the window.
         frame.pack();
         frame.setVisible(true);
-
-        //-------------------------------------------
-        // mainRootPane.setBorder(new EmptyBorder(5, 10, 5, 10));
-        //  mainRootPane.add(settingsPanel, BorderLayout.PAGE_END);
     }
 
+    /**
+     * Helper method to build the three stones game board with the cells or slots
+     * with the appropriate initial cell state. Each slot are represented by a
+     * button on the UI and the content of the board is taken from the board saved
+     * in the ThreeStonesClient instance.
+     */
     private void buildGameBoard() {
-        // create the board squares
+        //loop through the 2D array which represents the game board and fill the array 
         for (int x = 0; x < gameBoardCells.length; x++) {
             for (int y = 0; y < gameBoardCells.length; y++) {
+                //fill the empty gameBoardCells array according to the board saved in the client instance
                 switch (clientGameBoard.getBoard()[x][y]) {
-                    case VACANT:
+                    case VACANT: //if vacant slot, make the button color orange
                         gameBoardCells[x][y] = new JButton();
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
                         gameBoardCells[x][y].setBackground(Color.ORANGE);
                         break;
-                    case AVAILABLE:
+                    case AVAILABLE: //if available slot, then set button color to white and set click listeners
                         gameBoardCells[x][y] = new JButton();
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
                         gameBoardCells[x][y].setBackground(Color.WHITE);
-                        final int xx = x;
-                        final int yy = y;
+                        final int positionX = x;
+                        final int positionY = y;
                         gameBoardCells[x][y].addActionListener(e -> {
                             try {
+<<<<<<< HEAD
                                 threeStonesClnt.clickBoardCell(xx, yy);
                                 
+=======
+                                threeStonesClnt.clickBoardCell(positionX, positionY);
+>>>>>>> d24787b56e1e4ba42c38b5ac9418cb6cf8dc4388
                             } catch (IOException ex) {
                                 Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -181,6 +183,7 @@ public class ThreeStonesGUI {
             }
         }
 
+        //the following loop is to add the gameBoardCells array to the UI 
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
                 threeStonesGameBoard.add(gameBoardCells[j][i]);
@@ -188,6 +191,10 @@ public class ThreeStonesGUI {
         }
     }
 
+    /**
+     * Builds the text area in the UI where information are displayed to the user
+     * such as game over, game win or tie.
+     */
     private void buildTextArea() {
         textArea = new JTextArea(1, 1);
         textArea.setLineWrap(true);
@@ -195,6 +202,10 @@ public class ThreeStonesGUI {
         frame.getContentPane().add(textArea, BorderLayout.EAST);
     }
 
+    /**
+     * Builds the panel containing the scores information
+     * @param scoresPanel JPanel which to build
+     */
     private void buildScoresPanel(JPanel scoresPanel) {
         scoresPanel.setLayout(new BoxLayout(scoresPanel, BoxLayout.X_AXIS));
         scoresPanel.setBackground(Color.decode("#e67e22"));
@@ -209,6 +220,10 @@ public class ThreeStonesGUI {
         mainRootPane.add(scoresPanel, BorderLayout.PAGE_START);
     }
 
+    /**
+     * Builds the tool bar containing the scores information
+     * @param scoresToolbar JToolBar to build
+     */
     private void buildScoresToolBar(JToolBar scoresToolbar) {
         scoresToolbar.setFloatable(false);
         scoresToolbar.setBackground(Color.decode("#e67e22"));
@@ -219,6 +234,9 @@ public class ThreeStonesGUI {
         scoresToolbar.setAlignmentX(0);
     }
 
+    /**
+     * Builds the Label containing the server score title
+     */
     private void buildServerScoreLbl() {
         serverScorePnts.setHorizontalAlignment(JTextField.CENTER);
         serverScorePnts.setMaximumSize(new Dimension(100, 150));
@@ -226,6 +244,9 @@ public class ThreeStonesGUI {
         serverScorePnts.setForeground(Color.BLACK);
     }
 
+    /**
+     * Builds the Label containing the client score title
+     */
     private void buildClientScoreLbl() {
         clientScorePnts.setHorizontalAlignment(JTextField.CENTER);
         clientScorePnts.setPreferredSize(new Dimension(150, 40));
@@ -234,6 +255,10 @@ public class ThreeStonesGUI {
         clientScorePnts.setForeground(Color.WHITE);
     }
 
+    /**
+     * Builds the label containing the host number title
+     * @param settingsToolbar JToolBar in which to add the label
+     */
     private void buildHostNumField(JToolBar settingsToolbar) {
         hostNum.setHorizontalAlignment(JTextField.CENTER);
         hostNum.setBorder(new LineBorder(Color.decode("#e67e22"), 1));
@@ -242,6 +267,10 @@ public class ThreeStonesGUI {
         settingsToolbar.setAlignmentX(0);
     }
 
+    /**
+     * Builds the label containing the port number 
+     * @param settingsToolbar JToolBar in which to add the label
+     */
     private void buildPortNumField(JToolBar settingsToolbar) {
         portNum.setHorizontalAlignment(JTextField.CENTER);
         portNum.setBorder(new LineBorder(Color.decode("#e67e22"), 1));
@@ -256,6 +285,10 @@ public class ThreeStonesGUI {
         mainRootPane.setBackground(Color.decode("#e67e22"));
     }
 
+    /**
+     * Builds the button that connects to the server
+     * @param settingsToolbar JToolBar in which to add the label
+     */
     private void buildConnectBtn(JToolBar settingsToolbar) {
         connectBtn.setFont(new Font("Monospace", Font.BOLD, 15));
         connectBtn.setPreferredSize(new Dimension(100, 30));
@@ -265,6 +298,10 @@ public class ThreeStonesGUI {
         settingsToolbar.add(connectBtn);
     }
 
+    /**
+     * Builds the button that quits the game
+     * @param settingsToolbar JToolBar in which to add the label
+     */
     private void buildQuitBtn(JToolBar settingsToolbar) {
         quitBtn.setFont(new Font("Monospace", Font.BOLD, 15));
         quitBtn.setPreferredSize(new Dimension(100, 30));
@@ -275,6 +312,10 @@ public class ThreeStonesGUI {
         settingsToolbar.add(quitBtn);
     }
 
+    /**
+     * Builds the button that play the game
+     * @param settingToolBar JToolBar in which to add the label
+     */
     private void buildPlayAgainBtn(JToolBar settingToolBar) {
         playAgainButton.setPreferredSize(new Dimension(100, 30));
         playAgainButton.setFont(new Font("Monospace", Font.BOLD, 15));
@@ -285,22 +326,43 @@ public class ThreeStonesGUI {
         settingToolBar.add(playAgainButton);
     }
 
+    /**
+     * Returns the JComponent main root pane layout
+     * @return JComponent object 
+     */
     public final JComponent getMainView() {
         return mainRootPane;
     }
 
+    /**
+     * Returns the text area of the UI
+     * @return JComponent object
+     */
     public JComponent getGameLog() {
         return textArea;
     }
 
+    /**
+     * Returns the port number text field from the UI
+     * @return String 
+     */
     public String getPortNumber() {
         return portNum.getText();
     }
 
+    /**
+     * Returns the ip text field from the UI
+     * @return String
+     */
     public String getIp() {
         return hostNum.getText();
     }
 
+    /**
+     * Event handler method that handles the click event of the connect button.
+     * It enables all button on the board and displays the to the user that connection
+     * has been established and user can start playing.
+     */
     private void onConnectClick() {
         log.debug("inside onConnectClick");
         enableBoard();
@@ -320,10 +382,14 @@ public class ThreeStonesGUI {
 
     }
 
+    /**
+     * Enables the game board by making all available slots/button clickable.
+     */
     private void enableBoard() {
         log.debug("start enableBoard ");
-        CellState[][] board = threeStonesClnt.getBoard().getBoard();
+        CellState[][] board = clientGameBoard.getBoard();
         log.debug("board to string  " + Arrays.toString(board));
+        //loop through the gameBoardCells cells and make all vacant buttons to enabled
         for (int i = 0; i < board[0].length; i++) {
             for (int j = 0; j < 10; j++) {
                 if (board[i][j] != CellState.VACANT) {
@@ -333,10 +399,18 @@ public class ThreeStonesGUI {
         }
     }
 
+    /**
+     * Event handler method that handles the click event of the quit game by 
+     * closing the connection with the server which ends the game
+     */
     private void onCloseConnectionClick() {
 
     }
 
+    /**
+     * Event handler method for the play again button which resets the boards and
+     * the points
+     */
     private void onPlayAgainClick() {
         // this must clear board and scores but keeps connection
     }
