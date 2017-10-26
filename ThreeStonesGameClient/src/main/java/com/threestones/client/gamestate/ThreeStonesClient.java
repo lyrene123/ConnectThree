@@ -46,7 +46,7 @@ public class ThreeStonesClient {
             
             ThreeStonesClientGame localGame = new ThreeStonesClientGame();
             localGame.updateBoard(x, y);
-            localGame.determineNextMove();
+            localGame.determineNextMove(x, y );
             
             serverResponse();
             //ThreeStonesClientPacket.sendMove(x,y);
