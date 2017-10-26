@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.threestones.client.app;
 
 import com.threestones.view.ThreeStonesGUI;
@@ -11,10 +7,24 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 /**
- *
- * @author 1412844
+ * Main application for the client side in a game of Three Stones. This is the
+ * main application that would be executed in order to display the UI of the 
+ * game to the user and enable the user to connect to the server side application
+ * of the Three Stones and start playing against the server.
+ * 
+ * @author Eric
+ * @author Lyrene
+ * @author Jacob
  */
 public class ThreeStonesClientApp {
+    /**
+     * Creates a JFrame window for the gameboard of the Three Stones game 
+     * and displays it to the user in order to connect to the server and
+     * start the game.
+     * 
+     * @param args command line arguments
+     * @throws IOException 
+     */
     public static void main(String[] args) throws IOException {
         Runnable r;
         r = new Runnable() {
@@ -22,19 +32,14 @@ public class ThreeStonesClientApp {
 
             @Override
             public void run() {
-                ts.buildView();
-                JFrame gameBoard = new JFrame("3 Stones");
-                gameBoard.add(ts.getMainView());
-                gameBoard.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                gameBoard.setLocationByPlatform(true);
-
-                // ensures the frame is the minimum size it needs to be
-                // in order display the components within it
-                gameBoard.pack();
-                // ensures the minimum size is enforced.
-                gameBoard.setMinimumSize(gameBoard.getSize());
-                gameBoard.setVisible(true);
-
+                ts.buildThreeStonesUI();
+               /* JFrame threeStonesBoardUI = new JFrame("Three Stones Game");
+                threeStonesBoardUI.add(ts.getMainView());
+                threeStonesBoardUI.setLocationByPlatform(true);
+                threeStonesBoardUI.pack(); //set the window to preferred size
+                threeStonesBoardUI.setMinimumSize(threeStonesBoardUI.getSize());
+                threeStonesBoardUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                threeStonesBoardUI.setVisible(true);*/
             }
         };
         SwingUtilities.invokeLater(r);
