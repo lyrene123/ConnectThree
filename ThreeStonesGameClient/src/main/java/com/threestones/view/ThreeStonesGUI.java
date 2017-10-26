@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -19,12 +18,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import org.slf4j.LoggerFactory;
 
@@ -81,10 +77,11 @@ public class ThreeStonesGUI {
     }
 
     /**
-     *
+     * Builds the User Interface of the Three Stones game to display to the
+     * user containing the board game, the points, the number of stones and 
+     * other info such as the ip address of the server
      */
     public void buildThreeStonesUI() {
-
         //Create and set up the window.
         frame = new JFrame("ThreeStones");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,17 +135,11 @@ public class ThreeStonesGUI {
         settingsPanel.add(settingsToolbar);
 
         frame.getContentPane().add(settingsPanel, BorderLayout.SOUTH);
-        //frame.setJMenuBar(greenMenuBar);
-        // frame.getContentPane().add(yellowLabel, BorderLayout.CENTER);
         frame.add(mainRootPane);
 
         //Display the window.
         frame.pack();
         frame.setVisible(true);
-
-        //-------------------------------------------
-        // mainRootPane.setBorder(new EmptyBorder(5, 10, 5, 10));
-        //  mainRootPane.add(settingsPanel, BorderLayout.PAGE_END);
     }
 
     private void buildGameBoard() {
