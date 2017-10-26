@@ -302,19 +302,20 @@ public class ThreeStonesGUI {
 
     private void onConnectClick() {
         log.debug("inside onConnectClick");
-        try {
-            log.debug("inside onConnectClick before getClientPacket.connectToServer()");
-            if (this.threeStonesClnt.getClientPacket().connectToServer()) {
-                this.textArea.setText("connection successful");
-                enableBoard();
-            }
-            log.debug("inside onConnectClick after getClientPacket.connectToServer()");
-            this.connectBtn.setEnabled(false);
-            this.connectBtn.setBackground(Color.GREEN);
-            log.debug("inside onConnectClick end of try catch");
-        } catch (IOException ex) {
-            Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        enableBoard();
+//        try {
+//            log.debug("inside onConnectClick before getClientPacket.connectToServer()");
+//            if (this.threeStonesClnt.getClientPacket().connectToServer()) {
+//                this.textArea.setText("connection successful");
+//                
+//            }
+//            log.debug("inside onConnectClick after getClientPacket.connectToServer()");
+//            this.connectBtn.setEnabled(false);
+//            this.connectBtn.setBackground(Color.GREEN);
+//            log.debug("inside onConnectClick end of try catch");
+//        } catch (IOException ex) {
+//            Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }
 

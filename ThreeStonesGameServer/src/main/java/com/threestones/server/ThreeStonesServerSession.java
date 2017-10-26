@@ -104,10 +104,12 @@ public class ThreeStonesServerSession {
                     break;
                 case 1: //player's move
                     log.debug("code 1");
+                    log.debug("inside receiveClientPackets case1");
                     x = receivedPacket[2];
                     y = receivedPacket[3];
+                    log.debug("before severGame.updateBoard");
                     serverGame.updateBoard(x, y);
-                    //handlePlayerMove(receivedPacket);
+                    createPacketServerMove(receivedPacket);
                     break;
                 case 2: //player's last move
                     log.debug("code 2");

@@ -28,7 +28,7 @@ public class ThreeStonesClientPacket {
     public void sendMove(int x, int y) {
         log.debug("position x " + x + "position y " + y);
 
-        byte[] byteBuffer = {(byte) 1, (byte) x, (byte) y,};
+        byte[] byteBuffer = {(byte) 1, (byte) x, (byte) y, (byte)0};
         // Create socket that is connected to server on specified port
         try {
             //sends byte to server
@@ -60,6 +60,7 @@ public class ThreeStonesClientPacket {
         byte[] byteBuffer = new byte[4];
         int totalBytesRcvd = 0;						// Total bytes received so far
         int bytesRcvd;
+        log.debug("receivePacket on Client");
         while (totalBytesRcvd < byteBuffer.length) {
             if ((bytesRcvd = inStream.read(byteBuffer, totalBytesRcvd,
                     byteBuffer.length - totalBytesRcvd)) == -1) {

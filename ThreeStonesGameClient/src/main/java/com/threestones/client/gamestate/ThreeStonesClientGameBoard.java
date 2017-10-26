@@ -150,66 +150,66 @@ public class ThreeStonesClientGameBoard {
      * @param x x coordinate on game board
      * @param y y coordinate on game board
      */
-    public int checkForThreeStones(int x, int y, CellState color) {
+    public int checkForThreeStones(int y, int x, CellState color) {
         int points = 0;
         //check horizontal left
 
-        if (board[y][x - 1] == color && board[y][x - 2] == color) {
+        if (board[x][y - 1] == color && board[x][y - 2] == color) {
             points++;
         }
 
         //check horizontal middle
-        if (board[y][x - 1] == color && board[y][x + 1] == color) {
+        if (board[x][y - 1] == color && board[x][y + 1] == color) {
             points++;
         }
 
         //check horizontal right
-        if (board[y][x + 1] == color && board[y][x + 2] == color) {
+        if (board[x][y + 1] == color && board[x][y + 2] == color) {
             points++;
         }
 
         //check vertical Up
-        if (board[y - 1][x] == color && board[y - 2][x] == color) {
+        if (board[x - 1][y] == color && board[x - 2][y] == color) {
             points++;
         }
 
         //check vertical Middle
-        if (board[y - 1][x] == color && board[y + 1][x] == color) {
+        if (board[x - 1][y] == color && board[x + 1][y] == color) {
             points++;
         }
 
         //check vertical Down
-        if (board[y + 1][x] == color && board[y + 2][x] == color) {
+        if (board[x + 1][y] == color && board[x + 2][y] == color) {
             points++;
         }
 
         //check diagonal N-E /
-        if (board[y - 1][x + 1] == color && board[y - 2][x + 2] == color) {
+        if (board[x - 1][y + 1] == color && board[x - 2][y + 2] == color) {
             points++;
         }
 
         //check diagonal N-W \
-        if (board[y - 1][x - 1] == color && board[y + 2][x - 2] == color) {
+        if (board[x - 1][y - 1] == color && board[x + 2][y - 2] == color) {
             points++;
         }
 
         //check diagonal S-E \
-        if (board[x + 1][y + 1] == color && board[x + 2][y + 2] == color) {
+        if (board[y + 1][x + 1] == color && board[y + 2][x + 2] == color) {
             points++;
         }
 
         //check diagonal S-W /
-        if (board[y + 1][x - 1] == color && board[y + 2][x - 2] == color) {
+        if (board[x + 1][y - 1] == color && board[x + 2][y - 2] == color) {
             points++;
         }
 
         //check diagonals Middle
         //Diagnol Middle Right /
-        if (board[y - 1][x - 1] == color && board[y + 1][x + 1] == color) {
+        if (board[x - 1][y - 1] == color && board[x + 1][y + 1] == color) {
             points++;
         }
         //Diagonal Middle Left \
-        if (board[y + 1][x - 1] == color && board[y + 1][x + 1] == color) {
+        if (board[x + 1][y - 1] == color && board[x + 1][y + 1] == color) {
             points++;
         }
 
@@ -276,12 +276,14 @@ public class ThreeStonesClientGameBoard {
         for (int i = 0; i < board[0].length && full; i++) {
             if (board[i][x] == CellState.AVAILABLE || board[i][x] == CellState.UNAVAILABLE) {
                 full = false;
+                break;
             }
         }
         //check col
         for (int i = 0; i < board[0].length && full; i++) {
             if (board[x][y] == CellState.AVAILABLE || board[x][y] == CellState.UNAVAILABLE) {
                 full = false;
+                break;
             }
         }
         return full;
