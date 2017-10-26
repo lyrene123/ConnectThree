@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 public class ThreeStonesClientGame {
 
     private ThreeStonesClientGameBoard board;
+
+    
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
@@ -21,25 +23,26 @@ public class ThreeStonesClientGame {
         this.board = new ThreeStonesClientGameBoard();
     }
 
-    public void updateBoard(int x, int y) {
-        board.setBoard(board.getBoardChange(x, y));
-    }
+//    public void updateBoard(int x, int y, CellState color) {
+//        board.getBoard()[x][y] = color;
+//        board.setBoard(board.getBoard());
+//    }
 
     public byte[] determineNextMove(int x, int y ) {
         List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();
         CellState[][] gameBoard = board.getBoard();
         int highestMoveValue = 0;
-        byte[] moves = null;
+        byte[] moves =new byte[4];
 
         //LOOPS THROUGH GAMEBOARD
         for (int i = 0; i < gameBoard[0].length; i++) {
             for (int j = 0; j < gameBoard[0].length; j++) {
                 //IF CURRENT TILE IS AVAILABLE DETERMINE ITS VALUE
-                if (gameBoard[j][i] == CellState.AVAILABLE) {
+                if (gameBoard[i][j] == CellState.AVAILABLE) {
                     log.debug("determineNextMove CellState.Available");
-                    int move1 = board.checkForThreeStones(x, y, CellState.WHITE);
-                    int move2 = board.checkForThreeStones(x, y, CellState.BLACK);
-                    ThreeStonesMove move = new ThreeStonesMove(move1, move2, i, j);
+                    int whitePoints = board.checkForThreeStones(x, y, CellState.WHITE);
+                    int blackPoints = board.checkForThreeStones(x, y, CellState.BLACK);
+                    ThreeStonesMove move = new ThreeStonesMove(whitePoints, blackPoints, i, j);
                     //ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE), board.checkForThreeStones(i, j, CellState.BLACK), i, j);
                     //resets list and adds the current move
 
@@ -69,6 +72,10 @@ public class ThreeStonesClientGame {
         } else {
             //IF ONLY ONE GOOD MOVE MAKE IT USING LIST.get(0)
         }
+        moves[0] = (byte)1;
+        moves[1] = (byte)bestMoves.get(0).getX();
+        moves[2] = (byte)bestMoves.get(0).getY();
+        
         return moves;
     }
 
@@ -79,6 +86,9 @@ public class ThreeStonesClientGame {
     private ThreeStonesMove createMove(int x, int y) {
 
         return new ThreeStonesMove();
+    }
+    public void setBoard(ThreeStonesClientGameBoard board) {
+        this.board = board;
     }
 
 }

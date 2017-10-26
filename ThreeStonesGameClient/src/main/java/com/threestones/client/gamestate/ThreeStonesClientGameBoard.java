@@ -30,8 +30,7 @@ public class ThreeStonesClientGameBoard {
     private int whiteStoneCount;
     private int whiteScore;
     private int blackScore;
-    
-    
+
     /**
      * Default constructor
      */
@@ -150,7 +149,7 @@ public class ThreeStonesClientGameBoard {
      * @param x x coordinate on game board
      * @param y y coordinate on game board
      */
-    public int checkForThreeStones(int y, int x, CellState color) {
+    public int checkForThreeStones(int x, int y, CellState color) {
         int points = 0;
         //check horizontal left
 
@@ -225,40 +224,44 @@ public class ThreeStonesClientGameBoard {
      * @return CellState 2D array
      */
     public CellState[][] getBoardChange(int x, int y) {
-        CellState[][] board = this.board.clone();
-
+        //CellState[][] board = this.board.clone();
+//chosen cell isnt color yet
         if (!checkIfFull(x, y)) {
             for (int i = 0; i < board[0].length; i++) {
                 for (int j = 0; j < board[0].length; j++) {
-                    if (i == x || j == y && board[i][j] != CellState.VACANT) {
-                        board[i][j] = CellState.AVAILABLE;
-                    } else if (board[i][j] != CellState.VACANT) {
+                    if (i == x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
                     }
-                }
-            }
-        } else {
-            for (int i = 0; i < board[0].length; i++) {
-                for (int j = 0; j < board[0].length; j++) {
-                    if (board[i][j] == CellState.UNAVAILABLE) {
+                    else if (j == y && i != x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
+                        
+                    }else if ( board[i][j] != CellState.WHITE && board[i][j] !=  CellState.BLACK) {
+                        board[i][j] = CellState.VACANT;
                     }
                 }
+//        } else {
+//            for (int i = 0; i < board[0].length; i++) {
+//                for (int j = 0; j < board[0].length; j++) {
+//                    if (board[i][j] == CellState.UNAVAILABLE) {
+//                        board[i][j] = CellState.AVAILABLE;
+//                    }
+//                }
+//            }
+//        }
             }
         }
         return board;
     }
 
-    public void updateBoard(int x, int y,CellState color) {
-        
-        int points = checkForThreeStones(x,y,color);
-        if (color == CellState.WHITE){
-            whiteScore += points;
-        } else {
-            blackScore += points;
-        }
+    public void updateBoard(int x, int y, CellState color) {
+        board[x][y] = color;
+//        int points = checkForThreeStones(x, y, color);
+//        if (color == CellState.WHITE) {
+//            whiteScore += points;
+//        } else {
+//            blackScore += points;
+//        }
         this.board = getBoardChange(x, y);
-        //JPnaelBoard.reDraw();
 
     }
 

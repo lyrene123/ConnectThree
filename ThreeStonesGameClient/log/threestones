@@ -340,3 +340,821 @@
 [DEBUG] 2017-10-26 13:59:19.997 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@45460ec, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@67f16294, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@228dd979, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4b5cb187, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6ca8fb00, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@21d1c3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4c2b86af, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@62d5d624, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@498e5185, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@472f3ebe, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5721d60a]
 [DEBUG] 2017-10-26 13:59:20.842 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 5
 [DEBUG] 2017-10-26 13:59:23.554 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:00:09.887 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 14:00:09.896 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 14:00:09.898 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@47722782, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d603a54, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@74e0cc9a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2fb7ccbb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@79afb0f8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5e19703, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@77171f39, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6654c774, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@62789336, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6ba849f5, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@24096d6e]
+[DEBUG] 2017-10-26 14:00:10.616 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 5
+[DEBUG] 2017-10-26 14:00:12.944 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:00:14.864 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:00:24.300 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:48:26.229 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 14:48:26.236 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 14:48:26.237 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@128be0ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2b474802, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@f53b78c]
+[DEBUG] 2017-10-26 14:48:27.101 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 5
+[DEBUG] 2017-10-26 14:49:07.345 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:52:43.625 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 14:52:43.631 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 14:52:43.632 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@128be0ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2b474802, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@f53b78c]
+[DEBUG] 2017-10-26 14:52:44.375 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 6
+[DEBUG] 2017-10-26 14:52:44.386 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:53:37.875 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 14:53:37.882 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 14:53:37.883 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@25f96e2e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ac6c087, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65a2b59e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@23009d60, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4de61f30, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@61083cf3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@11f66b09, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@36ba1fca, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4b5889b2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6b17cb8e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@491b5bc6]
+[DEBUG] 2017-10-26 14:53:38.524 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 5
+[DEBUG] 2017-10-26 14:53:38.534 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:55:17.575 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 14:55:17.582 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 14:55:17.582 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44fee94b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d2cf3ae, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@128be0ea]
+[DEBUG] 2017-10-26 14:55:18.638 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 6
+[DEBUG] 2017-10-26 14:55:18.645 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:57:50.970 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:57:53.709 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:03.135 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.963 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.963 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.964 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.965 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.965 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.966 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.966 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.967 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.968 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.968 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.969 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.970 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.970 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.971 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.972 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.972 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.973 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.974 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.974 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.975 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.976 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.977 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.977 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.978 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.979 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.979 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.980 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.981 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.981 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.982 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.982 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.983 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.985 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.986 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.986 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 14:58:05.987 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:54.925 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:00:54.932 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:00:54.933 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@242527d7, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@a1d3cf4, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@35515a2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4bf68dac, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@46e0009a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@25f96e2e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ac6c087, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65a2b59e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@23009d60, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4de61f30, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@61083cf3]
+[DEBUG] 2017-10-26 15:00:55.606 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 6
+[DEBUG] 2017-10-26 15:00:55.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.621 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.623 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.623 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.624 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.624 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.624 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.626 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.626 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.627 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.628 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.628 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.629 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.630 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.630 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.631 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.633 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.634 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.634 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.635 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.636 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.636 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.637 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.638 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.638 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.639 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.640 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.640 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.641 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.642 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.642 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.643 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.644 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.644 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.644 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.645 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.646 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:00:55.646 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.036 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:01:06.043 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:01:06.043 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3d355f73, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@77eaa924, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ae1952e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2878f949, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3f21f5f2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d20c8bb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@bfe66d4, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@64a37453, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@549d9350, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4fe3fc68, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3753eb86]
+[DEBUG] 2017-10-26 15:01:06.700 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 4
+[DEBUG] 2017-10-26 15:01:06.709 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.712 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.712 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.713 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.714 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.714 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.715 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.716 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.716 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.717 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.718 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.718 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.719 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.719 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.719 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.720 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.721 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.722 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.723 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.723 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.724 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.725 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.725 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.726 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.726 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.727 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.728 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.728 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.729 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.730 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.731 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.731 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.732 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.732 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.733 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.734 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.734 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.735 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.736 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:01:06.736 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:34.635 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:03:34.643 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:03:34.645 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d2cf3ae, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@128be0ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2b474802]
+[DEBUG] 2017-10-26 15:03:35.556 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 6
+[DEBUG] 2017-10-26 15:03:35.567 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.572 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.573 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.574 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.575 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.576 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.576 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.577 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.578 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.578 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.579 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.579 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.580 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.581 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.581 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.582 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.583 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.585 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.587 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.587 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.587 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.588 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.589 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.589 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.590 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.591 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.592 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.593 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.593 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.594 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.595 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.595 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.596 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.597 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.597 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.598 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.598 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.600 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:03:35.602 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:05:13.648 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:05:13.655 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:05:13.656 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@128be0ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2b474802, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@f53b78c]
+[DEBUG] 2017-10-26 15:05:14.793 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 6
+[DEBUG] 2017-10-26 15:13:10.980 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:13:10.986 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:13:10.987 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@54b6790]
+[DEBUG] 2017-10-26 15:13:11.881 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 5
+[DEBUG] 2017-10-26 15:13:26.376 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:14:01.299 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:14:01.315 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:14:01.315 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@54b6790]
+[DEBUG] 2017-10-26 15:14:01.721 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 5
+[DEBUG] 2017-10-26 15:14:04.034 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:16:52.144 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:16:52.144 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:16:52.144 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@79fd4407, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ea6b5ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc]
+[DEBUG] 2017-10-26 15:16:52.675 [AWT-EventQueue-0] ThreeStonesClient - sent: 8 6
+[DEBUG] 2017-10-26 15:18:01.317 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:18:01.317 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:18:01.317 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4bf68dac, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@46e0009a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@25f96e2e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ac6c087, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65a2b59e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@23009d60, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4de61f30, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@61083cf3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@11f66b09, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@36ba1fca, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4b5889b2]
+[DEBUG] 2017-10-26 15:18:01.926 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 3
+[DEBUG] 2017-10-26 15:18:04.208 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:18:40.274 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:18:40.289 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:18:40.289 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d2cf3ae, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@128be0ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2b474802]
+[DEBUG] 2017-10-26 15:18:41.463 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 3
+[DEBUG] 2017-10-26 15:19:08.028 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:19:08.044 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:19:08.044 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4bf68dac, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@46e0009a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@25f96e2e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ac6c087, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65a2b59e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@23009d60, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4de61f30, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@61083cf3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@11f66b09, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@36ba1fca, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4b5889b2]
+[DEBUG] 2017-10-26 15:19:08.794 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:19:38.427 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:19:38.427 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:19:38.427 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@54b6790]
+[DEBUG] 2017-10-26 15:19:40.520 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:20:38.964 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:22:05.741 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:22:05.756 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:22:05.756 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@128be0ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2b474802, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@f53b78c]
+[DEBUG] 2017-10-26 15:22:10.234 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:23:13.955 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:23:13.971 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:23:13.971 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@54b6790, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@476a52a9]
+[DEBUG] 2017-10-26 15:23:15.409 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:28:06.824 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:28:06.824 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:28:06.824 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@54b6790]
+[DEBUG] 2017-10-26 15:28:08.496 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:31:35.196 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:32:18.905 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:32:18.921 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:32:18.921 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4bf68dac, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@46e0009a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@25f96e2e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ac6c087, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65a2b59e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@23009d60, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4de61f30, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@61083cf3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@11f66b09, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@36ba1fca, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4b5889b2]
+[DEBUG] 2017-10-26 15:32:20.452 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:32:44.396 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:05.243 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:08.587 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.412 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.428 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.444 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:33:10.444 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:51.757 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:34:51.757 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:34:51.757 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@25f19ff6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5628ca3c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4e789620, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7022bfa0, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5985807d, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49ecd85b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@432f8ed0, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2615e6aa, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@53e61c7d, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7ce7285a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@43816018]
+[DEBUG] 2017-10-26 15:34:52.585 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 4
+[DEBUG] 2017-10-26 15:34:52.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.617 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:34:52.632 [AWT-EventQueue-0] ThreeStonesClientPacket - receivePacket on Client
+[DEBUG] 2017-10-26 15:36:03.569 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:36:03.569 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:36:03.569 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@25f19ff6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5628ca3c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4e789620, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7022bfa0, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5985807d, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49ecd85b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@432f8ed0, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2615e6aa, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@53e61c7d, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7ce7285a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@43816018]
+[DEBUG] 2017-10-26 15:36:04.319 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 5
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.334 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:04.350 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClient - sent: 6 4
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.788 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:07.804 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClient - sent: 5 3
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.601 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:36:08.616 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.127 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:37:23.127 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:37:23.142 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@75051386, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@c9a4456, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3a454aea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65da42, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5d2160eb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3c737ed, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@13452f65, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ddc5085, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6b2c49ed, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51ee733a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6bea4065]
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClient - sent: 7 5
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.799 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.814 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.830 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.830 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.830 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.830 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:37:23.830 [AWT-EventQueue-0] ThreeStonesClient - clickBoardCell new server move   2 4
+[DEBUG] 2017-10-26 15:41:04.084 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:41:04.084 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:41:04.084 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@a1d3cf4, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@35515a2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4bf68dac, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@46e0009a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@25f96e2e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ac6c087, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65a2b59e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@23009d60, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4de61f30, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@61083cf3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@11f66b09]
+[DEBUG] 2017-10-26 15:41:15.047 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:42:28.450 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:42:28.450 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:42:28.450 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7a8686ab, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@60754c15, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7383dcb3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@73482c6f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3d355f73, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@77eaa924, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ae1952e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2878f949, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3f21f5f2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d20c8bb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@bfe66d4]
+[DEBUG] 2017-10-26 15:42:29.997 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:43:41.784 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:43:41.800 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:43:41.800 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6b0eacd9, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44fee94b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d2cf3ae, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e]
+[DEBUG] 2017-10-26 15:43:46.362 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:48:06.947 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:48:06.963 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:48:06.963 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@73482c6f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3d355f73, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@77eaa924, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ae1952e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2878f949, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3f21f5f2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d20c8bb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@bfe66d4, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@64a37453, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@549d9350, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4fe3fc68]
+[DEBUG] 2017-10-26 15:48:09.775 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:49:52.519 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:49:52.534 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:49:52.534 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ea6b5ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2]
+[DEBUG] 2017-10-26 15:49:53.309 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:51:56.191 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:51:56.206 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:51:56.206 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@54b6790]
+[DEBUG] 2017-10-26 15:51:56.878 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:56:22.175 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:56:22.175 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:56:22.175 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4808d687, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6b0eacd9, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44fee94b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d2cf3ae, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c]
+[DEBUG] 2017-10-26 15:56:23.441 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:56:23.456 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.456 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.456 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.456 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.456 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.456 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.472 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.488 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.488 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.488 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.488 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.488 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:56:23.488 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:57:00.241 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:57:00.257 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:57:00.257 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@40d54a7c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@700b2e3e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@79fd4407, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ea6b5ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3]
+[DEBUG] 2017-10-26 15:57:01.038 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:58:31.860 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.860 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.860 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.860 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.860 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.860 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.860 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.860 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.875 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.891 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.906 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.906 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.906 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.906 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.906 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:31.906 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 15:58:48.495 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 15:58:48.510 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 15:58:48.510 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@f72cddb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5d92bbee, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@67ad6a72, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@21613603, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@38643be1, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7061bac8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7c93b04c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@546a40f3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dc8c2ac, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30028627, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51f241bb]
+[DEBUG] 2017-10-26 15:58:49.323 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 15:59:49.041 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.323 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.339 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.354 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.354 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:00:24.354 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:01:58.858 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:01:58.858 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:01:58.858 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7383dcb3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@73482c6f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3d355f73, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@77eaa924, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ae1952e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2878f949, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3f21f5f2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d20c8bb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@bfe66d4, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@64a37453, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@549d9350]
+[DEBUG] 2017-10-26 16:01:59.562 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:03:55.648 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:16:47.603 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:16:47.619 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:16:47.619 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4808d687, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6b0eacd9, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44fee94b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d2cf3ae, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c]
+[DEBUG] 2017-10-26 16:16:49.587 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:20:24.217 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:20:24.217 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:20:24.217 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@54b6790]
+[DEBUG] 2017-10-26 16:20:26.575 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:26:14.333 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:26:14.333 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:26:14.349 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4bf68dac, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@46e0009a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@25f96e2e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ac6c087, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65a2b59e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@23009d60, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4de61f30, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@61083cf3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@11f66b09, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@36ba1fca, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4b5889b2]
+[DEBUG] 2017-10-26 16:26:14.968 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:28:49.376 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:28:49.376 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:28:49.376 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@700b2e3e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@79fd4407, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ea6b5ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646]
+[DEBUG] 2017-10-26 16:28:49.923 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:30:39.742 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:30:39.757 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:30:39.757 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@50a36788, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2c12edf5, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@a54d0d7, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@31ecf861, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7ab856f3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@41fe6114, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6d80d394, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b7911b5, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ced7e7, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@318af04b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5a7d999d]
+[DEBUG] 2017-10-26 16:30:40.336 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:32:19.970 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:32:19.986 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:32:19.986 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d2cf3ae, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@128be0ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2b474802]
+[DEBUG] 2017-10-26 16:32:20.642 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:34:37.012 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:34:37.027 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:34:37.027 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30874b43, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4a628bfb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@732a8358, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@225839d1, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@288fa38a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@76ecd833, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@517bb5f5, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@328e98ba, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@67c8fe92, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@77758f18, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7b2d481e]
+[DEBUG] 2017-10-26 16:34:37.668 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:36:27.860 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:36:27.860 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:36:27.860 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ea6b5ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2]
+[DEBUG] 2017-10-26 16:36:28.360 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:40:15.821 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:40:15.837 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:40:15.837 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ea6b5ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2]
+[DEBUG] 2017-10-26 16:40:16.384 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:48:32.191 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:48:32.207 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:48:32.207 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44fee94b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d2cf3ae, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@128be0ea]
+[DEBUG] 2017-10-26 16:48:32.832 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:49:42.074 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:49:42.074 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:49:42.089 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@700b2e3e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@79fd4407, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ea6b5ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646]
+[DEBUG] 2017-10-26 16:49:43.152 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:50:14.684 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:50:14.684 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:50:14.684 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5628ca3c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4e789620, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7022bfa0, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@5985807d, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49ecd85b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@432f8ed0, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2615e6aa, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@53e61c7d, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7ce7285a, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@43816018, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4aa8ee74]
+[DEBUG] 2017-10-26 16:50:16.552 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:50:16.552 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.552 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.552 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.552 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.552 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.552 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.552 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.568 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.583 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.583 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.583 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.583 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.583 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.583 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:50:16.583 [AWT-EventQueue-0] ThreeStonesClient - clickBoardCell new server move   2 4
+[DEBUG] 2017-10-26 16:54:42.463 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:54:42.463 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:54:42.463 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@54b6790, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@476a52a9]
+[DEBUG] 2017-10-26 16:54:43.057 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:54:51.885 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:55:23.893 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:55:23.908 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:55:23.908 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@54b6790, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@476a52a9, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6b611a4f]
+[DEBUG] 2017-10-26 16:55:24.924 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:57:20.228 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 16:57:20.244 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 16:57:20.244 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44fee94b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d2cf3ae, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@131ea262, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@de8bcbc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3e6fb8fb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@44a48d1b, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@22cf3a5f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6a8a6fe6, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2961aa2c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@49cd364e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@128be0ea]
+[DEBUG] 2017-10-26 16:57:20.837 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 16:57:20.853 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.853 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.853 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.853 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.853 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.853 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.853 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.853 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.853 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.869 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.884 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.884 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.884 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.884 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 16:57:20.884 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 17:00:39.696 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 17:00:39.696 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 17:00:39.696 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@73482c6f, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3d355f73, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@77eaa924, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1ae1952e, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@2878f949, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3f21f5f2, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@1d20c8bb, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@bfe66d4, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@64a37453, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@549d9350, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4fe3fc68]
+[DEBUG] 2017-10-26 17:00:40.227 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 17:05:16.859 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 17:05:16.859 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 17:05:16.859 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ea6b5ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@30cd8ae2]
+[DEBUG] 2017-10-26 17:05:17.421 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 17:08:19.184 [AWT-EventQueue-0] ThreeStonesGUI - inside onConnectClick
+[DEBUG] 2017-10-26 17:08:19.184 [AWT-EventQueue-0] ThreeStonesGUI - start enableBoard 
+[DEBUG] 2017-10-26 17:08:19.184 [AWT-EventQueue-0] ThreeStonesGUI - board to string  [[Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@79fd4407, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3ea6b5ea, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@544a8ee8, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@7d993081, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6e579e49, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65d57f8c, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@65689010, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@51c1b904, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@3b6d0a3, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@4dd1e646, [Lcom.threestones.client.gamestate.ThreeStonesClientGameBoard$CellState;@6c1817fc]
+[DEBUG] 2017-10-26 17:08:19.731 [AWT-EventQueue-0] ThreeStonesClient - sent: 3 4
+[DEBUG] 2017-10-26 17:08:32.556 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 17:08:32.572 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 17:08:32.572 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 17:08:32.572 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 17:08:32.572 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 17:08:32.572 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 17:08:32.572 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 17:08:32.572 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 17:08:32.572 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available
+[DEBUG] 2017-10-26 17:08:32.572 [AWT-EventQueue-0] ThreeStonesClientGame - determineNextMove CellState.Available

@@ -170,6 +170,7 @@ public class ThreeStonesGUI {
                         gameBoardCells[x][y].addActionListener(e -> {
                             try {
                                 threeStonesClnt.clickBoardCell(xx, yy);
+                                
                             } catch (IOException ex) {
                                 Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
                             }

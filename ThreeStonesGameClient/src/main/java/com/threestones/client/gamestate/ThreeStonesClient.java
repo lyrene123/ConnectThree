@@ -45,10 +45,11 @@ public class ThreeStonesClient {
             //clientPacket.sendMove(x, y);
             
             ThreeStonesClientGame localGame = new ThreeStonesClientGame();
-            localGame.updateBoard(x, y);
-            localGame.determineNextMove(x, y );
-            
-            serverResponse();
+            board.updateBoard(y, x, CellState.WHITE);
+            localGame.setBoard(board);
+            byte[] move = localGame.determineNextMove(y, x );
+            log.debug("clickBoardCell new server move   " + move[1] + " " + move[2] );
+            //serverResponse();
             //ThreeStonesClientPacket.sendMove(x,y);
             //must make sure that server checks that if row col are full all cells become available
         } else if (board.getBoard()[y][x] == CellState.UNAVAILABLE) {
