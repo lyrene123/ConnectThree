@@ -1,6 +1,6 @@
-package com.threestones.server.gamestate;
+package com.threestones.client.gamestate;
 
-import com.threestones.server.gamestate.ThreeStonesServerGameBoard.CellState;
+import com.threestones.client.gamestate.ThreeStonesClientGameBoard.CellState;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.LoggerFactory;
@@ -9,23 +9,23 @@ import org.slf4j.LoggerFactory;
  *
  * @author Lyrene Labor
  */
-public class ThreeStonesServerGame {
+public class ThreeStonesClientGame {
 
-    private ThreeStonesServerGameBoard board;
+    private ThreeStonesClientGameBoard board;
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
     //DEPENDING ON WHERE WE WANT TO TAKE THIS WE CAN ADD MORE MOVE COMPLEXITY SO THAT IT CHECKS THE AVAILALBE
     //SQUARES THAT WILL BECOME AVAILABLE BASE ON A CERTAIN MOVE AND THE SCORES WHITE OR BLACK CAN SCORE IN THE FUTURE (reading ahead of time)
-    public ThreeStonesServerGame() {
-        this.board = new ThreeStonesServerGameBoard();
+    public ThreeStonesClientGame() {
+        this.board = new ThreeStonesClientGameBoard();
     }
 
     public void updateBoard(int x, int y) {
-        board.getBoardChange(x, y);
+        board.setBoard(board.getBoardChange(x, y));
     }
 
-    public byte[] determineNextMove() {
+    public byte[] determineNextMove(int x, int y ) {
         List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();
         CellState[][] gameBoard = board.getBoard();
         int highestMoveValue = 0;
@@ -37,7 +37,10 @@ public class ThreeStonesServerGame {
                 //IF CURRENT TILE IS AVAILABLE DETERMINE ITS VALUE
                 if (gameBoard[j][i] == CellState.AVAILABLE) {
                     log.debug("determineNextMove CellState.Available");
-                    ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE), board.checkForThreeStones(i, j, CellState.BLACK), i, j);
+                    int move1 = board.checkForThreeStones(x, y, CellState.WHITE);
+                    int move2 = board.checkForThreeStones(x, y, CellState.BLACK);
+                    ThreeStonesMove move = new ThreeStonesMove(move1, move2, i, j);
+                    //ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE), board.checkForThreeStones(i, j, CellState.BLACK), i, j);
                     //resets list and adds the current move
 
                     //ADD LOGIC HERE FOR ADVANCED AI

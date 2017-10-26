@@ -37,7 +37,12 @@ public class ThreeStonesClient {
         if (board.getBoard()[y][x] == CellState.AVAILABLE) {
             log.debug("sent: " + y + " " + x);
 
-            clientPacket.sendMove(x, y);
+            //clientPacket.sendMove(x, y);
+            
+            ThreeStonesClientGame localGame = new ThreeStonesClientGame();
+            localGame.updateBoard(x, y);
+            localGame.determineNextMove(x, y );
+            
             serverResponse();
             //ThreeStonesClientPacket.sendMove(x,y);
             //must make sure that server checks that if row col are full all cells become available
