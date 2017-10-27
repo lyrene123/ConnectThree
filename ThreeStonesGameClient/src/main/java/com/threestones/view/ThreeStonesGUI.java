@@ -478,7 +478,8 @@ public class ThreeStonesGUI {
         } else if (color == CellState.BLACK) {
             this.gameBoardCells[x][y].setBackground(Color.BLACK);
         }
-
+        clientScorePnts.setText(clientGameBoard.getWhiteScore() + "");
+        serverScorePnts.setText(clientGameBoard.getBlackScore() + "");
         for (int i = 0; i < gameBoardCells[0].length; i++) {
             for (int j = 0; j < gameBoardCells[0].length; j++) {
                 gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
