@@ -45,15 +45,20 @@ public class ThreeStonesClientGame {
             }
         }
         //DETERMINE THE BEST MOVE OUT OF THE LIST
-        if (possibleMoves.size() > 1)
+        if (possibleMoves.size() >1){
+            int count = board.getBlackStoneCount();
+            board.setBlackStoneCount(--count);
             return ThreeStonesMove.determineBestMove(possibleMoves).toByte();
-        else
+        }
+            
+        else{
+            int count = board.getBlackStoneCount();
+            board.setBlackStoneCount(--count);
             return possibleMoves.get(0).toByte();
+        }
+            
     }
 
-    public void startGame() {
-        board.startNewGame();
-    }
 
     private ThreeStonesMove createMove(int x, int y) {
 

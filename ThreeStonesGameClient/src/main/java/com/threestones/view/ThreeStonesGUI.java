@@ -484,6 +484,8 @@ public class ThreeStonesGUI {
                 gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
                 clientScorePnts.setText(clientGameBoard.getWhiteScore() + "");
                 serverScorePnts.setText(clientGameBoard.getBlackScore() + "");
+                clientStoneCount.setText(clientGameBoard.getWhiteStoneCount() + "");
+                serverStoneCount.setText(clientGameBoard.getBlackStoneCount() + "");
 
                 if (this.clientGameBoard.getBoard()[i][j] == CellState.UNAVAILABLE) {
                     gameBoardCells[i][j].setBackground(Color.CYAN);
