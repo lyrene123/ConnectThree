@@ -185,12 +185,12 @@ public class ThreeStonesClientGameBoard {
 
     public void updateBoard(int x, int y, CellState color) {
 
-//        int points = checkForThreeStones(x, y, color);
-//        if (color == CellState.WHITE) {
-//            whiteScore += points;
-//        } else {
-//            blackScore += points;
-//        }
+        int points = checkForThreeStones(x, y, color);
+        if (color == CellState.WHITE) {
+            whiteScore += points;
+        } else {
+            blackScore += points;
+        }
         board[x][y] = color;
         this.board = getBoardChange(x, y);
         for (int i = 0; i < board[0].length; i++) {

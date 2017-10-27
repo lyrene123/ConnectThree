@@ -38,6 +38,11 @@ public class ThreeStonesClientGame {
                 if (gameBoard[i][j] == CellState.AVAILABLE) {
                     log.debug("determineNextMove CellState.Available");
                     //creates new move with possible values
+                    int whitePoints = board.checkForThreeStones(i, j, CellState.WHITE);
+                    log.debug("whitePoints " + whitePoints);
+                    
+                    int blackPoints = board.checkForThreeStones(i, j, CellState.BLACK);
+                    log.debug("blackPoints " + blackPoints);
                     ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE), board.checkForThreeStones(i, j, CellState.BLACK), i, j);
                     move.countNearbyTiles(board.getBoard());
                     possibleMoves.add(move);
