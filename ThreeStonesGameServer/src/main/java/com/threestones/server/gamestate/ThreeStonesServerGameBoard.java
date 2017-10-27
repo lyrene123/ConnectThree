@@ -198,7 +198,7 @@ public class ThreeStonesServerGameBoard {
         }
 
         //check diagonal S-W /
-        if (board[x - 1][y + 1] == color && board[x - 2][y + 2] == color) {
+        if (board[x + 1][y - 1] == color && board[x + 2][y - 2] == color) {
             points++;
         }
 
@@ -209,7 +209,7 @@ public class ThreeStonesServerGameBoard {
             points++;
         }
         //Diagonal Middle Left \
-        if (board[x - 1][y - 1] == color && board[x + 1][y - 1] == color) {
+        if (board[x - 1][y - 1] == color && board[x + 1][y + 1] == color) {
             points++;
         }
 
