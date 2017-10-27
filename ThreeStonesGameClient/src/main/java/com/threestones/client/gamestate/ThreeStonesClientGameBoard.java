@@ -136,7 +136,7 @@ public class ThreeStonesClientGameBoard {
         if (board[x + 1][y - 1] == color && board[x + 1][y + 1] == color) {
             points++;
         }
-
+        
         return points;
     }
 
@@ -185,13 +185,8 @@ public class ThreeStonesClientGameBoard {
 
     public void updateBoard(int x, int y, CellState color) {
 
-        int points = checkForThreeStones(x, y, color);
-        if (color == CellState.WHITE) {
-            whiteScore += points;
-        } else {
-            blackScore += points;
-        }
         board[x][y] = color;
+        
         this.board = getBoardChange(x, y);
         for (int i = 0; i < board[0].length; i++) {
             for (int j = 0; j < board[0].length; j++) {
