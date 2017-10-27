@@ -76,76 +76,65 @@ public class ThreeStonesClientGameBoard {
      */
     public int checkForThreeStones(int x, int y, CellState color) {
         int points = 0;
-        //check horizontal left
 
+        //check horizontal left
         if (board[x][y - 1] == color && board[x][y - 2] == color) {
-            log.debug("horrizontal left");
             points++;
         }
 
         //check horizontal middle
         if (board[x][y - 1] == color && board[x][y + 1] == color) {
-            log.debug("horrizontal middle");
             points++;
         }
 
         //check horizontal right
         if (board[x][y + 1] == color && board[x][y + 2] == color) {
-            log.debug("horrizontal right");
             points++;
         }
 
         //check vertical Up
         if (board[x - 1][y] == color && board[x - 2][y] == color) {
-            log.debug("vertical up");
             points++;
         }
 
         //check vertical Middle
         if (board[x - 1][y] == color && board[x + 1][y] == color) {
-            log.debug("vertical middle");
             points++;
         }
 
         //check vertical Down
         if (board[x + 1][y] == color && board[x + 2][y] == color) {
-            log.debug("vertical down");
             points++;
         }
 
         //check diagonal N-E /
         if (board[x - 1][y + 1] == color && board[x - 2][y + 2] == color) {
-            log.debug("diagonol N-E");
             points++;
         }
 
         //check diagonal N-W \
         if (board[x - 1][y - 1] == color && board[x - 2][y - 2] == color) {
-            log.debug("diagonol N-W");
             points++;
         }
 
         //check diagonal S-E \
-        if (board[y + 1][x + 1] == color && board[y + 2][x + 2] == color) {
-            log.debug("diagonol S-E");
+        if (board[x + 1][y + 1] == color && board[x + 2][y + 2] == color) {
             points++;
+
         }
 
         //check diagonal S-W /
         if (board[x + 1][y - 1] == color && board[x + 2][y - 2] == color) {
-            log.debug("diagonol S-W");
             points++;
         }
 
         //check diagonals Middle
         //Diagnol Middle Right /
-        if (board[x - 1][y - 1] == color && board[x + 1][y + 1] == color) {
-            log.debug("diagonol Middle-Right");
+        if (board[x - 1][y + 1] == color && board[x + 1][y - 1] == color) {
             points++;
         }
         //Diagonal Middle Left \
-        if (board[x + 1][y - 1] == color && board[x + 1][y + 1] == color) {
-            log.debug("diagonol Middle-Left");
+        if (board[x - 1][y - 1] == color && board[x + 1][y + 1] == color) {
             points++;
         }
 
