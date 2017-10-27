@@ -118,7 +118,7 @@ public class ThreeStonesMove {
                 }
             }
         }
-        
+
         if (biggestPossibleBlackPoints == 0 && biggestPossibleWhitePoints == 0) {
             logStatic.debug("determining best move by proximity");
             return determineMoveByPromixty(moves);
@@ -137,20 +137,20 @@ public class ThreeStonesMove {
     }
 
     private static ThreeStonesMove determineMoveByElimination(List<ThreeStonesMove> whiteMoves, List<ThreeStonesMove> blackMoves) {
-        List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();
+        List<ThreeStonesMove> bestMoves = new ArrayList<>();
         int bestMoveValue = -15;
         for (ThreeStonesMove m : blackMoves) {
             int maxWhite = 0;
             for (ThreeStonesMove w : whiteMoves) {
-                if (w.getX() == m.getX() || w.getY() == m.getY() && !(w.equals(m))) {
-                    int moveValue = m.getBlackPoints() - w.getWhitePoints();
-                    if (moveValue > bestMoveValue) {
-                        bestMoves.clear();
-                        bestMoves.add(m);
-                    } else if (moveValue == bestMoveValue) {
-                        bestMoves.add(m);
-                    }
+                if ((w.getX() == m.getX() || w.getY() == m.getY()) && !(w.equals(m))) {
+                    maxWhite = (maxWhite > w.getWhitePoints()) ? maxWhite : w.getWhitePoints();
                 }
+            }
+            if (m.getBlackPoints() - maxWhite > bestMoveValue) {
+                bestMoves.clear();
+                bestMoves.add(m);
+            } else if (m.getBlackPoints() - maxWhite == bestMoveValue) {
+                bestMoves.add(m);
             }
         }
         if (bestMoves.size() > 1) {

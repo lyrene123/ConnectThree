@@ -1,11 +1,5 @@
 package com.threestones.server.gamestate;
 
-import 
-
-
-
-
-import com.threestones.server.gamestate.ThreeStonesServerGameBoard;
 import com.threestones.server.gamestate.ThreeStonesServerGameBoard.CellState;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +22,11 @@ public class ThreeStonesServerGame {
         this.board = new ThreeStonesServerGameBoard();
     }
 
-//    public void updateBoard(int x, int y, CellState color) {
-//        board.getBoard()[x][y] = color;
-//        board.setBoard(board.getBoard());
-//    }
-    public byte[] determineNextMove(int x, int y) {
+    public void updateBoard(int x, int y) {
+        board.getBoardChange(x, y);
+    }
+
+    public byte[] determineNextMove() {
         List<ThreeStonesMove> possibleMoves = new ArrayList<ThreeStonesMove>();
         CellState[][] gameBoard = board.getBoard();
         int highestMoveValue = 0;
