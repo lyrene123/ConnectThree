@@ -45,12 +45,19 @@ public class ThreeStonesGUI {
     //text fields
     private final JLabel portLbl = new JLabel("Port");
     private final JLabel hostLbl = new JLabel("Host");
+    // score labels and values
     private final JLabel clientScorePnts = new JLabel("0");
     private final JLabel serverScorePnts = new JLabel("0");
     private final JLabel clientScoreTV = new JLabel("Your Score");
     private final JLabel serverScoreTV = new JLabel("Opponent's Score");
 
-    //labels
+    //stone count labels and values
+    private final JLabel clientStoneCount = new JLabel("0");
+    private final JLabel serverStoneCount = new JLabel("0");
+    private final JLabel clientStoneCountTV = new JLabel("Your Stones");
+    private final JLabel serverStoneCountTV = new JLabel("Opponent's Stones");
+
+    //port labels
     private final JTextField portNum = new JTextField("50000", 10);
     private final JTextField hostNum = new JTextField("localhost", 10);
 
@@ -101,9 +108,14 @@ public class ThreeStonesGUI {
         serverScoreTV.setFont(new Font("Monospace", Font.BOLD, 15));
         serverScoreTV.setForeground(Color.BLACK);
 
-        buildServerScoreLbl();
+        clientStoneCountTV.setFont(new Font("Monospace", Font.BOLD, 15));
+        clientStoneCountTV.setForeground(Color.WHITE);
 
-        //build threeStonesGameBoard instance and add it to the main layout
+        serverStoneCountTV.setFont(new Font("Monospace", Font.BOLD, 15));
+        serverStoneCountTV.setForeground(Color.BLACK);
+        buildServerScoreLbl();
+        buildClientStoneCountLbl();
+        buildServerStoneCountLbl(); //build threeStonesGameBoard instance and add it to the main layout
         threeStonesGameBoard = new JPanel(new GridLayout(0, 11));
         threeStonesGameBoard.setBorder(new LineBorder(Color.decode("#e67e22"), 3));
         mainRootPane.add(threeStonesGameBoard, BorderLayout.CENTER);
@@ -144,10 +156,10 @@ public class ThreeStonesGUI {
     }
 
     /**
-     * Helper method to build the three stones game board with the cells or slots
-     * with the appropriate initial cell state. Each slot are represented by a
-     * button on the UI and the content of the board is taken from the board saved
-     * in the ThreeStonesClient instance.
+     * Helper method to build the three stones game board with the cells or
+     * slots with the appropriate initial cell state. Each slot are represented
+     * by a button on the UI and the content of the board is taken from the
+     * board saved in the ThreeStonesClient instance.
      */
     private void buildGameBoard() {
         //loop through the 2D array which represents the game board and fill the array 
@@ -160,7 +172,7 @@ public class ThreeStonesGUI {
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
                         gameBoardCells[x][y].setText(clientGameBoard.getBoard()[x][y].toString().substring(0, 1));
                         gameBoardCells[x][y].setBackground(Color.ORANGE);
-                        
+
                         break;
                     case AVAILABLE: //if available slot, then set button color to white and set click listeners
                         gameBoardCells[x][y] = new JButton();
@@ -184,10 +196,8 @@ public class ThreeStonesGUI {
                 }
                 gameBoardCells[x][y].setEnabled(false);
             }
-            
+
         }
-        
-        
 
         //the following loop is to add the gameBoardCells array to the UI 
         for (int i = 0; i < 11; i++) {
@@ -195,18 +205,18 @@ public class ThreeStonesGUI {
                 threeStonesGameBoard.add(gameBoardCells[i][j]);
             }
         }
-        
+
         for (int i = 0; i < gameBoardCells[0].length; i++) {
             for (int j = 0; j < gameBoardCells[0].length; j++) {
-                gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j );
+                gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
             }
         }
-        
+
     }
 
     /**
-     * Builds the text area in the UI where information are displayed to the user
-     * such as game over, game win or tie.
+     * Builds the text area in the UI where information are displayed to the
+     * user such as game over, game win or tie.
      */
     private void buildTextArea() {
         textArea = new JTextArea(1, 1);
@@ -217,6 +227,7 @@ public class ThreeStonesGUI {
 
     /**
      * Builds the panel containing the scores information
+     *
      * @param scoresPanel JPanel which to build
      */
     private void buildScoresPanel(JPanel scoresPanel) {
@@ -235,6 +246,7 @@ public class ThreeStonesGUI {
 
     /**
      * Builds the tool bar containing the scores information
+     *
      * @param scoresToolbar JToolBar to build
      */
     private void buildScoresToolBar(JToolBar scoresToolbar) {
@@ -244,6 +256,12 @@ public class ThreeStonesGUI {
         scoresToolbar.add(clientScorePnts);
         scoresToolbar.add(serverScoreTV);
         scoresToolbar.add(serverScorePnts);
+
+        scoresToolbar.add(clientStoneCountTV);
+        scoresToolbar.add(clientStoneCount);
+        scoresToolbar.add(serverStoneCountTV);
+        scoresToolbar.add(serverStoneCount);
+
         scoresToolbar.setAlignmentX(0);
     }
 
@@ -252,7 +270,8 @@ public class ThreeStonesGUI {
      */
     private void buildServerScoreLbl() {
         serverScorePnts.setHorizontalAlignment(JTextField.CENTER);
-        serverScorePnts.setMaximumSize(new Dimension(100, 150));
+        serverScorePnts.setMaximumSize(new Dimension(100, 40));
+        serverScorePnts.setPreferredSize(new Dimension(100, 40));
         serverScorePnts.setFont(new Font("Monospace", Font.BOLD, 15));
         serverScorePnts.setForeground(Color.BLACK);
     }
@@ -262,14 +281,31 @@ public class ThreeStonesGUI {
      */
     private void buildClientScoreLbl() {
         clientScorePnts.setHorizontalAlignment(JTextField.CENTER);
-        clientScorePnts.setPreferredSize(new Dimension(150, 40));
-        clientScorePnts.setMaximumSize(new Dimension(100, 150));
+        clientScorePnts.setPreferredSize(new Dimension(100, 40));
+        clientScorePnts.setMaximumSize(new Dimension(100, 40));
         clientScorePnts.setFont(new Font("Monospace", Font.BOLD, 15));
         clientScorePnts.setForeground(Color.WHITE);
     }
 
+    private void buildClientStoneCountLbl() {
+        clientStoneCount.setHorizontalAlignment(JTextField.CENTER);
+        clientStoneCount.setPreferredSize(new Dimension(100, 40));
+        clientStoneCount.setMaximumSize(new Dimension(100, 40));
+        clientStoneCount.setFont(new Font("Monospace", Font.BOLD, 15));
+        clientStoneCount.setForeground(Color.WHITE);
+    }
+
+    private void buildServerStoneCountLbl() {
+        serverStoneCount.setHorizontalAlignment(JTextField.CENTER);
+        serverStoneCount.setMaximumSize(new Dimension(100, 40));
+        serverStoneCount.setPreferredSize(new Dimension(100, 40));
+        serverStoneCount.setFont(new Font("Monospace", Font.BOLD, 15));
+        serverStoneCount.setForeground(Color.BLACK);
+    }
+
     /**
      * Builds the label containing the host number title
+     *
      * @param settingsToolbar JToolBar in which to add the label
      */
     private void buildHostNumField(JToolBar settingsToolbar) {
@@ -281,7 +317,8 @@ public class ThreeStonesGUI {
     }
 
     /**
-     * Builds the label containing the port number 
+     * Builds the label containing the port number
+     *
      * @param settingsToolbar JToolBar in which to add the label
      */
     private void buildPortNumField(JToolBar settingsToolbar) {
@@ -300,6 +337,7 @@ public class ThreeStonesGUI {
 
     /**
      * Builds the button that connects to the server
+     *
      * @param settingsToolbar JToolBar in which to add the label
      */
     private void buildConnectBtn(JToolBar settingsToolbar) {
@@ -313,6 +351,7 @@ public class ThreeStonesGUI {
 
     /**
      * Builds the button that quits the game
+     *
      * @param settingsToolbar JToolBar in which to add the label
      */
     private void buildQuitBtn(JToolBar settingsToolbar) {
@@ -327,6 +366,7 @@ public class ThreeStonesGUI {
 
     /**
      * Builds the button that play the game
+     *
      * @param settingToolBar JToolBar in which to add the label
      */
     private void buildPlayAgainBtn(JToolBar settingToolBar) {
@@ -341,7 +381,8 @@ public class ThreeStonesGUI {
 
     /**
      * Returns the JComponent main root pane layout
-     * @return JComponent object 
+     *
+     * @return JComponent object
      */
     public final JComponent getMainView() {
         return mainRootPane;
@@ -349,6 +390,7 @@ public class ThreeStonesGUI {
 
     /**
      * Returns the text area of the UI
+     *
      * @return JComponent object
      */
     public JComponent getGameLog() {
@@ -357,7 +399,8 @@ public class ThreeStonesGUI {
 
     /**
      * Returns the port number text field from the UI
-     * @return String 
+     *
+     * @return String
      */
     public String getPortNumber() {
         return portNum.getText();
@@ -365,6 +408,7 @@ public class ThreeStonesGUI {
 
     /**
      * Returns the ip text field from the UI
+     *
      * @return String
      */
     public String getIp() {
@@ -373,8 +417,8 @@ public class ThreeStonesGUI {
 
     /**
      * Event handler method that handles the click event of the connect button.
-     * It enables all button on the board and displays the to the user that connection
-     * has been established and user can start playing.
+     * It enables all button on the board and displays the to the user that
+     * connection has been established and user can start playing.
      */
     private void onConnectClick() {
         log.debug("inside onConnectClick");
@@ -413,7 +457,7 @@ public class ThreeStonesGUI {
     }
 
     /**
-     * Event handler method that handles the click event of the quit game by 
+     * Event handler method that handles the click event of the quit game by
      * closing the connection with the server which ends the game
      */
     private void onCloseConnectionClick() {
@@ -421,36 +465,34 @@ public class ThreeStonesGUI {
     }
 
     /**
-     * Event handler method for the play again button which resets the boards and
-     * the points
+     * Event handler method for the play again button which resets the boards
+     * and the points
      */
     private void onPlayAgainClick() {
         // this must clear board and scores but keeps connection
     }
 
-    public void updateView(int x, int y, CellState color ) {
-        if (color == CellState.WHITE){
+    public void updateView(int x, int y, CellState color) {
+        if (color == CellState.WHITE) {
             this.gameBoardCells[x][y].setBackground(Color.WHITE);
-        }else if (color == CellState.BLACK){
+        } else if (color == CellState.BLACK) {
             this.gameBoardCells[x][y].setBackground(Color.BLACK);
         }
 
-      
-        
         for (int i = 0; i < gameBoardCells[0].length; i++) {
             for (int j = 0; j < gameBoardCells[0].length; j++) {
-                gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j );
+                gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
                 clientScorePnts.setText(clientGameBoard.getWhiteScore() + "");
                 serverScorePnts.setText(clientGameBoard.getBlackScore() + "");
-                
-                if(this.clientGameBoard.getBoard()[i][j] == CellState.UNAVAILABLE){
+
+                if (this.clientGameBoard.getBoard()[i][j] == CellState.UNAVAILABLE) {
                     gameBoardCells[i][j].setBackground(Color.CYAN);
                 } else if (this.clientGameBoard.getBoard()[i][j] == CellState.AVAILABLE) {
-                     gameBoardCells[i][j].setBackground(Color.GREEN);
+                    gameBoardCells[i][j].setBackground(Color.GREEN);
                 }
             }
         }
         //gameBoardCells[x][y].setText(clientGameBoard.getBoard()[x][y].toString().substring(0, 1));
-        
+
     }
 }
