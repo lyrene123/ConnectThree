@@ -1,5 +1,11 @@
 package com.threestones.server.gamestate;
 
+import 
+
+
+
+
+import com.threestones.server.gamestate.ThreeStonesServerGameBoard;
 import com.threestones.server.gamestate.ThreeStonesServerGameBoard.CellState;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +18,7 @@ import org.slf4j.LoggerFactory;
 public class ThreeStonesServerGame {
 
     private ThreeStonesServerGameBoard board;
+
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
@@ -21,50 +28,34 @@ public class ThreeStonesServerGame {
         this.board = new ThreeStonesServerGameBoard();
     }
 
-    public void updateBoard(int x, int y) {
-        board.getBoardChange(x, y);
-    }
-
-    public byte[] determineNextMove() {
-        List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();
+//    public void updateBoard(int x, int y, CellState color) {
+//        board.getBoard()[x][y] = color;
+//        board.setBoard(board.getBoard());
+//    }
+    public byte[] determineNextMove(int x, int y) {
+        List<ThreeStonesMove> possibleMoves = new ArrayList<ThreeStonesMove>();
         CellState[][] gameBoard = board.getBoard();
         int highestMoveValue = 0;
         ThreeStonesMove bestMove = new ThreeStonesMove();
         //LOOPS THROUGH GAMEBOARD
         for (int i = 0; i < gameBoard[0].length; i++) {
             for (int j = 0; j < gameBoard[0].length; j++) {
-                //IF CURRENT TILE IS AVAILABLE DETERMINE ITS VALUE
+                //IF CURRENT TILE IS AVAILABLE ADD THE MOVE TO THE LIST
                 if (gameBoard[i][j] == CellState.AVAILABLE) {
                     log.debug("determineNextMove CellState.Available");
+                    //creates new move with possible values
                     ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE), board.checkForThreeStones(i, j, CellState.BLACK), i, j);
-                    log.debug("Checking Moves: " + move.toString());
-                    //resets list and adds the current move
-
-                    //ADD LOGIC HERE FOR ADVANCED AI
-                    //check hypothical board state
-                    //get a list of created hypothical moves
-                    //POSSIBLY CHANGE THE moveValue system so that 
-                    //different moves are worth more ie white +2 black +4 , moves
-                    //2 turns ahead +1 +2
-                    if (move.getMoveValue() > highestMoveValue) {
-                        bestMoves.clear();
-                        highestMoveValue = move.getMoveValue();
-                        bestMoves.add(move);
-                    } //if move is equal to the top add it to the list
-                    else if (move.getMoveValue() == highestMoveValue) {
-                        bestMoves.add(move);
-                    }
+                    move.countNearbyTiles(board.getBoard());
+                    possibleMoves.add(move);
                 }
             }
         }
-        if (bestMoves.size() > 1) {
-            //randomizes best move
-            bestMove = bestMoves.get((int)(Math.random() * bestMoves.size()));
+        //DETERMINE THE BEST MOVE OUT OF THE LIST
+        if (possibleMoves.size() > 1) {
+            return ThreeStonesMove.determineBestMove(possibleMoves).toByte();
         } else {
-            bestMove = bestMoves.get(0);
+            return possibleMoves.get(0).toByte();
         }
-        
-        return bestMove.toByte();
     }
 
     public void startGame() {
@@ -74,6 +65,10 @@ public class ThreeStonesServerGame {
     private ThreeStonesMove createMove(int x, int y) {
 
         return new ThreeStonesMove();
+    }
+
+    public void setBoard(ThreeStonesServerGameBoard board) {
+        this.board = board;
     }
 
 }
