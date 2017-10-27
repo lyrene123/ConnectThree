@@ -44,7 +44,7 @@ public class ThreeStonesClient {
             
             board.reDrawBoard(x, y, CellState.WHITE ); // these work
             localGame.setBoard(board); //SERVEREEEEEEE
-            byte[] move = localGame.determineNextMove(x, y );
+            byte[] move = localGame.determineNextMove(x, y);
            
             board.updateBoard(move[1], move[2], CellState.BLACK);
             board.reDrawBoard(move[1], move[2], CellState.BLACK);

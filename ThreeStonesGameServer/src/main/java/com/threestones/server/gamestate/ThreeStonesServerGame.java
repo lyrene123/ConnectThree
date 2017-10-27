@@ -29,15 +29,15 @@ public class ThreeStonesServerGame {
         List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();
         CellState[][] gameBoard = board.getBoard();
         int highestMoveValue = 0;
-        byte[] moves = null;
-
+        ThreeStonesMove bestMove = new ThreeStonesMove();
         //LOOPS THROUGH GAMEBOARD
         for (int i = 0; i < gameBoard[0].length; i++) {
             for (int j = 0; j < gameBoard[0].length; j++) {
                 //IF CURRENT TILE IS AVAILABLE DETERMINE ITS VALUE
-                if (gameBoard[j][i] == CellState.AVAILABLE) {
+                if (gameBoard[i][j] == CellState.AVAILABLE) {
                     log.debug("determineNextMove CellState.Available");
                     ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE), board.checkForThreeStones(i, j, CellState.BLACK), i, j);
+                    log.debug("Checking Moves: " + move.toString());
                     //resets list and adds the current move
 
                     //ADD LOGIC HERE FOR ADVANCED AI
@@ -58,15 +58,13 @@ public class ThreeStonesServerGame {
             }
         }
         if (bestMoves.size() > 1) {
-            //RANDOMIZES MOVE
-            //CAN CHANGE IT SO IT PREFERS HIS OWN SCORES OVER THE ENEMY PlAYER SCORING
-            //WASNT SURE WHAT TO DO FROM HERE , HOW WE ARE GOING TO HANDLE making moves
-
-            //(int)(Math.random() * bestMoves.size())
+            //randomizes best move
+            bestMove = bestMoves.get((int)(Math.random() * bestMoves.size()));
         } else {
-            //IF ONLY ONE GOOD MOVE MAKE IT USING LIST.get(0)
+            bestMove = bestMoves.get(0);
         }
-        return moves;
+        
+        return bestMove.toByte();
     }
 
     public void startGame() {

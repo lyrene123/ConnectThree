@@ -19,7 +19,9 @@ import org.slf4j.LoggerFactory;
  * @author Jacob
  */
 public class ThreeStonesClientGameBoard {
+
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
+
     void reDrawBoard(int x, int y, CellState color) {
         this.gui.updateView(x, y, color);
     }
@@ -48,7 +50,7 @@ public class ThreeStonesClientGameBoard {
      */
     public ThreeStonesClientGameBoard() {
         this.startNewGame();
-        
+
     }
 
     /**
@@ -62,8 +64,6 @@ public class ThreeStonesClientGameBoard {
         blackScore = 0;
         constructBoard();
     }
-
-   
 
     /**
      * Calculates and returns the number of points scored by all possible
@@ -154,19 +154,19 @@ public class ThreeStonesClientGameBoard {
         if (!checkIfFull(x, y)) {
             for (int i = 0; i < board[0].length; i++) {
                 for (int j = 0; j < board[0].length; j++) {
-                    if (board[i][j] == CellState.BLACK || board[i][j] == CellState.WHITE ) continue;
+                    if (board[i][j] == CellState.BLACK || board[i][j] == CellState.WHITE) {
+                        continue;
+                    }
                     if (i == x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
                         availbleCells++;
-                    }
-                    else if (j == y && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
+                    } else if (j == y && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
                         availbleCells++;
-                        
-                    }else if ( board[i][j] != CellState.WHITE && board[i][j] !=  CellState.BLACK && board[i][j] !=  CellState.VACANT ) {
+
+                    } else if (board[i][j] != CellState.WHITE && board[i][j] != CellState.BLACK && board[i][j] != CellState.VACANT) {
                         board[i][j] = CellState.UNAVAILABLE;
-                    }
-                    else {
+                    } else {
                         board[i][j] = CellState.VACANT;
                     }
                 }
@@ -184,7 +184,7 @@ public class ThreeStonesClientGameBoard {
     }
 
     public void updateBoard(int x, int y, CellState color) {
-       
+
 //        int points = checkForThreeStones(x, y, color);
 //        if (color == CellState.WHITE) {
 //            whiteScore += points;
@@ -195,10 +195,9 @@ public class ThreeStonesClientGameBoard {
         this.board = getBoardChange(x, y);
         for (int i = 0; i < board[0].length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                log.debug("board[" + i + "]" + "[ "+ j +"]"+board[i][j]+ "");
+                //log.debug("board[" + i + "]" + "[ " + j + "]" + board[i][j] + "");
             }
         }
-        
 
     }
 
@@ -212,27 +211,19 @@ public class ThreeStonesClientGameBoard {
      */
     private boolean checkIfFull(int x, int y) {
         //check row
-        boolean fullRow = true;
-        
-        for (int j = 0; j < board[0].length && fullRow; j++) {
-            if (board[x][j] == CellState.AVAILABLE) {
-                fullRow = false;
-                break;
+        boolean full = true;
+        for (int j = 0; j < board[0].length && full; j++) {
+            if (board[x][j] == CellState.AVAILABLE || board[x][j] == CellState.UNAVAILABLE) {
+                full = false;
             }
         }
         //check col
-        boolean fullCol = true;
-        for (int i = 0; i < board[0].length && fullCol; i++) {
-            if (board[i][y] == CellState.AVAILABLE) {
-                fullCol = false;
-                break;
+        for (int i = 0; i < board[0].length && full; i++) {
+            if (board[i][y] == CellState.AVAILABLE || board[i][y] == CellState.UNAVAILABLE) {
+                full = false;
             }
         }
-        if (fullRow == true && fullCol == true)
-            return true;
-        else
-            return false;
-        
+        return full;
     }
 
     /**
@@ -287,7 +278,8 @@ public class ThreeStonesClientGameBoard {
         } catch (IOException e) {
         }
     }
-     /**
+
+    /**
      * Returns the CellState a2D array
      *
      * @return CellState 2D array

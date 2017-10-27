@@ -1,4 +1,3 @@
-
 package com.threestones.server.gamestate;
 
 /**
@@ -6,6 +5,7 @@ package com.threestones.server.gamestate;
  * @author Jacob
  */
 public class ThreeStonesMove {
+
     private int whitePoints;
     private int blackPoints;
     private int x;
@@ -17,8 +17,8 @@ public class ThreeStonesMove {
         this.x = x;
         this.y = y;
     }
-    
-    public ThreeStonesMove(){
+
+    public ThreeStonesMove() {
     }
 
     public int getWhitePoints() {
@@ -36,11 +36,21 @@ public class ThreeStonesMove {
     public int getY() {
         return y;
     }
-    
+
     //Returns Highest scoring value between whitePoints and blackPoints
-    public int getMoveValue(){
-        if (whitePoints > blackPoints)
+    public int getMoveValue() {
+        if (whitePoints > blackPoints) {
             return whitePoints;
+        }
         return blackPoints;
+    }
+
+    //converts move to a byte array for server message
+    public byte[] toByte() {
+        return new byte[]{(byte) blackPoints, (byte) x, (byte) y};
+    }
+    @Override
+    public String toString(){
+        return  "W:" + whitePoints + " B:" + blackPoints + " X:" + x + " Y:" + y;
     }
 }

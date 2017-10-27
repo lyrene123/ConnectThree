@@ -440,8 +440,14 @@ public class ThreeStonesGUI {
         for (int i = 0; i < gameBoardCells[0].length; i++) {
             for (int j = 0; j < gameBoardCells[0].length; j++) {
                 gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j );
-                clientScorePnts.setText(clientGameBoard.getWhiteStoneCount() + "");
-                serverScorePnts.setText(clientGameBoard.getBlackStoneCount() + "");
+                clientScorePnts.setText(clientGameBoard.getWhiteScore() + "");
+                serverScorePnts.setText(clientGameBoard.getBlackScore() + "");
+                
+                if(this.clientGameBoard.getBoard()[i][j] == CellState.UNAVAILABLE){
+                    gameBoardCells[i][j].setBackground(Color.CYAN);
+                } else if (this.clientGameBoard.getBoard()[i][j] == CellState.AVAILABLE) {
+                     gameBoardCells[i][j].setBackground(Color.GREEN);
+                }
             }
         }
         //gameBoardCells[x][y].setText(clientGameBoard.getBoard()[x][y].toString().substring(0, 1));
