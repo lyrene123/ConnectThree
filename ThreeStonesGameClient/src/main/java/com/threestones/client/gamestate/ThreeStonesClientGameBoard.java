@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 public class ThreeStonesClientGameBoard {
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
     void reDrawBoard(int x, int y, CellState color) {
-        this.gui.updateBtn(x, y, color);
+        this.gui.updateView(x, y, color);
     }
 
     /**
@@ -63,95 +63,7 @@ public class ThreeStonesClientGameBoard {
         constructBoard();
     }
 
-    /**
-     * Returns the CellState a2D array
-     *
-     * @return CellState 2D array
-     */
-    public CellState[][] getBoard() {
-        return board;
-    }
-
-    /**
-     * Sets the board with a CellState 2D array as input
-     *
-     * @param board CellState 2D array
-     */
-    public void setBoard(CellState[][] board) {
-        this.board = board;
-    }
-
-    /**
-     * Returns the number of black stones left to be played
-     *
-     * @return int
-     */
-    public int getBlackStoneCount() {
-        return blackStoneCount;
-    }
-
-    /**
-     * Sets the number of black stones left to be played
-     *
-     * @param blackStoneCount int
-     */
-    public void setBlackStoneCount(int blackStoneCount) {
-        this.blackStoneCount = blackStoneCount;
-    }
-
-    /**
-     * Sets the number of white stones left to be played
-     *
-     * @return int
-     */
-    public int getWhiteStoneCount() {
-        return whiteStoneCount;
-    }
-
-    /**
-     * Sets the number of white stones left to be played
-     *
-     * @param whiteStoneCount int
-     */
-    public void setWhiteStoneCount(int whiteStoneCount) {
-        this.whiteStoneCount = whiteStoneCount;
-    }
-
-    /**
-     * Returns the total white score
-     *
-     * @return int
-     */
-    public int getWhiteScore() {
-        return whiteScore;
-    }
-
-    /**
-     * Sets the total white score
-     *
-     * @param whiteScore int
-     */
-    public void setWhiteScore(int whiteScore) {
-        this.whiteScore = whiteScore;
-    }
-
-    /**
-     * Returns the total black score
-     *
-     * @return int
-     */
-    public int getBlackScore() {
-        return blackScore;
-    }
-
-    /**
-     * Sets the total black score
-     *
-     * @param blackScore int
-     */
-    public void setBlackScore(int blackScore) {
-        this.blackScore = blackScore;
-    }
+   
 
     /**
      * Calculates and returns the number of points scored by all possible
@@ -247,7 +159,7 @@ public class ThreeStonesClientGameBoard {
                         board[i][j] = CellState.AVAILABLE;
                         availbleCells++;
                     }
-                    else if (j == y && i != x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
+                    else if (j == y && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
                         availbleCells++;
                         
@@ -279,7 +191,7 @@ public class ThreeStonesClientGameBoard {
 //        } else {
 //            blackScore += points;
 //        }
-         board[x][y] = color;
+        board[x][y] = color;
         this.board = getBoardChange(x, y);
         for (int i = 0; i < board[0].length; i++) {
             for (int j = 0; j < board[0].length; j++) {
@@ -300,21 +212,27 @@ public class ThreeStonesClientGameBoard {
      */
     private boolean checkIfFull(int x, int y) {
         //check row
-        boolean full = true;
-        for (int j = 0; j < board[0].length && full; j++) {
+        boolean fullRow = true;
+        
+        for (int j = 0; j < board[0].length && fullRow; j++) {
             if (board[x][j] == CellState.AVAILABLE) {
-                full = false;
+                fullRow = false;
                 break;
             }
         }
         //check col
-        for (int i = 0; i < board[0].length && full; i++) {
+        boolean fullCol = true;
+        for (int i = 0; i < board[0].length && fullCol; i++) {
             if (board[i][y] == CellState.AVAILABLE) {
-                full = false;
+                fullCol = false;
                 break;
             }
         }
-        return full;
+        if (fullRow == true && fullCol == true)
+            return true;
+        else
+            return false;
+        
     }
 
     /**
@@ -368,5 +286,94 @@ public class ThreeStonesClientGameBoard {
 
         } catch (IOException e) {
         }
+    }
+     /**
+     * Returns the CellState a2D array
+     *
+     * @return CellState 2D array
+     */
+    public CellState[][] getBoard() {
+        return board;
+    }
+
+    /**
+     * Sets the board with a CellState 2D array as input
+     *
+     * @param board CellState 2D array
+     */
+    public void setBoard(CellState[][] board) {
+        this.board = board;
+    }
+
+    /**
+     * Returns the number of black stones left to be played
+     *
+     * @return int
+     */
+    public int getBlackStoneCount() {
+        return blackStoneCount;
+    }
+
+    /**
+     * Sets the number of black stones left to be played
+     *
+     * @param blackStoneCount int
+     */
+    public void setBlackStoneCount(int blackStoneCount) {
+        this.blackStoneCount = blackStoneCount;
+    }
+
+    /**
+     * Sets the number of white stones left to be played
+     *
+     * @return int
+     */
+    public int getWhiteStoneCount() {
+        return whiteStoneCount;
+    }
+
+    /**
+     * Sets the number of white stones left to be played
+     *
+     * @param whiteStoneCount int
+     */
+    public void setWhiteStoneCount(int whiteStoneCount) {
+        this.whiteStoneCount = whiteStoneCount;
+    }
+
+    /**
+     * Returns the total white score
+     *
+     * @return int
+     */
+    public int getWhiteScore() {
+        return whiteScore;
+    }
+
+    /**
+     * Sets the total white score
+     *
+     * @param whiteScore int
+     */
+    public void setWhiteScore(int whiteScore) {
+        this.whiteScore = whiteScore;
+    }
+
+    /**
+     * Returns the total black score
+     *
+     * @return int
+     */
+    public int getBlackScore() {
+        return blackScore;
+    }
+
+    /**
+     * Sets the total black score
+     *
+     * @param blackScore int
+     */
+    public void setBlackScore(int blackScore) {
+        this.blackScore = blackScore;
     }
 }

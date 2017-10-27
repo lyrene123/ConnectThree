@@ -172,7 +172,10 @@ public class ThreeStonesGUI {
                         gameBoardCells[x][y].addActionListener(e -> {
                             try {
                                 threeStonesClnt.clickBoardCell(positionX, positionY);
-
+                                int whiteStones = this.clientGameBoard.getWhiteStoneCount();
+                                whiteStones = --whiteStones;
+                                this.clientGameBoard.setWhiteStoneCount(whiteStones);
+                                updateView(-1, -1, CellState.UNAVAILABLE);
                             } catch (IOException ex) {
                                 Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -425,18 +428,20 @@ public class ThreeStonesGUI {
         // this must clear board and scores but keeps connection
     }
 
-    public void updateBtn(int x, int y, CellState color ) {
+    public void updateView(int x, int y, CellState color ) {
         if (color == CellState.WHITE){
             this.gameBoardCells[x][y].setBackground(Color.WHITE);
         }else if (color == CellState.BLACK){
             this.gameBoardCells[x][y].setBackground(Color.BLACK);
         }
-        
+
       
         
         for (int i = 0; i < gameBoardCells[0].length; i++) {
             for (int j = 0; j < gameBoardCells[0].length; j++) {
                 gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j );
+                clientScorePnts.setText(clientGameBoard.getWhiteStoneCount() + "");
+                serverScorePnts.setText(clientGameBoard.getBlackStoneCount() + "");
             }
         }
         //gameBoardCells[x][y].setText(clientGameBoard.getBoard()[x][y].toString().substring(0, 1));

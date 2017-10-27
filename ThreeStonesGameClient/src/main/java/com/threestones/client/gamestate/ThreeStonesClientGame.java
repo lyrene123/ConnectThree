@@ -13,7 +13,6 @@ public class ThreeStonesClientGame {
 
     private ThreeStonesClientGameBoard board;
 
-    
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
@@ -27,12 +26,11 @@ public class ThreeStonesClientGame {
 //        board.getBoard()[x][y] = color;
 //        board.setBoard(board.getBoard());
 //    }
-
-    public byte[] determineNextMove(int x, int y ) {
+    public byte[] determineNextMove(int x, int y) {
         List<ThreeStonesMove> bestMoves = new ArrayList<ThreeStonesMove>();
         CellState[][] gameBoard = board.getBoard();
         int highestMoveValue = 0;
-        byte[] moves =new byte[4];
+        byte[] moves = new byte[4];
 
         //LOOPS THROUGH GAMEBOARD
         for (int i = 0; i < gameBoard[0].length; i++) {
@@ -68,16 +66,21 @@ public class ThreeStonesClientGame {
             //CAN CHANGE IT SO IT PREFERS HIS OWN SCORES OVER THE ENEMY PlAYER SCORING
             //WASNT SURE WHAT TO DO FROM HERE , HOW WE ARE GOING TO HANDLE making moves
 
-            //(int)(Math.random() * bestMoves.size())
+            int position = (int) (Math.random() * bestMoves.size());
+            moves[0] = (byte) 1;
+            moves[1] = (byte) bestMoves.get(position).getX();
+            moves[2] = (byte) bestMoves.get(position).getY();
         } else {
             //IF ONLY ONE GOOD MOVE MAKE IT USING LIST.get(0)
         }
-        moves[0] = (byte)1;
-        moves[1] = (byte)bestMoves.get(0).getX();
-        moves[2] = (byte)bestMoves.get(0).getY();
+
         log.debug("determineNextMove" + bestMoves.size());
         for (ThreeStonesMove bestMove : bestMoves) {
             log.debug("determineNextMove" + bestMove);
+        }
+        if (moves[1] != 0 || moves[2] != 0 ) {
+            int blackStones = this.board.getBlackStoneCount();
+            this.board.setBlackStoneCount(--blackStones);
         }
         return moves;
     }
@@ -90,6 +93,7 @@ public class ThreeStonesClientGame {
 
         return new ThreeStonesMove();
     }
+
     public void setBoard(ThreeStonesClientGameBoard board) {
         this.board = board;
     }
