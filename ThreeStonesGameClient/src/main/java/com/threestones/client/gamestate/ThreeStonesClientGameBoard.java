@@ -258,15 +258,14 @@ public class ThreeStonesClientGameBoard {
                         board[i][j] = CellState.VACANT;
                     }
                 }
-//        } else {
-//            for (int i = 0; i < board[0].length; i++) {
-//                for (int j = 0; j < board[0].length; j++) {
-//                    if (board[i][j] == CellState.UNAVAILABLE) {
-//                        board[i][j] = CellState.AVAILABLE;
-//                    }
-//                }
-//            }
-//        }
+            }
+        } else {
+            for (int i = 0; i < board[0].length; i++) {
+                for (int j = 0; j < board[0].length; j++) {
+                    if (board[i][j] == CellState.UNAVAILABLE) {
+                        board[i][j] = CellState.AVAILABLE;
+                    }
+                }
             }
         }
         return board;
