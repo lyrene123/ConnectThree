@@ -34,20 +34,25 @@ public class ThreeStonesClient {
     public void clickBoardCell(int x, int y) throws IOException {
         //send server validation
 
-        if (board.getBoard()[y][x] == CellState.AVAILABLE) {
-            log.debug("sent: " + y + " " + x);
+        if (board.getBoard()[x][y] == CellState.AVAILABLE) {
+            log.debug("sent: " + x + " " + y);
 
             //clientPacket.sendMove(x, y);
             
             ThreeStonesClientGame localGame = new ThreeStonesClientGame();
-            board.updateBoard(y, x, CellState.WHITE);
-            localGame.setBoard(board);
-            byte[] move = localGame.determineNextMove(y, x );
+            board.updateBoard(x, y, CellState.WHITE); //these work
+            board.reDrawBoard(x, y, CellState.WHITE ); // these work
+            localGame.setBoard(board); //SERVEREEEEEEE
+            byte[] move = localGame.determineNextMove(x, y );
+           
+            board.updateBoard(move[1], move[2], CellState.BLACK);
+             board.reDrawBoard(move[1], move[2], CellState.BLACK);
+             localGame.setBoard(board); //SERVEREEEEEEE
             log.debug("clickBoardCell new server move   " + move[1] + " " + move[2] );
             //serverResponse();
             //ThreeStonesClientPacket.sendMove(x,y);
             //must make sure that server checks that if row col are full all cells become available
-        } else if (board.getBoard()[y][x] == CellState.UNAVAILABLE) {
+        } else if (board.getBoard()[x][y] == CellState.UNAVAILABLE) {
             //display wrong move message
 
         }

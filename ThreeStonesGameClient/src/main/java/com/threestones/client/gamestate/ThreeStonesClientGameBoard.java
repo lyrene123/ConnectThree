@@ -1,10 +1,12 @@
 package com.threestones.client.gamestate;
 
+import com.threestones.view.ThreeStonesGUI;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import org.slf4j.LoggerFactory;
 
 /**
  * Encapsulates the behavior and properties of a game board in a game of Three
@@ -17,6 +19,10 @@ import java.util.Arrays;
  * @author Jacob
  */
 public class ThreeStonesClientGameBoard {
+    private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    void reDrawBoard(int x, int y, CellState color) {
+        this.gui.updateBtn(x, y, color);
+    }
 
     /**
      * Enums holding the different states of a slot in a Three Stones game board
@@ -30,12 +36,19 @@ public class ThreeStonesClientGameBoard {
     private int whiteStoneCount;
     private int whiteScore;
     private int blackScore;
+    private ThreeStonesGUI gui;
+    private int availbleCells;
+
+    public void setGui(ThreeStonesGUI gui) {
+        this.gui = gui;
+    }
 
     /**
      * Default constructor
      */
     public ThreeStonesClientGameBoard() {
         this.startNewGame();
+        
     }
 
     /**
@@ -229,13 +242,19 @@ public class ThreeStonesClientGameBoard {
         if (!checkIfFull(x, y)) {
             for (int i = 0; i < board[0].length; i++) {
                 for (int j = 0; j < board[0].length; j++) {
+                    if (board[i][j] == CellState.BLACK || board[i][j] == CellState.WHITE ) continue;
                     if (i == x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
+                        availbleCells++;
                     }
                     else if (j == y && i != x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
+                        availbleCells++;
                         
-                    }else if ( board[i][j] != CellState.WHITE && board[i][j] !=  CellState.BLACK) {
+                    }else if ( board[i][j] != CellState.WHITE && board[i][j] !=  CellState.BLACK && board[i][j] !=  CellState.VACANT ) {
+                        board[i][j] = CellState.UNAVAILABLE;
+                    }
+                    else {
                         board[i][j] = CellState.VACANT;
                     }
                 }
@@ -254,14 +273,21 @@ public class ThreeStonesClientGameBoard {
     }
 
     public void updateBoard(int x, int y, CellState color) {
-        board[x][y] = color;
+       
 //        int points = checkForThreeStones(x, y, color);
 //        if (color == CellState.WHITE) {
 //            whiteScore += points;
 //        } else {
 //            blackScore += points;
 //        }
+         board[x][y] = color;
         this.board = getBoardChange(x, y);
+        for (int i = 0; i < board[0].length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                log.debug("board[" + i + "]" + "[ "+ j +"]"+board[i][j]+ "");
+            }
+        }
+        
 
     }
 
@@ -276,15 +302,15 @@ public class ThreeStonesClientGameBoard {
     private boolean checkIfFull(int x, int y) {
         //check row
         boolean full = true;
-        for (int i = 0; i < board[0].length && full; i++) {
-            if (board[i][x] == CellState.AVAILABLE || board[i][x] == CellState.UNAVAILABLE) {
+        for (int j = 0; j < board[0].length && full; j++) {
+            if (board[x][j] == CellState.AVAILABLE) {
                 full = false;
                 break;
             }
         }
         //check col
         for (int i = 0; i < board[0].length && full; i++) {
-            if (board[x][y] == CellState.AVAILABLE || board[x][y] == CellState.UNAVAILABLE) {
+            if (board[i][y] == CellState.AVAILABLE) {
                 full = false;
                 break;
             }

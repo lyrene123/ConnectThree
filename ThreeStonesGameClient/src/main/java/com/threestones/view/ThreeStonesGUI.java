@@ -74,6 +74,7 @@ public class ThreeStonesGUI {
     public ThreeStonesGUI() {
         this.threeStonesClnt = new ThreeStonesClient();
         this.clientGameBoard = this.threeStonesClnt.getBoard();
+        clientGameBoard.setGui(this);
     }
 
     /**
@@ -157,22 +158,21 @@ public class ThreeStonesGUI {
                     case VACANT: //if vacant slot, make the button color orange
                         gameBoardCells[x][y] = new JButton();
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
+                        gameBoardCells[x][y].setText(clientGameBoard.getBoard()[x][y].toString().substring(0, 1));
                         gameBoardCells[x][y].setBackground(Color.ORANGE);
+                        
                         break;
                     case AVAILABLE: //if available slot, then set button color to white and set click listeners
                         gameBoardCells[x][y] = new JButton();
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
-                        gameBoardCells[x][y].setBackground(Color.WHITE);
+                        gameBoardCells[x][y].setText(clientGameBoard.getBoard()[y][x].toString().substring(0, 1));
+                        gameBoardCells[x][y].setBackground(Color.cyan);
                         final int positionX = x;
                         final int positionY = y;
                         gameBoardCells[x][y].addActionListener(e -> {
                             try {
-<<<<<<< HEAD
-                                threeStonesClnt.clickBoardCell(xx, yy);
-                                
-=======
                                 threeStonesClnt.clickBoardCell(positionX, positionY);
->>>>>>> d24787b56e1e4ba42c38b5ac9418cb6cf8dc4388
+
                             } catch (IOException ex) {
                                 Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -181,14 +181,24 @@ public class ThreeStonesGUI {
                 }
                 gameBoardCells[x][y].setEnabled(false);
             }
+            
         }
+        
+        
 
         //the following loop is to add the gameBoardCells array to the UI 
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
-                threeStonesGameBoard.add(gameBoardCells[j][i]);
+                threeStonesGameBoard.add(gameBoardCells[i][j]);
             }
         }
+        
+        for (int i = 0; i < gameBoardCells[0].length; i++) {
+            for (int j = 0; j < gameBoardCells[0].length; j++) {
+                gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j );
+            }
+        }
+        
     }
 
     /**
@@ -413,5 +423,23 @@ public class ThreeStonesGUI {
      */
     private void onPlayAgainClick() {
         // this must clear board and scores but keeps connection
+    }
+
+    public void updateBtn(int x, int y, CellState color ) {
+        if (color == CellState.WHITE){
+            this.gameBoardCells[x][y].setBackground(Color.WHITE);
+        }else if (color == CellState.BLACK){
+            this.gameBoardCells[x][y].setBackground(Color.BLACK);
+        }
+        
+      
+        
+        for (int i = 0; i < gameBoardCells[0].length; i++) {
+            for (int j = 0; j < gameBoardCells[0].length; j++) {
+                gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j );
+            }
+        }
+        //gameBoardCells[x][y].setText(clientGameBoard.getBoard()[x][y].toString().substring(0, 1));
+        
     }
 }

@@ -41,25 +41,25 @@ public class ThreeStonesClientGame {
                 if (gameBoard[i][j] == CellState.AVAILABLE) {
                     log.debug("determineNextMove CellState.Available");
                     int whitePoints = board.checkForThreeStones(x, y, CellState.WHITE);
-                    int blackPoints = board.checkForThreeStones(x, y, CellState.BLACK);
+                    int blackPoints = board.checkForThreeStones(i, j, CellState.BLACK);
                     ThreeStonesMove move = new ThreeStonesMove(whitePoints, blackPoints, i, j);
                     //ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE), board.checkForThreeStones(i, j, CellState.BLACK), i, j);
                     //resets list and adds the current move
-
+                    bestMoves.add(move);
                     //ADD LOGIC HERE FOR ADVANCED AI
                     //check hypothical board state
                     //get a list of created hypothical moves
                     //POSSIBLY CHANGE THE moveValue system so that 
                     //different moves are worth more ie white +2 black +4 , moves
                     //2 turns ahead +1 +2
-                    if (move.getMoveValue() > highestMoveValue) {
-                        bestMoves.clear();
-                        highestMoveValue = move.getMoveValue();
-                        bestMoves.add(move);
-                    } //if move is equal to the top add it to the list
-                    else if (move.getMoveValue() == highestMoveValue) {
-                        bestMoves.add(move);
-                    }
+//                    if (move.getMoveValue() > highestMoveValue) {
+//                        bestMoves.clear();
+//                        highestMoveValue = move.getMoveValue();
+//                        bestMoves.add(move);
+//                    } //if move is equal to the top add it to the list
+//                    else if (move.getMoveValue() == highestMoveValue) {
+//                        bestMoves.add(move);
+//                    }
                 }
             }
         }
@@ -75,7 +75,10 @@ public class ThreeStonesClientGame {
         moves[0] = (byte)1;
         moves[1] = (byte)bestMoves.get(0).getX();
         moves[2] = (byte)bestMoves.get(0).getY();
-        
+        log.debug("determineNextMove" + bestMoves.size());
+        for (ThreeStonesMove bestMove : bestMoves) {
+            log.debug("determineNextMove" + bestMove);
+        }
         return moves;
     }
 
