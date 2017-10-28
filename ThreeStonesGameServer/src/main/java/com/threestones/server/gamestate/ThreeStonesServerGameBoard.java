@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import org.slf4j.LoggerFactory;
 
 /**
  * Encapsulates the behavior and properties of a game board in a game of Three
@@ -18,6 +18,8 @@ import java.util.Arrays;
  */
 public class ThreeStonesServerGameBoard {
 
+    private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
+
     /**
      * Enums holding the different states of a slot in a Three Stones game board
      */
@@ -30,23 +32,229 @@ public class ThreeStonesServerGameBoard {
     private int whiteStoneCount;
     private int whiteScore;
     private int blackScore;
+    private int availableCells;
 
     /**
      * Default constructor
      */
     public ThreeStonesServerGameBoard() {
+
     }
 
     /**
      * Initializes the game board by setting the black stones and white stones
      * total left, the points as well as the construction of the board.
      */
-    public void startNewGame() {
+    public void initializeGameBoard() {
         blackStoneCount = 15;
         whiteStoneCount = 15;
         whiteScore = 0;
         blackScore = 0;
         constructBoard();
+    }
+
+    /**
+     * Calculates and returns the number of points scored by all possible
+     * combinations of black or white stones on the game board based on the
+     * coordinate x and y
+     *
+     * @returns number of points scored from the coordinate
+     * @param x x coordinate on game board
+     * @param y y coordinate on game board
+     */
+    public int checkForThreeStones(int x, int y, CellState color) {
+        int points = 0;
+
+        //check horizontal left
+        if (board[x][y - 1] == color && board[x][y - 2] == color) {
+            points++;
+        }
+
+        //check horizontal middle
+        if (board[x][y - 1] == color && board[x][y + 1] == color) {
+            points++;
+        }
+
+        //check horizontal right
+        if (board[x][y + 1] == color && board[x][y + 2] == color) {
+            points++;
+        }
+
+        //check vertical Up
+        if (board[x - 1][y] == color && board[x - 2][y] == color) {
+            points++;
+        }
+
+        //check vertical Middle
+        if (board[x - 1][y] == color && board[x + 1][y] == color) {
+            points++;
+        }
+
+        //check vertical Down
+        if (board[x + 1][y] == color && board[x + 2][y] == color) {
+            points++;
+        }
+
+        //check diagonal N-E /
+        if (board[x - 1][y + 1] == color && board[x - 2][y + 2] == color) {
+            points++;
+        }
+
+        //check diagonal N-W \
+        if (board[x - 1][y - 1] == color && board[x - 2][y - 2] == color) {
+            points++;
+        }
+
+        //check diagonal S-E \
+        if (board[x + 1][y + 1] == color && board[x + 2][y + 2] == color) {
+            points++;
+
+        }
+
+        //check diagonal S-W /
+        if (board[x + 1][y - 1] == color && board[x + 2][y - 2] == color) {
+            points++;
+        }
+
+        //check diagonals Middle
+        //Diagnol Middle Right /
+        if (board[x - 1][y + 1] == color && board[x + 1][y - 1] == color) {
+            points++;
+        }
+        //Diagonal Middle Left \
+        if (board[x - 1][y - 1] == color && board[x + 1][y + 1] == color) {
+            points++;
+        }
+
+        return points;
+    }
+
+    /**
+     * Updates the board with the new coordinate x and y and returns the altered
+     * version of the board by returning the CellState 2D array
+     *
+     * @param x int x row
+     * @param y int y column
+     * @return CellState 2D array
+     */
+    public CellState[][] getBoardChange(int x, int y) {
+        if (!checkIfFull(x, y)) {
+            for (int i = 0; i < board[0].length; i++) {
+                for (int j = 0; j < board[0].length; j++) {
+                    if (board[i][j] == CellState.BLACK || board[i][j] == CellState.WHITE) {
+                        continue;
+                    }
+                    if (i == x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
+                        board[i][j] = CellState.AVAILABLE;
+                        availableCells++;
+                    } else if (j == y && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
+                        board[i][j] = CellState.AVAILABLE;
+                        availableCells++;
+
+                    } else if (board[i][j] != CellState.WHITE && board[i][j] != CellState.BLACK && board[i][j] != CellState.VACANT) {
+                        board[i][j] = CellState.UNAVAILABLE;
+                    } else {
+                        board[i][j] = CellState.VACANT;
+                    }
+                }
+            }
+        } else {
+            for (int i = 0; i < board[0].length; i++) {
+                for (int j = 0; j < board[0].length; j++) {
+                    if (board[i][j] == CellState.UNAVAILABLE) {
+                        board[i][j] = CellState.AVAILABLE;
+                    }
+                }
+            }
+        }
+        return board;
+    }
+
+    public void updateBoard(int x, int y, CellState color) {
+        board[x][y] = color;
+        if (color == CellState.WHITE) {
+            whiteScore += checkForThreeStones(x, y, color);
+        } else {
+            blackScore += checkForThreeStones(x, y, color);
+        }
+        this.board = getBoardChange(x, y);
+    }
+
+    /**
+     * Checks if a row x and column y is full with stones on the game board and
+     * returns a boolean true or false
+     *
+     * @param x int x row
+     * @param y int y column
+     * @return boolean
+     */
+    private boolean checkIfFull(int x, int y) {
+        //check row
+        boolean full = true;
+        for (int j = 0; j < board[0].length && full; j++) {
+            if (board[x][j] == CellState.AVAILABLE || board[x][j] == CellState.UNAVAILABLE) {
+                full = false;
+            }
+        }
+        //check col
+        for (int i = 0; i < board[0].length && full; i++) {
+            if (board[i][y] == CellState.AVAILABLE || board[i][y] == CellState.UNAVAILABLE) {
+                full = false;
+            }
+        }
+        return full;
+    }
+
+    /**
+     * Reads the gameboard layout from a file and put data from the file into a
+     * 2D array
+     *
+     * @param filename filename String
+     * @return 2D array
+     * @throws IOException
+     */
+    private int[][] constructArrayFromFile(String filename) throws IOException {
+        InputStream stream = ClassLoader.getSystemResourceAsStream(filename);
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(stream));
+
+        String line;
+        int row = 0;
+        int size = 11;
+        String token = ",";
+        int[][] arr = new int[size][size];
+
+        while ((line = buffer.readLine()) != null) {
+            String[] vals = line.trim().split(token);
+            for (int col = 0; col < size; col++) {
+                arr[row][col] = Integer.parseInt(vals[col]);
+            }
+            row++;
+        }
+        return arr;
+    }
+
+    private void constructBoard() {
+        String file = "gameboard.csv";
+        try {
+            int[][] arr = constructArrayFromFile(file);
+            board = new CellState[arr.length][arr.length];
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr.length; j++) {
+                    switch (arr[i][j]) {
+                        case -1:
+                            board[i][j] = CellState.VACANT;
+                            break;
+                        case 0:
+                            board[i][j] = CellState.AVAILABLE;
+                            break;
+                        default:
+                            board[i][j] = CellState.AVAILABLE;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            log.error("Error occured while reading from gameboard.csv");
+        }
     }
 
     /**
@@ -137,208 +345,5 @@ public class ThreeStonesServerGameBoard {
      */
     public void setBlackScore(int blackScore) {
         this.blackScore = blackScore;
-    }
-
-    /**
-     * Calculates and returns the number of points scored by all possible
-     * combinations of black or white stones on the game board based on the
-     * coordinate x and y
-     *
-     * @returns number of points scored from the coordinate
-     * @param x row
-     * @param y col
-     */
-    public int checkForThreeStones(int x, int y, CellState color) {
-        int points = 0;
-
-        //check horizontal left
-        if (board[x][y - 1] == color && board[x][y - 2] == color) {
-            points++;
-        }
-
-        //check horizontal middle
-        if (board[x][y - 1] == color && board[x][y + 1] == color) {
-            points++;
-        }
-
-        //check horizontal right
-        if (board[x][y + 1] == color && board[x][y + 2] == color) {
-            points++;
-        }
-
-        //check vertical Up
-        if (board[x - 1][y] == color && board[x - 2][y] == color) {
-            points++;
-        }
-
-        //check vertical Middle
-        if (board[x - 1][y] == color && board[x + 1][y] == color) {
-            points++;
-        }
-
-        //check vertical Down
-        if (board[x + 1][y] == color && board[x + 2][y] == color) {
-            points++;
-        }
-
-        //check diagonal N-E /
-        if (board[x - 1][y + 1] == color && board[x - 2][y + 2] == color) {
-            points++;
-        }
-
-        //check diagonal N-W \
-        if (board[x - 1][y - 1] == color && board[x - 2][y - 2] == color) {
-            points++;
-        }
-
-        //check diagonal S-E \
-        if (board[x + 1][y + 1] == color && board[x + 2][y + 2] == color) {
-            points++;
-
-        }
-
-        //check diagonal S-W /
-        if (board[x + 1][y - 1] == color && board[x + 2][y - 2] == color) {
-            points++;
-        }
-
-        //check diagonals Middle
-        
-        //Diagnol Middle Right /
-        if (board[x - 1][y + 1] == color && board[x + 1][y - 1] == color) {
-            points++;
-        }
-        //Diagonal Middle Left \
-        if (board[x - 1][y - 1] == color && board[x + 1][y + 1] == color) {
-            points++;
-        }
-
-        return points;
-    }
-
-    /**
-     * Updates the board with the new coordinate x and y and returns the altered
-     * version of the board by returning the CellState 2D array
-     *
-     * @param x int x row
-     * @param y int y column
-     * @return CellState 2D array
-     */
-    public CellState[][] getBoardChange(int x, int y) {
-        CellState[][] boardCopy = this.board.clone();
-
-        if (!checkIfFull(x, y)) {
-            for (int i = 0; i < boardCopy[0].length; i++) {
-                for (int j = 0; j < boardCopy[0].length; j++) {
-                    if (i == x || j == y && boardCopy[i][j] != CellState.VACANT) {
-                        boardCopy[i][j] = CellState.AVAILABLE;
-                    } else if (boardCopy[i][j] != CellState.VACANT) {
-                        boardCopy[i][j] = CellState.AVAILABLE;
-                    }
-                }
-            }
-        } else {
-            for (int i = 0; i < boardCopy[0].length; i++) {
-                for (int j = 0; j < boardCopy[0].length; j++) {
-                    if (boardCopy[i][j] == CellState.UNAVAILABLE) {
-                        boardCopy[i][j] = CellState.AVAILABLE;
-                    }
-                }
-            }
-        }
-        return boardCopy;
-    }
-
-    public void makeMove(int x, int y, CellState color) {
-
-        int points = checkForThreeStones(x, y, color);
-        if (color == CellState.WHITE) {
-            whiteScore += points;
-        } else {
-            blackScore += points;
-        }
-        this.board = getBoardChange(x, y);
-
-    }
-
-    /**
-     * Checks if a row x and column y is full with stones on the game board and
-     * returns a boolean true or false
-     *
-     * @param x int x row
-     * @param y int y column
-     * @return boolean
-     */
-    private boolean checkIfFull(int x, int y) {
-        //check row
-        boolean full = true;
-        for (int j = 0; j < board[0].length && full; j++) {
-            if (board[x][j] == CellState.AVAILABLE || board[x][j] == CellState.UNAVAILABLE) {
-                full = false;
-            }
-        }
-        //check col
-        for (int i = 0; i < board[0].length && full; i++) {
-            if (board[i][y] == CellState.AVAILABLE || board[i][y] == CellState.UNAVAILABLE) {
-                full = false;
-            }
-        }
-        return full;
-    }
-
-    /**
-     * Reads the gameboard layout from a file and put data from the file into a
-     * 2D array
-     *
-     * @param filename filename String
-     * @return 2D array
-     * @throws IOException
-     */
-    private int[][] constructArrayFromFile(String filename) throws IOException {
-        InputStream stream = ClassLoader.getSystemResourceAsStream(filename);
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(stream));
-
-        String line;
-        int row = 0;
-        int size = 0;
-        String token = ",";
-        int[][] arr = null;
-
-        while ((line = buffer.readLine()) != null) {
-            String[] vals = line.trim().split(token);
-            size = vals.length;
-            arr = new int[size][size];
-
-            for (int col = 0; col < size; col++) {
-                arr[row][col] = Integer.parseInt(vals[col]);
-            }
-            row++;
-        }
-        return arr;
-    }
-
-    private void constructBoard() {
-
-        String file = "gameboard.csv";
-        try {
-            int[][] arr = constructArrayFromFile(file);
-            board = new CellState[arr.length][arr.length];
-            for (int i = 0; i < arr.length; i++) {
-                for (int j = 0; j < arr.length; j++) {
-                    switch (arr[i][j]) {
-                        case -1:
-                            board[i][j] = CellState.VACANT;
-                            break;
-                        case 0:
-                            board[i][j] = CellState.AVAILABLE;
-                            break;
-                        default:
-                            board[i][j] = CellState.AVAILABLE;
-                    }
-                }
-            }
-
-        } catch (IOException e) {
-        }
     }
 }

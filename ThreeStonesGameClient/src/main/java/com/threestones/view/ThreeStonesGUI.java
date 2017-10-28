@@ -178,7 +178,7 @@ public class ThreeStonesGUI {
                         gameBoardCells[x][y] = new JButton();
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
                         gameBoardCells[x][y].setText(clientGameBoard.getBoard()[y][x].toString().substring(0, 1));
-                        gameBoardCells[x][y].setBackground(Color.cyan);
+                        gameBoardCells[x][y].setBackground(Color.YELLOW);
                         final int positionX = x;
                         final int positionY = y;
                         gameBoardCells[x][y].addActionListener(e -> {
@@ -196,7 +196,6 @@ public class ThreeStonesGUI {
                 }
                 gameBoardCells[x][y].setEnabled(false);
             }
-
         }
 
         //the following loop is to add the gameBoardCells array to the UI 
@@ -489,7 +488,7 @@ public class ThreeStonesGUI {
                 serverStoneCount.setText(clientGameBoard.getBlackStoneCount() + "");
 
                 if (this.clientGameBoard.getBoard()[i][j] == CellState.UNAVAILABLE) {
-                    gameBoardCells[i][j].setBackground(Color.CYAN);
+                    gameBoardCells[i][j].setBackground(Color.YELLOW);
                 } else if (this.clientGameBoard.getBoard()[i][j] == CellState.AVAILABLE) {
                     gameBoardCells[i][j].setBackground(Color.GREEN);
                 }

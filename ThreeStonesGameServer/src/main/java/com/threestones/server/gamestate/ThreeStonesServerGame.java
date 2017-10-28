@@ -15,22 +15,25 @@ public class ThreeStonesServerGame {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
-    //GENERAL BASIC LOGIC FOR OUR MOVE SELECTION
-    //DEPENDING ON WHERE WE WANT TO TAKE THIS WE CAN ADD MORE MOVE COMPLEXITY SO THAT IT CHECKS THE AVAILALBE
-    //SQUARES THAT WILL BECOME AVAILABLE BASE ON A CERTAIN MOVE AND THE SCORES WHITE OR BLACK CAN SCORE IN THE FUTURE (reading ahead of time)
     public ThreeStonesServerGame() {
         this.board = new ThreeStonesServerGameBoard();
     }
 
-    public void updateBoard(int x, int y) {
-        board.getBoardChange(x, y);
+    public void updateBoard(int x, int y, CellState color) {
+        board.updateBoard(x, y, color);
+    }
+
+    public void startGame() {
+        board.initializeGameBoard();
+    }
+
+    public void setBoard(ThreeStonesServerGameBoard board) {
+        this.board = board;
     }
 
     public byte[] determineNextMove() {
-        List<ThreeStonesMove> possibleMoves = new ArrayList<ThreeStonesMove>();
+        List<ThreeStonesMove> possibleMoves = new ArrayList<>();
         CellState[][] gameBoard = board.getBoard();
-        int highestMoveValue = 0;
-        ThreeStonesMove bestMove = new ThreeStonesMove();
         //LOOPS THROUGH GAMEBOARD
         for (int i = 0; i < gameBoard[0].length; i++) {
             for (int j = 0; j < gameBoard[0].length; j++) {
@@ -46,23 +49,15 @@ public class ThreeStonesServerGame {
         }
         //DETERMINE THE BEST MOVE OUT OF THE LIST
         if (possibleMoves.size() > 1) {
+            
             return ThreeStonesMove.determineBestMove(possibleMoves).toByte();
         } else {
             return possibleMoves.get(0).toByte();
         }
     }
 
-    public void startGame() {
-        board.startNewGame();
-    }
 
-    private ThreeStonesMove createMove(int x, int y) {
-
-        return new ThreeStonesMove();
-    }
-
-    public void setBoard(ThreeStonesServerGameBoard board) {
-        this.board = board;
-    }
-
+    private void constructServerMovePacket(byte[] serverMoveAndPoints){
+        
+    } 
 }

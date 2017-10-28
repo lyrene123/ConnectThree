@@ -27,10 +27,8 @@ public class ThreeStonesClientGame {
 //        board.setBoard(board.getBoard());
 //    }
     public byte[] determineNextMove(int x, int y) {
-        List<ThreeStonesMove> possibleMoves = new ArrayList<ThreeStonesMove>();
+        List<ThreeStonesMove> possibleMoves = new ArrayList<>();
         CellState[][] gameBoard = board.getBoard();
-        int highestMoveValue = 0;
-        ThreeStonesMove bestMove = new ThreeStonesMove();
         //LOOPS THROUGH GAMEBOARD
         for (int i = 0; i < gameBoard[0].length; i++) {
             for (int j = 0; j < gameBoard[0].length; j++) {
@@ -40,7 +38,7 @@ public class ThreeStonesClientGame {
                     //creates new move with possible values
                     int whitePoints = board.checkForThreeStones(i, j, CellState.WHITE);
                     log.debug("whitePoints " + whitePoints);
-                    
+
                     int blackPoints = board.checkForThreeStones(i, j, CellState.BLACK);
                     log.debug("blackPoints " + blackPoints);
                     ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE), board.checkForThreeStones(i, j, CellState.BLACK), i, j);
@@ -50,25 +48,18 @@ public class ThreeStonesClientGame {
             }
         }
         //DETERMINE THE BEST MOVE OUT OF THE LIST
-        if (possibleMoves.size() >1){
+        if (possibleMoves.size() > 1) {
             int count = board.getBlackStoneCount();
             board.setBlackStoneCount(--count);
             return ThreeStonesMove.determineBestMove(possibleMoves).toByte();
-        }
-            
-        else{
+        } else {
             int count = board.getBlackStoneCount();
             board.setBlackStoneCount(--count);
             return possibleMoves.get(0).toByte();
         }
-            
+
     }
 
-
-    private ThreeStonesMove createMove(int x, int y) {
-
-        return new ThreeStonesMove();
-    }
 
     public void setBoard(ThreeStonesClientGameBoard board) {
         this.board = board;

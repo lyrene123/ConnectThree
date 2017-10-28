@@ -86,8 +86,9 @@ public class ThreeStonesMove {
 
     //converts move to a byte array for server message
     public byte[] toByte() {
-        return new byte[]{(byte) blackPoints, (byte) x, (byte) y};
+        return new byte[]{(byte) x, (byte) y};
     }
+    
 
     @Override
     public String toString() {

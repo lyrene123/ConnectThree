@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 public class ThreeStonesMove {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
-    private static final org.slf4j.Logger logStatic = LoggerFactory.getLogger(ThreeStonesMove.class);
+    private static final org.slf4j.Logger LOGSTATIC = LoggerFactory.getLogger(ThreeStonesMove.class);
     private int whitePoints;
     private int blackPoints;
     private int x;
@@ -95,7 +95,7 @@ public class ThreeStonesMove {
     }
 
     public static ThreeStonesMove determineBestMove(List<ThreeStonesMove> moves) {
-        logStatic.debug("determining best move");
+        LOGSTATIC.debug("determining best move");
         int biggestPossibleBlackPoints = 0;
         int biggestPossibleWhitePoints = 0;
         List<ThreeStonesMove> possibleWhiteScores = new ArrayList<ThreeStonesMove>();
@@ -103,7 +103,7 @@ public class ThreeStonesMove {
 
         //Starts by determining by move value
         for (ThreeStonesMove m : moves) {
-            logStatic.debug("move: " + m.toString());
+            LOGSTATIC.debug("move: " + m.toString());
             if (m.getWhitePoints() > 0) {
                 possibleWhiteScores.add(m);
                 if (m.getWhitePoints() > biggestPossibleWhitePoints) {
@@ -120,18 +120,18 @@ public class ThreeStonesMove {
         }
 
         if (biggestPossibleBlackPoints == 0 && biggestPossibleWhitePoints == 0) {
-            logStatic.debug("determining best move by proximity");
+            LOGSTATIC.debug("determining best move by proximity");
             return determineMoveByPromixty(moves);
         } //No possible scoring with black but some with white
         else if (biggestPossibleBlackPoints == 0 && biggestPossibleWhitePoints > 0) {
-            logStatic.debug("determining best move by white");
+            LOGSTATIC.debug("determining best move by white");
             return Collections.max(possibleWhiteScores, WhiteMoveComparator);
         } //No possible white scoring
         else if (biggestPossibleBlackPoints > 0 && biggestPossibleWhitePoints == 0) {
-            logStatic.debug("determining best move by black");
+            LOGSTATIC.debug("determining best move by black");
             return Collections.max(possibleBlackScores, BlackMoveComparator);
         }
-        logStatic.debug("determining best move by elimination");
+        LOGSTATIC.debug("determining best move by elimination");
         return determineMoveByElimination(possibleWhiteScores, possibleBlackScores);
 
     }
