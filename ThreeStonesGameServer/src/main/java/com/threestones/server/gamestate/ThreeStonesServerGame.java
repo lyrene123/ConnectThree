@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
  */
 public class ThreeStonesServerGame {
 
-    private ThreeStonesServerGameBoard board;
-
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final int BUFSIZE = 5;
+    private ThreeStonesServerGameBoard board;
 
     public ThreeStonesServerGame() {
         this.board = new ThreeStonesServerGameBoard();
@@ -41,6 +41,11 @@ public class ThreeStonesServerGame {
                 if (gameBoard[i][j] == CellState.AVAILABLE) {
                     log.debug("determineNextMove CellState.Available");
                     //creates new move with possible values
+                    int whitePoints = board.checkForThreeStones(i, j, CellState.WHITE);
+                    log.debug("whitePoints " + whitePoints);
+
+                    int blackPoints = board.checkForThreeStones(i, j, CellState.BLACK);
+                    log.debug("blackPoints " + blackPoints);
                     ThreeStonesMove move = new ThreeStonesMove(board.checkForThreeStones(i, j, CellState.WHITE), board.checkForThreeStones(i, j, CellState.BLACK), i, j);
                     move.countNearbyTiles(board.getBoard());
                     possibleMoves.add(move);
@@ -48,16 +53,46 @@ public class ThreeStonesServerGame {
             }
         }
         //DETERMINE THE BEST MOVE OUT OF THE LIST
+        byte[] serverPacket;
+        byte[] serverMoves;
         if (possibleMoves.size() > 1) {
-            
-            return ThreeStonesMove.determineBestMove(possibleMoves).toByte();
+            serverMoves = ThreeStonesMove.determineBestMove(possibleMoves).toByte();
         } else {
-            return possibleMoves.get(0).toByte();
+            serverMoves = possibleMoves.get(0).toByte();
+        }
+        updateBoard(serverMoves[0], serverMoves[1], CellState.BLACK);
+        serverPacket = constructServerMovePacket(serverMoves);
+        return serverPacket;
+    }
+
+    private byte[] constructServerMovePacket(byte[] serverMove) {
+        int whitePnts = board.getWhiteScore();
+        int blackPnts = board.getBlackScore();
+
+        //if the current server's move is the last move of the game, check who wins
+        if (board.getWhiteStoneCount() == 0 && board.getBlackStoneCount() == 0) {
+            if (whitePnts > blackPnts) {
+                //opcode of 3 indicates player has won
+                return new byte[]{(byte) 3, (byte) serverMove[0],
+                    (byte) serverMove[1], (byte) whitePnts, (byte) blackPnts};
+            } else if (blackPnts > whitePnts) {
+                //opcode of 4 indicates server has won
+                return new byte[]{(byte) 4, (byte) serverMove[0],
+                    (byte) serverMove[1], (byte) whitePnts, (byte) blackPnts};
+            } else {
+                //opcode of 5 indicates a tie
+                return new byte[]{(byte) 5, (byte) serverMove[0],
+                    (byte) serverMove[1], (byte) whitePnts, (byte) blackPnts};
+            }
+        } else if (board.getWhiteStoneCount() == 1) {
+            //opcode of 6 indicates that player has one move left
+            return new byte[]{(byte) 6, (byte) serverMove[0],
+                (byte) serverMove[1], (byte) whitePnts, (byte) blackPnts};
+        } else {
+            //opcode of 1 indicates a regular server move
+            return new byte[]{(byte) 1, (byte) serverMove[0],
+                (byte) serverMove[1], (byte) whitePnts, (byte) blackPnts};
         }
     }
 
-
-    private void constructServerMovePacket(byte[] serverMoveAndPoints){
-        
-    } 
 }

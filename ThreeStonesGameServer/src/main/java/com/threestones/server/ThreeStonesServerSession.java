@@ -160,7 +160,7 @@ public class ThreeStonesServerSession {
 
         //check if the operation code of outgoing packet is 3 or 4 and if yes, the game is over 
         //and server has made its last move
-        if (serverMovesPoint[0] == 3 || serverMovesPoint[0] == 4) {
+        if (serverMovesPoint[0] == 3 || serverMovesPoint[0] == 4 || serverMovesPoint[0] == 5) {
             isGameOver = true;
         }
         sendServerPacketToClient(serverMovesPoint);

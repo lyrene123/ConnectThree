@@ -174,8 +174,10 @@ public class ThreeStonesServerGameBoard {
         board[x][y] = color;
         if (color == CellState.WHITE) {
             whiteScore += checkForThreeStones(x, y, color);
+            whiteStoneCount--;
         } else {
             blackScore += checkForThreeStones(x, y, color);
+            blackStoneCount--;
         }
         this.board = getBoardChange(x, y);
     }

@@ -489,8 +489,12 @@ public class ThreeStonesGUI {
 
                 if (this.clientGameBoard.getBoard()[i][j] == CellState.UNAVAILABLE) {
                     gameBoardCells[i][j].setBackground(Color.YELLOW);
+                    gameBoardCells[i][j].setEnabled(false);
                 } else if (this.clientGameBoard.getBoard()[i][j] == CellState.AVAILABLE) {
                     gameBoardCells[i][j].setBackground(Color.GREEN);
+                    gameBoardCells[i][j].setEnabled(true);
+                } else {
+                    gameBoardCells[i][j].setEnabled(false);
                 }
             }
         }
