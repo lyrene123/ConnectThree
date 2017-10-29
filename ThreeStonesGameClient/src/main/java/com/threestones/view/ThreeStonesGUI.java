@@ -525,22 +525,28 @@ public class ThreeStonesGUI {
         serverStoneCount.setText(clientGameBoard.getBlackStoneCount() + "");
     }
 
-    public void notifyPlayerWon() {
-        this.textArea.setText(this.textArea.getText() + "\n\nYou won the game!\n\nPlay Again or Quit?");
+    public void notifyPlayerWon(int whitePoints, int blackPoints) {
+        this.textArea.setText(this.textArea.getText() + "\n\nYou won the game with "
+                + whitePoints + " points and your opponent with " + blackPoints + " points."
+                + "\n\nPlay Again or Quit?");
         playAgainButton.setEnabled(true);
         quitBtn.setEnabled(true);
         enableBoard(false);
     }
 
-    public void notifyServerWon() {
-        this.textArea.setText(this.textArea.getText() + "\n\nYour opponent won the game!\n\nPlay Again or Quit?");
+    public void notifyServerWon(int whitePoints, int blackPoints) {
+        this.textArea.setText(this.textArea.getText() + "\n\nYour opponent won the game with "
+                + blackPoints + " points and you scored " + whitePoints + " points."
+                + "\n\nPlay Again or Quit?");
         playAgainButton.setEnabled(true);
         quitBtn.setEnabled(true);
         enableBoard(false);
     }
 
-    public void notifyTieGame() {
-        this.textArea.setText(this.textArea.getText() + "\n\nThe game is a Tie.\n\nPlay Again or Quit?");
+    public void notifyTieGame(int whitePoints, int blackPoints) {
+        this.textArea.setText(this.textArea.getText() + "\n\nThe game is a Tie with "
+                + " your score of " + whitePoints + " and your opponent's score of " + blackPoints
+                + "\n\nPlay Again or Quit?");
         playAgainButton.setEnabled(true);
         quitBtn.setEnabled(true);
         enableBoard(false);

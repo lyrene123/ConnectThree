@@ -72,26 +72,26 @@ public class ThreeStonesClientGameBoard {
         board[x][y] = color;
         board = getBoardChange(x, y);
         reDrawBoard(x, y, color);
-        displayMessages(message);
+        displayMessages(message, whitePoints, blackPoints);
     }
-    
-    private void displayMessages(int message){
-        switch(message){
+
+    private void displayMessages(int message, int whitePoints, int blackPoints) {
+        switch (message) {
             case -2:
                 this.gui.handlePlayerLastMove();
                 break;
             case 0:
-                this.gui.notifyTieGame();
+                this.gui.notifyTieGame(whitePoints, blackPoints);
                 break;
             case 1:
-                this.gui.notifyPlayerWon();
+                this.gui.notifyPlayerWon(whitePoints, blackPoints);
                 break;
             case 2:
-                this.gui.notifyServerWon();
+                this.gui.notifyServerWon(whitePoints, blackPoints);
                 break;
         }
     }
-    
+
     /**
      * Updates the board with the new coordinate x and y and returns the altered
      * version of the board by returning the CellState 2D array
