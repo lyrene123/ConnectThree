@@ -29,6 +29,7 @@ public class ThreeStonesClientPacket {
 
     public boolean sendStartGameRequestToServer() {
         byte[] receivedPacket = new byte[BUFF_SIZE];
+        receivedPacket[0] = -1;
         try {
             log.debug("inside connectToServer begin creation of socket");
             socket = new Socket("localhost", port);

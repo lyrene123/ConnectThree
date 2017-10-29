@@ -512,25 +512,28 @@ public class ThreeStonesGUI {
     }
 
     public void notifyPlayerWon() {
-        this.textArea.setText(this.textArea.getText() + "\n" + "You won the game!\nPlay Again or Quit?");
+        this.textArea.setText(this.textArea.getText() + "\n\nYou won the game!\n\nPlay Again or Quit?");
         playAgainButton.setEnabled(true);
         quitBtn.setEnabled(true);
+        enableBoard(false);
     }
 
     public void notifyServerWon() {
-        this.textArea.setText(this.textArea.getText() + "\n" + "Your opponent won the game!\nPlay Again or Quit?");
+        this.textArea.setText(this.textArea.getText() + "\n\nYour opponent won the game!\n\nPlay Again or Quit?");
         playAgainButton.setEnabled(true);
         quitBtn.setEnabled(true);
+        enableBoard(false);
     }
 
     public void notifyTieGame() {
-        this.textArea.setText(this.textArea.getText() + "\n" + "The game is a Tie.\nPlay Again or Quit?");
+        this.textArea.setText(this.textArea.getText() + "\n\nThe game is a Tie.\n\nPlay Again or Quit?");
         playAgainButton.setEnabled(true);
         quitBtn.setEnabled(true);
+        enableBoard(false);
     }
 
     public void handlePlayerLastMove() {
-        this.textArea.setText(this.textArea.getText() + "\n" + "You have one move left.");
-        this.isLastMove = true;
+        this.textArea.setText(this.textArea.getText() + "\n\nYou have one move left.");
+        // this.isLastMove = true;
     }
 }

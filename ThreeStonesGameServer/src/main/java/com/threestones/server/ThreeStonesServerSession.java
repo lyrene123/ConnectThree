@@ -92,12 +92,12 @@ public class ThreeStonesServerSession {
                 case 1: //player's move
                     log.debug("inside receiveClientPackets code 1 - player's move");
                     handlePlayerMove(receivedPacket);
-                    if (isGameOver) {
+                    /*if (isGameOver) {
                         sendPlayAgainRequestToClnt();
-                    }
+                    }*/
                     break;
                 case 2: //player's request to play again
-                    log.debug("inside receiveClientPackets code 3 - play again request");
+                    log.debug("inside receiveClientPackets code 2 - play again request");
                     handleClientPlayAgainRequest();
                     break;
                 case 3: //player's request not to play again
