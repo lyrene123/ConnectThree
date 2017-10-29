@@ -126,6 +126,7 @@ public class ThreeStonesGUI {
         mainRootPane.add(threeStonesGameBoard, BorderLayout.CENTER);
 
         buildGameBoard();
+        addButtonsListInBoard();
         buildTextArea();
 
         //build the panel containing the settings information
@@ -188,10 +189,6 @@ public class ThreeStonesGUI {
                         gameBoardCells[x][y].addActionListener(e -> {
                             try {
                                 threeStonesClnt.clickBoardCell(positionX, positionY);
-                                if (isLastMove) {
-                                    enableBoard(false);
-                                }
-                                //updateView(-1, -1, CellState.UNAVAILABLE);
                             } catch (IOException ex) {
                                 Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -201,18 +198,20 @@ public class ThreeStonesGUI {
             }
         }
 
+        /*for (int i = 0; i < gameBoardCells[0].length; i++) {
+            for (int j = 0; j < gameBoardCells[0].length; j++) {
+                gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
+            }
+        }*/
+    }
+
+    private void addButtonsListInBoard() {
         //the following loop is to add the gameBoardCells array to the UI 
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
                 threeStonesGameBoard.add(gameBoardCells[i][j]);
             }
         }
-
-        /*for (int i = 0; i < gameBoardCells[0].length; i++) {
-            for (int j = 0; j < gameBoardCells[0].length; j++) {
-                gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
-            }
-        }*/
     }
 
     /**
@@ -469,9 +468,14 @@ public class ThreeStonesGUI {
             this.textArea.setText("A new game has started.");
             this.playAgainButton.setEnabled(false);
             this.quitBtn.setEnabled(false);
+            
             this.clientGameBoard.startNewGame();
             buildGameBoard();
+            threeStonesGameBoard.removeAll();
+            addButtonsListInBoard();
+            threeStonesGameBoard.revalidate();
             displayPointsAndStoneCount();
+            enableBoard(true);
         } else {
             this.textArea.setText("A new game cannot be started. Please try again.");
         }
