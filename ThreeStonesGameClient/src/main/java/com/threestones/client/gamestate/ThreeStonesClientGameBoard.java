@@ -58,7 +58,7 @@ public class ThreeStonesClientGameBoard {
         this.gui.updateView(x, y, color);
     }
 
-    public void updateBoard(int x, int y, int whitePoints, int blackPoints, CellState color) {
+    public void updateBoard(int x, int y, int whitePoints, int blackPoints, CellState color, int message) {
         if (whitePoints != -1 && blackPoints != -1) {
             this.whiteScore = whitePoints;
             this.blackScore = blackPoints;
@@ -72,8 +72,26 @@ public class ThreeStonesClientGameBoard {
         board[x][y] = color;
         board = getBoardChange(x, y);
         reDrawBoard(x, y, color);
+        displayMessages(message);
     }
-
+    
+    private void displayMessages(int message){
+        switch(message){
+            case -2:
+                this.gui.handlePlayerLastMove();
+                break;
+            case 0:
+                this.gui.notifyTieGame();
+                break;
+            case 1:
+                this.gui.notifyPlayerWon();
+                break;
+            case 2:
+                this.gui.notifyServerWon();
+                break;
+        }
+    }
+    
     /**
      * Updates the board with the new coordinate x and y and returns the altered
      * version of the board by returning the CellState 2D array
@@ -278,7 +296,6 @@ public class ThreeStonesClientGameBoard {
                     }
                 }
             }
-
         } catch (IOException e) {
             log.error("Error reading from gameboard.csv", e);
         }

@@ -45,6 +45,7 @@ public class ThreeStonesGUI {
     //text fields
     private final JLabel portLbl = new JLabel("Port");
     private final JLabel hostLbl = new JLabel("Host");
+
     // score labels and values
     private final JLabel clientScorePnts = new JLabel("0");
     private final JLabel serverScorePnts = new JLabel("0");
@@ -69,11 +70,14 @@ public class ThreeStonesGUI {
     //the cells representing the slots in the three stones game board
     private final JButton[][] gameBoardCells = new JButton[11][11];
 
+    //text area containing messages during the game
     JTextArea textArea = new JTextArea(5, 5);
+
     private final ThreeStonesClient threeStonesClnt;
     private final ThreeStonesClientGameBoard clientGameBoard;
     private JPanel threeStonesGameBoard;
     private JFrame frame;
+    private boolean isLastMove;
 
     /**
      * Default constructor that initializes a ThreeStonesClient instance
@@ -82,6 +86,7 @@ public class ThreeStonesGUI {
         this.threeStonesClnt = new ThreeStonesClient();
         this.clientGameBoard = this.threeStonesClnt.getBoard();
         clientGameBoard.setGui(this);
+        this.isLastMove = false;
     }
 
     /**
@@ -183,7 +188,10 @@ public class ThreeStonesGUI {
                         gameBoardCells[x][y].addActionListener(e -> {
                             try {
                                 threeStonesClnt.clickBoardCell(positionX, positionY);
-                                updateView(-1, -1, CellState.UNAVAILABLE);
+                                if (isLastMove) {
+                                    enableBoard(false);
+                                }
+                                //updateView(-1, -1, CellState.UNAVAILABLE);
                             } catch (IOException ex) {
                                 Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -415,34 +423,28 @@ public class ThreeStonesGUI {
      */
     private void onConnectClick() {
         log.debug("inside onConnectClick");
-        enableBoard();
-        try {
-            log.debug("inside onConnectClick before getClientPacket.connectToServer()");
-            if (this.threeStonesClnt.getClientPacket().connectToServer()) {
-                this.textArea.setText("connection successful");
-            }
-            log.debug("inside onConnectClick after getClientPacket.connectToServer()");
+        if (this.threeStonesClnt.getClientPacket().sendStartGameRequestToServer()) {
+            this.textArea.setText("Connection successful! You can start the game");
             this.connectBtn.setEnabled(false);
             this.connectBtn.setBackground(Color.GREEN);
-            log.debug("inside onConnectClick end of try catch");
-        } catch (IOException ex) {
-            Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
+            enableBoard(true);
+        } else {
+            this.textArea.setText("Connection unsuccessfull! Please try again");
         }
-
     }
 
     /**
-     * Enables the game board by making all available slots/button clickable.
+     * Enables or disables the game board by making all available slots/button
+     * clickable or not clickable
      */
-    private void enableBoard() {
+    private void enableBoard(boolean isEnabled) {
         log.debug("start enableBoard ");
         CellState[][] board = clientGameBoard.getBoard();
-        log.debug("board to string  " + Arrays.toString(board));
-        //loop through the gameBoardCells cells and make all vacant buttons to enabled
+
         for (int i = 0; i < board[0].length; i++) {
             for (int j = 0; j < 10; j++) {
                 if (board[i][j] != CellState.VACANT) {
-                    gameBoardCells[i][j].setEnabled(true);
+                    gameBoardCells[i][j].setEnabled(isEnabled);
                 }
             }
         }
@@ -462,6 +464,18 @@ public class ThreeStonesGUI {
      */
     private void onPlayAgainClick() {
         // this must clear board and scores but keeps connection
+        log.debug("inside onPlayAgainClick");
+        if (this.threeStonesClnt.getClientPacket().sendPlayAgainRequestToServer()) {
+            this.textArea.setText("A new game has started.");
+            this.playAgainButton.setEnabled(false);
+            this.quitBtn.setEnabled(false);
+            this.clientGameBoard.startNewGame();
+            buildGameBoard();
+            displayPointsAndStoneCount();
+        } else {
+            this.textArea.setText("A new game cannot be started. Please try again.");
+        }
+
     }
 
     public void updateView(int x, int y, CellState color) {
@@ -470,15 +484,11 @@ public class ThreeStonesGUI {
         } else if (color == CellState.BLACK) {
             this.gameBoardCells[x][y].setBackground(Color.BLACK);
         }
-        //clientScorePnts.setText(clientGameBoard.getWhiteScore() + "");
-        //serverScorePnts.setText(clientGameBoard.getBlackScore() + "");
+
         for (int i = 0; i < gameBoardCells[0].length; i++) {
             for (int j = 0; j < gameBoardCells[0].length; j++) {
                 //gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
-                clientScorePnts.setText(clientGameBoard.getWhiteScore() + "");
-                serverScorePnts.setText(clientGameBoard.getBlackScore() + "");
-                clientStoneCount.setText(clientGameBoard.getWhiteStoneCount() + "");
-                serverStoneCount.setText(clientGameBoard.getBlackStoneCount() + "");
+                displayPointsAndStoneCount();
 
                 if (this.clientGameBoard.getBoard()[i][j] == CellState.UNAVAILABLE) {
                     gameBoardCells[i][j].setBackground(Color.YELLOW);
@@ -492,6 +502,35 @@ public class ThreeStonesGUI {
             }
         }
         //gameBoardCells[x][y].setText(clientGameBoard.getBoard()[x][y].toString().substring(0, 1));
+    }
 
+    private void displayPointsAndStoneCount() {
+        clientScorePnts.setText(clientGameBoard.getWhiteScore() + "");
+        serverScorePnts.setText(clientGameBoard.getBlackScore() + "");
+        clientStoneCount.setText(clientGameBoard.getWhiteStoneCount() + "");
+        serverStoneCount.setText(clientGameBoard.getBlackStoneCount() + "");
+    }
+
+    public void notifyPlayerWon() {
+        this.textArea.setText(this.textArea.getText() + "\n" + "You won the game!\nPlay Again or Quit?");
+        playAgainButton.setEnabled(true);
+        quitBtn.setEnabled(true);
+    }
+
+    public void notifyServerWon() {
+        this.textArea.setText(this.textArea.getText() + "\n" + "Your opponent won the game!\nPlay Again or Quit?");
+        playAgainButton.setEnabled(true);
+        quitBtn.setEnabled(true);
+    }
+
+    public void notifyTieGame() {
+        this.textArea.setText(this.textArea.getText() + "\n" + "The game is a Tie.\nPlay Again or Quit?");
+        playAgainButton.setEnabled(true);
+        quitBtn.setEnabled(true);
+    }
+
+    public void handlePlayerLastMove() {
+        this.textArea.setText(this.textArea.getText() + "\n" + "You have one move left.");
+        this.isLastMove = true;
     }
 }
