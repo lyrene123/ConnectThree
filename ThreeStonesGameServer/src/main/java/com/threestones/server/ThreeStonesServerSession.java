@@ -92,9 +92,6 @@ public class ThreeStonesServerSession {
                 case 1: //player's move
                     log.debug("inside receiveClientPackets code 1 - player's move");
                     handlePlayerMove(receivedPacket);
-                    /*if (isGameOver) {
-                        sendPlayAgainRequestToClnt();
-                    }*/
                     break;
                 case 2: //player's request to play again
                     log.debug("inside receiveClientPackets code 2 - play again request");
@@ -107,20 +104,6 @@ public class ThreeStonesServerSession {
             }
         }
         return recvMsgSize;
-    }
-
-    /**
-     * Sends a packet request containing the appropriate operation code that
-     * would ask player whether or not to continue playing and receives the
-     * player's response.
-     *
-     * @throws IOException
-     */
-    private void sendPlayAgainRequestToClnt() throws IOException {
-        byte[] outPacket = new byte[BUFSIZE];
-        outPacket[0] = 3; //opcode of 3 for request to play again packet message
-        outStream.write(outPacket);
-        //receiveClientPackets(); //receive client's response
     }
 
     /**

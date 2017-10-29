@@ -9,9 +9,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -42,7 +42,7 @@ public class ThreeStonesGUI {
     //the parent container of the whole window UI
     private final JPanel mainRootPane = new JPanel(new BorderLayout(0, 0));
 
-    //text fields
+    //labels for port and host
     private final JLabel portLbl = new JLabel("Port");
     private final JLabel hostLbl = new JLabel("Host");
 
@@ -53,12 +53,12 @@ public class ThreeStonesGUI {
     private final JLabel serverScoreTV = new JLabel("Opponent's Score");
 
     //stone count labels and values
-    private final JLabel clientStoneCount = new JLabel("0");
-    private final JLabel serverStoneCount = new JLabel("0");
+    private final JLabel clientStoneCount = new JLabel("15");
+    private final JLabel serverStoneCount = new JLabel("15");
     private final JLabel clientStoneCountTV = new JLabel("Your Stones");
     private final JLabel serverStoneCountTV = new JLabel("Opponent's Stones");
 
-    //port labels
+    //text fields for port and host
     private final JTextField portNum = new JTextField("50000", 10);
     private final JTextField hostNum = new JTextField("localhost", 10);
 
@@ -77,7 +77,6 @@ public class ThreeStonesGUI {
     private final ThreeStonesClientGameBoard clientGameBoard;
     private JPanel threeStonesGameBoard;
     private JFrame frame;
-    private boolean isLastMove;
 
     /**
      * Default constructor that initializes a ThreeStonesClient instance
@@ -86,7 +85,6 @@ public class ThreeStonesGUI {
         this.threeStonesClnt = new ThreeStonesClient();
         this.clientGameBoard = this.threeStonesClnt.getBoard();
         clientGameBoard.setGui(this);
-        this.isLastMove = false;
     }
 
     /**
@@ -197,12 +195,6 @@ public class ThreeStonesGUI {
                 gameBoardCells[x][y].setEnabled(false);
             }
         }
-
-        /*for (int i = 0; i < gameBoardCells[0].length; i++) {
-            for (int j = 0; j < gameBoardCells[0].length; j++) {
-                gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
-            }
-        }*/
     }
 
     private void addButtonsListInBoard() {
@@ -501,9 +493,7 @@ public class ThreeStonesGUI {
 
         for (int i = 0; i < gameBoardCells[0].length; i++) {
             for (int j = 0; j < gameBoardCells[0].length; j++) {
-                //gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
                 displayPointsAndStoneCount();
-
                 if (this.clientGameBoard.getBoard()[i][j] == CellState.UNAVAILABLE) {
                     gameBoardCells[i][j].setBackground(Color.YELLOW);
                     gameBoardCells[i][j].setEnabled(false);
@@ -512,10 +502,16 @@ public class ThreeStonesGUI {
                     gameBoardCells[i][j].setEnabled(true);
                 } else {
                     gameBoardCells[i][j].setEnabled(false);
+                    if (i == x && j == y) {
+                        gameBoardCells[i][j].setBorder(BorderFactory.createLineBorder(Color.RED, 3));
+                    } else {
+                        if (this.clientGameBoard.getBoard()[i][j] != CellState.VACANT) {
+                            gameBoardCells[i][j].setBorder(null);
+                        }
+                    }
                 }
             }
         }
-        //gameBoardCells[x][y].setText(clientGameBoard.getBoard()[x][y].toString().substring(0, 1));
     }
 
     private void displayPointsAndStoneCount() {
