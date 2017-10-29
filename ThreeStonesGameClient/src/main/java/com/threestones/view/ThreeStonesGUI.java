@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Encapsulates the Three Stones Game Graphical User Interface with buttons,
- * textfields, textareas, and labels in order to display to the user the game
+ * text fields, text areas, and labels in order to display to the user the game
  * board, the total points of black and white stones, the total black and white
  * stones left, and the host and IP of the computer the user is playing against.
  *
@@ -170,29 +170,24 @@ public class ThreeStonesGUI {
                     case VACANT: //if vacant slot, make the button color orange
                         gameBoardCells[x][y] = new JButton();
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
-                        gameBoardCells[x][y].setText(clientGameBoard.getBoard()[x][y].toString().substring(0, 1));
+                        //gameBoardCells[x][y].setText(clientGameBoard.getBoard()[x][y].toString().substring(0, 1));
                         gameBoardCells[x][y].setBackground(Color.ORANGE);
-
                         break;
                     case AVAILABLE: //if available slot, then set button color to white and set click listeners
                         gameBoardCells[x][y] = new JButton();
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
-                        gameBoardCells[x][y].setText(clientGameBoard.getBoard()[y][x].toString().substring(0, 1));
+                        //gameBoardCells[x][y].setText(clientGameBoard.getBoard()[y][x].toString().substring(0, 1));
                         gameBoardCells[x][y].setBackground(Color.YELLOW);
                         final int positionX = x;
                         final int positionY = y;
                         gameBoardCells[x][y].addActionListener(e -> {
                             try {
                                 threeStonesClnt.clickBoardCell(positionX, positionY);
-                                int whiteStones = this.clientGameBoard.getWhiteStoneCount();
-                                whiteStones = --whiteStones;
-                                this.clientGameBoard.setWhiteStoneCount(whiteStones);
                                 updateView(-1, -1, CellState.UNAVAILABLE);
                             } catch (IOException ex) {
                                 Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         });
-
                 }
                 gameBoardCells[x][y].setEnabled(false);
             }
@@ -205,12 +200,11 @@ public class ThreeStonesGUI {
             }
         }
 
-        for (int i = 0; i < gameBoardCells[0].length; i++) {
+        /*for (int i = 0; i < gameBoardCells[0].length; i++) {
             for (int j = 0; j < gameBoardCells[0].length; j++) {
                 gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
             }
-        }
-
+        }*/
     }
 
     /**
@@ -422,19 +416,18 @@ public class ThreeStonesGUI {
     private void onConnectClick() {
         log.debug("inside onConnectClick");
         enableBoard();
-//        try {
-//            log.debug("inside onConnectClick before getClientPacket.connectToServer()");
-//            if (this.threeStonesClnt.getClientPacket().connectToServer()) {
-//                this.textArea.setText("connection successful");
-//                
-//            }
-//            log.debug("inside onConnectClick after getClientPacket.connectToServer()");
-//            this.connectBtn.setEnabled(false);
-//            this.connectBtn.setBackground(Color.GREEN);
-//            log.debug("inside onConnectClick end of try catch");
-//        } catch (IOException ex) {
-//            Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            log.debug("inside onConnectClick before getClientPacket.connectToServer()");
+            if (this.threeStonesClnt.getClientPacket().connectToServer()) {
+                this.textArea.setText("connection successful");
+            }
+            log.debug("inside onConnectClick after getClientPacket.connectToServer()");
+            this.connectBtn.setEnabled(false);
+            this.connectBtn.setBackground(Color.GREEN);
+            log.debug("inside onConnectClick end of try catch");
+        } catch (IOException ex) {
+            Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -477,11 +470,11 @@ public class ThreeStonesGUI {
         } else if (color == CellState.BLACK) {
             this.gameBoardCells[x][y].setBackground(Color.BLACK);
         }
-        clientScorePnts.setText(clientGameBoard.getWhiteScore() + "");
-        serverScorePnts.setText(clientGameBoard.getBlackScore() + "");
+        //clientScorePnts.setText(clientGameBoard.getWhiteScore() + "");
+        //serverScorePnts.setText(clientGameBoard.getBlackScore() + "");
         for (int i = 0; i < gameBoardCells[0].length; i++) {
             for (int j = 0; j < gameBoardCells[0].length; j++) {
-                gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
+                //gameBoardCells[i][j].setText(clientGameBoard.getBoard()[i][j].toString().substring(0, 1) + "\n" + i + j);
                 clientScorePnts.setText(clientGameBoard.getWhiteScore() + "");
                 serverScorePnts.setText(clientGameBoard.getBlackScore() + "");
                 clientStoneCount.setText(clientGameBoard.getWhiteStoneCount() + "");

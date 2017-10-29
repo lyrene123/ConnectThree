@@ -21,10 +21,6 @@ public class ThreeStonesClientGameBoard {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
-    void reDrawBoard(int x, int y, CellState color) {
-        this.gui.updateView(x, y, color);
-    }
-
     /**
      * Enums holding the different states of a slot in a Three Stones game board
      */
@@ -38,17 +34,11 @@ public class ThreeStonesClientGameBoard {
     private int whiteScore;
     private int blackScore;
     private ThreeStonesGUI gui;
-    private int availbleCells;
-
-    public void setGui(ThreeStonesGUI gui) {
-        this.gui = gui;
-    }
 
     /**
      * Default constructor
      */
     public ThreeStonesClientGameBoard() {
-        this.startNewGame();
 
     }
 
@@ -64,80 +54,24 @@ public class ThreeStonesClientGameBoard {
         constructBoard();
     }
 
-    /**
-     * Calculates and returns the number of points scored by all possible
-     * combinations of black or white stones on the game board based on the
-     * coordinate x and y
-     *
-     * @returns number of points scored from the coordinate
-     * @param x x coordinate on game board
-     * @param y y coordinate on game board
-     */
-    public int checkForThreeStones(int x, int y, CellState color) {
-        int points = 0;
+    public void reDrawBoard(int x, int y, CellState color) {
+        this.gui.updateView(x, y, color);
+    }
 
-        //check horizontal left
-        if (board[x][y - 1] == color && board[x][y - 2] == color) {
-            points++;
+    public void updateBoard(int x, int y, int whitePoints, int blackPoints, CellState color) {
+        if (whitePoints != -1 && blackPoints != -1) {
+            this.whiteScore = whitePoints;
+            this.blackScore = blackPoints;
         }
 
-        //check horizontal middle
-        if (board[x][y - 1] == color && board[x][y + 1] == color) {
-            points++;
+        if (color == CellState.BLACK) {
+            this.blackStoneCount--;
+        } else if (color == CellState.WHITE) {
+            this.whiteStoneCount--;
         }
-
-        //check horizontal right
-        if (board[x][y + 1] == color && board[x][y + 2] == color) {
-            points++;
-        }
-
-        //check vertical Up
-        if (board[x - 1][y] == color && board[x - 2][y] == color) {
-            points++;
-        }
-
-        //check vertical Middle
-        if (board[x - 1][y] == color && board[x + 1][y] == color) {
-            points++;
-        }
-
-        //check vertical Down
-        if (board[x + 1][y] == color && board[x + 2][y] == color) {
-            points++;
-        }
-
-        //check diagonal N-E /
-        if (board[x - 1][y + 1] == color && board[x - 2][y + 2] == color) {
-            points++;
-        }
-
-        //check diagonal N-W \
-        if (board[x - 1][y - 1] == color && board[x - 2][y - 2] == color) {
-            points++;
-        }
-
-        //check diagonal S-E \
-        if (board[x + 1][y + 1] == color && board[x + 2][y + 2] == color) {
-            points++;
-
-        }
-
-        //check diagonal S-W /
-        if (board[x + 1][y - 1] == color && board[x + 2][y - 2] == color) {
-            points++;
-        }
-
-        //check diagonals Middle
-        //Diagnol Middle Right /
-        if (board[x - 1][y + 1] == color && board[x + 1][y - 1] == color) {
-            points++;
-        }
-        //Diagonal Middle Left \
-        if (board[x - 1][y - 1] == color && board[x + 1][y + 1] == color) {
-            points++;
-        }
-
-        return points;
+        board[x][y] = color;
+        board = getBoardChange(x, y);
+        reDrawBoard(x, y, color);
     }
 
     /**
@@ -149,8 +83,6 @@ public class ThreeStonesClientGameBoard {
      * @return CellState 2D array
      */
     public CellState[][] getBoardChange(int x, int y) {
-        //CellState[][] board = this.board.clone();
-//chosen cell isnt color yet
         if (!checkIfFull(x, y)) {
             for (int i = 0; i < board[0].length; i++) {
                 for (int j = 0; j < board[0].length; j++) {
@@ -159,11 +91,8 @@ public class ThreeStonesClientGameBoard {
                     }
                     if (i == x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
-                        availbleCells++;
                     } else if (j == y && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
-                        availbleCells++;
-
                     } else if (board[i][j] != CellState.WHITE && board[i][j] != CellState.BLACK && board[i][j] != CellState.VACANT) {
                         board[i][j] = CellState.UNAVAILABLE;
                     } else {
@@ -181,23 +110,6 @@ public class ThreeStonesClientGameBoard {
             }
         }
         return board;
-    }
-
-    public void updateBoard(int x, int y, CellState color) {
-
-        board[x][y] = color;
-        if (color == CellState.WHITE) {
-            whiteScore += checkForThreeStones(x, y, color);
-        } else {
-            blackScore += checkForThreeStones(x, y, color);
-        }
-        this.board = getBoardChange(x, y);
-        for (int i = 0; i < board[0].length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                //log.debug("board[" + i + "]" + "[ " + j + "]" + board[i][j] + "");
-            }
-        }
-
     }
 
     /**
@@ -225,57 +137,8 @@ public class ThreeStonesClientGameBoard {
         return full;
     }
 
-    /**
-     * Reads the gameboard layout from a file and put data from the file into a
-     * 2D array
-     *
-     * @param filename filename String
-     * @return 2D array
-     * @throws IOException
-     */
-    private int[][] constructArrayFromFile(String filename) throws IOException {
-        InputStream stream = ClassLoader.getSystemResourceAsStream(filename);
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(stream));
-
-        String line;
-        int row = 0;
-        int size = 11;
-        String token = ",";
-        int[][] arr = new int[size][size];
-
-        while ((line = buffer.readLine()) != null) {
-            String[] vals = line.trim().split(token);
-            for (int col = 0; col < size; col++) {
-                arr[row][col] = Integer.parseInt(vals[col]);
-            }
-            row++;
-        }
-        return arr;
-    }
-
-    private void constructBoard() {
-
-        String file = "gameboard.csv";
-        try {
-            int[][] arr = constructArrayFromFile(file);
-            board = new CellState[arr.length][arr.length];
-            for (int i = 0; i < arr.length; i++) {
-                for (int j = 0; j < arr.length; j++) {
-                    switch (arr[i][j]) {
-                        case -1:
-                            board[i][j] = CellState.VACANT;
-                            break;
-                        case 0:
-                            board[i][j] = CellState.AVAILABLE;
-                            break;
-                        default:
-                            board[i][j] = CellState.AVAILABLE;
-                    }
-                }
-            }
-
-        } catch (IOException e) {
-        }
+    public void setGui(ThreeStonesGUI gui) {
+        this.gui = gui;
     }
 
     /**
@@ -366,5 +229,58 @@ public class ThreeStonesClientGameBoard {
      */
     public void setBlackScore(int blackScore) {
         this.blackScore = blackScore;
+    }
+
+    /**
+     * Reads the gameboard layout from a file and put data from the file into a
+     * 2D array
+     *
+     * @param filename filename String
+     * @return 2D array
+     * @throws IOException
+     */
+    private int[][] constructArrayFromFile(String filename) throws IOException {
+        InputStream stream = ClassLoader.getSystemResourceAsStream(filename);
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(stream));
+
+        String line;
+        int row = 0;
+        int size = 11;
+        String token = ",";
+        int[][] arr = new int[size][size];
+
+        while ((line = buffer.readLine()) != null) {
+            String[] vals = line.trim().split(token);
+            for (int col = 0; col < size; col++) {
+                arr[row][col] = Integer.parseInt(vals[col]);
+            }
+            row++;
+        }
+        return arr;
+    }
+
+    private void constructBoard() {
+        String file = "gameboard.csv";
+        try {
+            int[][] arr = constructArrayFromFile(file);
+            board = new CellState[arr.length][arr.length];
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr.length; j++) {
+                    switch (arr[i][j]) {
+                        case -1:
+                            board[i][j] = CellState.VACANT;
+                            break;
+                        case 0:
+                            board[i][j] = CellState.AVAILABLE;
+                            break;
+                        default:
+                            board[i][j] = CellState.AVAILABLE;
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            log.error("Error reading from gameboard.csv", e);
+        }
     }
 }

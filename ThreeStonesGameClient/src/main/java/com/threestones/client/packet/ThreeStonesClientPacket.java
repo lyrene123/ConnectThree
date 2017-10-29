@@ -15,18 +15,16 @@ public class ThreeStonesClientPacket {
     private Socket socket;
     private InputStream inStream;
     private OutputStream outStream;
-    private final int BUFF_SIZE = 4;
+    private final int BUFF_SIZE = 5;
 
     public void sendMove(int x, int y) {
         log.debug("position x " + x + "position y " + y);
-        byte[] byteBuffer = {(byte) 1, (byte) x, (byte) y, (byte)0};
+        byte[] byteBuffer = {(byte) 1, (byte) x, (byte) y, (byte)0, (byte) 0};
         try {
-            //sends byte to server
             this.outStream.write(byteBuffer);
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public boolean connectToServer() throws IOException {
@@ -44,7 +42,7 @@ public class ThreeStonesClientPacket {
     }
 
     public byte[] receivePacket() throws SocketException, IOException {
-        byte[] byteBuffer = new byte[4];
+        byte[] byteBuffer = new byte[BUFF_SIZE];
         int totalBytesRcvd = 0;						// Total bytes received so far
         int bytesRcvd;
         log.debug("receivePacket on Client");

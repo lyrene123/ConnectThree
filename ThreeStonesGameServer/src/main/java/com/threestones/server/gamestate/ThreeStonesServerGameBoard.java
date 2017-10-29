@@ -32,7 +32,6 @@ public class ThreeStonesServerGameBoard {
     private int whiteStoneCount;
     private int whiteScore;
     private int blackScore;
-    private int availableCells;
 
     /**
      * Default constructor
@@ -146,10 +145,8 @@ public class ThreeStonesServerGameBoard {
                     }
                     if (i == x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
-                        availableCells++;
                     } else if (j == y && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
-                        availableCells++;
 
                     } else if (board[i][j] != CellState.WHITE && board[i][j] != CellState.BLACK && board[i][j] != CellState.VACANT) {
                         board[i][j] = CellState.UNAVAILABLE;
