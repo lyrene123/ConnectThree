@@ -57,9 +57,10 @@ public class ThreeStonesServerGameBoard {
      * combinations of black or white stones on the game board based on the
      * coordinate x and y
      *
-     * @returns number of points scored from the coordinate
+     * @param color
      * @param x x coordinate on game board
      * @param y y coordinate on game board
+     * @return number of points scored from the coordinate
      */
     public int checkForThreeStones(int x, int y, CellState color) {
         int points = 0;
@@ -143,12 +144,15 @@ public class ThreeStonesServerGameBoard {
                     if (board[i][j] == CellState.BLACK || board[i][j] == CellState.WHITE) {
                         continue;
                     }
-                    if (i == x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
+                    if (i == x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK 
+                            && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
-                    } else if (j == y && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
+                    } else if (j == y && board[i][j] != CellState.VACANT 
+                            && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
 
-                    } else if (board[i][j] != CellState.WHITE && board[i][j] != CellState.BLACK && board[i][j] != CellState.VACANT) {
+                    } else if (board[i][j] != CellState.WHITE 
+                            && board[i][j] != CellState.BLACK && board[i][j] != CellState.VACANT) {
                         board[i][j] = CellState.UNAVAILABLE;
                     } else {
                         board[i][j] = CellState.VACANT;

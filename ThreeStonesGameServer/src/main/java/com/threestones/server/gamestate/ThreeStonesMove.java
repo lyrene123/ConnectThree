@@ -13,32 +13,31 @@ import org.slf4j.LoggerFactory;
  */
 public class ThreeStonesMove {
 
-    private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
-    private static final org.slf4j.Logger logStatic = LoggerFactory.getLogger(ThreeStonesMove.class);
+    private static final org.slf4j.Logger LOG_STATIC = LoggerFactory.getLogger(ThreeStonesMove.class);
     private int whitePoints;
     private int blackPoints;
-    private int x;
-    private int y;
-    private int nearbyWhite;
-    private int nearbyBlack;
+    private int coordX;
+    private int coordY;
+    private int nearbyWhiteStones;
+    private int nearbyBlackStones;
 
     public ThreeStonesMove(int whitePoints, int blackPoints, int x, int y) {
         this.whitePoints = whitePoints;
         this.blackPoints = blackPoints;
-        this.x = x;
-        this.y = y;
-        this.nearbyWhite = 0;
-        this.nearbyBlack = 0;
+        this.coordX = x;
+        this.coordY = y;
+        this.nearbyWhiteStones = 0;
+        this.nearbyBlackStones = 0;
     }
 
     public void countNearbyTiles(CellState[][] board) {
-        for (int i = x - 1; i <= x + 1; i++) {
-            for (int j = y - 1; j <= y + 1; j++) {
-                if (!(i == x && j == y)) {
+        for (int i = coordX - 1; i <= coordX + 1; i++) {
+            for (int j = coordY - 1; j <= coordY + 1; j++) {
+                if (!(i == coordX && j == coordY)) {
                     if (board[i][j] == CellState.WHITE) {
-                        nearbyWhite++;
+                        nearbyWhiteStones++;
                     } else if (board[i][j] == CellState.BLACK) {
-                        nearbyBlack++;
+                        nearbyBlackStones++;
                     }
                 }
             }
@@ -46,15 +45,15 @@ public class ThreeStonesMove {
     }
 
     public int getNearbyTiles() {
-        return nearbyWhite + nearbyBlack;
+        return nearbyWhiteStones + nearbyBlackStones;
     }
 
     public int getNearbyWhiteTiles() {
-        return nearbyWhite;
+        return nearbyWhiteStones;
     }
 
     public int getNearbyBlackTiles() {
-        return nearbyBlack;
+        return nearbyBlackStones;
     }
 
     public ThreeStonesMove() {
@@ -69,11 +68,11 @@ public class ThreeStonesMove {
     }
 
     public int getX() {
-        return x;
+        return coordX;
     }
 
     public int getY() {
-        return y;
+        return coordY;
     }
 
     //Returns Highest scoring value between whitePoints and blackPoints
@@ -86,25 +85,24 @@ public class ThreeStonesMove {
 
     //converts move to a byte array for server message
     public byte[] toByte() {
-        return new byte[]{(byte) x, (byte) y};
+        return new byte[]{(byte) coordX, (byte) coordY};
     }
-    
 
     @Override
     public String toString() {
-        return "W:" + whitePoints + " B:" + blackPoints + " X:" + x + " Y:" + y;
+        return "W:" + whitePoints + " B:" + blackPoints + " X:" + coordX + " Y:" + coordY;
     }
 
     public static ThreeStonesMove determineBestMove(List<ThreeStonesMove> moves) {
-        logStatic.debug("determining best move");
+        LOG_STATIC.debug("determining best move");
         int biggestPossibleBlackPoints = 0;
         int biggestPossibleWhitePoints = 0;
-        List<ThreeStonesMove> possibleWhiteScores = new ArrayList<ThreeStonesMove>();
-        List<ThreeStonesMove> possibleBlackScores = new ArrayList<ThreeStonesMove>();
+        List<ThreeStonesMove> possibleWhiteScores = new ArrayList<>();
+        List<ThreeStonesMove> possibleBlackScores = new ArrayList<>();
 
         //Starts by determining by move value
         for (ThreeStonesMove m : moves) {
-            logStatic.debug("move: " + m.toString());
+            LOG_STATIC.debug("move: " + m.toString());
             if (m.getWhitePoints() > 0) {
                 possibleWhiteScores.add(m);
                 if (m.getWhitePoints() > biggestPossibleWhitePoints) {
@@ -121,18 +119,18 @@ public class ThreeStonesMove {
         }
 
         if (biggestPossibleBlackPoints == 0 && biggestPossibleWhitePoints == 0) {
-            logStatic.debug("determining best move by proximity");
+            LOG_STATIC.debug("determining best move by proximity");
             return determineMoveByPromixty(moves);
         } //No possible scoring with black but some with white
         else if (biggestPossibleBlackPoints == 0 && biggestPossibleWhitePoints > 0) {
-            logStatic.debug("determining best move by white");
+            LOG_STATIC.debug("determining best move by white");
             return Collections.max(possibleWhiteScores, WhiteMoveComparator);
         } //No possible white scoring
         else if (biggestPossibleBlackPoints > 0 && biggestPossibleWhitePoints == 0) {
-            logStatic.debug("determining best move by black");
+            LOG_STATIC.debug("determining best move by black");
             return Collections.max(possibleBlackScores, BlackMoveComparator);
         }
-        logStatic.debug("determining best move by elimination");
+        LOG_STATIC.debug("determining best move by elimination");
         return determineMoveByElimination(possibleWhiteScores, possibleBlackScores);
 
     }
@@ -140,18 +138,18 @@ public class ThreeStonesMove {
     private static ThreeStonesMove determineMoveByElimination(List<ThreeStonesMove> whiteMoves, List<ThreeStonesMove> blackMoves) {
         List<ThreeStonesMove> bestMoves = new ArrayList<>();
         int bestMoveValue = -15;
-        for (ThreeStonesMove m : blackMoves) {
+        for (ThreeStonesMove tsBlack : blackMoves) {
             int maxWhite = 0;
-            for (ThreeStonesMove w : whiteMoves) {
-                if ((w.getX() == m.getX() || w.getY() == m.getY()) && !(w.equals(m))) {
-                    maxWhite = (maxWhite > w.getWhitePoints()) ? maxWhite : w.getWhitePoints();
+            for (ThreeStonesMove tsWhite : whiteMoves) {
+                if ((tsWhite.getX() == tsBlack.getX() || tsWhite.getY() == tsBlack.getY()) && !(tsWhite.equals(tsBlack))) {
+                    maxWhite = (maxWhite > tsWhite.getWhitePoints()) ? maxWhite : tsWhite.getWhitePoints();
                 }
             }
-            if (m.getBlackPoints() - maxWhite > bestMoveValue) {
+            if (tsBlack.getBlackPoints() - maxWhite > bestMoveValue) {
                 bestMoves.clear();
-                bestMoves.add(m);
-            } else if (m.getBlackPoints() - maxWhite == bestMoveValue) {
-                bestMoves.add(m);
+                bestMoves.add(tsBlack);
+            } else if (tsBlack.getBlackPoints() - maxWhite == bestMoveValue) {
+                bestMoves.add(tsBlack);
             }
         }
         if (bestMoves.size() > 1) {

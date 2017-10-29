@@ -1,6 +1,6 @@
 package com.threestones.server;
 
-import com.threestones.server.gamestate.ThreeStonesServerGame;
+import com.threestones.server.gamestate.ThreeStonesServerGameController;
 import com.threestones.server.gamestate.ThreeStonesServerGameBoard.CellState;
 import java.io.*;
 import java.io.InputStream;
@@ -9,46 +9,46 @@ import java.net.Socket;
 import org.slf4j.LoggerFactory;
 
 /**
- * Encapsulates the behavior and the properties of a game session in the server
- * side in a game of Three Stones such as handling the receiving and the sending
- * of packets between server depending on client's and server's response to each
- * other (e.g sending/receive move, sending/receiving start-game confirmation,
- * etc)
+ * Encapsulates the behavior and the properties of a game session handled by the
+ * server side application of the three stones game. In a game session, the
+ * server handles the receiving and the sending of packets between the server
+ * and the client side application. Depending on the type of packet message
+ * received, the server will execute tasks and respond accordingly.
  *
- * @author Eric
- * @author Lyrene
- * @author Jacob
+ * @author Eric Hughes
+ * @author Lyrene Labor
+ * @author Jacob Riendeau
  *
  */
 public class ThreeStonesServerSession {
 
-    //for logging information
+    //for logging information on the console
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
-    private static final int BUFSIZE = 5; //size of the packet
+    private static final int BUFSIZE = 5; //fix size of the packet
     private boolean isGameOver; //boolean to determine if game is over
     private boolean isPlayAgain; //boolean to determine if user wants to play again
-    private ThreeStonesServerGame serverGame; //The server's game logic
-    private InputStream inStream; //client's input stream
-    private OutputStream outStream; //client's output stream
+    private ThreeStonesServerGameController serverGame; //The server's game logic instance
+    private InputStream inStream; //client's socket input stream
+    private OutputStream outStream; //client's socket output stream
 
     /**
      * Default constructor that initializes the game over and play again boolean
-     * properties and the ThreeStonesServerGame object
+ properties and the ThreeStonesServerGameController instance
      */
     public ThreeStonesServerSession() {
         this.isGameOver = false;
         this.isPlayAgain = true;
-        this.serverGame = new ThreeStonesServerGame();
+        this.serverGame = new ThreeStonesServerGameController();
     }
 
     /**
      * Starts game session by accepting the Socket object created by the
-     * client's connection and retrieving the input and output stream. Session
+     * client's connection and retrieving the input and output stream. Server
      * will then continously manage the game and the packet send and receive
      * between server/client while user still wants to play and game is not over
      * yet.
      *
-     * @param clientSock Socket object
+     * @param clientSock Client Socket object
      * @throws IOException
      */
     public void playGameSession(Socket clientSock) throws IOException {
@@ -57,11 +57,9 @@ public class ThreeStonesServerSession {
         outStream = clientSock.getOutputStream();
 
         //continue the game session while user is still playing and game not over
-        int recvMsgSize = 0;
         while (isPlayAgain) {
             while (!isGameOver) {
-                //receive and process client packets
-                recvMsgSize = receiveClientPackets();
+                receiveClientPackets(); //receive and process client packets
             }
         }
         clientSock.close(); //close client socket when user no longer wants to play
@@ -69,8 +67,8 @@ public class ThreeStonesServerSession {
 
     /**
      * Helper method that manages the packets received from the client and
-     * deciding the right actions to perform based on the operation code or
-     * first byte of the packet received. These are done as long as the
+     * deciding the right actions to perform based on the operation code which
+     * is the first byte of the packet received. These are done as long as the
      * connection with the client is maintained or the game is over or the play
      * again request is declined by player.
      *
@@ -83,8 +81,8 @@ public class ThreeStonesServerSession {
 
         // Receive until client closes connection, indicated by -1 return
         while ((recvMsgSize = inStream.read(receivedPacket)) != -1) {
-            byte opCode = receivedPacket[0];//check for op code at beginning of packet
-            switch (opCode) {
+            //check for op code at beginning of packet
+            switch (receivedPacket[0]) {
                 case 0: //start game request from client
                     log.debug("inside receiveClientPackets code 0 - start game request");
                     handleClientGameRequest();
@@ -98,9 +96,9 @@ public class ThreeStonesServerSession {
                     handleClientPlayAgainRequest();
                     break;
                 case 3: //player's request not to play again
-                    log.debug("inside receiveClientPackets code 4 - dont play again request");
+                    log.debug("inside receiveClientPackets code 3 - dont play again request");
                     isPlayAgain = false;
-                    return -1;
+                    return -1; //exit loop
             }
         }
         return recvMsgSize;
@@ -108,9 +106,9 @@ public class ThreeStonesServerSession {
 
     /**
      * Handles the client's request to play again by restarting the server side
-     * game and setting play again to true and isgameover back to false. Then
-     * sends back a confirmation message to client that game has been restarted
-     * and player can resume playing
+     * game and setting play again boolean to true and isgameover boolean back
+     * to false. Then server sends back a confirmation message to client that
+     * game has been restarted and player can resume playing
      *
      * @throws IOException
      */
@@ -119,7 +117,7 @@ public class ThreeStonesServerSession {
         isPlayAgain = true;
         isGameOver = false;
 
-        //send a confirmation to client that game is restarted
+        //send a confirmation with opcode 2 to client that game is restarted
         byte[] playAgainConfirmPacket = new byte[BUFSIZE];
         playAgainConfirmPacket[0] = 2; //opcode of 2 confirms that client can play again
         sendServerPacketToClient(playAgainConfirmPacket);
@@ -130,18 +128,21 @@ public class ThreeStonesServerSession {
      * of 1. Retrieves the x and y coords from the packet and updates the board.
      * Server then makes its own move and then builds the packet to send back to
      * client with opcode, its coord x, coord y, and points of both white and
-     * black.
+     * black so far calculated from the board.
      *
-     * @param receivedPacket
+     * @param receivedPacket byte array containing player's packet move
      * @throws IOException
      */
     private void handlePlayerMove(byte[] receivedPacket) throws IOException {
+        //retrieve client's move and update the board
         int coordMoveX = receivedPacket[1];
         int coordMoveY = receivedPacket[2];
         serverGame.updateBoard(coordMoveX, coordMoveY, CellState.WHITE);
+
+        //get the server's move
         byte[] serverMovesPoint = serverGame.determineNextMove(); //[opcode,x,y,white,black]
 
-        //check if the operation code of outgoing packet is 3 or 4 and if yes, the game is over 
+        //check if the operation code of outgoing packet is 3-4-5 and if yes, the game is over 
         //and server has made its last move
         if (serverMovesPoint[0] == 3 || serverMovesPoint[0] == 4 || serverMovesPoint[0] == 5) {
             isGameOver = true;
@@ -159,13 +160,14 @@ public class ThreeStonesServerSession {
     private void handleClientGameRequest() throws IOException {
         //start the server side game 
         serverGame.startGame();
-        //null refers to a code 0 which indicates a start game confirmation
+        //null refers to a code 0 which indicates a start game confirmation to the client
         sendServerPacketToClient(null);
     }
 
     /**
-     * Sends packet from server to client with the input byte array. If input is
-     * null, create a game started message to client with 0 opcode
+     * Sends a packet from server to client with an input byte array. If array
+     * is null, create a packet with opcode of 0 which indicates a game started
+     * message to client with 0 opcode.
      *
      * @param values byte array to send in a packet to client
      * @throws IOException
