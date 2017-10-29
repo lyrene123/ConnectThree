@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -65,6 +66,7 @@ public class ThreeStonesGUI {
     //buttons
     private final JButton quitBtn = new JButton("Quit Game");
     private final JButton connectBtn = new JButton("Connect");
+    private final JButton startGameBtn = new JButton("Start Game");
     private final JButton playAgainButton = new JButton("Play Again");
 
     //the cells representing the slots in the three stones game board
@@ -135,19 +137,16 @@ public class ThreeStonesGUI {
         JToolBar settingsToolbar = new JToolBar();
         settingsToolbar.setFloatable(false);
         buildConnectBtn(settingsToolbar); //build and add connect button to toolbar
+        buildStartBtn(settingsToolbar);//build and add start game button to toolbar
         buildQuitBtn(settingsToolbar); //build and add quit button to toolbar
         buildPlayAgainBtn(settingsToolbar); //build and add play again button to toolbar
 
-        portLbl.setFont(new Font("Monospace", Font.BOLD, 15));
-        settingsToolbar.add(portLbl); //add port label to toolbar
-
-        buildPortNumField(settingsToolbar); //build and port num text field to toolbar
-
-        hostLbl.setFont(new Font("Monospace", Font.BOLD, 15));
-        settingsToolbar.add(hostLbl); //add host label to toolbar
-
-        buildHostNumField(settingsToolbar); //build and host num text field to toolbar
-
+        //portLbl.setFont(new Font("Monospace", Font.BOLD, 15));
+        //settingsToolbar.add(portLbl); //add port label to toolbar
+        //buildPortNumField(settingsToolbar); //build and port num text field to toolbar
+        //hostLbl.setFont(new Font("Monospace", Font.BOLD, 15));
+        //settingsToolbar.add(hostLbl); //add host label to toolbar
+        //buildHostNumField(settingsToolbar); //build and host num text field to toolbar
         //add the settings tool bar to the settins panel and add the panel to main layout
         settingsPanel.add(settingsToolbar);
 
@@ -341,6 +340,16 @@ public class ThreeStonesGUI {
         settingsToolbar.add(connectBtn);
     }
 
+    private void buildStartBtn(JToolBar settingsToolbar) {
+        startGameBtn.setFont(new Font("Monospace", Font.BOLD, 15));
+        startGameBtn.setPreferredSize(new Dimension(100, 30));
+        startGameBtn.addActionListener(e -> {
+            onStartClick();
+        });
+        startGameBtn.setEnabled(false);
+        settingsToolbar.add(startGameBtn);
+    }
+
     /**
      * Builds the button that quits the game
      *
@@ -414,13 +423,17 @@ public class ThreeStonesGUI {
      */
     private void onConnectClick() {
         log.debug("inside onConnectClick");
-        if (this.threeStonesClnt.getClientPacket().sendStartGameRequestToServer()) {
-            this.textArea.setText("Connection successful! You can start the game");
-            this.connectBtn.setEnabled(false);
-            this.connectBtn.setBackground(Color.GREEN);
-            enableBoard(true);
-        } else {
-            this.textArea.setText("Connection unsuccessfull! Please try again");
+        String ipAddress = JOptionPane.showInputDialog(frame,
+                "Enter IP Address of Server", null);
+        try {
+            this.threeStonesClnt.getClientPacket().createConnectionWithServer(ipAddress);
+            textArea.setText("Connection established sucessfully.");
+            connectBtn.setEnabled(false);
+            connectBtn.setBackground(Color.GREEN);
+            startGameBtn.setEnabled(true);
+        } catch (IOException ex) {
+            textArea.setText("Connection cannot be established. Please try again.");
+            Logger.getLogger(ThreeStonesGUI.class.getName()).log(Level.SEVERE, "Error connecting with Server", ex);
         }
     }
 
@@ -453,9 +466,23 @@ public class ThreeStonesGUI {
         this.quitBtn.setEnabled(false);
         this.connectBtn.setEnabled(true);
         this.connectBtn.setBackground(null);
+        this.startGameBtn.setBackground(null);
 
         reinitializeBoard();
+        enableBoard(false);
         textArea.setText("");
+    }
+
+    private void onStartClick() {
+        log.debug("inside onStartClick");
+        if (this.threeStonesClnt.getClientPacket().sendStartGameRequestToServer()) {
+            this.textArea.setText(this.textArea.getText() + "\n\nBoard Enabled. You can start your first move");
+            this.startGameBtn.setEnabled(false);
+            this.startGameBtn.setBackground(Color.CYAN);
+            enableBoard(true);
+        } else {
+            this.textArea.setText("Cannot start game! Please try again");
+        }
     }
 
     /**
@@ -506,7 +533,7 @@ public class ThreeStonesGUI {
                         gameBoardCells[i][j].setBorder(BorderFactory.createLineBorder(Color.RED, 3));
                     } else {
                         if (this.clientGameBoard.getBoard()[i][j] != CellState.VACANT) {
-                            gameBoardCells[i][j].setBorder(null);
+                            gameBoardCells[i][j].setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
                         }
                     }
                 }

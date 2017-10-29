@@ -32,13 +32,13 @@ public class ThreeStonesServer {
     public void runServer() throws IOException {
         int servPort = 50000;
         log.debug("Server Start");
-        
+
         // Create a server socket to accept client connection requests
         ServerSocket servSock = new ServerSocket(servPort);
 
         // Run forever, accepting and servicing connections
         while (true) {
-            log.debug("Server Start Listening");
+            log.debug("Server is listening at: " + servSock.getLocalSocketAddress().toString());
             Socket clntSock = servSock.accept();// Get client connection
 
             //create session once connection is made

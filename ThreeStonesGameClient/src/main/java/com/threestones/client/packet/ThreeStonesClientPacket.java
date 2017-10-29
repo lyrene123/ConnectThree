@@ -30,10 +30,7 @@ public class ThreeStonesClientPacket {
         byte[] receivedPacket = new byte[BUFF_SIZE];
         receivedPacket[0] = -1;
         try {
-            log.debug("inside connectToServer begin creation of socket");
-            socket = new Socket("localhost", port);
-            inStream = socket.getInputStream();
-            outStream = socket.getOutputStream();
+            log.debug("inside sendStartGameRequestToServer");
 
             byte[] byteBuffer = new byte[BUFF_SIZE];
             byteBuffer[0] = 0;
@@ -45,6 +42,12 @@ public class ThreeStonesClientPacket {
             java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.getName()).log(Level.SEVERE, null, ex);
         }
         return receivedPacket[0] == 0;
+    }
+
+    public void createConnectionWithServer(String address) throws IOException{
+        socket = new Socket(address, port);
+        inStream = socket.getInputStream();
+        outStream = socket.getOutputStream();
     }
 
     public boolean sendPlayAgainRequestToServer() {

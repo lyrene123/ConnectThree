@@ -33,13 +33,6 @@ public class ThreeStonesClientApp {
             @Override
             public void run() {
                 ts.buildThreeStonesUI();
-                /* JFrame threeStonesBoardUI = new JFrame("Three Stones Game");
-                threeStonesBoardUI.add(ts.getMainView());
-                threeStonesBoardUI.setLocationByPlatform(true);
-                threeStonesBoardUI.pack(); //set the window to preferred size
-                threeStonesBoardUI.setMinimumSize(threeStonesBoardUI.getSize());
-                threeStonesBoardUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                threeStonesBoardUI.setVisible(true);*/
             }
         };
         SwingUtilities.invokeLater(r);
