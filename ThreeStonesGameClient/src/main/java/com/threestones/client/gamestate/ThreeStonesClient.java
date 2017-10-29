@@ -36,7 +36,6 @@ public class ThreeStonesClient {
             board.updateBoard(x, y, -1, -1, CellState.WHITE, -1);
             clientPacket.sendClientPacketToServer(x, y);
             serverResponse();
-
         } else if (board.getBoard()[x][y] == CellState.UNAVAILABLE) {
             //display wrong move message
 
@@ -67,24 +66,6 @@ public class ThreeStonesClient {
                 log.debug("code 3 Player has one move left");
                 board.updateBoard(byteBuffer[1], byteBuffer[2], byteBuffer[3], byteBuffer[4], CellState.BLACK, -2);
                 break;
-
-            //handlePlayerMove(receivedPacket, out); 
-            //isGameOver = true;
-            //return 0;
-            //case 3: //player's request to play again
-            //log.debug("code 3"); //player wants to play again
-            //isPlayAgain = true;
-            //isGameOver = false;
-            // break;
-            //case 4: //player's request not to play again
-            //log.debug("code 4");
-            // isPlayAgain = false;
-            //return -1;
         }
     }
-
-    private void handleServerMove() {
-
-    }
-
 }

@@ -2,7 +2,6 @@ package com.threestones.client.packet;
 
 import java.net.*;
 import java.io.*;
-import java.util.Arrays;
 import java.util.logging.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +58,16 @@ public class ThreeStonesClientPacket {
             java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.getName()).log(Level.SEVERE, null, ex);
         }
         return receivedPacket[0] == 2;
+    }
+
+    public void sendQuitGameRequestToServer() {
+        try {
+            byte[] quitRequestPacket = new byte[BUFF_SIZE];
+            quitRequestPacket[0] = 3;
+            outStream.write(quitRequestPacket);
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public byte[] receiveClientPacket() throws SocketException, IOException {

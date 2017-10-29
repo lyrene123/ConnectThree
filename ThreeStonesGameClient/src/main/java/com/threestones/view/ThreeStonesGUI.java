@@ -358,7 +358,7 @@ public class ThreeStonesGUI {
         quitBtn.setFont(new Font("Monospace", Font.BOLD, 15));
         quitBtn.setPreferredSize(new Dimension(100, 30));
         quitBtn.addActionListener(e -> {
-            onCloseConnectionClick();
+            onQuitGameClick();
         });
         quitBtn.setEnabled(false);
         settingsToolbar.add(quitBtn);
@@ -453,8 +453,17 @@ public class ThreeStonesGUI {
      * Event handler method that handles the click event of the quit game by
      * closing the connection with the server which ends the game
      */
-    private void onCloseConnectionClick() {
+    private void onQuitGameClick() {
+        log.debug("inside onQuitGameClick");
+        this.threeStonesClnt.getClientPacket().sendQuitGameRequestToServer();
 
+        this.playAgainButton.setEnabled(false);
+        this.quitBtn.setEnabled(false);
+        this.connectBtn.setEnabled(true);
+        this.connectBtn.setBackground(null);
+
+        reinitializeBoard();
+        textArea.setText("");
     }
 
     /**
@@ -462,24 +471,25 @@ public class ThreeStonesGUI {
      * and the points
      */
     private void onPlayAgainClick() {
-        // this must clear board and scores but keeps connection
         log.debug("inside onPlayAgainClick");
         if (this.threeStonesClnt.getClientPacket().sendPlayAgainRequestToServer()) {
             this.textArea.setText("A new game has started.");
             this.playAgainButton.setEnabled(false);
             this.quitBtn.setEnabled(false);
-            
-            this.clientGameBoard.startNewGame();
-            buildGameBoard();
-            threeStonesGameBoard.removeAll();
-            addButtonsListInBoard();
-            threeStonesGameBoard.revalidate();
-            displayPointsAndStoneCount();
-            enableBoard(true);
+            reinitializeBoard();
         } else {
             this.textArea.setText("A new game cannot be started. Please try again.");
         }
+    }
 
+    private void reinitializeBoard() {
+        this.clientGameBoard.startNewGame();
+        buildGameBoard();
+        threeStonesGameBoard.removeAll();
+        addButtonsListInBoard();
+        threeStonesGameBoard.revalidate();
+        displayPointsAndStoneCount();
+        enableBoard(true);
     }
 
     public void updateView(int x, int y, CellState color) {
