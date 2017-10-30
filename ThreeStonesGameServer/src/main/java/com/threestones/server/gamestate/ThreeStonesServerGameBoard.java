@@ -28,7 +28,7 @@ public class ThreeStonesServerGameBoard {
         BLACK, WHITE, AVAILABLE, VACANT, UNAVAILABLE
     }
 
-    private CellState[][] board;
+    private CellState[][] board;//array representing the state of the cells of the board
     private int blackStoneCount;
     private int whiteStoneCount;
     private int whiteScore;
@@ -43,8 +43,7 @@ public class ThreeStonesServerGameBoard {
 
     /**
      * Initializes the game board by setting the black stones and white stones
-     * total left, the points to their default values and builds the board as
-     * well.
+     * total left, the points as well as the construction of the board.
      */
     public void initializeGameBoard() {
         blackStoneCount = 15;
