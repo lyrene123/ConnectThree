@@ -28,6 +28,8 @@ public class ThreeStonesServerGameController {
     //server game board instance
     private final ThreeStonesServerGameBoard board;
 
+    private ThreeStonesServerMove lastServerMovePlayed;
+
     //Comparator objects used to compare possible moves of server and choosing best one
     private final Comparator<ThreeStonesServerMove> WhiteMoveComparator
             = ((ThreeStonesServerMove move1, ThreeStonesServerMove move2)
@@ -56,10 +58,29 @@ public class ThreeStonesServerGameController {
 
     /**
      * Initializes the game by creating and preparing the game board of the
-     * server
+     * server and resetting the last played move to null
      */
     public void initServerGame() {
+        lastServerMovePlayed = null;
         board.initializeGameBoard();
+    }
+
+    /**
+     * Returns the last move played by the server
+     *
+     * @return ThreeStonesServerMove object
+     */
+    public ThreeStonesServerMove getLastPlayedServerMove() {
+        return this.lastServerMovePlayed;
+    }
+
+    /**
+     * Returns the game board instance of the game controller
+     *
+     * @return ThreeStonesServerGameBoard object
+     */
+    public ThreeStonesServerGameBoard getGameBoard() {
+        return this.board;
     }
 
     /**
@@ -117,10 +138,16 @@ public class ThreeStonesServerGameController {
 
         if (possibleMoves.size() > 1) {
             //if there are more than one possible move, choose the best one
-            serverMoves = determineBestMove(possibleMoves).toByte();
+            lastServerMovePlayed = determineBestMove(possibleMoves);
+            serverMoves = lastServerMovePlayed.toByte();
+            log.info("lastServerMove: x-" + lastServerMovePlayed.getXCoord() + " y-"
+                    + lastServerMovePlayed.getYCoord());
         } else {
             //if there are only one possible move, take that one
-            serverMoves = possibleMoves.get(0).toByte();
+            lastServerMovePlayed = possibleMoves.get(0);
+            serverMoves = lastServerMovePlayed.toByte();
+            log.info("lastServerMove: x-" + lastServerMovePlayed.getXCoord() + " y-"
+                    + lastServerMovePlayed.getYCoord());
         }
         //update the server board with the server's new move
         updateBoard(serverMoves[0], serverMoves[1], CellState.BLACK);
@@ -171,11 +198,11 @@ public class ThreeStonesServerGameController {
     }
 
     /**
-     * 
+     *
      * @param moves
-     * @return 
+     * @return
      */
-    public ThreeStonesServerMove determineBestMove(List<ThreeStonesServerMove> moves) {
+    private ThreeStonesServerMove determineBestMove(List<ThreeStonesServerMove> moves) {
         log.debug("determining best move");
         int biggestPossibleBlackPoints = 0;
         int biggestPossibleWhitePoints = 0;
@@ -218,10 +245,10 @@ public class ThreeStonesServerGameController {
     }
 
     /**
-     * 
+     *
      * @param whiteMoves
      * @param blackMoves
-     * @return 
+     * @return
      */
     private ThreeStonesServerMove determineMoveByElimination(List<ThreeStonesServerMove> whiteMoves,
             List<ThreeStonesServerMove> blackMoves) {
@@ -250,9 +277,9 @@ public class ThreeStonesServerGameController {
     }
 
     /**
-     * 
+     *
      * @param moves
-     * @return 
+     * @return
      */
     private ThreeStonesServerMove determineMoveByPromixty(List<ThreeStonesServerMove> moves) {
         int mostNearbyTiles = 0;

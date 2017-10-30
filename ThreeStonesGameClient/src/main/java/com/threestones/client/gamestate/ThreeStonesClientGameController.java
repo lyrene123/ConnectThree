@@ -34,7 +34,7 @@ public class ThreeStonesClientGameController {
     private Socket socket;
     private InputStream inStream;
     private OutputStream outStream;
-    private final int BUFF_SIZE = 5; //fix packet byte array size
+    private final int BUFF_SIZE = 5; //fixed size packet byte array 
 
     /**
      * Default constructor that initializes the client game board and starts a
@@ -63,21 +63,9 @@ public class ThreeStonesClientGameController {
      * @param y coord y position
      */
     public void handleClickBoardCell(int x, int y) {
-        //send server validation
-        if (board.getBoard()[x][y] == CellState.AVAILABLE) {
-            try {
-                log.debug("sent: " + x + " " + y);
-                board.updateBoard(x, y, -1, -1, CellState.WHITE, -1);
-                sendClientMovePacketToServer(x, y);
-                handleServerResponse();
-            } catch (IOException ex) {
-                Logger.getLogger(ThreeStonesClientGameController.class.getName()).log(Level.SEVERE,
-                        "Client move packet could not be sent", ex);
-            }
-        } else if (board.getBoard()[x][y] == CellState.UNAVAILABLE) {
-            //display wrong move message
-        }
-
+        log.debug("Handling board cell click");
+        //send move to server  and receive validation response
+        sendClientMovePacketToServer(x, y);
     }
 
     /**
@@ -92,32 +80,59 @@ public class ThreeStonesClientGameController {
     public void handleServerResponse() throws IOException {
         byte[] byteBuffer = receiveServerPacket();
         //examine the operation code first byte and for each case update the board
+        //with a message code if any
         switch (byteBuffer[0]) {
-            case 1: //servers's move
+            case -2: //player's move is valid
+                log.debug("code -2 valid player move");
+                board.updateBoard(byteBuffer[1], byteBuffer[2],
+                        -1, -1, CellState.WHITE, 10);
+                sendRequestForServerMove();
+                break;
+            case -1: //player's move is invalid
+                log.debug("code -1 invalid player move");
+                board.updateBoard(-1, -1, -1, -1, null, -1);
+                break;
+            case 1: //servers's normal move
                 log.debug("code 1 receive servers's move");
                 board.updateBoard(byteBuffer[1], byteBuffer[2], byteBuffer[3],
-                        byteBuffer[4], CellState.BLACK, -1);
+                        byteBuffer[4], CellState.BLACK, 10);
                 break;
-            case 3: //Player won
-                log.debug("code 2 Player won");
+            case 3: //Server's move with player won message
+                log.debug("code 3 Player won");
                 board.updateBoard(byteBuffer[1], byteBuffer[2], byteBuffer[3],
                         byteBuffer[4], CellState.BLACK, 1);
                 break;
-            case 4: //server won
-                log.debug("code 3 Server won");
+            case 4: //Server's move with server won message
+                log.debug("code 4 Server won");
                 board.updateBoard(byteBuffer[1], byteBuffer[2], byteBuffer[3],
                         byteBuffer[4], CellState.BLACK, 2);
                 break;
-            case 5: //tie
-                log.debug("code 3 Game Tie");
+            case 5: //Server's move with tie game message
+                log.debug("code 5 Game Tie");
                 board.updateBoard(byteBuffer[1], byteBuffer[2], byteBuffer[3],
                         byteBuffer[4], CellState.BLACK, 0);
                 break;
             case 6: //player has one move left
-                log.debug("code 3 Player has one move left");
+                log.debug("code 6 Player has one move left");
                 board.updateBoard(byteBuffer[1], byteBuffer[2], byteBuffer[3],
                         byteBuffer[4], CellState.BLACK, -2);
-                break;
+        }
+    }
+
+    private void sendRequestForServerMove() {
+        log.info("Sending client request for server's move");
+
+        //build the packet containing the server's move coords and the 1 opcode
+        //which indicates a player's move for the server to receive
+        byte[] requestForServerMovePacket = new byte[BUFF_SIZE];
+        requestForServerMovePacket[0] = 4;
+
+        try {
+            this.outStream.write(requestForServerMovePacket);
+            handleServerResponse();
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.
+                    getName()).log(Level.SEVERE, "Problem sending client packet to server", ex);
         }
     }
 
@@ -139,6 +154,7 @@ public class ThreeStonesClientGameController {
 
         try {
             this.outStream.write(playerMovePacket);
+            handleServerResponse(); //get the server's confirmation if move is valid or not
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.
                     getName()).log(Level.SEVERE, "Problem sending client packet to server", ex);
@@ -244,7 +260,7 @@ public class ThreeStonesClientGameController {
         byte[] byteBuffer = new byte[BUFF_SIZE];
         int totalBytesRcvd = 0;
         int bytesRcvd;
-        log.debug("Receiving client packet");
+        log.debug("Receiving server packet");
         while (totalBytesRcvd < byteBuffer.length) {
             if ((bytesRcvd = inStream.read(byteBuffer, totalBytesRcvd,
                     byteBuffer.length - totalBytesRcvd)) == -1) {

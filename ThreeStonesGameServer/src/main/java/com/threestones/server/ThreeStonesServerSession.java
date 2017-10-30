@@ -1,11 +1,15 @@
 package com.threestones.server;
 
+import com.threestones.server.gamestate.ThreeStonesServerGameBoard;
 import com.threestones.server.gamestate.ThreeStonesServerGameController;
 import com.threestones.server.gamestate.ThreeStonesServerGameBoard.CellState;
+import com.threestones.server.gamestate.ThreeStonesServerMove;
 import java.io.*;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -20,20 +24,20 @@ import org.slf4j.LoggerFactory;
  * @author Jacob Riendeau
  *
  */
-public class ThreeStonesServerSession {
+public class ThreeStonesServerSession extends Thread{
 
     //for logging information on the console
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
     private static final int BUFSIZE = 5; //fix size of the packet
     private boolean isGameOver; //boolean to determine if game is over
     private boolean isPlayAgain; //boolean to determine if user wants to play again
-    private ThreeStonesServerGameController serverGameCont; //The server's game logic instance
+    private final ThreeStonesServerGameController serverGameCont; //The server's game logic instance
     private InputStream inStream; //client's socket input stream
     private OutputStream outStream; //client's socket output stream
 
     /**
      * Default constructor that initializes the game over and play again boolean
- properties and the ThreeStonesServerGameController instance
+     * properties and the ThreeStonesServerGameController instance
      */
     public ThreeStonesServerSession() {
         this.isGameOver = false;
@@ -51,7 +55,7 @@ public class ThreeStonesServerSession {
      * @param clientSock Client Socket object
      * @throws IOException
      */
-    public void playGameSession(Socket clientSock) throws IOException {
+    public void run(Socket clientSock) throws IOException {
         //retrieve the input and output stream from the client Socket
         inStream = clientSock.getInputStream();
         outStream = clientSock.getOutputStream();
@@ -89,7 +93,7 @@ public class ThreeStonesServerSession {
                     break;
                 case 1: //player's move
                     log.debug("inside receiveClientPackets code 1 - player's move");
-                    handlePlayerMove(receivedPacket);
+                    validatePlayerMove(receivedPacket);
                     break;
                 case 2: //player's request to play again
                     log.debug("inside receiveClientPackets code 2 - play again request");
@@ -99,6 +103,10 @@ public class ThreeStonesServerSession {
                     log.debug("inside receiveClientPackets code 3 - dont play again request");
                     isPlayAgain = false;
                     return -1; //exit loop
+                case 4: //player's request for server's move
+                    log.debug("inside receiveClientPackets code 3 - request for server's move");
+                    sendServerMoveToClient();
+                    break;
             }
         }
         return recvMsgSize;
@@ -113,6 +121,7 @@ public class ThreeStonesServerSession {
      * @throws IOException
      */
     private void handleClientPlayAgainRequest() throws IOException {
+        log.info("Handling player's request to play again");
         serverGameCont.initServerGame(); //restart a new game
         isPlayAgain = true;
         isGameOver = false;
@@ -123,24 +132,9 @@ public class ThreeStonesServerSession {
         sendServerPacketToClient(playAgainConfirmPacket);
     }
 
-    /**
-     * Handles the player's move when server receives packet of operation code
-     * of 1. Retrieves the x and y coords from the packet and updates the board.
-     * Server then makes its own move and then builds the packet to send back to
-     * client with opcode, its coord x, coord y, and points of both white and
-     * black so far calculated from the board.
-     *
-     * @param receivedPacket byte array containing player's packet move
-     * @throws IOException
-     */
-    private void handlePlayerMove(byte[] receivedPacket) throws IOException {
-        //retrieve client's move and update the board
-        int coordMoveX = receivedPacket[1];
-        int coordMoveY = receivedPacket[2];
-        serverGameCont.updateBoard(coordMoveX, coordMoveY, CellState.WHITE);
-
-        //get the server's move
-        byte[] serverMovesPoint = serverGameCont.determineNextServerMove(); //[opcode,x,y,white,black]
+    private void sendServerMoveToClient() throws IOException {
+        //get the server's move containing [opcode,x,y,white points,black points]
+        byte[] serverMovesPoint = serverGameCont.determineNextServerMove();
 
         //check if the operation code of outgoing packet is 3-4-5 and if yes, the game is over 
         //and server has made its last move
@@ -148,6 +142,51 @@ public class ThreeStonesServerSession {
             isGameOver = true;
         }
         sendServerPacketToClient(serverMovesPoint);
+    }
+
+    private boolean validatePlayerMove(byte[] receivedPacket) {
+        log.info("Validating Player's move....");
+        int coordX = receivedPacket[1];
+        int coordY = receivedPacket[2];
+        ThreeStonesServerMove lastPlayedServerMove = serverGameCont.getLastPlayedServerMove();
+        try {
+            if (lastPlayedServerMove != null) {
+                ThreeStonesServerGameBoard board = serverGameCont.getGameBoard();
+                if (board.getBoard()[coordX][coordY] == CellState.AVAILABLE) {
+                    log.debug("validatePlayerMove AVAILABLE");
+                    sendValidMoveConfirmationToClnt(coordX, coordY);
+                    return true;
+                }
+
+                log.debug("Server move x: " + lastPlayedServerMove.getXCoord()
+                        + " move y: " + lastPlayedServerMove.getYCoord());
+                log.debug("Player clicked: " + coordX + "-" + coordY);
+                sendInvalidMoveConfirmationToClnt();
+            } else {
+                sendValidMoveConfirmationToClnt(coordX, coordY);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ThreeStonesServerSession.class.
+                    getName()).log(Level.SEVERE, "Problem sending server packet to client", ex);
+        }
+        return false;
+    }
+
+    private void sendValidMoveConfirmationToClnt(int coordX, int coordY) throws IOException {
+        log.info("Player move validated, sending a VALID move confirmation");
+        serverGameCont.updateBoard(coordX, coordY, CellState.WHITE);
+        byte[] validMoveConfirmPacket = new byte[BUFSIZE];
+        validMoveConfirmPacket[0] = -2;
+        validMoveConfirmPacket[1] = (byte) coordX;
+        validMoveConfirmPacket[2] = (byte) coordY;
+        sendServerPacketToClient(validMoveConfirmPacket);
+    }
+
+    private void sendInvalidMoveConfirmationToClnt() throws IOException {
+        log.info("Player move validated, sending a INVALID move confirmation");
+        byte[] invalidMoveConfirmPacket = new byte[BUFSIZE];
+        invalidMoveConfirmPacket[0] = -1;
+        sendServerPacketToClient(invalidMoveConfirmPacket);
     }
 
     /**

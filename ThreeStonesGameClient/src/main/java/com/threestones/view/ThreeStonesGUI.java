@@ -73,8 +73,9 @@ public class ThreeStonesGUI {
     private JFrame frame;
 
     /**
-     * Default constructor that initializes a ThreeStonesClientGameController instance, the
- client game board and passes it a handle to the current instance
+     * Default constructor that initializes a ThreeStonesClientGameController
+     * instance, the client game board and passes it a handle to the current
+     * instance
      */
     public ThreeStonesGUI() {
         this.threeStonesClntCont = new ThreeStonesClientGameController();
@@ -138,8 +139,9 @@ public class ThreeStonesGUI {
     /**
      * Helper method to build the three stones game board having cells or slots
      * with the appropriate initial cell state. Each slot are represented by a
- button on the UI and the content and state of each cells of the board is
- taken from the board saved in the ThreeStonesClientGameController instance.
+     * button on the UI and the content and state of each cells of the board is
+     * taken from the board saved in the ThreeStonesClientGameController
+     * instance.
      */
     private void buildGameBoard() {
         //loop through the 2D array which represents the game board and fill the array 
@@ -487,10 +489,8 @@ public class ThreeStonesGUI {
                 displayPointsAndStoneCount(); //display the new stone counts and points
                 if (this.clientGameBoard.getBoard()[i][j] == CellState.UNAVAILABLE) {
                     gameBoardCells[i][j].setBackground(Color.YELLOW);
-                    gameBoardCells[i][j].setEnabled(false);
                 } else if (this.clientGameBoard.getBoard()[i][j] == CellState.AVAILABLE) {
                     gameBoardCells[i][j].setBackground(Color.GREEN);
-                    gameBoardCells[i][j].setEnabled(true);
                 } else if (i == x && j == y && color == CellState.WHITE) {
                     gameBoardCells[i][j].setEnabled(false);
                     gameBoardCells[i][j].setBorder(BorderFactory.createLineBorder(Color.RED, 3));
@@ -561,6 +561,14 @@ public class ThreeStonesGUI {
                 + " your score of " + whitePoints + " and your opponent's score of "
                 + blackPoints + "\n\nPlay Again or Quit?";
         notifyPlayer(message);
+    }
+
+    /**
+     * Notifies the player that move chosen is an invalid move.
+     */
+    public void notifyInvalidMove() {
+        this.textArea.setText(this.textArea.getText() + 
+                "\n\nInvalid move! Please choose a green cell.");
     }
 
     /**

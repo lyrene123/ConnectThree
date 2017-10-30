@@ -218,6 +218,9 @@ public class ThreeStonesClientGameBoard {
             case -2:
                 this.gui.handlePlayerLastMove();
                 break;
+            case -1:
+                this.gui.notifyInvalidMove();
+                break;
             case 0:
                 this.gui.notifyTieGame(whitePoints, blackPoints);
                 break;
