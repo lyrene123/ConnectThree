@@ -1,6 +1,6 @@
 package com.threestones.view;
 
-import com.threestones.client.gamestate.ThreeStonesClient;
+import com.threestones.client.gamestate.ThreeStonesClientGameController;
 import com.threestones.client.gamestate.ThreeStonesClientGameBoard;
 import com.threestones.client.gamestate.ThreeStonesClientGameBoard.CellState;
 import java.awt.BorderLayout;
@@ -31,9 +31,9 @@ import org.slf4j.LoggerFactory;
  * board, the total points of black and white stones, the total black and white
  * stones left, and the game board.
  *
- * @author Eric
- * @author Lyrene
- * @author Jacob
+ * @author Eric Hughes
+ * @author Lyrene Labor
+ * @author Jacob Riendeau
  */
 public class ThreeStonesGUI {
 
@@ -67,18 +67,18 @@ public class ThreeStonesGUI {
     //text area containing messages during the game
     JTextArea textArea = new JTextArea(5, 5);
 
-    private final ThreeStonesClient threeStonesClnt;
+    private final ThreeStonesClientGameController threeStonesClntCont;
     private final ThreeStonesClientGameBoard clientGameBoard;
     private JPanel guiGameBoard;
     private JFrame frame;
 
     /**
-     * Default constructor that initializes a ThreeStonesClient instance, the
-     * client game board and passes it a handle to the current instance
+     * Default constructor that initializes a ThreeStonesClientGameController instance, the
+ client game board and passes it a handle to the current instance
      */
     public ThreeStonesGUI() {
-        this.threeStonesClnt = new ThreeStonesClient();
-        this.clientGameBoard = this.threeStonesClnt.getBoard();
+        this.threeStonesClntCont = new ThreeStonesClientGameController();
+        this.clientGameBoard = this.threeStonesClntCont.getBoard();
         clientGameBoard.setGui(this);
     }
 
@@ -138,8 +138,8 @@ public class ThreeStonesGUI {
     /**
      * Helper method to build the three stones game board having cells or slots
      * with the appropriate initial cell state. Each slot are represented by a
-     * button on the UI and the content and state of each cells of the board is
-     * taken from the board saved in the ThreeStonesClient instance.
+ button on the UI and the content and state of each cells of the board is
+ taken from the board saved in the ThreeStonesClientGameController instance.
      */
     private void buildGameBoard() {
         //loop through the 2D array which represents the game board and fill the array 
@@ -159,7 +159,7 @@ public class ThreeStonesGUI {
                         final int positionX = x;
                         final int positionY = y;
                         gameBoardCells[x][y].addActionListener(e -> {
-                            threeStonesClnt.clickBoardCell(positionX, positionY);
+                            threeStonesClntCont.handleClickBoardCell(positionX, positionY);
                         });
                 }
                 gameBoardCells[x][y].setEnabled(false);
@@ -366,7 +366,7 @@ public class ThreeStonesGUI {
         String ipAddress = JOptionPane.showInputDialog(frame,
                 "Enter IP Address of Server", null);
         try {
-            this.threeStonesClnt.getClientPacket().createConnectionWithServer(ipAddress);
+            this.threeStonesClntCont.createConnectionWithServer(ipAddress);
             textArea.setText("Connection established sucessfully.");
             connectBtn.setEnabled(false);
             connectBtn.setBackground(Color.GREEN);
@@ -404,7 +404,7 @@ public class ThreeStonesGUI {
     private void onQuitGameClick() {
         log.debug("inside onQuitGameClick");
         //send quit game request to the server
-        this.threeStonesClnt.getClientPacket().sendQuitGameRequestToServer();
+        this.threeStonesClntCont.sendQuitGameRequestToServer();
 
         //disable all buttons except the connect button
         this.playAgainButton.setEnabled(false);
@@ -426,7 +426,7 @@ public class ThreeStonesGUI {
      */
     private void onStartClick() {
         log.debug("inside onStartClick");
-        if (this.threeStonesClnt.getClientPacket().sendStartGameRequestToServer()) {
+        if (this.threeStonesClntCont.sendStartGameRequestToServer()) {
             this.textArea.setText(this.textArea.getText() + "\n\nBoard Enabled. "
                     + "You can start your first move");
             this.startGameBtn.setEnabled(false);
@@ -443,7 +443,7 @@ public class ThreeStonesGUI {
      */
     private void onPlayAgainClick() {
         log.debug("inside onPlayAgainClick");
-        if (this.threeStonesClnt.getClientPacket().sendPlayAgainRequestToServer()) {
+        if (this.threeStonesClntCont.sendPlayAgainRequestToServer()) {
             this.textArea.setText("A new game has started.");
             this.playAgainButton.setEnabled(false);
             this.quitBtn.setEnabled(false);
@@ -571,7 +571,7 @@ public class ThreeStonesGUI {
      * @param message String message to display
      */
     private void notifyPlayer(String message) {
-        this.textArea.setText(message);
+        this.textArea.setText(this.textArea.getText() + message);
         playAgainButton.setEnabled(true);
         quitBtn.setEnabled(true);
         enableBoard(false);
