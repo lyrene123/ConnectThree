@@ -41,7 +41,7 @@ public class ThreeStonesServerGameController {
      * @param color stone color CellState enum
      */
     public void updateBoard(int x, int y, CellState color) {
-        board.updateBoard(x, y, color);
+        board.updateBoardWithNewMove(x, y, color);
     }
 
     /**

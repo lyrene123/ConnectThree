@@ -43,6 +43,7 @@ public class ThreeStonesServer {
         while (true) {
             log.info("Server is listening at: " + servSock.getLocalSocketAddress().toString());
             Socket clntSock = servSock.accept();// wait for client connection
+            log.info("Server is accepting client at: " + clntSock.getLocalSocketAddress().toString());
 
             //create session once connection is made
             ThreeStonesServerSession session = new ThreeStonesServerSession();
