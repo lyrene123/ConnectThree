@@ -55,14 +55,14 @@ public class ThreeStonesServerGameBoard {
     /**
      * Calculates and returns the number of points scored by all possible
      * combinations of black or white stones on the game board based on the
-     * coordinate x and y
+     * coordinate x and y and the stone color
      *
      * @param color
      * @param x x coordinate on game board
      * @param y y coordinate on game board
      * @return number of points scored from the coordinate
      */
-    public int checkForThreeStones(int x, int y, CellState color) {
+    public int calculateThreeStonesPoints(int x, int y, CellState color) {
         int points = 0;
 
         //check horizontal left
@@ -150,7 +150,6 @@ public class ThreeStonesServerGameBoard {
                     } else if (j == y && board[i][j] != CellState.VACANT 
                             && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
-
                     } else if (board[i][j] != CellState.WHITE 
                             && board[i][j] != CellState.BLACK && board[i][j] != CellState.VACANT) {
                         board[i][j] = CellState.UNAVAILABLE;
@@ -174,10 +173,10 @@ public class ThreeStonesServerGameBoard {
     public void updateBoard(int x, int y, CellState color) {
         board[x][y] = color;
         if (color == CellState.WHITE) {
-            whiteScore += checkForThreeStones(x, y, color);
+            whiteScore += calculateThreeStonesPoints(x, y, color);
             whiteStoneCount--;
         } else {
-            blackScore += checkForThreeStones(x, y, color);
+            blackScore += calculateThreeStonesPoints(x, y, color);
             blackStoneCount--;
         }
         this.board = getBoardChange(x, y);

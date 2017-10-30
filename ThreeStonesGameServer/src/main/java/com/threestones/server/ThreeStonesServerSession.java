@@ -27,7 +27,7 @@ public class ThreeStonesServerSession {
     private static final int BUFSIZE = 5; //fix size of the packet
     private boolean isGameOver; //boolean to determine if game is over
     private boolean isPlayAgain; //boolean to determine if user wants to play again
-    private ThreeStonesServerGameController serverGame; //The server's game logic instance
+    private ThreeStonesServerGameController serverGameCont; //The server's game logic instance
     private InputStream inStream; //client's socket input stream
     private OutputStream outStream; //client's socket output stream
 
@@ -38,7 +38,7 @@ public class ThreeStonesServerSession {
     public ThreeStonesServerSession() {
         this.isGameOver = false;
         this.isPlayAgain = true;
-        this.serverGame = new ThreeStonesServerGameController();
+        this.serverGameCont = new ThreeStonesServerGameController();
     }
 
     /**
@@ -113,7 +113,7 @@ public class ThreeStonesServerSession {
      * @throws IOException
      */
     private void handleClientPlayAgainRequest() throws IOException {
-        serverGame.startGame(); //restart a new game
+        serverGameCont.initServerGame(); //restart a new game
         isPlayAgain = true;
         isGameOver = false;
 
@@ -137,10 +137,10 @@ public class ThreeStonesServerSession {
         //retrieve client's move and update the board
         int coordMoveX = receivedPacket[1];
         int coordMoveY = receivedPacket[2];
-        serverGame.updateBoard(coordMoveX, coordMoveY, CellState.WHITE);
+        serverGameCont.updateBoard(coordMoveX, coordMoveY, CellState.WHITE);
 
         //get the server's move
-        byte[] serverMovesPoint = serverGame.determineNextMove(); //[opcode,x,y,white,black]
+        byte[] serverMovesPoint = serverGameCont.determineNextServerMove(); //[opcode,x,y,white,black]
 
         //check if the operation code of outgoing packet is 3-4-5 and if yes, the game is over 
         //and server has made its last move
@@ -159,7 +159,7 @@ public class ThreeStonesServerSession {
      */
     private void handleClientGameRequest() throws IOException {
         //start the server side game 
-        serverGame.startGame();
+        serverGameCont.initServerGame();
         //null refers to a code 0 which indicates a start game confirmation to the client
         sendServerPacketToClient(null);
     }

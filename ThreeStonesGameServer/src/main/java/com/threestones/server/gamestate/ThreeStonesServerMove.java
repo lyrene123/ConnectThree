@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
  *
  * @author Jacob
  */
-public class ThreeStonesMove {
+public class ThreeStonesServerMove {
 
-    private static final org.slf4j.Logger LOG_STATIC = LoggerFactory.getLogger(ThreeStonesMove.class);
+    private static final org.slf4j.Logger LOG_STATIC = LoggerFactory.getLogger(ThreeStonesServerMove.class);
     private int whitePoints;
     private int blackPoints;
     private int coordX;
@@ -21,7 +21,7 @@ public class ThreeStonesMove {
     private int nearbyWhiteStones;
     private int nearbyBlackStones;
 
-    public ThreeStonesMove(int whitePoints, int blackPoints, int x, int y) {
+    public ThreeStonesServerMove(int whitePoints, int blackPoints, int x, int y) {
         this.whitePoints = whitePoints;
         this.blackPoints = blackPoints;
         this.coordX = x;
@@ -56,7 +56,7 @@ public class ThreeStonesMove {
         return nearbyBlackStones;
     }
 
-    public ThreeStonesMove() {
+    public ThreeStonesServerMove() {
     }
 
     public int getWhitePoints() {
@@ -93,15 +93,15 @@ public class ThreeStonesMove {
         return "W:" + whitePoints + " B:" + blackPoints + " X:" + coordX + " Y:" + coordY;
     }
 
-    public static ThreeStonesMove determineBestMove(List<ThreeStonesMove> moves) {
+    public static ThreeStonesServerMove determineBestMove(List<ThreeStonesServerMove> moves) {
         LOG_STATIC.debug("determining best move");
         int biggestPossibleBlackPoints = 0;
         int biggestPossibleWhitePoints = 0;
-        List<ThreeStonesMove> possibleWhiteScores = new ArrayList<>();
-        List<ThreeStonesMove> possibleBlackScores = new ArrayList<>();
+        List<ThreeStonesServerMove> possibleWhiteScores = new ArrayList<>();
+        List<ThreeStonesServerMove> possibleBlackScores = new ArrayList<>();
 
         //Starts by determining by move value
-        for (ThreeStonesMove m : moves) {
+        for (ThreeStonesServerMove m : moves) {
             LOG_STATIC.debug("move: " + m.toString());
             if (m.getWhitePoints() > 0) {
                 possibleWhiteScores.add(m);
@@ -135,12 +135,12 @@ public class ThreeStonesMove {
 
     }
 
-    private static ThreeStonesMove determineMoveByElimination(List<ThreeStonesMove> whiteMoves, List<ThreeStonesMove> blackMoves) {
-        List<ThreeStonesMove> bestMoves = new ArrayList<>();
+    private static ThreeStonesServerMove determineMoveByElimination(List<ThreeStonesServerMove> whiteMoves, List<ThreeStonesServerMove> blackMoves) {
+        List<ThreeStonesServerMove> bestMoves = new ArrayList<>();
         int bestMoveValue = -15;
-        for (ThreeStonesMove tsBlack : blackMoves) {
+        for (ThreeStonesServerMove tsBlack : blackMoves) {
             int maxWhite = 0;
-            for (ThreeStonesMove tsWhite : whiteMoves) {
+            for (ThreeStonesServerMove tsWhite : whiteMoves) {
                 if ((tsWhite.getX() == tsBlack.getX() || tsWhite.getY() == tsBlack.getY()) && !(tsWhite.equals(tsBlack))) {
                     maxWhite = (maxWhite > tsWhite.getWhitePoints()) ? maxWhite : tsWhite.getWhitePoints();
                 }
@@ -159,10 +159,10 @@ public class ThreeStonesMove {
         return bestMoves.get(0);
     }
 
-    private static ThreeStonesMove determineMoveByPromixty(List<ThreeStonesMove> moves) {
+    private static ThreeStonesServerMove determineMoveByPromixty(List<ThreeStonesServerMove> moves) {
         int mostNearbyTiles = 0;
-        List<ThreeStonesMove> bestMoves = new ArrayList<>();
-        for (ThreeStonesMove m : moves) {
+        List<ThreeStonesServerMove> bestMoves = new ArrayList<>();
+        for (ThreeStonesServerMove m : moves) {
             if (m.getNearbyTiles() > mostNearbyTiles) {
                 bestMoves.clear();
                 bestMoves.add(m);
@@ -177,6 +177,6 @@ public class ThreeStonesMove {
         return bestMoves.get(0);
     }
 
-    private static Comparator<ThreeStonesMove> WhiteMoveComparator = ((ThreeStonesMove move1, ThreeStonesMove move2) -> move1.getWhitePoints() - move2.getWhitePoints());
-    private static Comparator<ThreeStonesMove> BlackMoveComparator = ((ThreeStonesMove move1, ThreeStonesMove move2) -> move1.getBlackPoints() - move2.getBlackPoints());
+    private static Comparator<ThreeStonesServerMove> WhiteMoveComparator = ((ThreeStonesServerMove move1, ThreeStonesServerMove move2) -> move1.getWhitePoints() - move2.getWhitePoints());
+    private static Comparator<ThreeStonesServerMove> BlackMoveComparator = ((ThreeStonesServerMove move1, ThreeStonesServerMove move2) -> move1.getBlackPoints() - move2.getBlackPoints());
 }
