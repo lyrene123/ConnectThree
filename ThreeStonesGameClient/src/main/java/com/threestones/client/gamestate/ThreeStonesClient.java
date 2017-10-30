@@ -3,6 +3,8 @@ package com.threestones.client.gamestate;
 import com.threestones.client.gamestate.ThreeStonesClientGameBoard.CellState;
 import com.threestones.client.packet.ThreeStonesClientPacket;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -29,13 +31,18 @@ public class ThreeStonesClient {
         return clientPacket;
     }
 
-    public void clickBoardCell(int x, int y) throws IOException {
+    public void clickBoardCell(int x, int y) {
         //send server validation
         if (board.getBoard()[x][y] == CellState.AVAILABLE) {
-            log.debug("sent: " + x + " " + y);
-            board.updateBoard(x, y, -1, -1, CellState.WHITE, -1);
-            clientPacket.sendClientPacketToServer(x, y);
-            serverResponse();
+            try {
+                log.debug("sent: " + x + " " + y);
+                board.updateBoard(x, y, -1, -1, CellState.WHITE, -1);
+                clientPacket.sendClientPacketToServer(x, y);
+                serverResponse();
+            } catch (IOException ex) {
+                Logger.getLogger(ThreeStonesClient.class.getName()).log(Level.SEVERE, 
+                        "Client move packet could not be sent", ex);
+            }
         } else if (board.getBoard()[x][y] == CellState.UNAVAILABLE) {
             //display wrong move message
 

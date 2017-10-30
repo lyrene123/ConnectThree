@@ -6,9 +6,9 @@ import javax.swing.SwingUtilities;
 
 /**
  * Main application for the client side in a game of Three Stones. This is the
- * main application that would be executed in order to display the UI of the
+ * main application to run in order to display the UI of the
  * game to the user and enable the user to connect to the server side
- * application of the Three Stones and start playing against the server.
+ * application of Three Stones and start playing against the server.
  *
  * @author Eric
  * @author Lyrene
