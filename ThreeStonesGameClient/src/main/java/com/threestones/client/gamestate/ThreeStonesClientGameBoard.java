@@ -107,11 +107,14 @@ public class ThreeStonesClientGameBoard {
                     if (board[i][j] == CellState.BLACK || board[i][j] == CellState.WHITE) {
                         continue;
                     }
-                    if (i == x && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
+                    if (i == x && board[i][j] != CellState.VACANT && board[i][j] 
+                            != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
-                    } else if (j == y && board[i][j] != CellState.VACANT && board[i][j] != CellState.BLACK && board[i][j] != CellState.WHITE) {
+                    } else if (j == y && board[i][j] != CellState.VACANT && board[i][j] 
+                            != CellState.BLACK && board[i][j] != CellState.WHITE) {
                         board[i][j] = CellState.AVAILABLE;
-                    } else if (board[i][j] != CellState.WHITE && board[i][j] != CellState.BLACK && board[i][j] != CellState.VACANT) {
+                    } else if (board[i][j] != CellState.WHITE && board[i][j] 
+                            != CellState.BLACK && board[i][j] != CellState.VACANT) {
                         board[i][j] = CellState.UNAVAILABLE;
                     } else {
                         board[i][j] = CellState.VACANT;

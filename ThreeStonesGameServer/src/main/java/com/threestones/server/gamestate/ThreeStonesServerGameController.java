@@ -2,6 +2,8 @@ package com.threestones.server.gamestate;
 
 import com.threestones.server.gamestate.ThreeStonesServerGameBoard.CellState;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +27,14 @@ public class ThreeStonesServerGameController {
 
     //server game board instance
     private final ThreeStonesServerGameBoard board;
+
+    //Comparator objects used to compare possible moves of server and choosing best one
+    private final Comparator<ThreeStonesServerMove> WhiteMoveComparator
+            = ((ThreeStonesServerMove move1, ThreeStonesServerMove move2)
+            -> move1.getWhitePoints() - move2.getWhitePoints());
+    private final Comparator<ThreeStonesServerMove> BlackMoveComparator
+            = ((ThreeStonesServerMove move1, ThreeStonesServerMove move2)
+            -> move1.getBlackPoints() - move2.getBlackPoints());
 
     /**
      * Default constructor that initializes the server game board
@@ -82,7 +92,7 @@ public class ThreeStonesServerGameController {
                      */
                     ThreeStonesServerMove move = new ThreeStonesServerMove(board.calculateThreeStonesPoints(i, j, CellState.WHITE),
                             board.calculateThreeStonesPoints(i, j, CellState.BLACK), i, j);
-                    move.countNearbyTiles(board.getBoard());
+                    move.countNearbyStones(board.getBoard());
                     possibleMoves.add(move); //add ThreeStonesServerMove instance to the list of possible moves
                 }
             }
@@ -107,7 +117,7 @@ public class ThreeStonesServerGameController {
 
         if (possibleMoves.size() > 1) {
             //if there are more than one possible move, choose the best one
-            serverMoves = ThreeStonesServerMove.determineBestMove(possibleMoves).toByte();
+            serverMoves = determineBestMove(possibleMoves).toByte();
         } else {
             //if there are only one possible move, take that one
             serverMoves = possibleMoves.get(0).toByte();
@@ -159,4 +169,107 @@ public class ThreeStonesServerGameController {
                 (byte) serverMove[1], (byte) whitePnts, (byte) blackPnts};
         }
     }
+
+    /**
+     * 
+     * @param moves
+     * @return 
+     */
+    public ThreeStonesServerMove determineBestMove(List<ThreeStonesServerMove> moves) {
+        log.debug("determining best move");
+        int biggestPossibleBlackPoints = 0;
+        int biggestPossibleWhitePoints = 0;
+        List<ThreeStonesServerMove> possibleWhiteScores = new ArrayList<>();
+        List<ThreeStonesServerMove> possibleBlackScores = new ArrayList<>();
+
+        //Starts by determining by move value
+        for (ThreeStonesServerMove serverMove : moves) {
+            log.debug("move: " + serverMove.toString());
+            if (serverMove.getWhitePoints() > 0) {
+                possibleWhiteScores.add(serverMove);
+                if (serverMove.getWhitePoints() > biggestPossibleWhitePoints) {
+                    biggestPossibleWhitePoints = serverMove.getWhitePoints();
+                }
+            }
+
+            if (serverMove.getBlackPoints() > 0) {
+                possibleBlackScores.add(serverMove);
+                if (serverMove.getBlackPoints() > biggestPossibleBlackPoints) {
+                    biggestPossibleBlackPoints = serverMove.getBlackPoints();
+                }
+            }
+        }
+
+        if (biggestPossibleBlackPoints == 0 && biggestPossibleWhitePoints == 0) {
+            log.debug("determining best move by proximity");
+            return determineMoveByPromixty(moves);
+        } //No possible scoring with black but some with white
+        else if (biggestPossibleBlackPoints == 0 && biggestPossibleWhitePoints > 0) {
+            log.debug("determining best move by white");
+            return Collections.max(possibleWhiteScores, WhiteMoveComparator);
+        } //No possible white scoring
+        else if (biggestPossibleBlackPoints > 0 && biggestPossibleWhitePoints == 0) {
+            log.debug("determining best move by black");
+            return Collections.max(possibleBlackScores, BlackMoveComparator);
+        }
+        log.debug("determining best move by elimination");
+        return determineMoveByElimination(possibleWhiteScores, possibleBlackScores);
+
+    }
+
+    /**
+     * 
+     * @param whiteMoves
+     * @param blackMoves
+     * @return 
+     */
+    private ThreeStonesServerMove determineMoveByElimination(List<ThreeStonesServerMove> whiteMoves,
+            List<ThreeStonesServerMove> blackMoves) {
+        List<ThreeStonesServerMove> bestMoves = new ArrayList<>();
+        int bestMoveValue = -15;
+        for (ThreeStonesServerMove tsBlack : blackMoves) {
+            int maxWhite = 0;
+            for (ThreeStonesServerMove tsWhite : whiteMoves) {
+                if ((tsWhite.getXCoord() == tsBlack.getXCoord() || tsWhite.getYCoord() == tsBlack.getYCoord())
+                        && !(tsWhite.equals(tsBlack))) {
+                    maxWhite = (maxWhite > tsWhite.getWhitePoints()) ? maxWhite : tsWhite.getWhitePoints();
+                }
+            }
+            if (tsBlack.getBlackPoints() - maxWhite > bestMoveValue) {
+                bestMoves.clear();
+                bestMoves.add(tsBlack);
+            } else if (tsBlack.getBlackPoints() - maxWhite == bestMoveValue) {
+                bestMoves.add(tsBlack);
+            }
+        }
+        if (bestMoves.size() > 1) {
+            return bestMoves.get((int) (Math.random() * bestMoves.size()));
+        }
+
+        return bestMoves.get(0);
+    }
+
+    /**
+     * 
+     * @param moves
+     * @return 
+     */
+    private ThreeStonesServerMove determineMoveByPromixty(List<ThreeStonesServerMove> moves) {
+        int mostNearbyTiles = 0;
+        List<ThreeStonesServerMove> bestMoves = new ArrayList<>();
+        for (ThreeStonesServerMove m : moves) {
+            if (m.getTotalNearbyStones() > mostNearbyTiles) {
+                bestMoves.clear();
+                bestMoves.add(m);
+            } else if (m.getTotalNearbyStones() == mostNearbyTiles) {
+                bestMoves.add(m);
+            }
+        }
+        if (bestMoves.size() > 1) {
+            return bestMoves.get((int) (Math.random() * bestMoves.size()));
+        }
+
+        return bestMoves.get(0);
+    }
+
 }
