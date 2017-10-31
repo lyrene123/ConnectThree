@@ -148,10 +148,10 @@ public class ThreeStonesGUI {
             for (int y = 0; y < gameBoardCells.length; y++) {
                 //fill the empty gameBoardCells array according to the board saved in the client instance
                 switch (clientGameBoard.getBoard()[x][y]) {
-                    case VACANT: //if vacant slot, make the button color orange
+                    case VACANT: //if vacant slot, make the button color gray
                         gameBoardCells[x][y] = new JButton();
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
-                        gameBoardCells[x][y].setBackground(Color.ORANGE);
+                        gameBoardCells[x][y].setBackground(Color.darkGray);
                         break;
                     case AVAILABLE: //if available slot, then set button color to yellow and set click listener
                         gameBoardCells[x][y] = new JButton();
