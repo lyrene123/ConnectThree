@@ -206,6 +206,8 @@ public class ThreeStonesServerGameController {
         List<ThreeStonesServerMove> possibleBlackScores = new ArrayList<>();
 
         //Starts by determining by move value
+		//Checks all the possible moves that black can score vs white can score
+		//adds them all to the previously mentioned lists
         for (ThreeStonesServerMove serverMove : moves) {
             if (serverMove.getWhitePoints() > 0) {
                 possibleWhiteScores.add(serverMove);
@@ -222,6 +224,7 @@ public class ThreeStonesServerGameController {
             }
         }
 
+		//If there is no current scoring possibilities it will make a move based off proxmity
         if (biggestPossibleBlackPoints == 0 && biggestPossibleWhitePoints == 0) {
             log.debug("determining best move by proximity");
             return determineMoveByPromixty(moves);
@@ -234,6 +237,7 @@ public class ThreeStonesServerGameController {
             log.debug("determining best move by black");
             return Collections.max(possibleBlackScores, BlackMoveComparator);
         }
+		//if both white and black , will determine by elimination
         log.debug("determining best move by elimination");
         return determineMoveByElimination(possibleWhiteScores, possibleBlackScores);
 
@@ -249,6 +253,8 @@ public class ThreeStonesServerGameController {
             List<ThreeStonesServerMove> blackMoves) {
         List<ThreeStonesServerMove> bestMoves = new ArrayList<>();
         int bestMoveValue = -15;
+		//Determines the move value by blackScore - whiteScore where if a black move is made
+		//it will check the resulting white moves the player can play on the next turn
         for (ThreeStonesServerMove tsBlack : blackMoves) {
             int maxWhite = 0;
             for (ThreeStonesServerMove tsWhite : whiteMoves) {
@@ -264,6 +270,7 @@ public class ThreeStonesServerGameController {
                 bestMoves.add(tsBlack);
             }
         }
+		//if multiple moves are the same will return a random move out of the possible moves 
         if (bestMoves.size() > 1) {
             return bestMoves.get((int) (Math.random() * bestMoves.size()));
         }
@@ -277,8 +284,10 @@ public class ThreeStonesServerGameController {
      * @return
      */
     private ThreeStonesServerMove determineMoveByPromixty(List<ThreeStonesServerMove> moves) {
+		
         int mostNearbyTiles = 0;
         List<ThreeStonesServerMove> bestMoves = new ArrayList<>();
+		//goes through available moves and determines which moves is closest to most tiles
         for (ThreeStonesServerMove m : moves) {
             if (m.getTotalNearbyStones() > mostNearbyTiles) {
                 bestMoves.clear();
@@ -287,6 +296,7 @@ public class ThreeStonesServerGameController {
                 bestMoves.add(m);
             }
         }
+		//if multiple moves are the same will return a random move out of the possible moves 
         if (bestMoves.size() > 1) {
             return bestMoves.get((int) (Math.random() * bestMoves.size()));
         }
