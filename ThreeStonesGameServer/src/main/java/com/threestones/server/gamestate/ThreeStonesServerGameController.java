@@ -140,14 +140,10 @@ public class ThreeStonesServerGameController {
             //if there are more than one possible move, choose the best one
             lastServerMovePlayed = determineBestMove(possibleMoves);
             serverMoves = lastServerMovePlayed.toByte();
-            log.info("lastServerMove: x-" + lastServerMovePlayed.getXCoord() + " y-"
-                    + lastServerMovePlayed.getYCoord());
         } else {
             //if there are only one possible move, take that one
             lastServerMovePlayed = possibleMoves.get(0);
             serverMoves = lastServerMovePlayed.toByte();
-            log.info("lastServerMove: x-" + lastServerMovePlayed.getXCoord() + " y-"
-                    + lastServerMovePlayed.getYCoord());
         }
         //update the server board with the server's new move
         updateBoard(serverMoves[0], serverMoves[1], CellState.BLACK);
@@ -211,7 +207,6 @@ public class ThreeStonesServerGameController {
 
         //Starts by determining by move value
         for (ThreeStonesServerMove serverMove : moves) {
-            log.debug("move: " + serverMove.toString());
             if (serverMove.getWhitePoints() > 0) {
                 possibleWhiteScores.add(serverMove);
                 if (serverMove.getWhitePoints() > biggestPossibleWhitePoints) {

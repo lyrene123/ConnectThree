@@ -1,14 +1,12 @@
 package com.threestones.client.gamestate;
 
 import com.threestones.client.gamestate.ThreeStonesClientGameBoard.CellState;
-import com.threestones.client.packet.ThreeStonesClientPacket;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -73,7 +71,7 @@ public class ThreeStonesClientGameController {
      * the right task depending on the operation code which is the first byte of
      * the packet byte array. For each type of server response packet, the game
      * controller will update the board which will then be displayed on the UI
-     * for the user to see the changes and updates.
+     * for the user to see the changes and updates and any necessary messages
      *
      * @throws IOException
      */
@@ -119,6 +117,12 @@ public class ThreeStonesClientGameController {
         }
     }
 
+    /**
+     * Builds a server move request packet with the first byte containing the
+     * operation code 4 which indicates a request to the server to its move.
+     * Receives the server's response by calling the handleServerResponse
+     * method.
+     */
     private void sendRequestForServerMove() {
         log.info("Sending client request for server's move");
 
@@ -131,7 +135,7 @@ public class ThreeStonesClientGameController {
             this.outStream.write(requestForServerMovePacket);
             handleServerResponse();
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.
+            java.util.logging.Logger.getLogger(ThreeStonesClientGameController.class.
                     getName()).log(Level.SEVERE, "Problem sending client packet to server", ex);
         }
     }
@@ -156,7 +160,7 @@ public class ThreeStonesClientGameController {
             this.outStream.write(playerMovePacket);
             handleServerResponse(); //get the server's confirmation if move is valid or not
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.
+            java.util.logging.Logger.getLogger(ThreeStonesClientGameController.class.
                     getName()).log(Level.SEVERE, "Problem sending client packet to server", ex);
         }
     }
@@ -183,7 +187,7 @@ public class ThreeStonesClientGameController {
             //receive the server's reponse
             receivedPacket = receiveServerPacket();
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.
+            java.util.logging.Logger.getLogger(ThreeStonesClientGameController.class.
                     getName()).log(Level.SEVERE, "Problem sending client packet to server", ex);
         }
         return receivedPacket[0] == 0;
@@ -225,7 +229,7 @@ public class ThreeStonesClientGameController {
             //receive the server's confirmation
             receivedPacket = receiveServerPacket();
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.
+            java.util.logging.Logger.getLogger(ThreeStonesClientGameController.class.
                     getName()).log(Level.SEVERE, "Problem sending client packet to server", ex);
         }
         return receivedPacket[0] == 2;
@@ -243,7 +247,7 @@ public class ThreeStonesClientGameController {
             quitRequestPacket[0] = 3;
             outStream.write(quitRequestPacket);
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(ThreeStonesClientPacket.class.
+            java.util.logging.Logger.getLogger(ThreeStonesClientGameController.class.
                     getName()).log(Level.SEVERE, "Problem sending client packet to server", ex);
         }
     }

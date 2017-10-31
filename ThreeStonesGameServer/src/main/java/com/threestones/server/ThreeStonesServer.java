@@ -1,6 +1,7 @@
 package com.threestones.server;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import org.slf4j.LoggerFactory;
@@ -38,10 +39,12 @@ public class ThreeStonesServer {
 
         // Create a server socket to accept client connection requests
         ServerSocket servSock = new ServerSocket(servPort);
+        InetAddress servAddress = InetAddress.getLocalHost();
+        
 
         // Run forever, accepting and servicing connections
         while (true) {
-            log.info("Server is listening at: " + servSock.getLocalSocketAddress().toString());
+            log.info("Server is listening at: " + servAddress.getHostAddress() + " at port " + servSock.getLocalPort());
             Socket clntSock = servSock.accept();// wait for client connection
             log.info("Server is accepting client at: " + clntSock.getLocalSocketAddress().toString());
 
