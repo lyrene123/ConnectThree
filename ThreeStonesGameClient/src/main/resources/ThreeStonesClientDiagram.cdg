@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Class name="ThreeStonesGUI" package="com.threestones.view" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="log" type="org.slf4j.Logger" visibility="private" isFinal="true"/>
+        <Field name="mainRootPane" type="JPanel" visibility="private" isFinal="true"/>
+        <Field name="clientScorePnts" type="JLabel" visibility="private" isFinal="true"/>
+        <Field name="serverScorePnts" type="JLabel" visibility="private" isFinal="true"/>
+        <Field name="clientScoreTV" type="JLabel" visibility="private" isFinal="true"/>
+        <Field name="serverScoreTV" type="JLabel" visibility="private" isFinal="true"/>
+        <Field name="clientStoneCount" type="JLabel" visibility="private" isFinal="true"/>
+        <Field name="serverStoneCount" type="JLabel" visibility="private" isFinal="true"/>
+        <Field name="clientStoneCountTV" type="JLabel" visibility="private" isFinal="true"/>
+        <Field name="serverStoneCountTV" type="JLabel" visibility="private" isFinal="true"/>
+        <Field name="quitBtn" type="JButton" visibility="private" isFinal="true"/>
+        <Field name="connectBtn" type="JButton" visibility="private" isFinal="true"/>
+        <Field name="startGameBtn" type="JButton" visibility="private" isFinal="true"/>
+        <Field name="playAgainButton" type="JButton" visibility="private" isFinal="true"/>
+        <Field name="gameBoardCells" type="JButton[][]" visibility="private" isFinal="true"/>
+        <Field name="textArea" type="JTextArea" visibility="package"/>
+        <Field name="threeStonesClntCont" type="ThreeStonesClientGameController" visibility="private" isFinal="true"/>
+        <Field name="clientGameBoard" type="ThreeStonesClientGameBoard" visibility="private" isFinal="true"/>
+        <Field name="guiGameBoard" type="JPanel" visibility="private"/>
+        <Field name="frame" type="JFrame" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="buildThreeStonesUI" returnType="void" visibility="public"/>
+        <Method name="buildGameBoard" returnType="void" visibility="private"/>
+        <Method name="addButtonsListInBoard" returnType="void" visibility="private"/>
+        <Method name="buildTextArea" returnType="void" visibility="private"/>
+        <Method name="buildScoresPanel" returnType="void" visibility="private">
+          <Argument type="JPanel" name="scoresPanel"/>
+        </Method>
+        <Method name="buildScoresToolBar" returnType="void" visibility="private">
+          <Argument type="JToolBar" name="scoresToolbar"/>
+        </Method>
+        <Method name="buildServerScoreLbl" returnType="void" visibility="private"/>
+        <Method name="buildClientScoreLbl" returnType="void" visibility="private"/>
+        <Method name="buildClientStoneCountLbl" returnType="void" visibility="private"/>
+        <Method name="buildServerStoneCountLbl" returnType="void" visibility="private"/>
+        <Method name="buildSettingsPanel" returnType="void" visibility="private">
+          <Argument type="JPanel" name="settingsPanel"/>
+        </Method>
+        <Method name="buildConnectBtn" returnType="void" visibility="private">
+          <Argument type="JToolBar" name="settingsToolbar"/>
+        </Method>
+        <Method name="buildStartBtn" returnType="void" visibility="private">
+          <Argument type="JToolBar" name="settingsToolbar"/>
+        </Method>
+        <Method name="buildQuitBtn" returnType="void" visibility="private">
+          <Argument type="JToolBar" name="settingsToolbar"/>
+        </Method>
+        <Method name="buildPlayAgainBtn" returnType="void" visibility="private">
+          <Argument type="JToolBar" name="settingToolBar"/>
+        </Method>
+        <Method name="onConnectClick" returnType="void" visibility="private"/>
+        <Method name="enableBoard" returnType="void" visibility="private">
+          <Argument type="boolean" name="isEnabled"/>
+        </Method>
+        <Method name="onQuitGameClick" returnType="void" visibility="private"/>
+        <Method name="onStartClick" returnType="void" visibility="private"/>
+        <Method name="onPlayAgainClick" returnType="void" visibility="private"/>
+        <Method name="reinitializeBoard" returnType="void" visibility="private"/>
+        <Method name="updateView" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="CellState" name="color"/>
+        </Method>
+        <Method name="displayPointsAndStoneCount" returnType="void" visibility="private"/>
+        <Method name="notifyPlayerWon" returnType="void" visibility="public">
+          <Argument type="int" name="whitePoints"/>
+          <Argument type="int" name="blackPoints"/>
+        </Method>
+        <Method name="notifyServerWon" returnType="void" visibility="public">
+          <Argument type="int" name="whitePoints"/>
+          <Argument type="int" name="blackPoints"/>
+        </Method>
+        <Method name="notifyTieGame" returnType="void" visibility="public">
+          <Argument type="int" name="whitePoints"/>
+          <Argument type="int" name="blackPoints"/>
+        </Method>
+        <Method name="notifyInvalidMove" returnType="void" visibility="public"/>
+        <Method name="notifyPlayer" returnType="void" visibility="private">
+          <Argument type="String" name="message"/>
+        </Method>
+        <Method name="handlePlayerLastMove" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ThreeStonesClientPacket" package="com.threestones.client.packet" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="log" type="Logger" visibility="private" isFinal="true"/>
+        <Field name="server" type="String" visibility="private" isFinal="true"/>
+        <Field name="port" type="int" visibility="private" isFinal="true"/>
+        <Field name="socket" type="Socket" visibility="private"/>
+        <Field name="inStream" type="InputStream" visibility="private"/>
+        <Field name="outStream" type="OutputStream" visibility="private"/>
+        <Field name="BUFF_SIZE" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="sendClientPacketToServer" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="sendStartGameRequestToServer" returnType="boolean" visibility="public"/>
+        <Method name="createConnectionWithServer" returnType="void" visibility="public">
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="sendPlayAgainRequestToServer" returnType="boolean" visibility="public"/>
+        <Method name="sendQuitGameRequestToServer" returnType="void" visibility="public"/>
+        <Method name="receiveClientPacket" returnType="byte[]" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ThreeStonesClientGameController" package="com.threestones.client.gamestate" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="log" type="org.slf4j.Logger" visibility="private" isFinal="true"/>
+        <Field name="board" type="ThreeStonesClientGameBoard" visibility="private" isFinal="true"/>
+        <Field name="port" type="int" visibility="private" isFinal="true"/>
+        <Field name="socket" type="Socket" visibility="private"/>
+        <Field name="inStream" type="InputStream" visibility="private"/>
+        <Field name="outStream" type="OutputStream" visibility="private"/>
+        <Field name="BUFF_SIZE" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getBoard" returnType="ThreeStonesClientGameBoard" visibility="public"/>
+        <Method name="handleClickBoardCell" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="handleServerResponse" returnType="void" visibility="public"/>
+        <Method name="sendRequestForServerMove" returnType="void" visibility="private"/>
+        <Method name="sendClientMovePacketToServer" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="sendStartGameRequestToServer" returnType="boolean" visibility="public"/>
+        <Method name="createConnectionWithServer" returnType="void" visibility="public">
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="sendPlayAgainRequestToServer" returnType="boolean" visibility="public"/>
+        <Method name="sendQuitGameRequestToServer" returnType="void" visibility="public"/>
+        <Method name="receiveServerPacket" returnType="byte[]" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ThreeStonesClientGameBoard" package="com.threestones.client.gamestate" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="log" type="org.slf4j.Logger" visibility="private" isFinal="true"/>
+        <Field name="board" type="CellState[][]" visibility="private"/>
+        <Field name="blackStoneCount" type="int" visibility="private"/>
+        <Field name="whiteStoneCount" type="int" visibility="private"/>
+        <Field name="whiteScore" type="int" visibility="private"/>
+        <Field name="blackScore" type="int" visibility="private"/>
+        <Field name="gui" type="ThreeStonesGUI" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setGui" returnType="void" visibility="public">
+          <Argument type="ThreeStonesGUI" name="gui"/>
+        </Method>
+        <Method name="getBoard" returnType="CellState[][]" visibility="public"/>
+        <Method name="setBoard" returnType="void" visibility="public">
+          <Argument type="CellState[][]" name="board"/>
+        </Method>
+        <Method name="getBlackStoneCount" returnType="int" visibility="public"/>
+        <Method name="setBlackStoneCount" returnType="void" visibility="public">
+          <Argument type="int" name="blackStoneCount"/>
+        </Method>
+        <Method name="getWhiteStoneCount" returnType="int" visibility="public"/>
+        <Method name="setWhiteStoneCount" returnType="void" visibility="public">
+          <Argument type="int" name="whiteStoneCount"/>
+        </Method>
+        <Method name="getWhiteScore" returnType="int" visibility="public"/>
+        <Method name="setWhiteScore" returnType="void" visibility="public">
+          <Argument type="int" name="whiteScore"/>
+        </Method>
+        <Method name="getBlackScore" returnType="int" visibility="public"/>
+        <Method name="setBlackScore" returnType="void" visibility="public">
+          <Argument type="int" name="blackScore"/>
+        </Method>
+        <Method name="startNewGame" returnType="void" visibility="public"/>
+        <Method name="reDrawBoard" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="CellState" name="color"/>
+        </Method>
+        <Method name="updateBoard" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="int" name="whitePoints"/>
+          <Argument type="int" name="blackPoints"/>
+          <Argument type="CellState" name="color"/>
+          <Argument type="int" name="msgCode"/>
+        </Method>
+        <Method name="displayMessages" returnType="void" visibility="private">
+          <Argument type="int" name="msgCode"/>
+          <Argument type="int" name="whitePoints"/>
+          <Argument type="int" name="blackPoints"/>
+        </Method>
+        <Method name="updateRestOfBoard" returnType="CellState[][]" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="updateBoardColRowNotFull" returnType="void" visibility="private">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="updateBoardColRowFull" returnType="void" visibility="private"/>
+        <Method name="checkIfFull" returnType="boolean" visibility="private">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="constructBoard" returnType="void" visibility="private"/>
+        <Method name="constructArrayFromFile" returnType="int[][]" visibility="private">
+          <Argument type="String" name="filename"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ThreeStonesClientApp" package="com.threestones.client.app" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="com.threestones.client.gamestate.ThreeStonesClientGameController" target="com.threestones.client.gamestate.ThreeStonesClientGameBoard" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="threeStonesClntCont" source="com.threestones.view.ThreeStonesGUI" target="com.threestones.client.gamestate.ThreeStonesClientGameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gui" source="com.threestones.client.gamestate.ThreeStonesClientGameBoard" target="com.threestones.view.ThreeStonesGUI" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="clientGameBoard" source="com.threestones.view.ThreeStonesGUI" target="com.threestones.client.gamestate.ThreeStonesClientGameBoard" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.threestones.client.gamestate.ThreeStonesClientGameBoard" target="com.threestones.view.ThreeStonesGUI" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="board" source="com.threestones.client.gamestate.ThreeStonesClientGameController" target="com.threestones.client.gamestate.ThreeStonesClientGameBoard" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
