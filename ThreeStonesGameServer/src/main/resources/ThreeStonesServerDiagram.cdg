@@ -2,7 +2,7 @@
 
 <ClassDiagram name="Multi-file class diagram">
   <ClassDiagramComponents>
-    <Class name="ThreeStonesServer" package="com.threestones.server" visibility="public" xPosition="20.0" yPosition="20.0">
+    <Class name="ThreeStonesServer" package="com.threestones.server" visibility="public" xPosition="142.0" yPosition="20.0">
       <Fields>
         <Field name="log" type="org.slf4j.Logger" visibility="private" isFinal="true"/>
       </Fields>
@@ -47,7 +47,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ThreeStonesServerApp" package="com.threestones.server.app" visibility="public" xPosition="3.0" yPosition="222.0">
+    <Class name="ThreeStonesServerApp" package="com.threestones.server.app" visibility="public" xPosition="107.0" yPosition="182.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -56,7 +56,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ThreeStonesServerGameBoard" package="com.threestones.server.gamestate" visibility="public" xPosition="331.0" yPosition="466.0">
+    <Class name="ThreeStonesServerGameBoard" package="com.threestones.server.gamestate" visibility="public" xPosition="320.0" yPosition="446.0">
       <Fields>
         <Field name="log" type="org.slf4j.Logger" visibility="private" isFinal="true"/>
         <Field name="board" type="CellState[][]" visibility="private"/>
@@ -158,7 +158,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ThreeStonesServerMove" package="com.threestones.server.gamestate" visibility="public" xPosition="1165.0" yPosition="655.0">
+    <Class name="ThreeStonesServerMove" package="com.threestones.server.gamestate" visibility="public" xPosition="971.0" yPosition="543.0">
       <Fields>
         <Field name="whitePoints" type="int" visibility="private"/>
         <Field name="blackPoints" type="int" visibility="private"/>
@@ -194,12 +194,12 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="lastServerMovePlayed" source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerMove" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerGameBoard" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="BlackMoveComparator" source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerMove" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="WhiteMoveComparator" source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerMove" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="board" source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerGameBoard" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerMove" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="BlackMoveComparator" source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerMove" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="serverGameCont" source="com.threestones.server.ThreeStonesServerSession" target="com.threestones.server.gamestate.ThreeStonesServerGameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerGameBoard" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lastServerMovePlayed" source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerMove" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="WhiteMoveComparator" source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerMove" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.threestones.server.gamestate.ThreeStonesServerGameController" target="com.threestones.server.gamestate.ThreeStonesServerMove" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
