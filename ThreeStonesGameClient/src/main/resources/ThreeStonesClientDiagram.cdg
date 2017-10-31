@@ -2,7 +2,7 @@
 
 <ClassDiagram name="Multi-file class diagram">
   <ClassDiagramComponents>
-    <Class name="ThreeStonesGUI" package="com.threestones.view" visibility="public" xPosition="20.0" yPosition="20.0">
+    <Class name="ThreeStonesGUI" package="com.threestones.view" visibility="public" xPosition="73.0" yPosition="505.0">
       <Fields>
         <Field name="log" type="org.slf4j.Logger" visibility="private" isFinal="true"/>
         <Field name="mainRootPane" type="JPanel" visibility="private" isFinal="true"/>
@@ -91,7 +91,7 @@
         <Method name="handlePlayerLastMove" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ThreeStonesClientPacket" package="com.threestones.client.packet" visibility="public" xPosition="320.0" yPosition="20.0">
+    <Class name="ThreeStonesClientPacket" package="com.threestones.client.packet" visibility="public" xPosition="92.0" yPosition="52.0">
       <Fields>
         <Field name="log" type="Logger" visibility="private" isFinal="true"/>
         <Field name="server" type="String" visibility="private" isFinal="true"/>
@@ -116,7 +116,7 @@
         <Method name="receiveClientPacket" returnType="byte[]" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ThreeStonesClientGameController" package="com.threestones.client.gamestate" visibility="public" xPosition="620.0" yPosition="20.0">
+    <Class name="ThreeStonesClientGameController" package="com.threestones.client.gamestate" visibility="public" xPosition="709.0" yPosition="5.0">
       <Fields>
         <Field name="log" type="org.slf4j.Logger" visibility="private" isFinal="true"/>
         <Field name="board" type="ThreeStonesClientGameBoard" visibility="private" isFinal="true"/>
@@ -150,7 +150,7 @@
         <Method name="receiveServerPacket" returnType="byte[]" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ThreeStonesClientGameBoard" package="com.threestones.client.gamestate" visibility="public" xPosition="920.0" yPosition="20.0">
+    <Class name="ThreeStonesClientGameBoard" package="com.threestones.client.gamestate" visibility="public" xPosition="614.0" yPosition="505.0">
       <Fields>
         <Field name="log" type="org.slf4j.Logger" visibility="private" isFinal="true"/>
         <Field name="board" type="CellState[][]" visibility="private"/>
@@ -225,7 +225,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ThreeStonesClientApp" package="com.threestones.client.app" visibility="public" xPosition="1220.0" yPosition="20.0">
+    <Class name="ThreeStonesClientApp" package="com.threestones.client.app" visibility="public" xPosition="458.0" yPosition="52.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -236,11 +236,11 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="com.threestones.client.gamestate.ThreeStonesClientGameController" target="com.threestones.client.gamestate.ThreeStonesClientGameBoard" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="threeStonesClntCont" source="com.threestones.view.ThreeStonesGUI" target="com.threestones.client.gamestate.ThreeStonesClientGameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="gui" source="com.threestones.client.gamestate.ThreeStonesClientGameBoard" target="com.threestones.view.ThreeStonesGUI" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="clientGameBoard" source="com.threestones.view.ThreeStonesGUI" target="com.threestones.client.gamestate.ThreeStonesClientGameBoard" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.threestones.client.gamestate.ThreeStonesClientGameController" target="com.threestones.client.gamestate.ThreeStonesClientGameBoard" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="com.threestones.client.gamestate.ThreeStonesClientGameBoard" target="com.threestones.view.ThreeStonesGUI" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="threeStonesClntCont" source="com.threestones.view.ThreeStonesGUI" target="com.threestones.client.gamestate.ThreeStonesClientGameController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="board" source="com.threestones.client.gamestate.ThreeStonesClientGameController" target="com.threestones.client.gamestate.ThreeStonesClientGameBoard" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="clientGameBoard" source="com.threestones.view.ThreeStonesGUI" target="com.threestones.client.gamestate.ThreeStonesClientGameBoard" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
