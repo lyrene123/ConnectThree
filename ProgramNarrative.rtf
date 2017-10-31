@@ -1,0 +1,92 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang4105{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset0 Calibri;}{\f2\fnil\fcharset2 Symbol;}}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\sa200\sl240\slmult1\qc\b\fs28\lang9 Three Stones Server/Client Game Application\par
+\fs24 Program narrative\fs28\par
+
+\pard\sa200\sl276\slmult1\ul\fs22 Team Members\b0 :\par
+\ulnone - Eric Hughes, Lyrene Labor, Jacob Riendeau\par
+\ul\b Three Stones Client Game Application\b0\par
+
+\pard 
+{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
+\fi-258\li645\sa200\sl276\slmult1\tx258\ulnone Overall Description\par
+
+\pard\li645\sa200\sl276\slmult1\tx258 When the client side application of the Three Stones game application executes, the GUI window displays. The GUI window contains the following:\par
+
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li1365\sa200\sl276\slmult1\tx258 A settings panel on top of the window which contains the scoring information of the player (white stones) and the opponent/server (black stones). It also contains the amount of white and black stones left to be placed on the board.\par
+{\pntext\f2\'B7\tab}A text area where messages will appear during the game session such as the whether or not the connection to the server is successfull, whether or not the move made by the player is valid, who won the game, the total points at the end of the game, etc.\par
+{\pntext\f2\'B7\tab}A panel containing rows of buttons (11x11) which represents the game board and the user can click on one of the buttons on the board to make a move.\par
+{\pntext\f2\'B7\tab}Another panel at the bottom which contains the connect, start game, quit, play again buttons.\par
+
+\pard\li645\sa200\sl276\slmult1\tx258 At startup, the window will display the game board as disabled (all buttons are disabled). The text area is empty and the scores and stones count are set to their initial values. To connect to the server, you must click on the connect button and enter the IP address of the machine on which the server application is running and a message validation of whether or not the connection has been established will be displayed in the text area. To start game round, you must click on the start game message which will send a game request to the server. If server sends back a game request confirmation back, then the game board is enabled. The user can now make his/her first move.\par
+During the game, the client side application will send and receive packets from the server side application as long as the server is up and running, the client does not close the connection, and player continues playing.\par
+When user clicks on a button, the move will be sent and validated on the server side. Only when the server sends back a validation confirmation that the player's white stone will appear on the GUI game board in the cell or button pressed by the user. The server's move then follows and the GUI game board is updated with the server's black stone for the player to see.\par
+The last played move will be highlighted with a red border color on the GUI game board. The buttons on the same rows and columns of the last played move will be highlighted in green to make it easier for the user to see the choices he/she has. If row and column, all available cells on the board will turn green.\par
+Clicking on an invalid move (ex. not on same row or column as last played move), an invalid message will appear in the text area. Clicking on a valid move will disable the button. The scores and number of stones left of both player and opponent/server will be updated accordingly on the GUI.\par
+When server has made its last move, a different code is used to determine who the winner is. At the end of each game, the quit button and the play again is enabled for the user to choose whether to end game or continue playing. Continuing playing will keep the server connection and ending the game will close the socket connection.\par
+\ul Note\ulnone : No game logic code implemented in the client side application. The logic for updating the board on the client application is similar to the one in the server side application, but big difference is that client application does not use the logic code to calculate points, but only to be make it easier to update the GUI board with the right colors. (Ex. all CellState Available buttons have a green background and if not, the background is yellow).\par
+
+\pard\fi-387\li645\sa200\sl276\slmult1\tx258 2. Classes overview\par
+
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li978\sa200\sl276\slmult1\tx258\ul ThreeStonesClientApp: \ulnone Contains the Main method which creates the GUI window for the display of the game board of the Three Stones game containing the counters for the white and black points and the counters for the white and black stones left to play. The GUI window allows the user to connect to the server with the connect button\par
+{\pntext\f2\'B7\tab}\ul ThreeStonesClientGameBoard\ulnone : Represents the game board in a game of Three Stones. Contains and keeps track of the number of points for the player and the opponent/server and the number of white and black stones as well. Manages the necessary updates to made to the board when a move is made and the updates for the points and stone counts as well.\par
+{\pntext\f2\'B7\tab}\ul ThreeStonesClientGameController\ulnone : Manages the communication between the GUI and the client game board instance (ThreeStonesClientGameBoard). Contains the event handler for click events which builds and sends the right packet with the appropriate operation code. Manages as well the receiving of packets from the server application and updates the GUI accordingly for the user to see.\par
+{\pntext\f2\'B7\tab}\ul ThreeStonesGUI\ulnone : Contains the necessary code to builds the UI components of the GUI window. Declares the click listeners and event handlers of the buttons and the game board.\par
+
+\pard\sa200\sl276\slmult1\tx258\ul\b Three Stones Server Application\par
+
+\pard 
+{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
+\fi-258\li645\sa200\sl276\slmult1\tx258\ulnone\b0 Overall description\par
+
+\pard\li645\sa200\sl276\slmult1\tx258 When the server application  executes, the IP address of the machine in which the application is running in is displayed. This is used to enter when prompted to enter the server's machine IP address in the client application. \par
+The server then waits for a client connection. Once a client connects, the server displays the client's machine IP address. Then server waits for the first packet sent by the client which indicates a start game request.\par
+Once the server receives the start game request, the server builds and initializes the game board and sends back a confirmation game started packet back to the client. The server then waits for the client's first move. \par
+Every time server receives client's moves, server validates the move and sends back a valid move confirmation or invalid move confirmation. Server updates its board only when the client's move is valid. The server then waits for the client's server move request for it to send its own move to the client.\par
+When server determines its next move, server scans the whole and makes a list of all valid possible moves. Then server compares each possible move and tries to choose the move that would benefit or wold generate the most points for the server. It takes in consideration the best move by proximity, the best move by total black points, the best move by total white points (in this case, the server will try to block the player), or if no choices at all, by elimination.\par
+When the server makes its last move, it will send a packet with the appropriate operation code that indicates who won or if the game is tie, along with the server's last move coordination [x,y], and the updated white points and black points calculated from the board after the server's move has been made.\par
+Server then accepts the client's play again request (in this case, the server will reinitialize the board to its initial state) or a quit game request (in this case the server closes the client socket connection and resumes listening for new clients to connect).\par
+
+\pard\fi-387\li645\sa200\sl276\slmult1\tx258 2. Classes overview\par
+
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\li645\sa200\sl276\slmult1\tx258\tx645\ul ThreeStonesServerApp\ulnone : Executes the server application by by creating a ThreeStonesServer instance and running the server.\par
+{\pntext\f2\'B7\tab}\ul ThreeStonesServer\ulnone : Runs the server by creating a server socket at port 50000 and constantly listens for a client connection. Once a client connection occurs, server creates the client socket and passes it to a instantiated ThreeStonesServerSession instance.\par
+{\pntext\f2\'B7\tab}\ul ThreeStonesServerSession: \ulnone Creates the input and output streams of the client socket connection to be used for sending and receiving packets. Continously listens for the client packet as long as the user still wants to play. Manages the client's packets sent to the server by looking at the operation code and executing the right tasks that matches the operation code. Builds and sends the server packets to be send to the client containing confirmation operation codes or the server's move.\par
+{\pntext\f2\'B7\tab}\ul ThreeStonesServerGameBoard\ulnone : Very similar to the ThreeStonesClientGameBoard with the only difference that the server's game board contains methods that will help iterate through the whole board to calculate the points of the white stones and the black stones for all combinations of three stones.\par
+{\pntext\f2\'B7\tab}\ul ThreeStonesServerGameController\ulnone : Contains the game logic of the determining the next move of the server. Contains methods and helper methods that iterate through the whole board and builds a list of all valid possible moves and choose the best move out of that list by taking in consideration both black and white points. Once a move has been made, builds the packet containing the right operation code, the server move coordinates, and the white and black points calculated from the board.\par
+{\pntext\f2\'B7\tab}\ul ThreeStonesServerMove: \ulnone Represents a server's move which includes properties such as the x and y coordinates, the possible points for white and black stones that could be generated by the move, and the amount of white and black stones that are around the x and y coordinates of the move. This is used for the game logic for determining the server's next move in order to make it easier to compare the different moves from each other based on the points.\par
+
+\pard\sa200\sl276\slmult1\tx258\tx645\ul\b Packet Layout\par
+\ulnone\b0 A packet consists of a byte array with a size of 5 bytes.\par
+[Operation Code, (optional) x coord of a move, (optional) y coord of a move, (optional) points calculated for the white stones, (optional) points calculated for the black stones]\par
+\ul Note\ulnone : the last two bytes for the points are only filled or provided by the server application and only used and displayed on the client application\par
+\ul\b Operation Codes\par
+\ulnone\b0 Server Side Operation Codes received from client:\par
+0 - Client's request to start a game\par
+1 - Client's packet containing client's move coordinates\par
+2 - Client's request to play again\par
+3 - Client's request to quit game\par
+4 - Player's request for server's move\par
+Client Side Operation COdes received from server:\par
+0 - Server game started confirmation\par
+1 - Server's packet containing its move coordinates and the white and black points calculated so far\par
+
+\pard\sa200\sl276\slmult1\tx258\tx645 3 - Server's packet containing its last move coordinates and the white and black points calculated so far and indicates that player is the winner\par
+4 - Server's packet containing its last move coordinates and the white and black points calculated so far and indicates that server is the winner\par
+5- Server's packet containing its last move coordinates and the white and black points calculated so far and indicates that game is a tie\par
+6- Server's packet containing its last move coordinates and the white and black points calculated so far and indicates a warning to the player that he/she has one move left\par
+-1 - Server invalid player move confirmation\par
+-2 - Server valid player move confirmation\par
+\par
+\par
+\par
+
+\pard\sa200\sl276\slmult1\tx258\tx645\par
+
+\pard\li645\sa200\sl276\slmult1\tx258\par
+
+\pard\sa200\sl276\slmult1\par
+\par
+\f1\par
+}
+ 

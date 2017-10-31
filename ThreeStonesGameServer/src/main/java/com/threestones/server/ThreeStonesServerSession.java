@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Jacob Riendeau
  *
  */
-public class ThreeStonesServerSession extends Thread {
+public class ThreeStonesServerSession {
 
     //for logging information on the console
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
@@ -55,7 +55,7 @@ public class ThreeStonesServerSession extends Thread {
      * @param clientSock Client Socket object
      * @throws IOException
      */
-    public void run(Socket clientSock) throws IOException {
+    public void playGameSession(Socket clientSock) throws IOException {
         //retrieve the input and output stream from the client Socket
         inStream = clientSock.getInputStream();
         outStream = clientSock.getOutputStream();

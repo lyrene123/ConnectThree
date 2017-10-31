@@ -50,7 +50,7 @@ public class ThreeStonesServer {
 
             //create session once connection is made
             ThreeStonesServerSession session = new ThreeStonesServerSession();
-            session.run(clntSock); //pass client socket to the session
+            session.playGameSession(clntSock); //pass client socket to the session
         }
     }
 }
