@@ -106,7 +106,7 @@ public class ThreeStonesGUI {
 
         //the following is to the build the game board ui components
         guiGameBoard = new JPanel(new GridLayout(0, 11));
-        guiGameBoard.setBorder(new LineBorder(Color.decode("#e67e22"), 3));
+        guiGameBoard.setBorder(new LineBorder(Color.decode("#723D46"), 3));
         mainRootPane.add(guiGameBoard, BorderLayout.CENTER);
         buildGameBoard();
         addButtonsListInBoard();
@@ -151,12 +151,12 @@ public class ThreeStonesGUI {
                     case VACANT: //if vacant slot, make the button color gray
                         gameBoardCells[x][y] = new JButton();
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
-                        gameBoardCells[x][y].setBackground(Color.darkGray);
+                        gameBoardCells[x][y].setBackground(Color.decode("#472D30"));
                         break;
                     case AVAILABLE: //if available slot, then set button color to yellow and set click listener
                         gameBoardCells[x][y] = new JButton();
                         gameBoardCells[x][y].setPreferredSize(new Dimension(60, 60));
-                        gameBoardCells[x][y].setBackground(Color.YELLOW);
+                        gameBoardCells[x][y].setBackground(Color.decode("#E26D5C"));
                         final int positionX = x;
                         final int positionY = y;
                         gameBoardCells[x][y].addActionListener(e -> {
@@ -197,7 +197,7 @@ public class ThreeStonesGUI {
      */
     private void buildScoresPanel(JPanel scoresPanel) {
         scoresPanel.setLayout(new BoxLayout(scoresPanel, BoxLayout.X_AXIS));
-        scoresPanel.setBackground(Color.decode("#e67e22"));
+        scoresPanel.setBackground(Color.decode("#723D46"));
 
         //build and add the scores tool bar in the scores panel
         JToolBar scoresToolbar = new JToolBar();
@@ -216,7 +216,7 @@ public class ThreeStonesGUI {
      */
     private void buildScoresToolBar(JToolBar scoresToolbar) {
         scoresToolbar.setFloatable(false);
-        scoresToolbar.setBackground(Color.decode("#e67e22"));
+        scoresToolbar.setBackground(Color.decode("#723D46"));
         scoresToolbar.add(clientScoreTV);
         scoresToolbar.add(clientScorePnts);
         scoresToolbar.add(serverScoreTV);
@@ -293,9 +293,9 @@ public class ThreeStonesGUI {
      * @param settingsPanel JPanel object
      */
     private void buildSettingsPanel(JPanel settingsPanel) {
-        settingsPanel.setBackground(Color.decode("#e67e22"));
+        settingsPanel.setBackground(Color.decode("#723D46"));
         settingsPanel.setLayout(new BoxLayout(settingsPanel, BoxLayout.Y_AXIS));
-        mainRootPane.setBackground(Color.decode("#e67e22"));
+        mainRootPane.setBackground(Color.decode("#723D46"));
     }
 
     /**
@@ -487,9 +487,9 @@ public class ThreeStonesGUI {
             for (int j = 0; j < gameBoardCells[0].length; j++) {
                 displayPointsAndStoneCount(); //display the new stone counts and points
                 if (this.clientGameBoard.getBoard()[i][j] == CellState.UNAVAILABLE) {
-                    gameBoardCells[i][j].setBackground(Color.YELLOW);
+                    gameBoardCells[i][j].setBackground(Color.decode("#E26D5C"));
                 } else if (this.clientGameBoard.getBoard()[i][j] == CellState.AVAILABLE) {
-                    gameBoardCells[i][j].setBackground(Color.GREEN);
+                    gameBoardCells[i][j].setBackground(Color.decode("#E7A977"));
                 } else if (i == x && j == y && color == CellState.WHITE) {
                     gameBoardCells[i][j].setEnabled(false);
                     gameBoardCells[i][j].setBorder(BorderFactory.createLineBorder(Color.RED, 3));
