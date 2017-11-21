@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Jacob Riendeau
  *
  */
-public class ThreeStonesServerSession {
+public class ThreeStonesServerSession implements Runnable {
 
     //for logging information on the console
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass().getName());
@@ -34,15 +34,19 @@ public class ThreeStonesServerSession {
     private final ThreeStonesServerGameController serverGameCont; //The server's game logic instance
     private InputStream inStream; //client's socket input stream
     private OutputStream outStream; //client's socket output stream
+    private Socket clientSock;
 
     /**
      * Default constructor that initializes the game over and play again boolean
      * properties and the ThreeStonesServerGameController instance
+     *
+     * @param clientSock
      */
-    public ThreeStonesServerSession() {
+    public ThreeStonesServerSession(Socket clientSock) {
         this.isGameOver = false;
         this.isPlayAgain = true;
         this.serverGameCont = new ThreeStonesServerGameController();
+        this.clientSock = clientSock;
     }
 
     /**
@@ -52,21 +56,24 @@ public class ThreeStonesServerSession {
      * between server/client while user still wants to play and game is not over
      * yet.
      *
-     * @param clientSock Client Socket object
-     * @throws IOException
      */
-    public void playGameSession(Socket clientSock) throws IOException {
-        //retrieve the input and output stream from the client Socket
-        inStream = clientSock.getInputStream();
-        outStream = clientSock.getOutputStream();
-
-        //continue the game session while user is still playing and game not over
-        while (isPlayAgain) {
-            while (!isGameOver) {
-                receiveClientPackets(); //receive and process client packets
+    @Override
+    public void run() {
+        try {
+            //retrieve the input and output stream from the client Socket
+            inStream = clientSock.getInputStream();
+            outStream = clientSock.getOutputStream();
+            //continue the game session while user is still playing and game not over
+            while (isPlayAgain) {
+                while (!isGameOver) {
+                    receiveClientPackets(); //receive and process client packets
+                }
             }
+            clientSock.close(); //close client socket when user no longer wants to play
+        } catch (IOException ex) {
+            Logger.getLogger(ThreeStonesServerSession.class.getName()).log(Level.SEVERE, null, ex);
         }
-        clientSock.close(); //close client socket when user no longer wants to play
+
     }
 
     /**

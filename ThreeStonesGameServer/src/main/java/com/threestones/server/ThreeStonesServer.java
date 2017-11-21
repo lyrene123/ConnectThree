@@ -49,8 +49,8 @@ public class ThreeStonesServer {
             log.info("Server is accepting client at: " + clntSock.getLocalSocketAddress().toString());
 
             //create session once connection is made
-            ThreeStonesServerSession session = new ThreeStonesServerSession();
-            session.playGameSession(clntSock); //pass client socket to the session
+            new Thread(new ThreeStonesServerSession(clntSock)).start();
+            
         }
     }
 }
