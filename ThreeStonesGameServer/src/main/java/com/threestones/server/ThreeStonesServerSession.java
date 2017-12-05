@@ -19,6 +19,10 @@ import org.slf4j.LoggerFactory;
  * and the client side application. Depending on the type of packet message
  * received, the server will execute tasks and respond accordingly.
  *
+ * Implements the Runnable interface in order to execute each game session into
+ * a separate thread for each client who connects to the server side of the
+ * Three Stones Game.
+ *
  * @author Eric Hughes
  * @author Lyrene Labor
  * @author Jacob Riendeau
@@ -34,7 +38,7 @@ public class ThreeStonesServerSession implements Runnable {
     private final ThreeStonesServerGameController serverGameCont; //The server's game logic instance
     private InputStream inStream; //client's socket input stream
     private OutputStream outStream; //client's socket output stream
-    private Socket clientSock;
+    private final Socket clientSock;
 
     /**
      * Default constructor that initializes the game over and play again boolean
@@ -50,12 +54,12 @@ public class ThreeStonesServerSession implements Runnable {
     }
 
     /**
-     * Starts game session by accepting the Socket object created by the
-     * client's connection and retrieving the input and output stream. Server
-     * will then continously manage the game and the packet send and receive
-     * between server/client while user still wants to play and game is not over
-     * yet.
-     *
+     * Starts game session in a separate thread and retrieves the input and
+     * output stream from client socket. Server will then continously manage the
+     * game and the packet send and receive between server/client while user
+     * still wants to play and game is not over yet. When the game round is over
+     * and the user doesn't want to play another round, then the client socket
+     * is closed and the client exists the game.
      */
     @Override
     public void run() {
