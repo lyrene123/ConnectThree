@@ -22,3 +22,8 @@ A client-server TCP-based system written in Java that will allow a person using 
 * Client plays the first stone onto the board and then the server and client will alternate playing stones. Each will try to score more points than the opponent by the end of the game, which occurs when all stones have been used. 
 * The client starts with 15 white stones and the server starts with 15 black stones. 
 * At the end of the game the client must display a message showing the 2 scores and who the winner is, or whether a draw occurred. 
+
+## Developed by:
+Lyrene Labor <br>
+Eric Hughes <br>
+Jacob Riendeau
